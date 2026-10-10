@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "updated": "2026-10-10",
+  "store": {
+    "name": "Левша",
+    "package": "com.lichinuss.levsha",
+    "version_code": 0,
+    "version_name": "",
+    "apk": null,
+    "sha256": null,
+    "size": 0,
+    "changelog": ""
+  },
+  "signing_sha256": "90:74:0E:51:42:84:09:08:05:0A:25:25:82:5C:82:CA:54:4B:E6:E3:33:EB:DF:92:95:0C:22:D1:ED:85:F3:1C",
+  "categories": [
+    {"id": "games", "name": "Пряники", "subtitle": "Игры мастерской"},
+    {"id": "tools", "name": "Инструменты мастера", "subtitle": "Полезные приложения"}
+  ],
+  "apps": [
+    {
+      "id": "brick-tower",
+      "package": "com.lichinuss.bricktower",
+      "name": "Кирпичная башня",
+      "name_en": "Brick Tower",
+      "category": "games",
+      "tagline": "Защити башню из кирпичиков от волн врагов",
+      "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
+      "version_code": 0,
+      "version_name": "",
+      "min_sdk": 24,
+      "apk": null,
+      "sha256": null,
+      "size": 0,
+      "icon": "apps/brick-tower/icon.png",
+      "screenshots": ["apps/brick-tower/shot1.jpg", "apps/brick-tower/shot2.jpg", "apps/brick-tower/shot3.jpg",
+        "apps/brick-tower/shot4.jpg"],
+      "changelog": "",
+      "status": "soon"
+    }
+  ]
+}
