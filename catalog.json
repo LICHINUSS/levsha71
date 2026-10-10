@@ -4,12 +4,12 @@
   "store": {
     "name": "Левша",
     "package": "com.lichinuss.levsha",
-    "version_code": 1,
-    "version_name": "1.0.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.0.0/levsha-1.0.0.apk",
-    "sha256": "03cf9a2897623d213603044e2e37c7c256792488bf9f464f267843b5c1c878f1",
-    "size": 3345850,
-    "changelog": "Первая версия магазина: каталог «Пряников» и «Инструментов мастера», установка в одно касание с проверкой клейма, самообновление и уведомления о новых подковах."
+    "version_code": 2,
+    "version_name": "1.0.1",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.0.1/levsha-1.0.1.apk",
+    "sha256": "e0b5a09a8557057d4a32d1438a22b6cf492532536542b9b66909ae91f2f350d6",
+    "size": 3345854,
+    "changelog": "Золотые кнопки стали ровными по всей ширине, длинные названия больше не обрезаются."
   },
   "signing_sha256": "90:74:0E:51:42:84:09:08:05:0A:25:25:82:5C:82:CA:54:4B:E6:E3:33:EB:DF:92:95:0C:22:D1:ED:85:F3:1C",
   "categories": [
