@@ -33,12 +33,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 0,
-      "version_name": "",
+      "version_code": 7,
+      "version_name": "1.0.2",
       "min_sdk": 24,
-      "apk": null,
-      "sha256": null,
-      "size": 0,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.0.2/brick-tower-1.0.2.apk",
+      "sha256": "614120eb8d7f94ba78005c9b776252551c2ba2a92f209418d37b99adc1e650d4",
+      "size": 32099877,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -46,8 +46,8 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "",
-      "status": "soon"
+      "changelog": "Игра теперь живёт в магазине «Левша» и подписана клеймом мастерской: обновления будут приходить сами, с сохранением прогресса. Счётчик кадров в углу убран.",
+      "status": "ready"
     }
   ]
 }
