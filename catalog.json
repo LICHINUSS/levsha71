@@ -71,12 +71,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 9,
-      "version_name": "1.1.0",
+      "version_code": 10,
+      "version_name": "1.1.1",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.1.0/brick-tower-1.1.0.apk",
-      "sha256": "28642b49c095428fae3eb4978ad9462d6f6ed60cdb8aa6c6fec71a09f321fb5e",
-      "size": 28862307,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.1.1/brick-tower-1.1.1.apk",
+      "sha256": "c1328ffa6b4cf7a4a88e0f1056957ed822c799aac7e5c1a489c5bd563a8a5ab4",
+      "size": 28866403,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -84,12 +84,17 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Рекорды мира! Создай профиль — ник и пиксельный аватар, без почты и пароля. Живые таблицы лидеров: кампания и бесконечный режим, за неделю и за всё время. После забега — твоё место в мире. Код восстановления вернёт профиль на новом телефоне.",
+      "changelog": "Код восстановления сам расставляет дефисы, а окно поднимается над экранной клавиатурой. Рекорды теперь появляются и в ленте «Лавки Левши».",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
       "updated": "2026-10-11",
       "history": [
+        {
+          "version_name": "1.1.1",
+          "date": "2026-10-11",
+          "changelog": "Код восстановления сам расставляет дефисы, а окно поднимается над экранной клавиатурой. Рекорды теперь появляются и в ленте «Лавки Левши»."
+        },
         {
           "version_name": "1.1.0",
           "date": "2026-10-11",
