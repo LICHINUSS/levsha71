@@ -4,14 +4,19 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 7,
-    "version_name": "1.3.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.3.0/levsha-1.3.0.apk",
-    "sha256": "c36f8bc3a3e946d90b3d151efcced8fee755f5c3a66e395fb9c795b09b201c4d",
+    "version_code": 8,
+    "version_name": "1.3.1",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.3.1/levsha-1.3.1.apk",
+    "sha256": "c6161386a549b00bee69af4ef1dd2e378ae068d168d0d375c22420c85f02d384",
     "size": 1983867,
-    "changelog": "Лента! Новая вкладка: рекорды игроков, свежие отзывы, новые подковы и посты. Ставьте подковки, нажмите на ник — откроется профиль игрока с его рекордами. Код восстановления теперь сам расставляет дефисы, а поле не прячется под клавиатурой.",
+    "changelog": "Лента теперь строго по времени: свежие посты игроков — сверху. Бирка «мастер» больше не обрезается.",
     "updated": "2026-10-11",
     "history": [
+      {
+        "version_name": "1.3.1",
+        "date": "2026-10-11",
+        "changelog": "Лента теперь строго по времени: свежие посты игроков — сверху. Бирка «мастер» больше не обрезается."
+      },
       {
         "version_name": "1.3.0",
         "date": "2026-10-11",
