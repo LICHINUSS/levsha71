@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Левша 71 — мастерская игр и приложений</title>
-<meta name="description" content="Левша 71 — игры и приложения тульского мастера. Скачайте магазин «Левша» и ставьте наши игры одним касанием.">
+<title>Лавка Левши — игры и приложения тульского мастера</title>
+<meta name="description" content="Левша 71 — игры и приложения тульского мастера. Скачайте «Лавку Левши» и ставьте наши игры одним касанием.">
 <link rel="icon" href="assets/store_icon_192.png">
 <meta name="theme-color" content="#7a3a12">
 <style>
@@ -109,8 +109,8 @@
 
 <header>
   <div class="hero">
-    <img src="assets/store_icon_512.png" alt="Иконка магазина «Левша»">
-    <h1>ЛЕВША</h1>
+    <img src="assets/store_icon_512.png" alt="Значок «Лавки Левши»">
+    <h1>ЛАВКА ЛЕВШИ</h1>
     <p>Мастерская игр и приложений · Тула, 71</p>
     <a id="getStore" class="btn off" href="#how"><svg class="shoe"><use href="#shoe"/></svg>Магазин скоро будет</a>
     <span class="ver" id="storeVer">Пока можно скачать игры напрямую — ниже</span>
@@ -124,10 +124,10 @@
 
   <section id="how">
     <h2>Как установить</h2>
-    <p class="sub">Один раз — и дальше всё обновляется само, через магазин «Левша».</p>
+    <p class="sub">Один раз — и дальше всё обновляется само, через «Лавку Левши».</p>
     <div class="how">
       <div class="steps">
-        <div class="step"><b>Скачайте</b> магазин «Левша» кнопкой вверху (или игру из списка) на телефоне.</div>
+        <div class="step"><b>Скачайте</b> «Лавку Левши» кнопкой вверху (или игру из списка) на телефоне.</div>
         <div class="step"><b>Откройте файл.</b> Телефон спросит, можно ли ставить приложения из браузера — разрешите.</div>
         <div class="step"><b>Samsung:</b> если установка запрещена, отключите «Автоблокировщик» в настройках
           «Безопасность и конфиденциальность». Play Защита может предупредить — нажмите «Всё равно установить».</div>
@@ -187,7 +187,7 @@ fetch("catalog.json", {cache: "no-store"}).then(r => r.json()).then(cat => {
     const b = document.getElementById("getStore");
     b.classList.remove("off");
     b.href = s.apk;
-    b.innerHTML = shoe + "Скачать магазин «Левша»";
+    b.innerHTML = shoe + "Скачать «Лавку Левши»";
     document.getElementById("storeVer").textContent = `Версия ${s.version_name} · ${fmtSize(s.size)}`;
   }
   const box = document.getElementById("cats");
