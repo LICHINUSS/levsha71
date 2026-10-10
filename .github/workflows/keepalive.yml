@@ -1,0 +1,15 @@
+# «Будилка»: бесплатный сервер Supabase засыпает после недели тишины — раз в два дня стучимся в него.
+name: keepalive
+on:
+  schedule:
+    - cron: "17 6 */2 * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Lavka Levshi server
+        run: |
+          curl -sf -X POST "https://rzrdanmylecmkafgekye.supabase.co/rest/v1/rpc/ping" \
+            -H "apikey: sb_publishable_ELCLv7tzPupTFN0b7DpcnQ_viX4aUMS" \
+            -H "Content-Type: application/json" -d '{}'
