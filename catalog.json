@@ -4,14 +4,19 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 4,
-    "version_name": "1.1.1",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.1.1/levsha-1.1.1.apk",
-    "sha256": "4640af77bc52c3467f0809d48d5d274dbebceba7d3cac3179b9738e2055192c7",
-    "size": 1912378,
-    "changelog": "Магазин теперь называется «Лавка Левши». Новый значок: полосатый навес лавки, Левша за прилавком и золотая подкова со стрелкой «скачать» — сразу видно, что здесь берут игры и приложения.",
+    "version_code": 5,
+    "version_name": "1.1.2",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.1.2/levsha-1.1.2.apk",
+    "sha256": "3560d2f525e1318f5f10b439cf609922db30ca7f467b4d5eadcbffe5964d3d18",
+    "size": 1928406,
+    "changelog": "Новое: «Поделиться лавкой» во вкладке «Мои» и в настройках — большой QR-код для друзей и кнопка «Отправить ссылку».",
     "updated": "2026-10-11",
     "history": [
+      {
+        "version_name": "1.1.2",
+        "date": "2026-10-11",
+        "changelog": "Новое: «Поделиться лавкой» во вкладке «Мои» и в настройках — большой QR-код для друзей и кнопка «Отправить ссылку»."
+      },
       {
         "version_name": "1.1.1",
         "date": "2026-10-11",
