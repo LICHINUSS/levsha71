@@ -212,6 +212,9 @@ fetch("catalog.json", {cache: "no-store"}).then(r => r.json()).then(cat => {
     }
     box.appendChild(sec);
   }
+  // ссылка «Поделиться» из магазина: …/levsha71/#brick-tower сразу открывает карточку
+  const shared = cat.apps.find(a => "#" + a.id === location.hash);
+  if (shared) openApp(shared);
 });
 </script>
 </body>
