@@ -58,6 +58,8 @@
   .card h3 { margin: 0; font-size: 22px; color: #fff; }
   .card .tag { margin: 2px 0 0; font-size: 15px; opacity: .9; }
   .card .meta { margin: 14px 0; font-size: 14px; opacity: .85; }
+  .rating { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: #ffd84a; }
+  .rating .shoe { width: 15px; height: 15px; }
   .card .row { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
   .badge { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 13px;
            background: rgba(43,20,10,.35); }
@@ -176,6 +178,16 @@
 <script>
 const fmtSize = b => b ? (b / 1048576).toFixed(1).replace(".", ",") + " МБ" : "";
 const shoe = '<svg class="shoe"><use href="#shoe"/></svg>';
+// Оценки игроков из «Лавки Левши» (открытое окошко сервера, ключ публичный)
+const API = "https://rzrdanmylecmkafgekye.supabase.co/rest/v1/rpc/";
+const API_KEY = "sb_publishable_ELCLv7tzPupTFN0b7DpcnQ_viX4aUMS";
+let ratings = {};
+const plural = (n, a, b, c) => n % 10 === 1 && n % 100 !== 11 ? a : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? b : c);
+function ratingHtml(id) {
+  const r = ratings[id];
+  if (!r || !r.count) return "";
+  return `<span class="rating">${shoe}${String(r.avg).replace(".", ",")}</span> · ${r.count} ${plural(r.count, "отзыв", "отзыва", "отзывов")}`;
+}
 
 function downloadButton(item, small) {
   if (!item.apk) return `<span class="btn ${small ? "small" : ""} off">${shoe}Скоро</span>`;
@@ -188,7 +200,8 @@ function openApp(app) {
     <div style="text-align:right;margin-bottom:10px"><button class="btn small ghost" onclick="dlg.close()">Закрыть</button></div>
     <div class="top" style="display:flex;gap:14px;align-items:center">
       <img src="${app.icon}" alt="" style="width:96px;height:96px;border-radius:22px">
-      <div><h2 style="margin:0">${app.name}</h2><div class="sub" style="margin:0">${app.name_en || ""}</div></div>
+      <div><h2 style="margin:0">${app.name}</h2><div class="sub" style="margin:0">${app.name_en || ""}</div>
+        <div class="sub" style="margin:4px 0 0">${ratingHtml(app.id)}</div></div>
     </div>
     <div class="shots">${shots}</div>
     <p>${app.description || ""}</p>
@@ -217,11 +230,13 @@ fetch("catalog.json", {cache: "no-store"}).then(r => r.json()).then(cat => {
     for (const a of apps) {
       const card = document.createElement("div");
       card.className = "card";
+      card.dataset.app = a.id;
       card.innerHTML = `
         <div class="top"><img class="icon" src="${a.icon}" alt="">
           <div><h3>${a.name}</h3><p class="tag">${a.tagline}</p></div></div>
         <div class="meta">${a.version_name ? "Версия " + a.version_name + " · " + fmtSize(a.size)
-                                           : '<span class="badge">Скоро в мастерской</span>'}</div>
+                                           : '<span class="badge">Скоро в мастерской</span>'}
+          <div class="stars"></div></div>
         <div class="row">${downloadButton(a, true)}
           <button class="btn small ghost">Подробнее</button></div>`;
       card.querySelector("button").onclick = () => openApp(a);
@@ -232,6 +247,17 @@ fetch("catalog.json", {cache: "no-store"}).then(r => r.json()).then(cat => {
   // ссылка «Поделиться» из магазина: …/levsha71/#brick-tower сразу открывает карточку
   const shared = cat.apps.find(a => "#" + a.id === location.hash);
   if (shared) openApp(shared);
+  // оценки подгружаем отдельно: нет связи с сервером — карточки всё равно на месте
+  fetch(API + "review_summaries", {method: "POST", body: "{}",
+      headers: {"apikey": API_KEY, "Content-Type": "application/json"}})
+    .then(r => r.ok ? r.json() : [])
+    .then(list => {
+      for (const r of list) ratings[r.app_id] = {count: r.count, avg: r.avg};
+      for (const card of document.querySelectorAll(".card[data-app]")) {
+        const html = ratingHtml(card.dataset.app);
+        if (html) card.querySelector(".stars").innerHTML = html;
+      }
+    }).catch(() => {});
 });
 </script>
 </body>
