@@ -69,12 +69,16 @@
     {
       "id": "games",
       "name": "Пряники",
-      "subtitle": "Игры мастерской"
+      "subtitle": "Игры мастерской",
+      "name_en": "Gingerbread",
+      "subtitle_en": "The workshop's games"
     },
     {
       "id": "tools",
       "name": "Инструменты мастера",
-      "subtitle": "Полезные приложения"
+      "subtitle": "Полезные приложения",
+      "name_en": "Master's tools",
+      "subtitle_en": "Useful apps"
     }
   ],
   "apps": [
@@ -135,8 +139,76 @@
           "date": "2026-10-10",
           "changelog": "Игра теперь живёт в магазине «Левша» и подписана клеймом мастерской: обновления будут приходить сами, с сохранением прогресса. Счётчик кадров в углу убран."
         }
-      ]
+      ],
+      "tagline_en": "Defend a brick tower from waves of enemies",
+      "description_en": "A 3D tower defense made of toy bricks. Hold your finger where the hero should shoot; headshots deal double damage. Build tower floors from golden bricks, pick upgrades after each wave, call in mines, walls, freeze and airstrikes, beat bosses — and climb the world leaderboards."
     }
   ],
-  "featured": "brick-tower"
+  "featured": "brick-tower",
+  "roadmap": [
+    {
+      "status": "now",
+      "title": "Лавка 2.0: новый вид, живой Левша, обучение",
+      "title_en": "Shop 2.0: new look, living Levsha, onboarding"
+    },
+    {
+      "status": "soon",
+      "title": "История и архив версий, «Что нового» при обновлении",
+      "title_en": "Version history and archive, “What's new” on update"
+    },
+    {
+      "status": "soon",
+      "title": "Облачные сохранения игр по профилю",
+      "title_en": "Cloud saves for games"
+    },
+    {
+      "status": "soon",
+      "title": "Друзья и статусы «в игре»",
+      "title_en": "Friends and “playing now” status"
+    },
+    {
+      "status": "soon",
+      "title": "Группы с общим рейтингом",
+      "title_en": "Groups with shared leaderboards"
+    },
+    {
+      "status": "soon",
+      "title": "Аватар из своей фотографии (можно пиксельный)",
+      "title_en": "Avatar from your photo (pixel option)"
+    },
+    {
+      "status": "soon",
+      "title": "Лавка на iPhone — веб-версия",
+      "title_en": "The shop on iPhone — web version"
+    },
+    {
+      "status": "soon",
+      "title": "«Кирпичная башня» в браузере",
+      "title_en": "Brick Tower in the browser"
+    },
+    {
+      "status": "done",
+      "title": "Испытание дня, новые враги и зимняя карта",
+      "title_en": "Daily challenge, new enemies, winter map",
+      "note": "Кирпичная башня 1.3.0",
+      "note_en": "Brick Tower 1.3.0"
+    },
+    {
+      "status": "done",
+      "title": "Комментарии и уведомления об ответах",
+      "title_en": "Comments and reply notifications",
+      "note": "Лавка 1.5.0",
+      "note_en": "Shop 1.5.0"
+    },
+    {
+      "status": "done",
+      "title": "Профили, рекорды мира и достижения",
+      "title_en": "Profiles, world records, achievements"
+    },
+    {
+      "status": "done",
+      "title": "Отзывы, лента, подковки",
+      "title_en": "Reviews, feed and likes"
+    }
+  ]
 }
