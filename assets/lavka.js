@@ -127,7 +127,7 @@ const W = {
 const AVATARS = ["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"];
 const FRAMES = ["", "wood", "bronze", "silver", "gold", "master"];
 const FRAME_HINT = { bronze: [10], silver: [40], gold: [120], master: ["master"] };
-const KINDS = ["friend_request", "friend_accept", "friend_record", "group_post", "comment", "reply"];
+const KINDS = ["friend_request", "friend_accept", "friend_record", "group_post", "comment", "reply", "idea_status"];
 const RANKS_EN = { "Новичок": "Novice", "Подмастерье": "Apprentice", "Мастеровой": "Craftsman", "Умелец": "Expert", "Левша": "Levsha" };
 const PALETTE = [0x1c0e0e, 0x5a1430, 0x8e1a26, 0xc3271b, 0xe5502f, 0xf98a5a, 0x4a1f12, 0x874013, 0xc47216, 0xeba92a, 0xffdc6e,
   0xfffbe2, 0x3b1b14, 0x6b3015, 0xa1561f, 0xcd8340, 0xeab26c, 0xfff7e8, 0xf3dfba, 0xd3b48a, 0xa88a68, 0x20243a, 0x3d4663, 0x6b7898,
@@ -259,10 +259,10 @@ const App = {
 
   // ---------- навигация ----------
   route() {
-    const h = decodeURIComponent(location.hash.slice(1)) || "home";
+    const h = decodeURIComponent(location.hash.slice(1)) || document.body.dataset.start || "home";
     const [view, arg] = h.split("/");
     const tab = { home: "home", feed: "feed", post: "feed", friends: "friends", group: "friends", player: "friends", blocks: "friends",
-      join: "friends", me: "me", week: "me", notes: "me", settings: "me", edit: "me" }[view] || "home";
+      join: "friends", me: "me", week: "me", notes: "me", settings: "me", edit: "me", ideas: "me", idea: "me", inbox: "me" }[view] || "home";
     for (const b of document.querySelectorAll(".tabbar a")) b.toggleAttribute("aria-current", b.dataset.tab === tab);
     const main = $("app");
     main.innerHTML = '<div class="skel"></div><div class="skel"></div><div class="skel short"></div>';
@@ -270,7 +270,8 @@ const App = {
     const views = { home: () => this.home(), feed: () => this.feed(), post: () => this.post(+arg), friends: () => this.friends(arg || "friends"),
       group: () => this.group(+arg), player: () => this.player(arg), blocks: () => this.blocks(), join: () => this.join(arg),
       me: () => this.mine(), week: () => this.week(), notes: () => this.notes(), settings: () => this.settings(), edit: () => this.edit() };
-    (views[view] || views.home)().catch(e => { main.innerHTML = `<p class="empty">${esc(e.message)}</p>`; });
+    const extra = this.extraViews && this.extraViews[view];   // дополнительные разделы (ideas.js)
+    (extra ? extra(arg) : (views[view] || views.home)()).catch(e => { main.innerHTML = `<p class="empty">${esc(e.message)}</p>`; });
   },
   page(html) { $("app").innerHTML = html; },
   head(title, back) {
@@ -697,9 +698,11 @@ const App = {
         title = d.beat_me ? w("n_beat", { n: n.nick }) : w("n_rec", { n: n.nick }); body = `«${a}»: ${wavesTxt(d.waves)}`; href = "#player/" + n.player_id; break;
       }
       case "group_post": title = w("n_group", { n: n.nick, g: n.app_id }); body = n.body; href = "#group/" + n.item_id; break;
+      case "idea_status": title = w("n_idea_status", { t: n.body }); body = w("st_" + n.app_id); href = "#idea/" + n.item_id; break;
+      case "idea_new": title = w(n.app_id === "bug" ? "n_bug_new" : "n_idea_new"); body = n.body + (n.nick ? " · " + n.nick : ""); href = "#idea/" + n.item_id; break;
       default: title = w("n_comment", { n: n.nick }); body = n.body; href = "#post/" + n.item_id;
     }
-    const icon = { reply: "👑", friend_request: "⭐", friend_accept: "⭐", friend_record: "🏅", group_post: "👥" }[n.kind] || "💬";
+    const icon = { reply: "👑", friend_request: "⭐", friend_accept: "⭐", friend_record: "🏅", group_post: "👥", idea_status: "💡", idea_new: "📬" }[n.kind] || "💬";
     return `<a class="row note" href="${href}"><span class="nicon">${icon}</span><span class="grow"><b>${esc(title)}</b>
       ${body ? `<span class="muted clamp2">${esc(body)}</span>` : ""}<small class="muted">${this.ago(n.at)}</small></span></a>`;
   },
@@ -735,6 +738,8 @@ const App = {
       <div class="list">
         <a class="row link" href="#notes"><span class="nicon">🔔</span><b class="grow">${w("notes")}</b><span class="badge new" id="nb2" hidden></span><span class="chev">›</span></a>
         <a class="row link" href="#friends"><span class="nicon">⭐</span><span class="grow"><b>${w("friends")} · ${w("groups")}</b></span><span class="chev">›</span></a>
+        <a class="row link" href="#ideas"><span class="nicon">💡</span><span class="grow"><b>${w("ideas_t")}</b><small class="muted">${w("ideas_s")}</small></span><span class="chev">›</span></a>
+        ${i.is_master ? `<a class="row link" href="#inbox"><span class="nicon">📬</span><b class="grow">${w("inbox_t")}</b><span class="chev">›</span></a>` : ""}
         <a class="row link" href="#week"><span class="nicon">📅</span><span class="grow"><b>${w("week")}</b><small class="muted">${w("week_s")}</small></span><span class="chev">›</span></a>
         <a class="row link" href="#edit"><span class="nicon">✏️</span><b class="grow">${w("me_edit")}</b><span class="chev">›</span></a>
         <a class="row link" href="#settings"><span class="nicon">⚙️</span><span class="grow"><b>${w("settings")}</b><small class="muted">${w("privacy")} · ${w("push")} · ${w("code")}</small></span><span class="chev">›</span></a>
@@ -865,7 +870,10 @@ const App = {
 const Push = {
   supported() { return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window; },
   b64u(s) { const p = "=".repeat((4 - s.length % 4) % 4); const b = atob((s + p).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from(b, c => c.charCodeAt(0)); },
-  prefs() { try { return JSON.parse(Lavka.store("push_prefs") || "null") || { kinds: KINDS, quiet: true }; } catch (e) { return { kinds: KINDS, quiet: true }; } },
+  prefs() {
+    const def = { kinds: KINDS.concat(App.info && App.info.is_master ? ["idea_new"] : []), quiet: true };
+    try { return JSON.parse(Lavka.store("push_prefs") || "null") || def; } catch (e) { return def; }
+  },
   /** Служба сайта (sw.js); если браузер её не запустил — не ждём вечно. */
   async reg() {
     if (!this.supported()) return null;
@@ -904,15 +912,19 @@ const Push = {
     const denied = Notification.permission === "denied";
     box.innerHTML = (s ? `<p>✅ ${w("push_ok")}</p>` : `<p class="muted">${denied ? w("push_denied") : ios ? w("push_ios") : ""}</p>`)
       + KINDS.map(k => `<label class="switch"><span>${w("k_" + k)}</span><input type="checkbox" data-k="${k}" ${p.kinds.includes(k) ? "checked" : ""}><i></i></label>`).join("")
+      + (App.info && App.info.is_master ? `<label class="field"><span>${w("k_idea_new")}</span><select class="inp" id="ideaMode">
+          ${[["idea_new", w("idea_hourly")], ["idea_digest", w("idea_daily")], ["", w("idea_never")]].map(([v, t]) =>
+            `<option value="${v}" ${(v ? p.kinds.includes(v) : !p.kinds.some(k => k.startsWith("idea_n") || k === "idea_digest")) ? "selected" : ""}>${t}</option>`).join("")}</select></label>` : "")
       + `<label class="switch"><span>${w("quiet")}</span><input type="checkbox" id="quiet" ${p.quiet ? "checked" : ""}><i></i></label>`
       + `<button class="btn wide ${s ? "ghost" : ""}" id="pushBtn" ${denied ? "disabled" : ""}>${s ? w("push_off") : w("push_on")}</button>`;
     const savePrefs = async () => {
       const np = { kinds: [...box.querySelectorAll("[data-k]")].filter(c => c.checked).map(c => c.dataset.k), quiet: $("quiet").checked };
+      if ($("ideaMode") && $("ideaMode").value) np.kinds.push($("ideaMode").value);
       Lavka.store("push_prefs", JSON.stringify(np));
       const cur = await this.sub().catch(() => null);
       if (cur) await this.send(cur).catch(e => App.toast(e.message));
     };
-    for (const c of box.querySelectorAll("input")) c.onchange = savePrefs;
+    for (const c of box.querySelectorAll("input, select")) c.onchange = savePrefs;
     $("pushBtn").onclick = (e) => App.act(e.target, async () => {
       if (s) await this.off(); else { await this.on(); App.toast(w("push_ok")); }
       this.panel(box);
@@ -1023,4 +1035,5 @@ const Card = {
 
 const Site = { downloads: () => Lavka.downloads() };
 
-if (document.getElementById("app")) App.init();
+// запуск — когда подключены все файлы (ideas.js добавляет свои разделы)
+if (document.getElementById("app")) document.addEventListener("DOMContentLoaded", () => App.init());

@@ -151,3 +151,27 @@ input[type=range] { width: 100%; accent-color: var(--gold); }
 @keyframes shimmer { to { background-position: -200% 0; } }
 .sheet { bottom: calc(84px + env(safe-area-inset-bottom)); }
 @media (min-width: 900px) { .tabbar { left: 50%; right: auto; transform: translateX(-50%); width: 560px; border-radius: 22px 22px 0 0; } }
+
+/* «Идеи и пожелания» */
+.idea { display: flex; gap: 12px; align-items: flex-start; }
+.idea .grow { gap: 3px; }
+.idea .ititle { font-size: 18px; font-weight: 900; }
+.idea.big .ititle { font-size: 22px; margin: 4px 0; }
+.ibody { white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0; }
+.vote { flex: none; display: flex; flex-direction: column; align-items: center; gap: 2px; border: 0; cursor: pointer; min-width: 54px;
+  background: var(--surface2); color: var(--text2); border-radius: 14px; padding: 8px 6px; font: 900 16px Nunito, sans-serif; }
+.vote svg { width: 22px; height: 22px; }
+.vote.on { background: var(--gold); color: var(--choco); animation: pop .25s; }
+.ist { display: inline-block; border-radius: 99px; padding: 1px 9px; font-size: 12px; font-weight: 900; }
+.ist-new { background: var(--surface2); color: var(--text2); }
+.ist-working { background: var(--gold); color: var(--choco); }
+.ist-done { background: var(--green); color: #fff; }
+.ist-rejected { background: transparent; color: var(--text2); border: 1px dashed var(--border); }
+.panel.reply { border-left: 4px solid var(--gold); }
+.panel.reply p { white-space: pre-wrap; margin: 6px 0; }
+.panel.master { border: 2px dashed var(--gold-d); }
+.donebox ul { margin: 6px 0 0; padding-left: 20px; }
+.shotprev { height: 64px; border-radius: 10px; vertical-align: middle; }
+.shotfull { max-width: 100%; border-radius: 12px; margin-top: 8px; }
+.dupin { width: 160px; margin: 0; }
+select.inp { appearance: auto; }

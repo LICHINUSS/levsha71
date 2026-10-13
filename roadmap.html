@@ -18,6 +18,8 @@
     <a href="./#catalog" data-i18n="nav_catalog">Каталог</a>
     <a class="opt" href="install.html" data-i18n="nav_install">Как установить</a>
     <a class="opt" href="roadmap.html" aria-current="page" data-i18n="nav_road">Планы</a>
+    <a class="opt" href="ideas.html" data-i18n="nav_ideas">Идеи</a>
+    <a href="me.html" data-i18n="nav_me">Моя лавка</a>
     <button class="lang" id="lang" aria-label="Language">EN</button>
   </nav>
 </div></header>
@@ -26,6 +28,11 @@
     <h1 data-i18n="road_title" style="font-size:clamp(28px,5vw,40px)">Что мастер делает дальше</h1>
     <p class="sub" data-i18n="road_sub">Открытые планы мастерской</p>
     <ul class="road" id="road"></ul>
+  </section>
+  <section id="doneSec" hidden>
+    <h2 data-i18n="ideas_done_t">Сделано по вашим идеям</h2>
+    <ul class="road" id="done" style="margin-top:14px"></ul>
+    <p><a class="btn ghost" href="ideas.html" data-i18n="ideas_all">Все идеи →</a></p>
   </section>
 </main>
 <footer><div class="wrap">
@@ -46,6 +53,14 @@ function render() {
 Lavka.init();
 document.addEventListener("lavka:lang", render);
 Lavka.loadCatalog().then(render);
+// сделанные идеи людей («по идее [ник]» — только если автор разрешил)
+Lavka.rpc("ideas_done", { p_limit: 20 }).then(d => {
+  if (!d || !d.length) return;
+  document.getElementById("doneSec").hidden = false;
+  const draw = () => { document.getElementById("done").innerHTML = d.map(x => `<li><span class="st done">${Lavka.t("st_done")}</span>
+    <div><a href="me.html#idea/${x.id}"><b>${Lavka.esc(x.title)}</b></a>${x.nick ? `<div class="muted">${Lavka.esc(Lavka.t("idea_by", { n: x.nick }))}</div>` : ""}</div></li>`).join(""); };
+  draw(); document.addEventListener("lavka:lang", draw);
+}).catch(() => {});
 </script>
 </body>
 </html>
