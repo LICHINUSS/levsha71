@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "updated": "2026-10-11",
+  "updated": "2026-10-13",
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
@@ -260,12 +260,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 12,
-      "version_name": "1.3.0",
+      "version_code": 13,
+      "version_name": "1.4.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.3.0/brick-tower-1.3.0.apk",
-      "sha256": "6f51a90caf64a859d40dac7a61c4166f805cd2ebec5e4493563d883a1c4c2e0a",
-      "size": 29023656,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.4.0/brick-tower-1.4.0.apk",
+      "sha256": "7a1db7d283374b77e12b21700bea7a178880f7761922a5f71c9c1b7b75cdda62",
+      "size": 29138550,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -273,12 +273,41 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Новые враги: подрывник, лекарь и невидимка. Испытание дня — одни правила для всех и своя таблица рекордов. Зимняя карта со снеговиками, дождь из синих деталек и снегопад. Обучение на первой волне.",
+      "changelog": "Добавлено: Облачное сохранение: прогресс хранится на сервере и возвращается на новом телефоне по коду; Кнопка «ЛАВКА» в меню: друзья в сети, рекорды друзей и посты групп прямо в игре; Друзья видят «играет в «Кирпичную башню»» (можно выключить в лавке). Изменено: Аватар-пряник теперь с подковой и «71».",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
-      "updated": "2026-10-11",
+      "updated": "2026-10-13",
       "history": [
+        {
+          "version_name": "1.4.0",
+          "version_code": 13,
+          "date": "2026-10-13",
+          "changelog": "Добавлено: Облачное сохранение: прогресс хранится на сервере и возвращается на новом телефоне по коду; Кнопка «ЛАВКА» в меню: друзья в сети, рекорды друзей и посты групп прямо в игре; Друзья видят «играет в «Кирпичную башню»» (можно выключить в лавке). Изменено: Аватар-пряник теперь с подковой и «71».",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.4.0/brick-tower-1.4.0.apk",
+          "sha256": "7a1db7d283374b77e12b21700bea7a178880f7761922a5f71c9c1b7b75cdda62",
+          "size": 29138550,
+          "changes": {
+            "added": [
+              "Облачное сохранение: прогресс хранится на сервере и возвращается на новом телефоне по коду",
+              "Кнопка «ЛАВКА» в меню: друзья в сети, рекорды друзей и посты групп прямо в игре",
+              "Друзья видят «играет в «Кирпичную башню»» (можно выключить в лавке)"
+            ],
+            "changed": [
+              "Аватар-пряник теперь с подковой и «71»"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Cloud saves: progress is kept on the server and comes back on a new phone with your code",
+              "LAVKA button in the menu: friends online, friends' records and group posts right in the game",
+              "Friends see «playing Brick Tower» (can be turned off in the shop)"
+            ],
+            "changed": [
+              "The gingerbread avatar now has a horseshoe and «71»"
+            ]
+          }
+        },
         {
           "version_name": "1.3.0",
           "version_code": 12,
@@ -644,5 +673,5 @@
       "title_en": "Reviews, feed and likes"
     }
   ],
-  "seq": 1791905866
+  "seq": 1791905979
 }
