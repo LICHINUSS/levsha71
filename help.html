@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Помощь — Лавка Левши</title>
+<meta name="description" content="Ответы на частые вопросы о «Лавке Левши»: установка, обновления, профиль, iPhone, друзья и группы.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 4px 16px; margin: 0 0 10px; }
+  .faq summary { cursor: pointer; font-weight: 800; padding: 12px 0; list-style: none; display: flex; gap: 10px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::before { content: "›"; color: var(--text2); transition: transform .15s; display: inline-block; }
+  .faq details[open] summary::before { transform: rotate(90deg); }
+  .faq .a { padding: 0 0 12px 18px; color: var(--text); }
+  .faq .a p { margin: 0 0 8px; }
+  .faq h2 { margin: 26px 0 12px; font-size: 22px; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a href="./#catalog" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="people.html" data-i18n="nav_people">Люди</a>
+    <a class="opt" href="help.html" data-i18n="nav_help" aria-current="page">Помощь</a>
+    <a href="me.html" data-i18n="nav_me">Моя лавка</a>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+
+<main class="wrap" style="max-width:820px">
+  <section class="faq">
+    <h1 id="title">Помощь</h1>
+    <p class="sub" id="sub"></p>
+    <label class="search"><input id="q" type="search" autocomplete="off"></label>
+    <div id="faq"></div>
+    <p class="empty" id="none" hidden></p>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <img class="px" src="assets/stamp_256.png" alt="">
+  <span data-i18n="footer">Подковано Левшой.</span>
+  <a href="install.html" data-i18n="nav_install">Как установить</a>
+  <a href="privacy.html" data-i18n="nav_privacy">Конфиденциальность</a>
+</div></footer>
+
+<script src="assets/site.js"></script>
+<script>
+"use strict";
+// Вопросы и ответы. Ссылки внутри ответов — только на страницы этого сайта.
+const FAQ = {
+  ru: { title: "Помощь", sub: "Ответы на частые вопросы. Не нашли свой — напишите пост в ленте лавки, мастер читает всё.",
+    q: "Найти ответ…", none: "Ничего не нашлось — попробуйте другое слово.",
+    groups: [
+      ["Установка на Android", [
+        ["Как поставить лавку?", "<p>Откройте этот сайт на телефоне и нажмите «Скачать «Лавку Левши»». Когда файл скачается — нажмите на него и разрешите установку. Подробно, с картинками: <a href='install.html'>Как установить</a>.</p>"],
+        ["Chrome пишет «Файл может быть опасен»", "<p>Так браузер предупреждает про любые приложения не из Google Play. Нажмите «Всё равно скачать». Лавка подписана клеймом мастерской «Левша 71» — каждое обновление проверяется по этому клейму.</p>"],
+        ["Play Защита говорит «Рекомендуется проверка» или «Приложение не проверено»", "<p>Можно нажать «Проверить» — Google посмотрит приложение и обычно разрешит установку. Или «Подробнее» → «Всё равно установить». Это бывает при первой установке не из Google Play.</p>"],
+        ["Samsung не даёт установить («Автоблокировщик»)", "<p>Откройте «Настройки» → «Безопасность и конфиденциальность» → «Автоблокировщик» и выключите его на время установки. После установки можно включить обратно — обновления лавка ставит сама.</p>"],
+        ["Какой нужен телефон?", "<p>Android 8 и новее. Лавка весит около 2 МБ, «Кирпичная башня» — около 28 МБ.</p>"],
+      ]],
+      ["Обновления", [
+        ["Лавка не обновляет игры сама", "<p>Автоподковка работает ночью, когда телефон на зарядке и подключён к Wi-Fi. Проверьте в лавке: «Настройки» → «Автоподковка». Если телефон «усыпляет» приложения — снимите ограничение батареи: «Настройки» → «Приложения» → «Лавка Левши» → «Батарея» → «Без ограничений».</p><p><b>Xiaomi:</b> «Безопасность» → «Батарея» → «Лавка» → «Нет ограничений» и включите «Автозапуск». <b>Huawei:</b> «Батарея» → «Запуск приложений» → «Лавка» → вручную, всё включить. <b>Oppo/Realme:</b> «Батарея» → «Лавка» → «Разрешить фоновую работу».</p>"],
+        ["Можно вернуть старую версию игры?", "<p>Да: на странице игры в лавке откройте «Все версии». Учтите: чтобы поставить версию старее, Android попросит сначала удалить текущую — данные игры на этом телефоне пропадут (рекорды на сервере останутся).</p>"],
+      ]],
+      ["iPhone", [
+        ["Есть ли лавка на iPhone?", "<p>Да — в браузере: <a href='me.html'>Моя лавка</a>. Там лента, друзья, группы, профиль и уведомления. Игры, которые умеют работать в браузере, открываются кнопкой «Играть».</p>"],
+        ["Как добавить лавку на экран «Домой»?", "<p>Откройте сайт в Safari → кнопка «Поделиться» (квадрат со стрелкой) → «На экран „Домой“» → «Добавить». Лавка откроется как приложение, без адресной строки. Подробно: <a href='install.html#iphone'>инструкция для iPhone</a>. В Chrome и других браузерах на iPhone пункт тоже есть в меню «Поделиться».</p>"],
+        ["Как включить уведомления на iPhone?", "<p>Нужен iOS 16.4 или новее, и лавка должна быть добавлена на экран «Домой». Откройте её оттуда → «Мои» → «Настройки» → «Включить уведомления» и разрешите. Ночью (23:00–8:00) лавка молчит, если включены тихие часы.</p>"],
+        ["Игра в браузере долго грузится", "<p>Первый раз скачивается около 10 МБ и браузер «прогревает» игру 20–40 секунд. Потом она открывается быстрее. На старых iPhone лучше закрыть другие вкладки.</p>"],
+      ]],
+      ["Профиль", [
+        ["Как перенести профиль на новый телефон?", "<p>В профиле есть <b>код восстановления</b> (вида ABCD-EFGH-JKMN). На новом телефоне в лавке нажмите «Войти по коду» и введите его — вернутся ник, рекорды, друзья и группы. Код работает и на Android, и на iPhone, и в браузере.</p>"],
+        ["Я потерял код", "<p>Если профиль ещё открыт на каком-то телефоне — там «Мои» → «Настройки» → «Код восстановления» → «Показать». Если нет — код не восстановить: мы не храним его в открытом виде, это защита вашего профиля.</p>"],
+        ["Кто-то узнал мой код", "<p>«Мои» → «Настройки» → «Сменить код». Старый код сразу перестанет работать.</p>"],
+        ["Как удалить профиль?", "<p>«Мои» → «Настройки» → «Удалить профиль навсегда» и впишите свой ник. Удалятся рекорды, отзывы, посты, фото, друзья и группы. Что мы храним — на странице <a href='privacy.html'>Конфиденциальность</a>.</p>"],
+      ]],
+      ["Друзья и группы", [
+        ["Как добавить друга?", "<p>«Друзья» → найдите человека по нику → «В друзья». Когда он примет заявку, вы увидите, кто в сети, во что играет и сколько минут, и рекорды друг друга.</p>"],
+        ["Как позвать в группу?", "<p>Откройте группу → «Позвать». Друг получит ссылку: на Android она откроет лавку, на iPhone и компьютере — лавку в браузере. Можно просто продиктовать код из 8 букв.</p>"],
+        ["Не хочу, чтобы меня видели", "<p>«Мои» → «Настройки» → «Приватность»: можно скрыть «в сети» и «играет в…», не принимать заявки, не показывать фото. В «Людях» вас нет, пока вы сами не включите.</p>"],
+        ["Кто-то ведёт себя плохо", "<p>Нажмите «⋯» у поста или в профиле: «Пожаловаться» — мастер посмотрит, «Заблокировать» — вы больше не увидите посты, комментарии и заявки этого человека.</p>"],
+      ]],
+      ["Безопасность", [
+        ["Это безопасно?", "<p>Каталог лавки подписан ключом мастерской, а каждый файл сверяется по контрольной сумме и клейму «Левша 71». Подделку лавка не поставит. Рекламы и покупок внутри нет.</p>"],
+        ["Какие данные вы храните?", "<p>Только то, что нужно для игры: ник, аватар, рекорды, ваши посты и отзывы, друзей и группы. Ни номера телефона, ни почты, ни местоположения. Подробно: <a href='privacy.html'>Конфиденциальность</a>.</p>"],
+      ]],
+    ] },
+  en: { title: "Help", sub: "Answers to common questions. Didn't find yours? Write a post in the shop's feed — the master reads everything.",
+    q: "Find an answer…", none: "Nothing found — try another word.",
+    groups: [
+      ["Installing on Android", [
+        ["How do I install the shop?", "<p>Open this site on your phone and tap “Download Levsha's Shop”. When the file is downloaded, tap it and allow the installation. Step by step with pictures: <a href='install.html'>How to install</a>.</p>"],
+        ["Chrome says “File might be harmful”", "<p>The browser says that about any app not from Google Play. Tap “Download anyway”. The shop carries the “Levsha 71” workshop seal — every update is checked against it.</p>"],
+        ["Play Protect says “App scan recommended” or “Unverified app”", "<p>You can tap “Scan” — Google checks the app and usually lets you install. Or “More details” → “Install anyway”. It happens on the first install outside Google Play.</p>"],
+        ["Samsung blocks the install (“Auto Blocker”)", "<p>Open Settings → Security and privacy → Auto Blocker and turn it off for the install. You can turn it back on afterwards — the shop installs updates by itself.</p>"],
+        ["Which phones are supported?", "<p>Android 8 or newer. The shop is about 2 MB, Brick Tower about 28 MB.</p>"],
+      ]],
+      ["Updates", [
+        ["The shop doesn't update games by itself", "<p>Auto-update runs at night while the phone is charging on Wi-Fi. Check in the shop: Settings → Auto-update. If your phone puts apps to sleep, remove the battery limit: Settings → Apps → Levsha's Shop → Battery → Unrestricted.</p><p><b>Xiaomi:</b> Security → Battery → the shop → No restrictions, and turn on Autostart. <b>Huawei:</b> Battery → App launch → the shop → Manage manually, all on. <b>Oppo/Realme:</b> Battery → the shop → Allow background activity.</p>"],
+        ["Can I go back to an older game version?", "<p>Yes: on the game's page in the shop open “All versions”. Note: to install an older version Android first asks to remove the current one — the game's data on this phone will be lost (records on the server stay).</p>"],
+      ]],
+      ["iPhone", [
+        ["Is the shop available on iPhone?", "<p>Yes — in the browser: <a href='me.html'>My shop</a>. Feed, friends, groups, profile and notifications are there. Games that can run in a browser open with the “Play” button.</p>"],
+        ["How do I add the shop to the Home Screen?", "<p>Open the site in Safari → the Share button (square with an arrow) → “Add to Home Screen” → “Add”. The shop opens like an app, without the address bar. Step by step: <a href='install.html#iphone'>iPhone guide</a>. Chrome and other iPhone browsers have the same item in their Share menu.</p>"],
+        ["How do I turn on notifications on iPhone?", "<p>You need iOS 16.4 or newer, and the shop must be added to the Home Screen. Open it from there → Library → Settings → Turn on notifications, and allow them. At night (23:00–8:00 Moscow) the shop stays quiet if quiet hours are on.</p>"],
+        ["The browser game takes long to load", "<p>The first time it downloads about 10 MB and the browser “warms up” the game for 20–40 seconds. After that it opens faster. On older iPhones, close other tabs.</p>"],
+      ]],
+      ["Profile", [
+        ["How do I move my profile to a new phone?", "<p>Your profile has a <b>recovery code</b> (like ABCD-EFGH-JKMN). On the new phone tap “Sign in with a code” in the shop and enter it — your nickname, records, friends and groups come back. The code works on Android, iPhone and in the browser.</p>"],
+        ["I lost my code", "<p>If the profile is still open on some phone — there: Library → Settings → Recovery code → Show. If not, the code can't be recovered: we don't store it in plain form, that's what protects your profile.</p>"],
+        ["Someone learned my code", "<p>Library → Settings → Change the code. The old code stops working at once.</p>"],
+        ["How do I delete my profile?", "<p>Library → Settings → Delete the profile forever, and type your nickname. Records, reviews, posts, photo, friends and groups are deleted. What we store: <a href='privacy.html'>Privacy</a>.</p>"],
+      ]],
+      ["Friends and groups", [
+        ["How do I add a friend?", "<p>Friends → find them by nickname → Add friend. Once they accept, you see who's online, what they're playing and for how long, and each other's records.</p>"],
+        ["How do I invite someone to a group?", "<p>Open the group → Invite. Your friend gets a link: on Android it opens the shop, on iPhone and computer — the shop in the browser. You can also just tell them the 8-letter code.</p>"],
+        ["I don't want to be seen", "<p>Library → Settings → Privacy: hide “online” and “playing…”, stop friend requests, hide your photo. You're not listed in People unless you turn it on yourself.</p>"],
+        ["Someone behaves badly", "<p>Tap “⋯” on a post or a profile: “Report” — the master will take a look; “Block” — you won't see that person's posts, comments and requests any more.</p>"],
+      ]],
+      ["Safety", [
+        ["Is it safe?", "<p>The shop's catalog is signed with the workshop key, and every file is checked by its checksum and the “Levsha 71” seal. The shop won't install a fake. No ads, no in-app purchases.</p>"],
+        ["What data do you keep?", "<p>Only what the games need: nickname, avatar, records, your posts and reviews, friends and groups. No phone number, no e-mail, no location. Details: <a href='privacy.html'>Privacy</a>.</p>"],
+      ]],
+    ] },
+};
+const $ = id => document.getElementById(id);
+function render() {
+  const f = FAQ[Lavka.lang] || FAQ.ru;
+  $("title").textContent = f.title; $("sub").textContent = f.sub; $("q").placeholder = f.q; $("none").textContent = f.none;
+  document.title = f.title + " — " + Lavka.t("brand");
+  const q = $("q").value.trim().toLowerCase();
+  let shown = 0;
+  $("faq").innerHTML = f.groups.map(([g, items]) => {
+    const hit = items.filter(([qq, a]) => !q || (qq + a).toLowerCase().includes(q));
+    shown += hit.length;
+    return hit.length ? `<h2>${g}</h2>` + hit.map(([qq, a]) => `<details ${q ? "open" : ""}><summary>${qq}</summary><div class="a">${a}</div></details>`).join("") : "";
+  }).join("");
+  $("none").hidden = shown > 0;
+}
+Lavka.init();
+$("q").oninput = render;
+document.addEventListener("lavka:lang", render);
+render();
+// ссылка вида help.html#ios открывает нужный раздел
+if (location.hash) setTimeout(() => { const h = [...document.querySelectorAll("#faq h2")].find(x => x.textContent.toLowerCase().includes(location.hash.slice(1))); if (h) h.scrollIntoView(); }, 50);
+</script>
+</body>
+</html>

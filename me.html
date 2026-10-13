@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Лавка Левши</title>
+<meta name="description" content="«Лавка Левши» в браузере и на iPhone: лента, друзья, группы, профиль и уведомления.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Лавка Левши">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/lavka.css">
+</head>
+<body class="appmode">
+<header class="top"><div class="wrap">
+  <a class="brand" href="#home"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a class="opt" href="./" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="help.html" data-w="help">Помощь</a>
+    <button class="iconbtn bell" id="bell" aria-label="Уведомления">🔔<span class="nbadge" id="nbadge" hidden></span></button>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+
+<main class="wrap appwrap" id="app"><div class="skel"></div><div class="skel"></div></main>
+
+<nav class="tabbar" aria-label="Разделы">
+  <a href="#home" data-tab="home"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3 2 11h3v9h5v-6h4v6h5v-9h3z"/></svg><span data-w="tab_home">Главная</span></a>
+  <a href="#feed" data-tab="feed"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16v4H4zm0 6h16v2H4zm0 4h16v2H4zm0 4h10v2H4z"/></svg><span data-w="tab_feed">Лента</span></a>
+  <a href="#friends" data-tab="friends"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM1 20c0-3.5 3-6 7-6s7 2.5 7 6zm15 0c0-2-.7-3.7-2-5 4 0 9 1.5 9 5z"/></svg><span data-w="tab_friends">Друзья</span></a>
+  <a href="#me" data-tab="me"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M5 20c-1.5-2-3-5-3-9a10 10 0 0 1 20 0c0 4-1.5 7-3 9h-3.2c1.6-2.2 3-5 3-9a6.8 6.8 0 0 0-13.6 0c0 4 1.4 6.8 3 9z"/></svg><span data-w="tab_me">Мои</span></a>
+</nav>
+
+<script src="assets/site.js"></script>
+<script src="assets/lavka.js"></script>
+</body>
+</html>

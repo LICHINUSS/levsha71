@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Люди и статистика — Лавка Левши</title>
+<meta name="description" content="Сколько людей сейчас в «Лавке Левши», сколько скачиваний и кто из игроков открыт для знакомства.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/lavka.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a href="./#catalog" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="people.html" data-i18n="nav_people" aria-current="page">Люди</a>
+    <a class="opt" href="help.html" data-i18n="nav_help">Помощь</a>
+    <a href="me.html" data-i18n="nav_me">Моя лавка</a>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+
+<main class="wrap" style="max-width:820px">
+  <section>
+    <h1 id="h1">Люди и статистика</h1>
+    <p class="sub" id="sub"></p>
+    <div class="stats" id="stats"><div class="skel"></div></div>
+    <p class="muted small" id="note"></p>
+    <h2 class="sec" id="h2"></h2>
+    <p class="muted" id="ps"></p>
+    <div id="list"><div class="skel"></div></div>
+    <p><a class="btn" href="me.html#friends/people" id="go"></a></p>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <img class="px" src="assets/stamp_256.png" alt="">
+  <span data-i18n="footer">Подковано Левшой.</span>
+  <a href="help.html" data-i18n="nav_help">Помощь</a>
+  <a href="privacy.html" data-i18n="nav_privacy">Конфиденциальность</a>
+</div></footer>
+
+<script src="assets/site.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const TX = {
+  ru: { h1: "Люди и статистика", sub: "Живые цифры мастерской — без имён и личных данных.", online: "сейчас в лавке", playing: "сейчас в игре",
+        reg: "профилей", dl: "скачиваний", inst: "лавок поставлено", groups: "групп",
+        note: "«Сейчас» — кто открывал лавку или игру за последние 5 минут. Скачивания считает GitHub. Тех, у кого нет профиля, считаем только числом.",
+        h2: "Люди в лавке", ps: "Здесь только те, кто сам включил «Показывать меня в «Людях»» (по умолчанию выключено).",
+        empty: "Пока никто не включил видимость — будьте первым!", go: "Найти друзей в лавке", since: "в мастерской с {d}",
+        pf: { android: "Android", iphone: "iPhone", web: "браузер" } },
+  en: { h1: "People and stats", sub: "Live numbers from the workshop — no names, no personal data.", online: "in the shop now", playing: "playing now",
+        reg: "profiles", dl: "downloads", inst: "shops installed", groups: "groups",
+        note: "“Now” means the shop or a game was open in the last 5 minutes. Downloads are counted by GitHub. People without a profile are counted only as a number.",
+        h2: "People in the shop", ps: "Only people who turned on “Show me in People” are listed (it's off by default).",
+        empty: "Nobody has turned it on yet — be the first!", go: "Find friends in the shop", since: "in the workshop since {d}",
+        pf: { android: "Android", iphone: "iPhone", web: "browser" } },
+};
+const x = (k) => (TX[Lavka.lang] || TX.ru)[k];
+async function render() {
+  for (const k of ["h1", "sub", "note", "h2", "ps", "go"]) $(k).textContent = x(k);
+  document.title = x("h1") + " — " + Lavka.t("brand");
+  const [st, dl, list] = await Promise.all([Lavka.rpc("stats_public").catch(() => null), Lavka.downloads(),
+    Lavka.rpc("people", { p_limit: 50 }).catch(() => [])]);
+  $("stats").innerHTML = st ? [[st.online, x("online")], [st.online_players, x("playing")], [st.registered, x("reg")], [dl, x("dl")],
+    [st.installs, x("inst")], [st.groups, x("groups")]].filter(c => c[0] != null).map(c => `<div><b>${c[0]}</b><span>${c[1]}</span></div>`).join("") : "";
+  const loc = Lavka.lang === "ru" ? "ru-RU" : "en-GB";
+  $("list").innerHTML = list.length ? `<div class="list">${list.map(p => `<a class="row" href="me.html#player/${p.player_id}">
+    <span class="av f-${Lavka.esc(p.frame || "")}" style="--s:44px"><img class="px" src="assets/av/${/^[a-z]+$/.test(p.avatar) ? p.avatar : "levsha"}.png" alt=""></span>
+    <span class="grow"><b>${Lavka.esc(p.nick)}</b>${p.status_text ? `<span class="muted">${Lavka.esc(p.status_text)}</span>` : ""}
+    <small class="muted">${x("pf")[p.platform] || "Android"} · ${x("since").replace("{d}", new Date(p.since).toLocaleDateString(loc, { month: "long", year: "numeric" }))}</small></span></a>`).join("")}</div>`
+    : `<p class="empty">${x("empty")}</p>`;
+}
+Lavka.init();
+document.addEventListener("lavka:lang", render);
+render();
+</script>
+</body>
+</html>

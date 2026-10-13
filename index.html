@@ -24,7 +24,9 @@
   <nav class="nav">
     <a href="#catalog" data-i18n="nav_catalog">Каталог</a>
     <a class="opt" href="install.html" data-i18n="nav_install">Как установить</a>
-    <a class="opt" href="roadmap.html" data-i18n="nav_road">Планы</a>
+    <a class="opt" href="people.html" data-i18n="nav_people">Люди</a>
+    <a class="opt" href="help.html" data-i18n="nav_help">Помощь</a>
+    <a href="me.html" data-i18n="nav_me">Моя лавка</a>
     <button class="lang" id="lang" aria-label="Language">EN</button>
   </nav>
 </div></header>
@@ -115,14 +117,16 @@ function renderCta() {
   const web = c && c.apps.find(a => a.web);
   const apkBtn = s && s.apk ? `<a class="btn" id="getBtn" href="${s.apk}">${Lavka.shoe}${Lavka.t("get_android")}</a>` : "";
   if (p === "ios") {
-    cta.innerHTML = `<a class="btn" id="getBtn" href="install.html#iphone">${Lavka.t("get_ios")}</a>` +
+    cta.innerHTML = `<a class="btn" id="getBtn" href="me.html">${Lavka.t("open_shop")}</a>` +
+      `<a class="btn ghost" href="install.html#iphone">${Lavka.t("get_ios")}</a>` +
       (web ? `<a class="btn ghost" href="${web.web}">${Lavka.t("play_web")}</a>` : "");
     note.textContent = Lavka.t("ios_note");
   } else if (p === "android") {
     cta.innerHTML = apkBtn + `<a class="btn ghost" href="install.html">${Lavka.t("how_link")}</a>`;
     note.textContent = s ? Lavka.t("store_ver", { v: s.version_name, s: Lavka.fmtSize(s.size) }) : "";
   } else {
-    cta.innerHTML = (apkBtn || "") + `<a class="btn ghost" href="install.html#iphone">${Lavka.t("for_iphone")}</a>` +
+    cta.innerHTML = (apkBtn || "") + `<a class="btn ghost" href="me.html">${Lavka.t("web_shop")}</a>` +
+      `<a class="btn ghost" href="install.html#iphone">${Lavka.t("for_iphone")}</a>` +
       (web ? `<a class="btn ghost" href="${web.web}">${Lavka.t("play_web")}</a>` : "");
     note.textContent = Lavka.t("desktop_note");
   }
@@ -172,6 +176,8 @@ function renderAll() { renderInside(); renderCta(); renderGrid(); renderRoad(); 
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   setInterval(() => { i = (i + 1) % f.length; m.src = `assets/${f[i]}.png`; }, 1400); })();
 
+// лавка, добавленная на экран «Домой» до обновления, открывала главную — теперь сразу приложение
+if (Lavka.standalone() && new URLSearchParams(location.search).has("pwa")) location.replace("me.html");
 Lavka.init();
 for (const b of document.querySelectorAll(".chip")) b.onclick = () => {
   kind = b.dataset.kind; for (const x of document.querySelectorAll(".chip")) x.setAttribute("aria-pressed", x === b); renderGrid(); };
@@ -187,11 +193,13 @@ Lavka.loadCatalog().then(async c => {
   if (Lavka.platform() !== "ios") setTimeout(() => Lavka.hint($("getBtn"), "get", Lavka.t("hint_get")), 1200);
   setTimeout(() => Lavka.hint($("q"), "search", Lavka.t("hint_search")), 6000);
   ratings = await Lavka.ratings(); renderGrid();
-  Lavka.rpc("stats_public").then(st => {
+  Promise.all([Lavka.rpc("stats_public").catch(() => null), Lavka.downloads()]).then(([st, dl]) => {
     if (!st || !st.registered) return;
     $("live").hidden = false;
-    $("live").querySelector("span").textContent = Lavka.t("live", { n: st.online, p: st.registered });
-  }).catch(() => {});
+    $("live").querySelector("span").textContent = dl ? Lavka.t("live_dl", { n: st.online, p: st.registered, d: dl })
+      : Lavka.t("live", { n: st.online, p: st.registered });
+    $("live").onclick = () => { location.href = "people.html"; };
+  });
 });
 </script>
 </body>

@@ -26,6 +26,8 @@
       <button class="btn ghost" id="copy" data-i18n="copy">Скопировать код</button>
     </p>
     <p class="muted" data-i18n="join_how"></p>
+    <p><a class="btn ghost" id="web" href="me.html" data-i18n="join_web">Вступить в браузере</a></p>
+    <p class="muted" data-i18n="join_web_s"></p>
     <p class="muted"><span data-i18n="join_noapp">Лавки ещё нет? Сначала поставьте её:</span> <a href="install.html" data-i18n="how_link">Как установить</a></p>
   </section>
 </main>
@@ -40,8 +42,11 @@ document.getElementById("open").href = code ? "levsha://group/" + code : "./";
 document.getElementById("copy").onclick = async e => {
   try { await navigator.clipboard.writeText(code); e.target.textContent = Lavka.t("copied"); } catch (err) {}
 };
-if (Lavka.platform() === "ios") {
-  document.getElementById("open").replaceWith(Object.assign(document.createElement("p"), { className: "muted", textContent: Lavka.t("join_ios") }));
+document.getElementById("web").href = code ? "me.html#join/" + code : "me.html";
+if (Lavka.platform() !== "android") {   // iPhone и компьютер: группа открывается в лавке прямо в браузере
+  const open = document.getElementById("open"), web = document.getElementById("web");
+  open.replaceWith(web); web.classList.remove("ghost");
+  document.querySelector('[data-i18n="join_how"]').hidden = true;
 }
 if (code && Lavka.platform() === "android") setTimeout(() => { location.href = "levsha://group/" + code; }, 400);
 </script>

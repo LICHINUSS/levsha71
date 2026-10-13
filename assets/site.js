@@ -1,11 +1,15 @@
 // Сайт «Лавки Левши»: язык (RU/EN), какой телефон, каталог, подсказки, работа без сети (PWA).
 "use strict";
-const API = "https://rzrdanmylecmkafgekye.supabase.co/rest/v1/rpc/";
+// на компьютере мастера (localhost) можно проверить сайт с пробным сервером: localStorage.api = "http://127.0.0.1:8772/rest/v1/rpc/"
+const API = (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && (() => { try {
+    if (/[?&]mock=1/.test(location.search)) localStorage.setItem("api", "http://127.0.0.1:8772/rest/v1/rpc/");
+    return localStorage.getItem("api"); } catch (e) { return null; } })())
+  || "https://rzrdanmylecmkafgekye.supabase.co/rest/v1/rpc/";
 const API_KEY = "sb_publishable_ELCLv7tzPupTFN0b7DpcnQ_viX4aUMS"; // открытый ключ: только «окошки» сервера
 
 const T = {
   ru: {
-    brand: "Лавка Левши", join_ios: "Группы пока есть только в лавке для Android — попросите друга с Android-телефоном.",
+    brand: "Лавка Левши", join_ios: "На iPhone группа открывается в лавке прямо в браузере.",
     inside_title: "Лавка изнутри", inside_sub: "Так выглядит «Лавка Левши» на телефоне", app_trailer: "Трейлер",
     nav_catalog: "Каталог", nav_install: "Как установить", nav_road: "Планы", nav_privacy: "Конфиденциальность",
     hero_sub: "Игры и приложения мастерской «Левша 71». Бесплатно, без рекламы — подковано с душой.",
@@ -36,9 +40,12 @@ const T = {
     join_title: "Приглашение в группу", join_text: "Вас позвали в группу «Лавки Левши». Код:",
     join_open: "Открыть в лавке", join_how: "Если лавка не открылась: откройте её → «Мои» → «Друзья и группы» → «Войти по коду» и введите код.",
     join_noapp: "Лавки ещё нет? Сначала поставьте её:", copy: "Скопировать код", copied: "Скопировано!",
+    open_shop: "Открыть лавку", web_shop: "Лавка в браузере", nav_people: "Люди", nav_help: "Помощь", nav_me: "Моя лавка",
+    live_dl: "Сейчас в лавке: {n} · профилей: {p} · скачиваний: {d}", join_web: "Вступить в браузере",
+    join_web_s: "Нет Android? Вступите в группу прямо в лавке в браузере — на iPhone и компьютере.",
   },
   en: {
-    brand: "Levsha's Shop", join_ios: "Groups are in the Android shop for now — ask a friend with an Android phone.",
+    brand: "Levsha's Shop", join_ios: "On iPhone the group opens in the shop right in the browser.",
     inside_title: "Inside the shop", inside_sub: "This is what Levsha's Shop looks like on a phone", app_trailer: "Trailer",
     nav_catalog: "Catalog", nav_install: "How to install", nav_road: "Roadmap", nav_privacy: "Privacy",
     hero_sub: "Games and apps from the “Levsha 71” workshop. Free, no ads — forged with care.",
@@ -69,6 +76,9 @@ const T = {
     join_title: "Group invitation", join_text: "You've been invited to a group in Levsha's Shop. Code:",
     join_open: "Open in the shop", join_how: "If the shop didn't open: open it → Library → Friends & groups → Join by code and enter the code.",
     join_noapp: "No shop yet? Install it first:", copy: "Copy the code", copied: "Copied!",
+    open_shop: "Open the shop", web_shop: "Shop in the browser", nav_people: "People", nav_help: "Help", nav_me: "My shop",
+    live_dl: "In the shop now: {n} · profiles: {p} · downloads: {d}", join_web: "Join in the browser",
+    join_web_s: "No Android? Join the group right in the browser shop — on iPhone or a computer.",
   },
 };
 
@@ -129,6 +139,19 @@ const Lavka = {
       headers: { apikey: API_KEY, "Content-Type": "application/json" } });
     if (!r.ok) throw new Error(fn + " " + r.status);
     return r.json();
+  },
+  /** Сколько раз скачали лавку и игры (GitHub считает сам; храним час). */
+  async downloads() {
+    try {
+      const c = JSON.parse(this.store("dl_cache") || "null");
+      if (c && Date.now() - c.at < 3600e3) return c.n;
+      const ac = new AbortController(); setTimeout(() => ac.abort(), 5000);   // GitHub не ответил — без этой цифры
+      const r = await fetch("https://api.github.com/repos/LICHINUSS/levsha71/releases?per_page=100", { signal: ac.signal });
+      if (!r.ok) return c ? c.n : null;
+      const n = (await r.json()).reduce((s, rel) => s + rel.assets.reduce((t, a) => t + (a.name.endsWith(".apk") ? a.download_count : 0), 0), 0);
+      this.store("dl_cache", JSON.stringify({ n, at: Date.now() }));
+      return n;
+    } catch (e) { return null; }
   },
   async ratings() {
     try { const list = await this.rpc("review_summaries"); return Object.fromEntries(list.map(x => [x.app_id, x])); }
