@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Лавка Левши</title>
+<meta name="description" content="Игра мастерской «Левша 71»: описание, снимки, что нового и история версий.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a href="./#catalog" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="install.html" data-i18n="nav_install">Как установить</a>
+    <a class="opt" href="roadmap.html" data-i18n="nav_road">Планы</a>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+
+<main class="wrap" id="page"><p class="empty">…</p></main>
+<dialog id="zoom"><img alt=""></dialog>
+
+<footer><div class="wrap">
+  <img class="px" src="assets/stamp_256.png" alt="">
+  <span data-i18n="footer">Подковано Левшой.</span>
+  <a href="install.html" data-i18n="nav_install">Как установить</a>
+  <a href="privacy.html" data-i18n="nav_privacy">Конфиденциальность</a>
+</div></footer>
+
+<script src="assets/site.js"></script>
+<script>
+"use strict";
+const id = new URLSearchParams(location.search).get("id");
+let ratings = {};
+
+function changes(h) {
+  const ch = (Lavka.lang === "en" && h.changes_en) || h.changes;
+  if (ch && Object.keys(ch).length) {
+    return `<div class="changes">${["added", "fixed", "changed"].filter(k => ch[k] && ch[k].length).map(k =>
+      `<h4 class="h-${k}">${Lavka.t("h_" + k)}</h4><ul>${ch[k].map(x => `<li>${Lavka.esc(x)}</li>`).join("")}</ul>`).join("")}</div>`;
+  }
+  return `<p>${Lavka.esc(Lavka.L(h, "changelog"))}</p>`;
+}
+
+function render() {
+  const c = Lavka.catalog, a = c && c.apps.find(x => x.id === id), page = document.getElementById("page");
+  if (!a) { page.innerHTML = `<p class="empty">${Lavka.t("notfound")} <a href="./">${Lavka.t("back")}</a></p>`; return; }
+  document.title = Lavka.L(a, "name") + " — " + (Lavka.lang === "en" ? "Levsha's Shop" : "Лавка Левши");
+  const hist = a.history || [];
+  const r = ratings[a.id];
+  page.innerHTML = `
+    <p style="margin:16px 0 0"><a href="./#catalog">${Lavka.t("back")}</a></p>
+    <div class="app-head"><img class="icon px" src="${a.icon}" alt="">
+      <div><h1>${Lavka.esc(Lavka.L(a, "name"))}</h1><p class="sub" style="margin:4px 0 0">${Lavka.esc(Lavka.L(a, "tagline"))}</p>
+        <p class="muted" style="margin:4px 0 0">${Lavka.esc(a.developer || "")}</p></div></div>
+    <div class="facts">
+      <div><b>${r && r.count ? Lavka.ratingHtml(r) : "—"}</b><span>${r && r.count ? Lavka.t("reviews", { n: r.count }) : Lavka.t("f_rating")}</span></div>
+      <div><b>${a.version_name || "—"}</b><span>${Lavka.t("f_ver")}</span></div>
+      <div><b>${Lavka.fmtSize(a.size) || "—"}</b><span>${Lavka.t("f_size")}</span></div>
+      <div><b>${a.min_sdk >= 26 ? "8+" : "7+"}</b><span>${Lavka.t("f_android")}</span></div>
+    </div>
+    <div class="row" style="display:flex;gap:10px;flex-wrap:wrap">${Lavka.appButtons(a, false)}</div>
+    <section><h2>${Lavka.t("app_shots")}</h2>
+      <div class="shots">${(a.screenshots || []).map(s => `<img src="${s}" alt="" loading="lazy">`).join("")}</div></section>
+    <section><h2>${Lavka.t("app_about")}</h2><p>${Lavka.esc(Lavka.L(a, "description"))}</p></section>
+    ${hist.length ? `<section><h2>${Lavka.t("app_whatsnew", { v: hist[0].version_name })}</h2>
+      <p class="muted">${Lavka.fmtDate(hist[0].date)}</p>${changes(hist[0])}</section>` : ""}
+    ${hist.length > 1 ? `<section><h2>${Lavka.t("app_history")}</h2>${hist.slice(1).map(h => `
+      <details class="ver"><summary>v${Lavka.esc(h.version_name)} <span class="muted" style="font-weight:600">${Lavka.fmtDate(h.date)}</span></summary>
+        ${changes(h)}${h.approx ? `<p class="approx">${Lavka.t("approx")}</p>` : ""}</details>`).join("")}</section>` : ""}`;
+  for (const img of page.querySelectorAll(".shots img")) img.onclick = () => {
+    const d = document.getElementById("zoom"); d.querySelector("img").src = img.src; d.showModal(); };
+}
+
+document.getElementById("zoom").onclick = e => e.currentTarget.close();
+Lavka.init();
+document.addEventListener("lavka:lang", render);
+Lavka.loadCatalog().then(async () => { render(); ratings = await Lavka.ratings(); render(); });
+</script>
+</body>
+</html>

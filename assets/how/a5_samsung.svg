@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="34 4 172 292" role="img">
+<rect x="0" y="0" width="240" height="300" rx="26" fill="#F6E9D6"/>
+<rect x="52" y="14" width="136" height="272" rx="22" fill="#2B140A"/>
+<rect x="60" y="24" width="120" height="252" rx="14" fill="#FBF3E6"/>
+<rect x="104" y="28" width="32" height="6" rx="3" fill="#2B140A"/>
+<rect x="60" y="40" width="120" height="6" fill="#EAD7BC" opacity=".7"/>
+<text x="70" y="66" font-family="Nunito, sans-serif" font-weight="900" font-size="9" fill="#2B140A" text-anchor="start">Безопасность</text><rect x="66" y="78" width="108" height="30" rx="8" fill="#fff" stroke="#EAD7BC"/><text x="71" y="97" font-family="Nunito, sans-serif" font-weight="800" font-size="7" fill="#2B140A" text-anchor="start">Автоблокировщик</text><rect x="148" y="86" width="22" height="13" rx="6.5" fill="#C9A27A"/><circle cx="155" cy="92.5" r="5" fill="#fff"/><text x="120" y="130" font-family="Nunito, sans-serif" font-weight="700" font-size="8" fill="#8A5A35" text-anchor="middle">выключить на время</text><text x="120" y="142" font-family="Nunito, sans-serif" font-weight="700" font-size="8" fill="#8A5A35" text-anchor="middle">установки</text><circle cx="160" cy="96" r="11" fill="#C3271B" opacity=".25"/><circle cx="160" cy="96" r="5" fill="#C3271B"/><path d="M164 102 q 14 10 22 34 l -20 6 q -10 -16 -10 -34z" fill="#EFBA8C" stroke="#2B140A" stroke-width="1.5"/>
+</svg>

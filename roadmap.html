@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Планы мастерской — Лавка Левши</title>
+<meta name="description" content="Открытые планы мастерской «Левша 71»: что готово, что делается сейчас и что будет дальше.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a href="./#catalog" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="install.html" data-i18n="nav_install">Как установить</a>
+    <a class="opt" href="roadmap.html" aria-current="page" data-i18n="nav_road">Планы</a>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+<main class="wrap">
+  <section>
+    <h1 data-i18n="road_title" style="font-size:clamp(28px,5vw,40px)">Что мастер делает дальше</h1>
+    <p class="sub" data-i18n="road_sub">Открытые планы мастерской</p>
+    <ul class="road" id="road"></ul>
+  </section>
+</main>
+<footer><div class="wrap">
+  <img class="px" src="assets/stamp_256.png" alt="">
+  <span data-i18n="footer">Подковано Левшой.</span>
+  <a href="./" data-i18n="nav_catalog">Каталог</a>
+  <a href="privacy.html" data-i18n="nav_privacy">Конфиденциальность</a>
+</div></footer>
+<script src="assets/site.js"></script>
+<script>
+"use strict";
+const order = { now: 0, soon: 1, idea: 2, done: 3 };
+function render() {
+  const r = ((Lavka.catalog && Lavka.catalog.roadmap) || []).slice().sort((a, b) => order[a.status] - order[b.status]);
+  document.getElementById("road").innerHTML = r.map(x => `<li><span class="st ${x.status}">${Lavka.t("st_" + x.status)}</span>
+    <div><b>${Lavka.esc(Lavka.L(x, "title"))}</b>${x.note ? `<div class="muted">${Lavka.esc(Lavka.L(x, "note"))}</div>` : ""}</div></li>`).join("");
+}
+Lavka.init();
+document.addEventListener("lavka:lang", render);
+Lavka.loadCatalog().then(render);
+</script>
+</body>
+</html>

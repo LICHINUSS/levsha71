@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Как установить — Лавка Левши</title>
+<meta name="description" content="Как поставить «Лавку Левши» на Android и как открыть её на iPhone — по шагам, с картинками.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a href="./#catalog" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="install.html" aria-current="page" data-i18n="nav_install">Как установить</a>
+    <a class="opt" href="roadmap.html" data-i18n="nav_road">Планы</a>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <h1 data-i18n="how_title" style="font-size:clamp(28px,5vw,40px)">Как установить</h1>
+    <p class="sub" data-i18n="how_sub">Один раз — и дальше всё обновляется само.</p>
+    <div class="tabs chips">
+      <button class="chip" id="tA" data-i18n="for_android">Для Android</button>
+      <button class="chip" id="tI" data-i18n="for_iphone">Для iPhone</button>
+    </div>
+    <div id="dl" style="margin-bottom:18px"></div>
+    <div class="steps" id="steps"></div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <img class="px" src="assets/stamp_256.png" alt="">
+  <span data-i18n="footer">Подковано Левшой.</span>
+  <a href="./" data-i18n="nav_catalog">Каталог</a>
+  <a href="privacy.html" data-i18n="nav_privacy">Конфиденциальность</a>
+</div></footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/install-steps.js"></script>
+<script>
+"use strict";
+let which = location.hash === "#iphone" || (location.hash !== "#android" && Lavka.platform() === "ios") ? "iphone" : "android";
+function render() {
+  document.getElementById("tA").setAttribute("aria-pressed", which === "android");
+  document.getElementById("tI").setAttribute("aria-pressed", which === "iphone");
+  const s = Lavka.catalog && Lavka.catalog.store;
+  document.getElementById("dl").innerHTML = which === "android" && s && s.apk
+    ? `<a class="btn" href="${s.apk}">${Lavka.shoe}${Lavka.t("get_android")}</a> <span class="muted">${Lavka.t("store_ver", { v: s.version_name, s: Lavka.fmtSize(s.size) })}</span>` : "";
+  const en = Lavka.lang === "en";
+  document.getElementById("steps").innerHTML = INSTALL[which].map(st => `<div class="step">
+    <img src="assets/how/${en ? st.img.replace(".svg", "_en.svg") : st.img}" alt="" loading="lazy">
+    <h3>${Lavka.esc(st[Lavka.lang].t)}</h3><p>${Lavka.esc(st[Lavka.lang].p)}</p></div>`).join("");
+}
+document.getElementById("tA").onclick = () => { which = "android"; history.replaceState(null, "", "#android"); render(); };
+document.getElementById("tI").onclick = () => { which = "iphone"; history.replaceState(null, "", "#iphone"); render(); };
+Lavka.init();
+document.addEventListener("lavka:lang", render);
+render();
+Lavka.loadCatalog().then(render);
+</script>
+</body>
+</html>

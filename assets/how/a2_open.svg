@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="34 4 172 292" role="img">
+<rect x="0" y="0" width="240" height="300" rx="26" fill="#F6E9D6"/>
+<rect x="52" y="14" width="136" height="272" rx="22" fill="#2B140A"/>
+<rect x="60" y="24" width="120" height="252" rx="14" fill="#FBF3E6"/>
+<rect x="104" y="28" width="32" height="6" rx="3" fill="#2B140A"/>
+<rect x="60" y="40" width="120" height="6" fill="#EAD7BC" opacity=".7"/>
+<rect x="64" y="52" width="112" height="46" rx="10" fill="#fff" stroke="#EAD7BC"/><path d="M74 66 v10 l5 -5 m-5 5 l-5 -5" stroke="#237841" stroke-width="2.5" fill="none" transform="translate(4 0)"/><text x="92" y="70" font-family="Nunito, sans-serif" font-weight="800" font-size="8" fill="#2B140A" text-anchor="start">Загрузка готова</text><text x="92" y="84" font-family="Nunito, sans-serif" font-weight="700" font-size="7.5" fill="#8A5A35" text-anchor="start">levsha-2.0.apk</text><circle cx="166" cy="86" r="11" fill="#C3271B" opacity=".25"/><circle cx="166" cy="86" r="5" fill="#C3271B"/><path d="M170 92 q 14 10 22 34 l -20 6 q -10 -16 -10 -34z" fill="#EFBA8C" stroke="#2B140A" stroke-width="1.5"/>
+</svg>

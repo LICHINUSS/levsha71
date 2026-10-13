@@ -2,262 +2,185 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Лавка Левши — игры и приложения тульского мастера</title>
-<meta name="description" content="Левша 71 — игры и приложения тульского мастера. Скачайте «Лавку Левши» и ставьте наши игры одним касанием.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Лавка Левши — игры и приложения мастерской «Левша 71»</title>
+<meta name="description" content="Игры и приложения мастерской «Левша 71». Скачайте «Лавку Левши» на Android или откройте её на iPhone — бесплатно и без рекламы.">
+<meta name="theme-color" content="#1A0D07">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/store_icon_192.png">
-<meta name="theme-color" content="#7a3a12">
-<style>
-  :root {
-    --cream: #fbf0dc; --honey: #b8652a; --honey-d: #7a3a12; --choco: #2b140a;
-    --gold: #f2b531; --gold-d: #b87a12; --brick: #c3271b; --ink: #2b140a;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--cream); color: var(--ink);
-         font: 17px/1.5 Georgia, "Times New Roman", serif; }
-  a { color: var(--brick); }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-
-  /* Шапка: кремль и название */
-  header { position: relative; color: #fff; text-align: center; overflow: hidden;
-           background: #2f4590 url("assets/kremlin_px.png") center 30% / cover no-repeat; image-rendering: pixelated;
-           min-height: 440px; display: flex; align-items: flex-end; }
-  header::after { content: ""; position: absolute; inset: 0;
-                  background: linear-gradient(to bottom, rgba(0,0,0,.05) 40%, rgba(43,20,10,.8)); }
-  .hero { position: relative; z-index: 1; width: 100%; padding: 24px 16px 36px; }
-  .hero img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 8px 24px rgba(0,0,0,.45); }
-  .hero h1 { font-size: clamp(40px, 8vw, 72px); margin: 8px 0 0; letter-spacing: 2px;
-             text-shadow: 0 3px 0 var(--brick), 0 6px 18px rgba(0,0,0,.6); }
-  .hero p { margin: 4px 0 18px; font-size: 20px; text-shadow: 0 2px 8px rgba(0,0,0,.7); }
-
-  /* Золотые кнопки-подковы */
-  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer;
-         border: 0; border-radius: 14px; padding: 14px 24px; font: bold 19px Georgia, serif; color: var(--choco);
-         background: linear-gradient(#ffe08a, var(--gold) 55%, var(--gold-d));
-         box-shadow: 0 5px 0 #8a5a0c, 0 8px 18px rgba(0,0,0,.35); transition: transform .08s; }
-  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #8a5a0c; }
-  .btn.small { padding: 9px 16px; font-size: 16px; }
-  .btn.ghost { background: #fff6e4; box-shadow: 0 4px 0 #c9a46a; }
-  .btn[disabled], .btn.off { filter: grayscale(.7); opacity: .75; cursor: default; }
-  .shoe { width: 22px; height: 22px; flex: none; }
-  .ver { display: block; margin-top: 10px; font-size: 15px; opacity: .9; }
-
-  section { padding: 44px 0 10px; }
-  h2 { font-size: 32px; margin: 0 0 6px; color: var(--honey-d); }
-  .sub { margin: 0 0 22px; color: #6a4a32; }
-
-  /* Карточки-пряники */
-  .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-  .card { position: relative; border-radius: 20px; padding: 18px; color: #fff3df;
-          background: radial-gradient(circle at 30% 20%, #c97a3a, var(--honey) 45%, var(--honey-d));
-          box-shadow: inset 0 0 0 6px rgba(255,214,150,.18), 0 10px 22px rgba(80,35,8,.35); }
-  .card::before { content: ""; position: absolute; inset: 9px; border-radius: 14px; pointer-events: none;
-                  border: 3px dotted rgba(255,220,160,.75); }
-  .card .top { display: flex; gap: 14px; align-items: center; }
-  .card img.icon { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,.35); }
-  .card h3 { margin: 0; font-size: 22px; color: #fff; }
-  .card .tag { margin: 2px 0 0; font-size: 15px; opacity: .9; }
-  .card .meta { margin: 14px 0; font-size: 14px; opacity: .85; }
-  .rating { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: #ffd84a; }
-  .rating .shoe { width: 15px; height: 15px; }
-  .card .row { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
-  .badge { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 13px;
-           background: rgba(43,20,10,.35); }
-
-  /* Как установить */
-  .steps { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); counter-reset: s; }
-  .step { background: #fff8ea; border-radius: 16px; padding: 16px 16px 16px 60px; position: relative;
-          box-shadow: 0 4px 0 #e8cfa2; }
-  .step::before { counter-increment: s; content: counter(s); position: absolute; left: 14px; top: 14px;
-                  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: bold;
-                  background: var(--brick); color: #fff; }
-  .how { display: grid; grid-template-columns: 1fr 220px; gap: 20px; align-items: center; }
-  .how img { width: 100%; }
-  #share .how { grid-template-columns: 260px 1fr; }
-  .how img.qr { image-rendering: pixelated; border-radius: 16px; border: 4px solid #2b140a; background: #fbf0dc; }
-
-  /* О мастерской */
-  .about { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: center; }
-  .about img { width: 100%; }
-
-  /* Окно приложения */
-  dialog { border: 0; border-radius: 22px; padding: 0; max-width: 820px; width: calc(100% - 24px);
-           background: var(--cream); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
-  dialog::backdrop { background: rgba(43,20,10,.6); }
-  .dlg { padding: 22px; }
-  .shots { display: flex; gap: 12px; overflow-x: auto; padding: 6px 0 12px; scroll-snap-type: x mandatory; }
-  .shots img { height: 220px; border-radius: 12px; scroll-snap-align: start; box-shadow: 0 4px 12px rgba(0,0,0,.25); }
-
-  footer { margin-top: 50px; padding: 28px 16px; text-align: center; color: #fbe2b8;
-           background: var(--choco); }
-  footer img { width: 54px; vertical-align: middle; margin-right: 8px; }
-
-  @media (max-width: 720px) {
-    header { min-height: 380px; }
-    .how, .about { grid-template-columns: 1fr; }
-    .how img { max-width: 180px; margin: 0 auto; }
-    #share .how { grid-template-columns: 1fr; }
-    .how img.qr { max-width: 260px; }
-    .about img { max-width: 210px; margin: 0 auto; }
-    .shots img { height: 170px; }
-  }
-</style>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Лавка Левши">
+<meta property="og:title" content="Лавка Левши">
+<meta property="og:description" content="Игры и приложения мастерской «Левша 71»">
+<meta property="og:image" content="assets/store_icon_512.png">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute">
-  <symbol id="shoe" viewBox="0 0 24 24">
-    <path d="M5 20c-1.5-2-3-5-3-9a10 10 0 0 1 20 0c0 4-1.5 7-3 9h-3.2c1.6-2.2 3-5 3-9a6.8 6.8 0 0 0-13.6 0c0 4 1.4 6.8 3 9z"
-          fill="#7a3a12"/>
-    <circle cx="5.2" cy="9" r="1" fill="#ffe08a"/><circle cx="18.8" cy="9" r="1" fill="#ffe08a"/>
-    <circle cx="8" cy="4.6" r="1" fill="#ffe08a"/><circle cx="16" cy="4.6" r="1" fill="#ffe08a"/>
-  </symbol>
-</svg>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
+  <nav class="nav">
+    <a href="#catalog" data-i18n="nav_catalog">Каталог</a>
+    <a class="opt" href="install.html" data-i18n="nav_install">Как установить</a>
+    <a class="opt" href="roadmap.html" data-i18n="nav_road">Планы</a>
+    <button class="lang" id="lang" aria-label="Language">EN</button>
+  </nav>
+</div></header>
 
-<header>
-  <div class="hero">
-    <img src="assets/store_icon_512.png" alt="Значок «Лавки Левши»">
-    <h1>ЛАВКА ЛЕВШИ</h1>
-    <p>Мастерская игр и приложений «Левша 71»</p>
-    <a id="getStore" class="btn off" href="#how"><svg class="shoe"><use href="#shoe"/></svg>Магазин скоро будет</a>
-    <span class="ver" id="storeVer">Пока можно скачать игры напрямую — ниже</span>
+<div class="hero"><div class="wrap">
+  <div>
+    <h1 data-i18n="brand">Лавка Левши</h1>
+    <p data-i18n="hero_sub">Игры и приложения мастерской «Левша 71». Бесплатно, без рекламы — подковано с душой.</p>
+    <div class="cta" id="cta"></div>
+    <div class="note" id="ctaNote"></div>
+    <div class="live" id="live" hidden><i></i><span></span></div>
   </div>
-</header>
+  <img class="mascot" id="mascot" src="assets/mascot_idle.png" alt="Мастер Левша">
+</div></div>
 
 <main class="wrap">
-  <section id="apps">
-    <div id="cats"></div>
+  <section id="catalog">
+    <h2 data-i18n="cat_title">Каталог</h2>
+    <p class="sub" data-i18n="cat_sub">Игры и приложения мастерской</p>
+    <label class="search"><span class="sr" data-i18n="search">Поиск</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.5"/></svg>
+      <input id="q" type="search" data-i18n-ph="search" placeholder="Найти игру или приложение…" autocomplete="off">
+    </label>
+    <div class="chips" role="group" style="margin-bottom:16px">
+      <button class="chip" data-kind="all" aria-pressed="true" data-i18n="all">Все</button>
+      <button class="chip" data-kind="games" aria-pressed="false" data-i18n="games">Игры</button>
+      <button class="chip" data-kind="tools" aria-pressed="false" data-i18n="tools">Приложения</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden data-i18n="nothing">Ничего не нашлось</p>
+  </section>
+
+  <section id="road">
+    <h2 data-i18n="road_title">Что мастер делает дальше</h2>
+    <p class="sub"><span data-i18n="road_sub">Открытые планы мастерской</span> · <a href="roadmap.html" data-i18n="road_all">Все планы →</a></p>
+    <ul class="road" id="roadList"></ul>
   </section>
 
   <section id="how">
-    <h2>Как установить</h2>
-    <p class="sub">Один раз — и дальше всё обновляется само, через «Лавку Левши».</p>
-    <div class="how">
-      <div class="steps">
-        <div class="step"><b>Скачайте</b> «Лавку Левши» кнопкой вверху (или игру из списка) на телефоне.</div>
-        <div class="step"><b>Откройте файл.</b> Телефон спросит, можно ли ставить приложения из браузера — разрешите.</div>
-        <div class="step"><b>Samsung:</b> если установка запрещена, отключите «Автоблокировщик» в настройках
-          «Безопасность и конфиденциальность». Play Защита может предупредить — нажмите «Всё равно установить».</div>
-        <div class="step"><b>Готово!</b> В магазине жмите «Установить», а когда выйдет новая версия — «Подковать».</div>
-      </div>
-      <img src="assets/samovar.png" alt="Самовар">
-    </div>
+    <h2 data-i18n="how_title">Как установить</h2>
+    <p class="sub"><span data-i18n="how_sub">Один раз — и дальше всё обновляется само.</span> · <a href="install.html" data-i18n="how_all">Подробная инструкция →</a></p>
+    <div class="steps" id="howSteps"></div>
   </section>
 
   <section id="share">
-    <h2>Поделиться лавкой</h2>
-    <p class="sub">Покажите код другу — он наведёт камеру телефона и сразу попадёт сюда.</p>
-    <div class="how">
-      <img src="assets/qr.png" alt="QR-код «Лавки Левши»" class="qr">
-      <div class="steps">
-        <div class="step"><b>С экрана:</b> откройте эту страницу или «Лавку Левши» → «Мои» → «Поделиться лавкой» и покажите код.</div>
-        <div class="step"><b>Ссылкой:</b> lichinuss.github.io/levsha71 — можно отправить в любой мессенджер.</div>
-        <div class="step"><b>На бумаге:</b> <a href="assets/qr_card.png" download>скачайте карточку</a> с кодом и распечатайте.</div>
+    <div class="two">
+      <div class="panel">
+        <h2 data-i18n="share_title">Поделиться лавкой</h2>
+        <p class="sub" data-i18n="share_sub">Покажите код другу — он наведёт камеру телефона и попадёт сюда.</p>
+        <p>lichinuss.github.io/levsha71</p>
+        <a class="btn ghost small" href="assets/qr_card.png" download data-i18n="share_card">Скачать карточку с кодом</a>
       </div>
+      <div class="panel" style="display:grid;place-items:center"><img class="px" src="assets/qr.png" alt="QR" style="width:220px;border-radius:14px"></div>
     </div>
   </section>
 
   <section id="about">
-    <div class="about">
-      <img src="assets/levsha.png" alt="Мастер Левша с лупой">
-      <div>
-        <h2>О мастерской</h2>
-        <p>Как тульский Левша подковал блоху, так и мы собираем свои игры из маленьких деталей — с душой
-          и для своих. Никакой рекламы и покупок внутри: просто играйте.</p>
-        <p>Каждое изделие мастерской отмечено <b>клеймом — золотой подковой «71»</b>.</p>
-      </div>
+    <div class="panel" style="display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center">
+      <img class="px" src="assets/levsha.png" alt="Левша с лупой" style="width:120px">
+      <div><h2 data-i18n="about_title">О мастерской</h2><p data-i18n="about_text"></p></div>
     </div>
   </section>
 </main>
 
-<dialog id="dlg"><div class="dlg" id="dlgBody"></div></dialog>
+<footer><div class="wrap">
+  <img class="px" src="assets/stamp_256.png" alt="">
+  <span data-i18n="footer">Подковано Левшой.</span>
+  <a href="install.html" data-i18n="nav_install">Как установить</a>
+  <a href="roadmap.html" data-i18n="nav_road">Планы</a>
+  <a href="privacy.html" data-i18n="nav_privacy">Конфиденциальность</a>
+</div></footer>
 
-<footer>
-  <img src="assets/stamp_256.png" alt="">Подковано Левшой. · <a href="privacy.html" style="color:inherit">Конфиденциальность</a>
-</footer>
-
+<script src="assets/site.js"></script>
+<script src="assets/install-steps.js"></script>
 <script>
-const fmtSize = b => b ? (b / 1048576).toFixed(1).replace(".", ",") + " МБ" : "";
-const shoe = '<svg class="shoe"><use href="#shoe"/></svg>';
-// Оценки игроков из «Лавки Левши» (открытое окошко сервера, ключ публичный)
-const API = "https://rzrdanmylecmkafgekye.supabase.co/rest/v1/rpc/";
-const API_KEY = "sb_publishable_ELCLv7tzPupTFN0b7DpcnQ_viX4aUMS";
-let ratings = {};
-const plural = (n, a, b, c) => n % 10 === 1 && n % 100 !== 11 ? a : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? b : c);
-function ratingHtml(id) {
-  const r = ratings[id];
-  if (!r || !r.count) return "";
-  return `<span class="rating">${shoe}${String(r.avg).replace(".", ",")}</span> · ${r.count} ${plural(r.count, "отзыв", "отзыва", "отзывов")}`;
-}
+"use strict";
+let kind = "all", ratings = {};
+const $ = id => document.getElementById(id);
 
-function downloadButton(item, small) {
-  if (!item.apk) return `<span class="btn ${small ? "small" : ""} off">${shoe}Скоро</span>`;
-  return `<a class="btn ${small ? "small" : ""}" href="${item.apk}">${shoe}Скачать</a>`;
-}
-
-function openApp(app) {
-  const shots = (app.screenshots || []).map(s => `<img src="${s}" alt="">`).join("");
-  document.getElementById("dlgBody").innerHTML = `
-    <div style="text-align:right;margin-bottom:10px"><button class="btn small ghost" onclick="dlg.close()">Закрыть</button></div>
-    <div class="top" style="display:flex;gap:14px;align-items:center">
-      <img src="${app.icon}" alt="" style="width:96px;height:96px;border-radius:22px">
-      <div><h2 style="margin:0">${app.name}</h2><div class="sub" style="margin:0">${app.name_en || ""}</div>
-        <div class="sub" style="margin:4px 0 0">${ratingHtml(app.id)}</div></div>
-    </div>
-    <div class="shots">${shots}</div>
-    <p>${app.description || ""}</p>
-    ${app.changelog ? `<h3>Что подковано в ${app.version_name}</h3><p>${app.changelog}</p>` : ""}
-    <p>${downloadButton(app)} <span class="sub">${app.version_name ? "Версия " + app.version_name : ""}
-       ${fmtSize(app.size)}</span></p>`;
-  dlg.showModal();
-}
-
-fetch("catalog.json", {cache: "no-store"}).then(r => r.json()).then(cat => {
-  const s = cat.store;
-  if (s.apk) {
-    const b = document.getElementById("getStore");
-    b.classList.remove("off");
-    b.href = s.apk;
-    b.innerHTML = shoe + "Скачать «Лавку Левши»";
-    document.getElementById("storeVer").textContent = `Версия ${s.version_name} · ${fmtSize(s.size)}`;
+function renderCta() {
+  const c = Lavka.catalog, s = c && c.store, p = Lavka.platform(), cta = $("cta"), note = $("ctaNote");
+  const web = c && c.apps.find(a => a.web);
+  const apkBtn = s && s.apk ? `<a class="btn" id="getBtn" href="${s.apk}">${Lavka.shoe}${Lavka.t("get_android")}</a>` : "";
+  if (p === "ios") {
+    cta.innerHTML = `<a class="btn" id="getBtn" href="install.html#iphone">${Lavka.t("get_ios")}</a>` +
+      (web ? `<a class="btn ghost" href="${web.web}">${Lavka.t("play_web")}</a>` : "");
+    note.textContent = Lavka.t("ios_note");
+  } else if (p === "android") {
+    cta.innerHTML = apkBtn + `<a class="btn ghost" href="install.html">${Lavka.t("how_link")}</a>`;
+    note.textContent = s ? Lavka.t("store_ver", { v: s.version_name, s: Lavka.fmtSize(s.size) }) : "";
+  } else {
+    cta.innerHTML = (apkBtn || "") + `<a class="btn ghost" href="install.html#iphone">${Lavka.t("for_iphone")}</a>` +
+      (web ? `<a class="btn ghost" href="${web.web}">${Lavka.t("play_web")}</a>` : "");
+    note.textContent = Lavka.t("desktop_note");
   }
-  const box = document.getElementById("cats");
-  for (const c of cat.categories) {
-    const apps = cat.apps.filter(a => a.category === c.id);
-    if (!apps.length) continue;
-    const sec = document.createElement("div");
-    sec.innerHTML = `<h2>${c.name}</h2><p class="sub">${c.subtitle}</p><div class="grid"></div>`;
-    const grid = sec.querySelector(".grid");
-    for (const a of apps) {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.dataset.app = a.id;
-      card.innerHTML = `
-        <div class="top"><img class="icon" src="${a.icon}" alt="">
-          <div><h3>${a.name}</h3><p class="tag">${a.tagline}</p></div></div>
-        <div class="meta">${a.version_name ? "Версия " + a.version_name + " · " + fmtSize(a.size)
-                                           : '<span class="badge">Скоро в мастерской</span>'}
-          <div class="stars"></div></div>
-        <div class="row">${downloadButton(a, true)}
-          <button class="btn small ghost">Подробнее</button></div>`;
-      card.querySelector("button").onclick = () => openApp(a);
-      grid.appendChild(card);
-    }
-    box.appendChild(sec);
-  }
-  // ссылка «Поделиться» из магазина: …/levsha71/#brick-tower сразу открывает карточку
-  const shared = cat.apps.find(a => "#" + a.id === location.hash);
-  if (shared) openApp(shared);
-  // оценки подгружаем отдельно: нет связи с сервером — карточки всё равно на месте
-  fetch(API + "review_summaries", {method: "POST", body: "{}",
-      headers: {"apikey": API_KEY, "Content-Type": "application/json"}})
-    .then(r => r.ok ? r.json() : [])
-    .then(list => {
-      for (const r of list) ratings[r.app_id] = {count: r.count, avg: r.avg};
-      for (const card of document.querySelectorAll(".card[data-app]")) {
-        const html = ratingHtml(card.dataset.app);
-        if (html) card.querySelector(".stars").innerHTML = html;
-      }
-    }).catch(() => {});
+}
+
+function renderGrid() {
+  const c = Lavka.catalog; if (!c) return;
+  const q = $("q").value.trim().toLowerCase();
+  const list = c.apps.filter(a => (kind === "all" || (kind === "games") === (a.category === "games")) &&
+    (!q || [a.name, a.name_en, a.tagline, a.tagline_en, a.description, a.description_en].some(x => (x || "").toLowerCase().includes(q))));
+  $("grid").innerHTML = list.map(a => `
+    <article class="card">
+      <a href="app.html?id=${a.id}" class="shot" style="background-image:url('${(a.screenshots || [])[0] || ""}')" aria-label="${Lavka.esc(Lavka.L(a, "name"))}"></a>
+      <div class="body"><img class="icon px" src="${a.icon}" alt="">
+        <div><h3><a href="app.html?id=${a.id}" style="color:inherit;text-decoration:none">${Lavka.esc(Lavka.L(a, "name"))}</a></h3>
+          <p class="tag">${Lavka.esc(Lavka.L(a, "tagline"))}</p></div></div>
+      <div class="meta">${Lavka.ratingHtml(ratings[a.id])}
+        ${a.version_name ? `<span>${Lavka.t("version", { v: a.version_name })}</span><span>${Lavka.fmtSize(a.size)}</span>` : `<span class="badge">${Lavka.t("soon")}</span>`}</div>
+      <div class="row">${Lavka.appButtons(a)}<a class="btn small ghost" href="app.html?id=${a.id}">${Lavka.t("more")}</a></div>
+    </article>`).join("");
+  $("empty").hidden = list.length > 0;
+}
+
+function renderRoad() {
+  const r = (Lavka.catalog && Lavka.catalog.roadmap) || [];
+  $("roadList").innerHTML = r.filter(x => x.status !== "done").slice(0, 4).map(x =>
+    `<li><span class="st ${x.status}">${Lavka.t("st_" + x.status)}</span><span>${Lavka.esc(Lavka.L(x, "title"))}</span></li>`).join("");
+}
+
+function renderHow() {
+  const p = Lavka.platform() === "ios" ? "iphone" : "android";
+  const steps = INSTALL[p].slice(0, 3);
+  const en = Lavka.lang === "en";
+  $("howSteps").innerHTML = steps.map(s => `<div class="step"><img src="assets/how/${en ? s.img.replace(".svg", "_en.svg") : s.img}" alt="">
+    <h3>${Lavka.esc(s[Lavka.lang].t)}</h3><p>${Lavka.esc(s[Lavka.lang].p)}</p></div>`).join("");
+}
+
+function renderAll() { renderCta(); renderGrid(); renderRoad(); renderHow(); document.querySelector('[data-i18n="about_text"]').textContent = Lavka.t("about_text"); }
+
+// живой Левша: моргает и машет
+(() => { const m = $("mascot"); const f = ["mascot_idle", "mascot_blink", "mascot_idle", "mascot_wave1", "mascot_idle"]; let i = 0;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  setInterval(() => { i = (i + 1) % f.length; m.src = `assets/${f[i]}.png`; }, 1400); })();
+
+Lavka.init();
+for (const b of document.querySelectorAll(".chip")) b.onclick = () => {
+  kind = b.dataset.kind; for (const x of document.querySelectorAll(".chip")) x.setAttribute("aria-pressed", x === b); renderGrid(); };
+$("q").oninput = renderGrid;
+document.addEventListener("lavka:lang", renderAll);
+
+Lavka.loadCatalog().then(async c => {
+  if (!c) return;
+  // старая ссылка из лавки: …/levsha71/#brick-tower → страница изделия
+  const shared = c.apps.find(a => "#" + a.id === location.hash);
+  if (shared) { location.replace("app.html?id=" + shared.id); return; }
+  renderAll();
+  if (Lavka.platform() !== "ios") setTimeout(() => Lavka.hint($("getBtn"), "get", Lavka.t("hint_get")), 1200);
+  setTimeout(() => Lavka.hint($("q"), "search", Lavka.t("hint_search")), 6000);
+  ratings = await Lavka.ratings(); renderGrid();
+  Lavka.rpc("stats_public").then(st => {
+    if (!st || !st.registered) return;
+    $("live").hidden = false;
+    $("live").querySelector("span").textContent = Lavka.t("live", { n: st.online, p: st.registered });
+  }).catch(() => {});
 });
 </script>
 </body>
