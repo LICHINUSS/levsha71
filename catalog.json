@@ -141,7 +141,16 @@
         }
       ],
       "tagline_en": "Defend a brick tower from waves of enemies",
-      "description_en": "A 3D tower defense made of toy bricks. Hold your finger where the hero should shoot; headshots deal double damage. Build tower floors from golden bricks, pick upgrades after each wave, call in mines, walls, freeze and airstrikes, beat bosses — and climb the world leaderboards."
+      "description_en": "A 3D tower defense made of toy bricks. Hold your finger where the hero should shoot; headshots deal double damage. Build tower floors from golden bricks, pick upgrades after each wave, call in mines, walls, freeze and airstrikes, beat bosses — and climb the world leaderboards.",
+      "web": "play/brick-tower/",
+      "trailer": "promo/brick-tower/trailer.mp4",
+      "poster": "promo/brick-tower/poster.jpg",
+      "promo": [
+        "promo/brick-tower/1_{lang}.jpg",
+        "promo/brick-tower/2_{lang}.jpg",
+        "promo/brick-tower/3_{lang}.jpg",
+        "promo/brick-tower/4_{lang}.jpg"
+      ]
     }
   ],
   "featured": "brick-tower",
@@ -210,5 +219,6 @@
       "title": "Отзывы, лента, подковки",
       "title_en": "Reviews, feed and likes"
     }
-  ]
+  ],
+  "seq": 1791861959
 }

@@ -67,8 +67,9 @@ function render() {
       <div><b>${a.min_sdk >= 26 ? "8+" : "7+"}</b><span>${Lavka.t("f_android")}</span></div>
     </div>
     <div class="row" style="display:flex;gap:10px;flex-wrap:wrap">${Lavka.appButtons(a, false)}</div>
+    ${a.trailer ? `<section><h2>${Lavka.t("app_trailer")}</h2>${Lavka.video(a.trailer, a.poster)}</section>` : ""}
     <section><h2>${Lavka.t("app_shots")}</h2>
-      <div class="shots">${(a.screenshots || []).map(s => `<img src="${s}" alt="" loading="lazy">`).join("")}</div></section>
+      <div class="shots">${(Lavka.promoFor(a).length ? Lavka.promoFor(a) : (a.screenshots || [])).map(s => `<img src="${s}" alt="" loading="lazy">`).join("")}</div></section>
     <section><h2>${Lavka.t("app_about")}</h2><p>${Lavka.esc(Lavka.L(a, "description"))}</p></section>
     ${hist.length ? `<section><h2>${Lavka.t("app_whatsnew", { v: hist[0].version_name })}</h2>
       <p class="muted">${Lavka.fmtDate(hist[0].date)}</p>${changes(hist[0])}</section>` : ""}

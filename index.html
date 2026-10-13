@@ -57,6 +57,12 @@
     <p class="empty" id="empty" hidden data-i18n="nothing">Ничего не нашлось</p>
   </section>
 
+  <section id="inside">
+    <h2 data-i18n="inside_title">Лавка изнутри</h2>
+    <p class="sub" data-i18n="inside_sub">Так выглядит «Лавка Левши» на телефоне</p>
+    <div class="inside"><div id="insideVideo"></div><div class="shots" id="insideShots"></div></div>
+  </section>
+
   <section id="road">
     <h2 data-i18n="road_title">Что мастер делает дальше</h2>
     <p class="sub"><span data-i18n="road_sub">Открытые планы мастерской</span> · <a href="roadmap.html" data-i18n="road_all">Все планы →</a></p>
@@ -154,7 +160,12 @@ function renderHow() {
     <h3>${Lavka.esc(s[Lavka.lang].t)}</h3><p>${Lavka.esc(s[Lavka.lang].p)}</p></div>`).join("");
 }
 
-function renderAll() { renderCta(); renderGrid(); renderRoad(); renderHow(); document.querySelector('[data-i18n="about_text"]').textContent = Lavka.t("about_text"); }
+function renderInside() {
+  if (!$("insideVideo").firstChild) $("insideVideo").innerHTML = Lavka.video("promo/store/trailer.mp4", "promo/store/poster.jpg");
+  $("insideShots").innerHTML = [1, 2, 3, 4, 5].map(i => `<img src="promo/store/${i}_${Lavka.lang}.jpg" alt="" loading="lazy">`).join("");
+}
+
+function renderAll() { renderInside(); renderCta(); renderGrid(); renderRoad(); renderHow(); document.querySelector('[data-i18n="about_text"]').textContent = Lavka.t("about_text"); }
 
 // живой Левша: моргает и машет
 (() => { const m = $("mascot"); const f = ["mascot_idle", "mascot_blink", "mascot_idle", "mascot_wave1", "mascot_idle"]; let i = 0;

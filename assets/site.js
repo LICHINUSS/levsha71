@@ -6,6 +6,7 @@ const API_KEY = "sb_publishable_ELCLv7tzPupTFN0b7DpcnQ_viX4aUMS"; // откры�
 const T = {
   ru: {
     brand: "Лавка Левши", join_ios: "Группы пока есть только в лавке для Android — попросите друга с Android-телефоном.",
+    inside_title: "Лавка изнутри", inside_sub: "Так выглядит «Лавка Левши» на телефоне", app_trailer: "Трейлер",
     nav_catalog: "Каталог", nav_install: "Как установить", nav_road: "Планы", nav_privacy: "Конфиденциальность",
     hero_sub: "Игры и приложения мастерской «Левша 71». Бесплатно, без рекламы — подковано с душой.",
     get_android: "Скачать «Лавку Левши»", get_ios: "Установить на iPhone", play_web: "Играть в браузере",
@@ -38,6 +39,7 @@ const T = {
   },
   en: {
     brand: "Levsha's Shop", join_ios: "Groups are in the Android shop for now — ask a friend with an Android phone.",
+    inside_title: "Inside the shop", inside_sub: "This is what Levsha's Shop looks like on a phone", app_trailer: "Trailer",
     nav_catalog: "Catalog", nav_install: "How to install", nav_road: "Roadmap", nav_privacy: "Privacy",
     hero_sub: "Games and apps from the “Levsha 71” workshop. Free, no ads — forged with care.",
     get_android: "Download Levsha's Shop", get_ios: "Install on iPhone", play_web: "Play in the browser",
@@ -173,6 +175,13 @@ const Lavka = {
     document.body.appendChild(d);
     d.querySelector(".x").onclick = () => { this.store("ios_sheet", "1"); d.remove(); };
   },
+
+  /** Беззвучное видео: само крутится, но не у тех, кто просил «меньше движения». */
+  video(src, poster, cls = "trailer") {
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return `<video class="${cls}" src="${src}" poster="${poster || ""}" ${still ? "controls" : "autoplay loop"} muted playsinline preload="metadata"></video>`;
+  },
+  promoFor(a) { return (a.promo || []).map(x => x.replace("{lang}", this.lang)); },
 
   init() {
     const saved = this.store("lang");
