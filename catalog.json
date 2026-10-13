@@ -345,12 +345,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 13,
-      "version_name": "1.4.0",
+      "version_code": 14,
+      "version_name": "1.5.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.4.0/brick-tower-1.4.0.apk",
-      "sha256": "7a1db7d283374b77e12b21700bea7a178880f7761922a5f71c9c1b7b75cdda62",
-      "size": 29138550,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.5.0/brick-tower-1.5.0.apk",
+      "sha256": "a19ecccce0e73a71315731f5d3120abc4eb197b07e15670e09662f3d6423a1c7",
+      "size": 55054101,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -358,12 +358,41 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Добавлено: Облачное сохранение: прогресс хранится на сервере и возвращается на новом телефоне по коду; Кнопка «ЛАВКА» в меню: друзья в сети, рекорды друзей и посты групп прямо в игре; Друзья видят «играет в «Кирпичную башню»» (можно выключить в лавке). Изменено: Аватар-пряник теперь с подковой и «71».",
+      "changelog": "Добавлено: Своё фото игрока из «Лавки Левши» — в «Рекордах мира», панели «ЛАВКА» и у друзей; Игра ставится и на старые 32-битные телефоны; В панели «ЛАВКА» — ответы мастера на ваши идеи. Исправлено: Правильные окончания: «21 волна», «3 волны».",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
-      "updated": "2026-10-13",
+      "updated": "2026-10-14",
       "history": [
+        {
+          "version_name": "1.5.0",
+          "version_code": 14,
+          "date": "2026-10-14",
+          "changelog": "Добавлено: Своё фото игрока из «Лавки Левши» — в «Рекордах мира», панели «ЛАВКА» и у друзей; Игра ставится и на старые 32-битные телефоны; В панели «ЛАВКА» — ответы мастера на ваши идеи. Исправлено: Правильные окончания: «21 волна», «3 волны».",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.5.0/brick-tower-1.5.0.apk",
+          "sha256": "a19ecccce0e73a71315731f5d3120abc4eb197b07e15670e09662f3d6423a1c7",
+          "size": 55054101,
+          "changes": {
+            "added": [
+              "Своё фото игрока из «Лавки Левши» — в «Рекордах мира», панели «ЛАВКА» и у друзей",
+              "Игра ставится и на старые 32-битные телефоны",
+              "В панели «ЛАВКА» — ответы мастера на ваши идеи"
+            ],
+            "fixed": [
+              "Правильные окончания: «21 волна», «3 волны»"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Your own photo from the shop — in World records, the LAVKA panel and for friends",
+              "The game now installs on older 32-bit phones too",
+              "The LAVKA panel shows the master's answers to your ideas"
+            ],
+            "fixed": [
+              "Correct word endings for waves in Russian"
+            ]
+          }
+        },
         {
           "version_name": "1.4.0",
           "version_code": 13,
@@ -758,5 +787,5 @@
       "title_en": "Reviews, feed and likes"
     }
   ],
-  "seq": 1791925426
+  "seq": 1791926306
 }
