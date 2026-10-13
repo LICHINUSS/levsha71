@@ -1,17 +1,42 @@
 {
   "format": 1,
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 12,
-    "version_name": "2.0.1",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.0.1/levsha-2.0.1.apk",
-    "sha256": "c7958211266866032c9597f26336f882b21e74297f5cf2d84b2aea407da920c9",
-    "size": 2360095,
-    "changelog": "Добавлено: Сколько минут друг уже играет: «играет в «Кирпичную башню» · 12 мин»; Пункт «Помощь» в настройках — ответы на частые вопросы; Лавка для iPhone и компьютера — в браузере, с тем же профилем, друзьями и группами. Исправлено: Правильные окончания: «21 волна», «3 волны».",
-    "updated": "2026-10-13",
+    "version_code": 13,
+    "version_name": "2.1.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.1.0/levsha-2.1.0.apk",
+    "sha256": "d508d1386518786d89de6677851ac565b55fd5bb55927bd6d530225d226a59c3",
+    "size": 2392863,
+    "changelog": "Добавлено: «Идеи и пожелания»: предложите идею или сообщите об ошибке — можно даже без профиля; К ошибке можно приложить скриншот и данные устройства (без личных данных); Подкова «поддержать», обсуждение идей, статусы и ответы мастера, уведомление автору; «Сделано по вашим идеям» — в «О лавке» и «Дорожной карте».",
+    "updated": "2026-10-14",
     "history": [
+      {
+        "version_name": "2.1.0",
+        "version_code": 13,
+        "date": "2026-10-14",
+        "changelog": "Добавлено: «Идеи и пожелания»: предложите идею или сообщите об ошибке — можно даже без профиля; К ошибке можно приложить скриншот и данные устройства (без личных данных); Подкова «поддержать», обсуждение идей, статусы и ответы мастера, уведомление автору; «Сделано по вашим идеям» — в «О лавке» и «Дорожной карте».",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.1.0/levsha-2.1.0.apk",
+        "sha256": "d508d1386518786d89de6677851ac565b55fd5bb55927bd6d530225d226a59c3",
+        "size": 2392863,
+        "changes": {
+          "added": [
+            "«Идеи и пожелания»: предложите идею или сообщите об ошибке — можно даже без профиля",
+            "К ошибке можно приложить скриншот и данные устройства (без личных данных)",
+            "Подкова «поддержать», обсуждение идей, статусы и ответы мастера, уведомление автору",
+            "«Сделано по вашим идеям» — в «О лавке» и «Дорожной карте»"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Ideas & feedback: suggest an idea or report a bug — even without a profile",
+            "Attach a screenshot and device info to a bug report (nothing personal)",
+            "Support ideas with a horseshoe, discuss them, see the master's status and answer, get notified",
+            "«Done thanks to your ideas» in About and Roadmap"
+          ]
+        }
+      },
       {
         "version_name": "2.0.1",
         "version_code": 12,
@@ -733,5 +758,5 @@
       "title_en": "Reviews, feed and likes"
     }
   ],
-  "seq": 1791911928
+  "seq": 1791925426
 }
