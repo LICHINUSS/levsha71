@@ -1,6 +1,6 @@
 // Работа без сети: страницы и картинки сайта берутся из кэша, каталог — сначала из сети (он всегда свежий).
 // Игру (play/…) кэширует сам браузер — она большая, держим её отдельно.
-const CACHE = "lavka-v3";
+const CACHE = "lavka-v4";
 const SHELL = ["./", "index.html", "app.html", "install.html", "roadmap.html", "privacy.html", "join.html", "me.html", "help.html", "people.html",
   "assets/site.css", "assets/site.js", "assets/lavka.css", "assets/lavka.js",
   ...["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"].map(a => `assets/av/${a}.png`), "assets/install-steps.js", "assets/fonts/Nunito-500.ttf", "assets/fonts/Nunito-800.ttf", "assets/fonts/Nunito-900.ttf",

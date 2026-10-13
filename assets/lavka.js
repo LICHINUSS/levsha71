@@ -50,7 +50,8 @@ const W = {
     pr_requests: "Принимать заявки в друзья", pr_photo: "Друзья видят моё настоящее фото",
     push: "Уведомления на этом устройстве", push_on: "Включить уведомления", push_off: "Выключить", push_ok: "Уведомления включены.",
     push_ios: "На iPhone уведомления работают, когда лавка добавлена на экран «Домой» (iOS 16.4 и новее).",
-    push_no: "Этот браузер не умеет уведомления.", push_denied: "Уведомления запрещены в настройках телефона для этого сайта.",
+    push_no: "Этот браузер не умеет уведомления.", push_denied: "Браузер не разрешил уведомления. Если лавка открыта внутри другого приложения (мессенджер, соцсеть), откройте её в самом браузере — Chrome, Яндекс Браузер или Safari. Если уже там — разрешите уведомления в настройках сайта (значок слева от адреса).",
+    push_dismissed: "Вопрос закрылся без ответа. Нажмите ещё раз и выберите «Разрешить».",
     push_soon: "Уведомления включатся в ближайшем обновлении сервера.", quiet: "Тихие часы: ночью (23:00–8:00) не беспокоить",
     k_friend_request: "Заявки в друзья", k_friend_accept: "Заявку приняли", k_friend_record: "Рекорды друзей",
     k_group_post: "Посты в группах", k_comment: "Комментарии", k_reply: "Ответы мастера",
@@ -109,7 +110,8 @@ const W = {
     pr_requests: "Accept friend requests", pr_photo: "Friends see my real photo",
     push: "Notifications on this device", push_on: "Turn on notifications", push_off: "Turn off", push_ok: "Notifications are on.",
     push_ios: "On iPhone, notifications work when the shop is added to the Home Screen (iOS 16.4 or newer).",
-    push_no: "This browser can't show notifications.", push_denied: "Notifications are blocked for this site in the phone settings.",
+    push_no: "This browser can't show notifications.", push_denied: "The browser didn't allow notifications. If the shop is open inside another app (a messenger or a social app), open it in the browser itself — Chrome, Safari and so on. If you're already there, allow notifications in the site settings (the icon left of the address).",
+    push_dismissed: "The question closed without an answer. Tap again and choose “Allow”.",
     push_soon: "Notifications will turn on with the next server update.", quiet: "Quiet hours: don't disturb at night (23:00–8:00 Moscow)",
     k_friend_request: "Friend requests", k_friend_accept: "Request accepted", k_friend_record: "Friends' records",
     k_group_post: "Group posts", k_comment: "Comments", k_reply: "Master's replies",
@@ -877,7 +879,8 @@ const Push = {
     if (!key) throw new Error(w("push_soon"));
     const reg = await this.reg();
     if (!reg) throw new Error(w("push_no"));
-    if (await Notification.requestPermission() !== "granted") throw new Error(w("push_denied"));
+    const perm = await Notification.requestPermission();
+    if (perm !== "granted") throw new Error(w(perm === "default" ? "push_dismissed" : "push_denied"));
     const s = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: this.b64u(key) });
     await this.send(s);
   },
