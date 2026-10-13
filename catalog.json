@@ -4,14 +4,45 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 10,
-    "version_name": "1.5.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.5.0/levsha-1.5.0.apk",
-    "sha256": "3dec938ff7a503e5bc0122f3c6e19704e278c4e2a74d330bd4e51e63d2c72cdb",
-    "size": 2016635,
-    "changelog": "Обсуждения под постами в ленте. Уведомления: «Мастер ответил на ваш отзыв» и новые ответы в обсуждениях. Блок «Новое для вас» в ленте. Испытание дня и новые достижения в профиле.",
-    "updated": "2026-10-11",
+    "version_code": 11,
+    "version_name": "2.0.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.0.0/levsha-2.0.0.apk",
+    "sha256": "0d22bfef79a5a2cadbe0976a43898f58ec443939e9d0b7b59d40d86097abbc23",
+    "size": 2360095,
+    "changelog": "Добавлено: Новый вид: 4 вкладки, заставка, живой Левша, подковы-достижения, обучение, русский и английский; Друзья, группы по приглашению, «Люди в лавке», итоги недели, своё фото, рамки и статус; Облачные сохранения игр, вся история версий и откат к старой версии; Настройки приватности и блокировка; уведомления по типам и тихие часы. Изменено: Каталог подписан ключом мастерской, каждый файл проверяется — подделку лавка не примет.",
+    "updated": "2026-10-13",
     "history": [
+      {
+        "version_name": "2.0.0",
+        "version_code": 11,
+        "date": "2026-10-13",
+        "changelog": "Добавлено: Новый вид: 4 вкладки, заставка, живой Левша, подковы-достижения, обучение, русский и английский; Друзья, группы по приглашению, «Люди в лавке», итоги недели, своё фото, рамки и статус; Облачные сохранения игр, вся история версий и откат к старой версии; Настройки приватности и блокировка; уведомления по типам и тихие часы. Изменено: Каталог подписан ключом мастерской, каждый файл проверяется — подделку лавка не примет.",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.0.0/levsha-2.0.0.apk",
+        "sha256": "0d22bfef79a5a2cadbe0976a43898f58ec443939e9d0b7b59d40d86097abbc23",
+        "size": 2360095,
+        "changes": {
+          "added": [
+            "Новый вид: 4 вкладки, заставка, живой Левша, подковы-достижения, обучение, русский и английский",
+            "Друзья, группы по приглашению, «Люди в лавке», итоги недели, своё фото, рамки и статус",
+            "Облачные сохранения игр, вся история версий и откат к старой версии",
+            "Настройки приватности и блокировка; уведомления по типам и тихие часы"
+          ],
+          "changed": [
+            "Каталог подписан ключом мастерской, каждый файл проверяется — подделку лавка не примет"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "New look: 4 tabs, splash screen, living Levsha, horseshoe achievements, tutorial, Russian and English",
+            "Friends, invite-only groups, «People in the shop», weekly summary, your own photo, frames and status",
+            "Cloud saves for games, full version history and rollback to an older version",
+            "Privacy settings and blocking; notifications by type and quiet hours"
+          ],
+          "changed": [
+            "The catalog is signed with the workshop key and every file is checked — the shop won't accept a fake"
+          ]
+        }
+      },
       {
         "version_name": "1.5.0",
         "version_code": 10,
@@ -673,5 +704,5 @@
       "title_en": "Reviews, feed and likes"
     }
   ],
-  "seq": 1791905979
+  "seq": 1791906078
 }
