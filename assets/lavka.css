@@ -1,4 +1,5 @@
 /* «Лавка Левши» в браузере (me.html): нижние вкладки, списки, карточки — как в лавке на Android. */
+html:has(body.appmode) { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 body.appmode { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 .appmode .top .wrap { padding-top: env(safe-area-inset-top); }
 .appwrap { max-width: 720px; padding-top: 6px; }
