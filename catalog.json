@@ -14,53 +14,223 @@
     "history": [
       {
         "version_name": "1.5.0",
+        "version_code": 10,
         "date": "2026-10-11",
-        "changelog": "Обсуждения под постами в ленте. Уведомления: «Мастер ответил на ваш отзыв» и новые ответы в обсуждениях. Блок «Новое для вас» в ленте. Испытание дня и новые достижения в профиле."
+        "changelog": "Добавлено: Обсуждения под постами; Уведомления: ответ мастера и новые комментарии; «Новое для вас» в ленте.",
+        "changelog_en": "Added: Discussions under posts; Notifications: master replies and new comments; “For you” in the feed.",
+        "changes": {
+          "added": [
+            "Обсуждения под постами",
+            "Уведомления: ответ мастера и новые комментарии",
+            "«Новое для вас» в ленте"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Discussions under posts",
+            "Notifications: master replies and new comments",
+            "“For you” in the feed"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.5.0/levsha-1.5.0.apk",
+        "sha256": "3dec938ff7a503e5bc0122f3c6e19704e278c4e2a74d330bd4e51e63d2c72cdb",
+        "size": 2016635
       },
       {
         "version_name": "1.4.0",
+        "version_code": 9,
         "date": "2026-10-11",
-        "changelog": "Профиль игрока стал настоящим: звания по активности (от Новичка до Левши), достижения, статистика по каждой игре отдельно с местом в мире, строчка «о себе». Безопасность: можно сменить код восстановления и удалить профиль навсегда, защита от ботов, лавка проверяет клеймо по зашитому эталону."
+        "changelog": "Добавлено: Звания, достижения, статистика по каждой игре, «о себе»; Сменить код и удалить профиль. Изменено: Отпечаток ключа мастерской зашит в лавку, без облачной копии данных.",
+        "changelog_en": "Added: Titles, achievements, per-game stats, “about me”; Change the code and delete the profile. Changed: The workshop key fingerprint is built into the shop; no cloud backup of data.",
+        "changes": {
+          "added": [
+            "Звания, достижения, статистика по каждой игре, «о себе»",
+            "Сменить код и удалить профиль"
+          ],
+          "changed": [
+            "Отпечаток ключа мастерской зашит в лавку, без облачной копии данных"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Titles, achievements, per-game stats, “about me”",
+            "Change the code and delete the profile"
+          ],
+          "changed": [
+            "The workshop key fingerprint is built into the shop; no cloud backup of data"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.4.0/levsha-1.4.0.apk",
+        "sha256": "7e05c1a83476402f6783002776d27240a712dc484cf12b34200054fc47b2b1c5",
+        "size": 2000251
       },
       {
         "version_name": "1.3.1",
+        "version_code": 8,
         "date": "2026-10-11",
-        "changelog": "Лента теперь строго по времени: свежие посты игроков — сверху. Бирка «мастер» больше не обрезается."
+        "changelog": "Исправлено: Лента сортируется по настоящему времени; Метка «мастер» не обрезается.",
+        "changelog_en": "Fixed: The feed is sorted by real time; The “master” tag is never clipped.",
+        "changes": {
+          "fixed": [
+            "Лента сортируется по настоящему времени",
+            "Метка «мастер» не обрезается"
+          ]
+        },
+        "changes_en": {
+          "fixed": [
+            "The feed is sorted by real time",
+            "The “master” tag is never clipped"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.3.1/levsha-1.3.1.apk",
+        "sha256": "c6161386a549b00bee69af4ef1dd2e378ae068d168d0d375c22420c85f02d384",
+        "size": 1983867
       },
       {
         "version_name": "1.3.0",
+        "version_code": 7,
         "date": "2026-10-11",
-        "changelog": "Лента! Новая вкладка: рекорды игроков, свежие отзывы, новые подковы и посты. Ставьте подковки, нажмите на ник — откроется профиль игрока с его рекордами. Код восстановления теперь сам расставляет дефисы, а поле не прячется под клавиатурой."
+        "changelog": "Добавлено: Лента: рекорды, отзывы, новые версии, посты игроков, подковки; профили игроков; модерация.",
+        "changelog_en": "Added: Feed: records, reviews, releases, posts, likes; player profiles; moderation.",
+        "changes": {
+          "added": [
+            "Лента: рекорды, отзывы, новые версии, посты игроков, подковки; профили игроков; модерация"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Feed: records, reviews, releases, posts, likes; player profiles; moderation"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.3.0/levsha-1.3.0.apk",
+        "sha256": "c36f8bc3a3e946d90b3d151efcced8fee755f5c3a66e395fb9c795b09b201c4d",
+        "size": 1983867
       },
       {
         "version_name": "1.2.0",
+        "version_code": 6,
         "date": "2026-10-11",
-        "changelog": "Отзывы и оценки! Ставьте изделиям от 1 до 5 подков и пишите, что понравилось. На карточках — средняя оценка, на странице изделия — разбивка и все отзывы. Профиль игрока общий с играми: войдите кодом из «Кирпичной башни». Мастер отвечает на отзывы."
+        "changelog": "Добавлено: Отзывы с оценкой в подковах, профиль игрока, ответы мастера, жалобы.",
+        "changelog_en": "Added: Reviews rated in horseshoes, player profile, master replies, reports.",
+        "changes": {
+          "added": [
+            "Отзывы с оценкой в подковах, профиль игрока, ответы мастера, жалобы"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Reviews rated in horseshoes, player profile, master replies, reports"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.2.0/levsha-1.2.0.apk",
+        "sha256": "329f5a97d6ec2abe2b921a518cc16d2bf7e6e5690332610411f41aa0e6e71f72",
+        "size": 1951099
       },
       {
         "version_name": "1.1.2",
+        "version_code": 5,
         "date": "2026-10-11",
-        "changelog": "Новое: «Поделиться лавкой» во вкладке «Мои» и в настройках — большой QR-код для друзей и кнопка «Отправить ссылку»."
+        "changelog": "Добавлено: «Поделиться лавкой»: QR-код и ссылка для друзей.",
+        "changelog_en": "Added: “Share the shop”: a QR code and a link.",
+        "changes": {
+          "added": [
+            "«Поделиться лавкой»: QR-код и ссылка для друзей"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "“Share the shop”: a QR code and a link"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.1.2/levsha-1.1.2.apk",
+        "sha256": "3560d2f525e1318f5f10b439cf609922db30ca7f467b4d5eadcbffe5964d3d18",
+        "size": 1928406
       },
       {
         "version_name": "1.1.1",
+        "version_code": 4,
         "date": "2026-10-11",
-        "changelog": "Магазин теперь называется «Лавка Левши». Новый значок: полосатый навес лавки, Левша за прилавком и золотая подкова со стрелкой «скачать» — сразу видно, что здесь берут игры и приложения."
+        "changelog": "Изменено: Магазин стал «Лавкой Левши», новый значок-лавка.",
+        "changelog_en": "Changed: The store became Levsha's Shop, with a new shop-stall icon.",
+        "changes": {
+          "changed": [
+            "Магазин стал «Лавкой Левши», новый значок-лавка"
+          ]
+        },
+        "changes_en": {
+          "changed": [
+            "The store became Levsha's Shop, with a new shop-stall icon"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.1.1/levsha-1.1.1.apk",
+        "sha256": "4640af77bc52c3467f0809d48d5d274dbebceba7d3cac3179b9738e2055192c7",
+        "size": 1912378
       },
       {
         "version_name": "1.1.0",
-        "date": "2026-10-11",
-        "changelog": "Большая подковка! Новый пиксельный облик: Левша на значке, кремль на закате, пиксельные значки. Вкладки как в Маркете, поиск, «Изделие недели», история версий, счётчик скачиваний. Загрузки с паузой и докачкой, ожидание Wi-Fi, прогресс в шторке. Автоподковка ночью по Wi-Fi. Настройки и шоколадная тёмная тема."
+        "version_code": 3,
+        "date": "2026-10-10",
+        "changelog": "Добавлено: Вкладки, поиск, загрузки с паузой, автоподковка ночью, настройки, тёмная тема. Изменено: Пиксельный фирменный стиль.",
+        "changelog_en": "Added: Tabs, search, downloads with pause, night auto-update, settings, dark theme. Changed: Pixel-art brand style.",
+        "changes": {
+          "added": [
+            "Вкладки, поиск, загрузки с паузой, автоподковка ночью, настройки, тёмная тема"
+          ],
+          "changed": [
+            "Пиксельный фирменный стиль"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Tabs, search, downloads with pause, night auto-update, settings, dark theme"
+          ],
+          "changed": [
+            "Pixel-art brand style"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.1.0/levsha-1.1.0.apk",
+        "sha256": "2a0c40ca3c5c6d44688c0cc5967be02a7d89810e806f8ec2bd29ad4413c579e7",
+        "size": 1921074
       },
       {
         "version_name": "1.0.1",
+        "version_code": 2,
         "date": "2026-10-10",
-        "changelog": "Золотые кнопки стали ровными по всей ширине, длинные названия больше не обрезаются."
+        "changelog": "Исправлено: Золотая кнопка растягивается правильно, длинные названия переносятся.",
+        "changelog_en": "Fixed: The gold button stretches properly, long names wrap.",
+        "changes": {
+          "fixed": [
+            "Золотая кнопка растягивается правильно, длинные названия переносятся"
+          ]
+        },
+        "changes_en": {
+          "fixed": [
+            "The gold button stretches properly, long names wrap"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.0.1/levsha-1.0.1.apk",
+        "sha256": "e0b5a09a8557057d4a32d1438a22b6cf492532536542b9b66909ae91f2f350d6",
+        "size": 3345854
       },
       {
         "version_name": "1.0.0",
+        "version_code": 1,
         "date": "2026-10-10",
-        "changelog": "Первая версия магазина: каталог «Пряников» и «Инструментов мастера», установка в одно касание с проверкой клейма, самообновление и уведомления о новых подковах."
+        "changelog": "Добавлено: Первая версия магазина: каталог, установка с проверкой клейма, самообновление.",
+        "changelog_en": "Added: The first version of the shop: catalog, verified installs, self-update.",
+        "changes": {
+          "added": [
+            "Первая версия магазина: каталог, установка с проверкой клейма, самообновление"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "The first version of the shop: catalog, verified installs, self-update"
+          ]
+        },
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v1.0.0/levsha-1.0.0.apk",
+        "sha256": "03cf9a2897623d213603044e2e37c7c256792488bf9f464f267843b5c1c878f1",
+        "size": 3345850
       }
     ]
   },
@@ -111,33 +281,287 @@
       "history": [
         {
           "version_name": "1.3.0",
+          "version_code": 12,
           "date": "2026-10-11",
-          "changelog": "Новые враги: подрывник, лекарь и невидимка. Испытание дня — одни правила для всех и своя таблица рекордов. Зимняя карта со снеговиками, дождь из синих деталек и снегопад. Обучение на первой волне."
+          "changelog": "Добавлено: Новые враги: подрывник, лекарь и невидимка; Испытание дня — одни правила для всех и своя таблица; Зимняя карта со снеговиками, дождь из синих деталек и снегопад; Обучение на первой волне.",
+          "changelog_en": "Added: New enemies: bomber, medic and ghost; Daily challenge — the same rules for everyone and its own leaderboard; A winter map with snowmen, rain of blue bricks and snowfall; First-wave tutorial.",
+          "changes": {
+            "added": [
+              "Новые враги: подрывник, лекарь и невидимка",
+              "Испытание дня — одни правила для всех и своя таблица",
+              "Зимняя карта со снеговиками, дождь из синих деталек и снегопад",
+              "Обучение на первой волне"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "New enemies: bomber, medic and ghost",
+              "Daily challenge — the same rules for everyone and its own leaderboard",
+              "A winter map with snowmen, rain of blue bricks and snowfall",
+              "First-wave tutorial"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.3.0/brick-tower-1.3.0.apk",
+          "sha256": "6f51a90caf64a859d40dac7a61c4166f805cd2ebec5e4493563d883a1c4c2e0a",
+          "size": 29023656
         },
         {
           "version_name": "1.2.0",
+          "version_code": 11,
           "date": "2026-10-11",
-          "changelog": "В профиле игрока — звание, «о себе», рекорды с местом в мире и достижения. Если код профиля сменили в «Лавке Левши», игра предложит войти по новому."
+          "changelog": "Добавлено: Статистика и достижения в окне профиля. Исправлено: Если код сменили в лавке — игра просит войти заново.",
+          "changelog_en": "Added: Stats and achievements in the profile window. Fixed: If the code was changed in the shop, the game asks to sign in again.",
+          "changes": {
+            "added": [
+              "Статистика и достижения в окне профиля"
+            ],
+            "fixed": [
+              "Если код сменили в лавке — игра просит войти заново"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Stats and achievements in the profile window"
+            ],
+            "fixed": [
+              "If the code was changed in the shop, the game asks to sign in again"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.2.0/brick-tower-1.2.0.apk",
+          "sha256": "607eaa25f970ffc4f10274919f3159526c2943cd99a961c6e1bdd776c5f8f429",
+          "size": 28866403
         },
         {
           "version_name": "1.1.1",
-          "date": "2026-10-11",
-          "changelog": "Код восстановления сам расставляет дефисы, а окно поднимается над экранной клавиатурой. Рекорды теперь появляются и в ленте «Лавки Левши»."
+          "version_code": 10,
+          "date": "2026-10-10",
+          "changelog": "Изменено: Код восстановления сам ставит дефисы; Окно поднимается над клавиатурой.",
+          "changelog_en": "Changed: The recovery code adds dashes by itself; The window moves above the keyboard.",
+          "changes": {
+            "changed": [
+              "Код восстановления сам ставит дефисы",
+              "Окно поднимается над клавиатурой"
+            ]
+          },
+          "changes_en": {
+            "changed": [
+              "The recovery code adds dashes by itself",
+              "The window moves above the keyboard"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.1.1/brick-tower-1.1.1.apk",
+          "sha256": "c1328ffa6b4cf7a4a88e0f1056957ed822c799aac7e5c1a489c5bd563a8a5ab4",
+          "size": 28866403
         },
         {
           "version_name": "1.1.0",
-          "date": "2026-10-11",
-          "changelog": "Рекорды мира! Создай профиль — ник и пиксельный аватар, без почты и пароля. Живые таблицы лидеров: кампания и бесконечный режим, за неделю и за всё время. После забега — твоё место в мире. Код восстановления вернёт профиль на новом телефоне."
+          "version_code": 9,
+          "date": "2026-10-10",
+          "changelog": "Добавлено: Рекорды мира: профиль игрока (ник, аватар, код восстановления), живые таблицы, место в мире.",
+          "changelog_en": "Added: World records: a player profile (nick, avatar, recovery code), live leaderboards, your place.",
+          "changes": {
+            "added": [
+              "Рекорды мира: профиль игрока (ник, аватар, код восстановления), живые таблицы, место в мире"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "World records: a player profile (nick, avatar, recovery code), live leaderboards, your place"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.1.0/brick-tower-1.1.0.apk",
+          "sha256": "28642b49c095428fae3eb4978ad9462d6f6ed60cdb8aa6c6fec71a09f321fb5e",
+          "size": 28862307
         },
         {
           "version_name": "1.0.3",
-          "date": "2026-10-11",
-          "changelog": "Новая пиксельная иконка: башня, стрелок и враг из кубиков. Заставка с пиксельной башней и клеймом мастерской."
+          "version_code": 8,
+          "date": "2026-10-10",
+          "changelog": "Изменено: Пиксельная иконка и пиксельная башня в заставке; Чёткая заставка при запуске.",
+          "changelog_en": "Changed: Pixel-art icon and a pixel tower in the intro; A crisp boot splash.",
+          "changes": {
+            "changed": [
+              "Пиксельная иконка и пиксельная башня в заставке",
+              "Чёткая заставка при запуске"
+            ]
+          },
+          "changes_en": {
+            "changed": [
+              "Pixel-art icon and a pixel tower in the intro",
+              "A crisp boot splash"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.0.3/brick-tower-1.0.3.apk",
+          "sha256": "ed3eac74908d1f7390d4e3570474294a5eed81fcbe9b5417906b77a94cf0bf1e",
+          "size": 28839664
         },
         {
           "version_name": "1.0.2",
+          "version_code": 7,
           "date": "2026-10-10",
-          "changelog": "Игра теперь живёт в магазине «Левша» и подписана клеймом мастерской: обновления будут приходить сами, с сохранением прогресса. Счётчик кадров в углу убран."
+          "changelog": "Добавлено: Клеймо мастерской «Левша 71»: игра подписана ключом мастерской и ставится через лавку.",
+          "changelog_en": "Added: The Levsha 71 workshop seal: the game is signed with the workshop key and installs via the shop.",
+          "changes": {
+            "added": [
+              "Клеймо мастерской «Левша 71»: игра подписана ключом мастерской и ставится через лавку"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "The Levsha 71 workshop seal: the game is signed with the workshop key and installs via the shop"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.0.2/brick-tower-1.0.2.apk",
+          "sha256": "614120eb8d7f94ba78005c9b776252551c2ba2a92f209418d37b99adc1e650d4",
+          "size": 32099877
+        },
+        {
+          "version_name": "1.0.1",
+          "version_code": 6,
+          "date": "2026-10-10",
+          "changelog": "Изменено: Анимированная заставка вместо долгой загрузки.",
+          "changelog_en": "Changed: An animated intro instead of a long loading screen.",
+          "changes": {
+            "changed": [
+              "Анимированная заставка вместо долгой загрузки"
+            ]
+          },
+          "changes_en": {
+            "changed": [
+              "An animated intro instead of a long loading screen"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.0.1/brick-tower-1.0.1.apk",
+          "sha256": "cad42fbc3167a5cc18d6b37c70549722be88fb5f7d40402f7f32290d27b7eac4",
+          "size": 31829340,
+          "approx": true,
+          "legacy": true
+        },
+        {
+          "version_name": "1.0.0",
+          "version_code": 5,
+          "date": "2026-10-10",
+          "changelog": "Добавлено: Этажи башни из золотых кирпичиков; Выбор 1 из 3 улучшений, ветки башни, вызовы, боссы; Мастерская чертежей, бесконечный режим, день и ночь; Новая иконка.",
+          "changelog_en": "Added: Tower floors from golden bricks; Pick 1 of 3 upgrades, tower branches, call-ins, bosses; Blueprint workshop, endless mode, day and night; New icon.",
+          "changes": {
+            "added": [
+              "Этажи башни из золотых кирпичиков",
+              "Выбор 1 из 3 улучшений, ветки башни, вызовы, боссы",
+              "Мастерская чертежей, бесконечный режим, день и ночь",
+              "Новая иконка"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Tower floors from golden bricks",
+              "Pick 1 of 3 upgrades, tower branches, call-ins, bosses",
+              "Blueprint workshop, endless mode, day and night",
+              "New icon"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.0.0/brick-tower-1.0.0.apk",
+          "sha256": "04c435a4725e816799e316967e498bc04ef510062f71d22e56895447c8ef4f44",
+          "size": 31927100,
+          "approx": true,
+          "legacy": true
+        },
+        {
+          "version_name": "0.3.1",
+          "version_code": 4,
+          "date": "2026-10-10",
+          "changelog": "Добавлено: Звуки и голоса диктора и героя.",
+          "changelog_en": "Added: Sound effects and voices for the announcer and the hero.",
+          "changes": {
+            "added": [
+              "Звуки и голоса диктора и героя"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Sound effects and voices for the announcer and the hero"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v0.3.1/brick-tower-0.3.1.apk",
+          "sha256": "e436a6a4105416254c5602ffa37da7c8485559a9606dffdf6895b5d7f1128040",
+          "size": 27495121,
+          "approx": true,
+          "legacy": true
+        },
+        {
+          "version_name": "0.3.0",
+          "version_code": 3,
+          "date": "2026-10-10",
+          "changelog": "Добавлено: Герой стреляет туда, где палец; перегрев и выстрел в голову; Щитоносец, летун и строитель с лестницей; Кнопки-кирпичики, меню, звук. Изменено: Мир стал богаче: горы, лес, домики.",
+          "changelog_en": "Added: The hero shoots where your finger is; overheating and headshots; Shield bearer, flyer and ladder builder; Brick buttons, menu, sound. Changed: A richer world: mountains, forest, houses.",
+          "changes": {
+            "added": [
+              "Герой стреляет туда, где палец; перегрев и выстрел в голову",
+              "Щитоносец, летун и строитель с лестницей",
+              "Кнопки-кирпичики, меню, звук"
+            ],
+            "changed": [
+              "Мир стал богаче: горы, лес, домики"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "The hero shoots where your finger is; overheating and headshots",
+              "Shield bearer, flyer and ladder builder",
+              "Brick buttons, menu, sound"
+            ],
+            "changed": [
+              "A richer world: mountains, forest, houses"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v0.3.0/brick-tower-0.3.0.apk",
+          "sha256": "e1628798ef49a264e814a8041b95e9beef2c40b63d326c6aa0d7199461a6c585",
+          "size": 26724705,
+          "approx": true,
+          "legacy": true
+        },
+        {
+          "version_name": "0.2.0",
+          "version_code": 2,
+          "date": "2026-10-10",
+          "changelog": "Добавлено: Настоящее 3D из деталек: диорама, враги разваливаются на кирпичики.",
+          "changelog_en": "Added: Real 3D made of bricks: a diorama, enemies fall apart into bricks.",
+          "changes": {
+            "added": [
+              "Настоящее 3D из деталек: диорама, враги разваливаются на кирпичики"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Real 3D made of bricks: a diorama, enemies fall apart into bricks"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v0.2.0/brick-tower-0.2.0.apk",
+          "sha256": "57ac6b696b82b63fe8fda01153ccc30ec1d653545b1691cde8acfad2491c7bdd",
+          "size": 26498790,
+          "approx": true,
+          "legacy": true
+        },
+        {
+          "version_name": "0.1.0",
+          "version_code": 1,
+          "date": "2026-10-10",
+          "changelog": "Добавлено: Первый прототип в 2D: башня, стрелки, три вида врагов, 10 волн, мины и магазин.",
+          "changelog_en": "Added: First 2D prototype: a tower, shooters, three enemy types, 10 waves, mines and a shop.",
+          "changes": {
+            "added": [
+              "Первый прототип в 2D: башня, стрелки, три вида врагов, 10 волн, мины и магазин"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "First 2D prototype: a tower, shooters, three enemy types, 10 waves, mines and a shop"
+            ]
+          },
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v0.1.0/brick-tower-0.1.0.apk",
+          "sha256": "de25f580062a8b109ba456f2b93e7aa4404d4ab5dd5507196fd2413d409c4027",
+          "size": 26477863,
+          "approx": true,
+          "legacy": true
         }
       ],
       "tagline_en": "Defend a brick tower from waves of enemies",
@@ -220,5 +644,5 @@
       "title_en": "Reviews, feed and likes"
     }
   ],
-  "seq": 1791861959
+  "seq": 1791905866
 }
