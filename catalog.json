@@ -4,14 +4,43 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 11,
-    "version_name": "2.0.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.0.0/levsha-2.0.0.apk",
-    "sha256": "0d22bfef79a5a2cadbe0976a43898f58ec443939e9d0b7b59d40d86097abbc23",
+    "version_code": 12,
+    "version_name": "2.0.1",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.0.1/levsha-2.0.1.apk",
+    "sha256": "c7958211266866032c9597f26336f882b21e74297f5cf2d84b2aea407da920c9",
     "size": 2360095,
-    "changelog": "Добавлено: Новый вид: 4 вкладки, заставка, живой Левша, подковы-достижения, обучение, русский и английский; Друзья, группы по приглашению, «Люди в лавке», итоги недели, своё фото, рамки и статус; Облачные сохранения игр, вся история версий и откат к старой версии; Настройки приватности и блокировка; уведомления по типам и тихие часы. Изменено: Каталог подписан ключом мастерской, каждый файл проверяется — подделку лавка не примет.",
+    "changelog": "Добавлено: Сколько минут друг уже играет: «играет в «Кирпичную башню» · 12 мин»; Пункт «Помощь» в настройках — ответы на частые вопросы; Лавка для iPhone и компьютера — в браузере, с тем же профилем, друзьями и группами. Исправлено: Правильные окончания: «21 волна», «3 волны».",
     "updated": "2026-10-13",
     "history": [
+      {
+        "version_name": "2.0.1",
+        "version_code": 12,
+        "date": "2026-10-13",
+        "changelog": "Добавлено: Сколько минут друг уже играет: «играет в «Кирпичную башню» · 12 мин»; Пункт «Помощь» в настройках — ответы на частые вопросы; Лавка для iPhone и компьютера — в браузере, с тем же профилем, друзьями и группами. Исправлено: Правильные окончания: «21 волна», «3 волны».",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.0.1/levsha-2.0.1.apk",
+        "sha256": "c7958211266866032c9597f26336f882b21e74297f5cf2d84b2aea407da920c9",
+        "size": 2360095,
+        "changes": {
+          "added": [
+            "Сколько минут друг уже играет: «играет в «Кирпичную башню» · 12 мин»",
+            "Пункт «Помощь» в настройках — ответы на частые вопросы",
+            "Лавка для iPhone и компьютера — в браузере, с тем же профилем, друзьями и группами"
+          ],
+          "fixed": [
+            "Правильные окончания: «21 волна», «3 волны»"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "How long a friend has been playing: “playing Brick Tower · 12 min”",
+            "Help in Settings — answers to common questions",
+            "The shop for iPhone and computers — in the browser, with the same profile, friends and groups"
+          ],
+          "fixed": [
+            "Correct word endings for waves in Russian"
+          ]
+        }
+      },
       {
         "version_name": "2.0.0",
         "version_code": 11,
@@ -704,5 +733,5 @@
       "title_en": "Reviews, feed and likes"
     }
   ],
-  "seq": 1791906078
+  "seq": 1791911928
 }
