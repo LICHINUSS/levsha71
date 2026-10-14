@@ -71,8 +71,8 @@ const W = {
     moder_t: "Модерация", moder_s: "Жалобы, скрытые отзывы, посты, комментарии, фото", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
     k_review: "отзыв", k_post: "пост", k_comment: "комментарий", k_avatar: "фото", reports_n: "жалоб: {n}", hidden_l: "скрыто",
     lang_t: "Язык", whatsnew: "Что подковано", game_week: "Игра недели", game_week_s: "Мастер советует", help_q: "Найти ответ…",
-    about_text: "«Лавка Левши» — магазин игр и приложений мастерской «Левша 71». Бесплатно, без рекламы и покупок. Каждое изделие подписано клеймом мастерской — подделку лавка не поставит. Один профиль — для лавки и всех игр, на Android, iPhone и компьютере.",
-    about_pts: ["Подкова — оценка и «нравится»", "Подковать — установить или обновить", "Что подковано — что нового в версии", "Клеймо — подпись мастерской на каждом файле"],
+    about_text: "Мастер Левша, по сказу Лескова, подковал английскую стальную блоху — да так тонко, что без «мелкоскопа» и не разглядеть. В его честь названа мастерская: здесь делают игры и приложения, и каждое — с клеймом мастера. А в «Лавке Левши» их можно взять. Бесплатно, без рекламы и покупок. Один профиль — для лавки и всех игр, на Android, iPhone и компьютере.",
+    about_pts: ["Пряники — игры мастерской", "Подкова — оценка и «нравится»", "Подковать — обновить изделие до новой версии", "Что подковано — список изменений в новой версии", "Клеймо — подпись мастерской: лавка ставит только файлы с ней"],
   },
   en: {
     tab_home: "Home", tab_feed: "Feed", tab_friends: "Friends", tab_me: "Library",
@@ -142,8 +142,8 @@ const W = {
     moder_t: "Moderation", moder_s: "Reports, hidden reviews, posts, comments, photos", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
     k_review: "review", k_post: "post", k_comment: "comment", k_avatar: "photo", reports_n: "reports: {n}", hidden_l: "hidden",
     lang_t: "Language", whatsnew: "What's new", game_week: "Game of the week", game_week_s: "The master recommends", help_q: "Find an answer…",
-    about_text: "Levsha's Shop is the store of the “Levsha 71” workshop's games and apps. Free, no ads, no purchases. Every item is signed with the workshop seal — the shop won't install a fake. One profile for the shop and all games, on Android, iPhone and computers.",
-    about_pts: ["Horseshoe — a rating and a like", "Forge — install or update", "What's new — changes in a version", "Seal — the workshop's signature on every file"],
+    about_text: "In Leskov's tale, the craftsman Levsha shod a tiny steel flea — so finely you need a microscope to see it. The workshop is named after him: it makes games and apps, each with the master's seal. Levsha's Shop is where you get them. Free, no ads, no purchases. One profile for the shop and all games, on Android, iPhone and computers.",
+    about_pts: ["Gingerbread — the workshop's games", "Horseshoe — a rating and a “like”", "Shoe (update) — update an app to a new version", "What's new — list of changes", "Seal — the workshop's signature: the shop installs only signed files"],
   },
 };
 const AVATARS = ["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"];
@@ -919,7 +919,8 @@ const App = {
     const h = cat && cat.store && cat.store.history && cat.store.history[0];
     this.page(this.head(w("about_t"), "#me") + `<div class="panel center"><img class="px" src="assets/stamp_256.png" alt="" width="96">
         <h2>${esc(Lavka.t("brand"))}</h2><p>${esc(w("about_text"))}</p></div>
-      <div class="list">${w("about_pts").map(t => `<div class="row"><span class="nicon">🐎</span><span class="grow">${esc(t)}</span></div>`).join("")}</div>
+      <div class="list">${w("about_pts").map(t => { const [k, d] = t.split(" — ");
+        return `<div class="row"><span class="nicon" style="color:var(--gold-text)">${Lavka.shoe.replace("<svg", '<svg width="20" height="20"')}</span><span class="grow"><b>${esc(k)}</b> — ${esc(d)}</span></div>`; }).join("")}</div>
       ${h ? `<h2 class="sec">${w("whatsnew")} · v${esc(h.version_name)}</h2><div class="panel">${AppPage.changes(h)}</div>` : ""}
       <div class="btns"><a class="btn" href="#roadmap">${w("road_t")}</a><a class="btn ghost" href="#ideas">${w("ideas_t")}</a></div>`);
   },

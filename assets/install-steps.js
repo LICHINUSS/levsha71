@@ -22,8 +22,8 @@ const INSTALL = {
   ],
   iphone: [
     { img: "i1_safari.svg",
-      ru: { t: "Откройте сайт в Safari", p: "lichinuss.github.io/levsha71 — именно в Safari: только он умеет ставить сайты на экран «Домой»." },
-      en: { t: "Open the site in Safari", p: "lichinuss.github.io/levsha71 — in Safari: only Safari can put sites on the Home Screen." } },
+      ru: { t: "Откройте сайт в Safari", p: "lichinuss.github.io/levsha71 — лучше в Safari (с iOS 16.4 можно и из Chrome). Внизу нажмите «Моя лавка»." },
+      en: { t: "Open the site in Safari", p: "lichinuss.github.io/levsha71 — best in Safari (since iOS 16.4 Chrome works too). Then tap “My shop”." } },
     { img: "i2_share.svg",
       ru: { t: "Нажмите «Поделиться»", p: "Это квадрат со стрелкой вверх — внизу экрана (на iPad — вверху)." },
       en: { t: "Tap “Share”", p: "The square with an arrow pointing up — at the bottom of the screen (at the top on iPad)." } },
@@ -31,7 +31,7 @@ const INSTALL = {
       ru: { t: "«На экран „Домой“»", p: "Прокрутите список вниз, выберите «На экран „Домой“» и нажмите «Добавить»." },
       en: { t: "“Add to Home Screen”", p: "Scroll down the list, choose “Add to Home Screen” and tap “Add”." } },
     { img: "i4_open.svg",
-      ru: { t: "Открывайте как приложение", p: "Значок лавки появится среди приложений. Игры с кнопкой «Играть» запускаются прямо в нём." },
-      en: { t: "Open it like an app", p: "The shop icon appears among your apps. Games with a “Play” button run right inside it." } },
+      ru: { t: "Открывайте как приложение", p: "Значок лавки появится среди приложений. Внутри — те же разделы, что в лавке на Android: Главная, Каталог, Лента, Мои. Игры с кнопкой «Играть» запускаются прямо в ней, уведомления включаются в «Мои → Настройки»." },
+      en: { t: "Open it like an app", p: "The shop icon appears among your apps. Inside are the same sections as in the Android shop: Home, Catalog, Feed, Mine. Games with a “Play” button run right inside it; turn on notifications in “Mine → Settings”." } },
   ],
 };
