@@ -12,32 +12,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-  .board { list-style: none; padding: 0; margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-  .board li { display: flex; gap: 12px; align-items: center; padding: 9px 14px; border-bottom: 1px solid var(--border); }
-  .board li:last-child { border-bottom: 0; }
-  .board li.me { background: rgba(242, 181, 49, .15); }
-  .board a { flex: 1; color: var(--text); text-decoration: none; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .board img { border-radius: 9px; }
-  .board .pl { width: 26px; text-align: center; font-weight: 900; color: var(--text2); }
-  .board .p1 { color: var(--gold-d); } .board .p2 { color: #9AA6C4; } .board .p3 { color: #C47A52; }
-  .revsum { display: flex; gap: 20px; align-items: center; margin-bottom: 14px; }
-  .revsum .big { font-size: 46px; font-weight: 900; line-height: 1; text-align: center; color: var(--gold-text); }
-  .revsum .big small { display: block; font-size: 13px; color: var(--text2); font-weight: 700; }
-  .bars { flex: 1; max-width: 340px; } .bars div { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text2); }
-  .bars i { display: block; height: 8px; border-radius: 4px; background: var(--gold); min-width: 3px; }
-  .review { margin-bottom: 10px; } .review header { display: flex; gap: 10px; align-items: center; }
-  .review header img { border-radius: 9px; } .review small { display: block; }
-  .review p { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .rating .off { opacity: .25; }
-  .review .reply { margin-top: 10px; padding: 8px 12px; border-left: 4px solid var(--gold); background: var(--surface2); border-radius: 8px; }
-  .stars { display: flex; gap: 4px; margin: 8px 0; } .stars button { border: 0; background: none; font-size: 30px; color: var(--border); cursor: pointer; padding: 0 2px; }
-  .stars button.on { color: var(--gold); }
-  #revForm textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text);
-    font: 600 16px Nunito, sans-serif; padding: 10px 12px; margin-bottom: 8px; }
-  #revForm .panel { margin-bottom: 14px; }
-  .skel { height: 60px; border-radius: 14px; background: var(--surface2); }
-</style>
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -54,7 +28,6 @@
 </div></header>
 
 <main class="wrap" id="page"><p class="empty">…</p></main>
-<dialog id="zoom"><img alt=""></dialog>
 
 <footer><div class="wrap">
   <img class="px" src="assets/stamp_256.png" alt="">
@@ -64,143 +37,15 @@
 </div></footer>
 
 <script src="assets/site.js"></script>
+<script src="assets/apppage.js"></script>
 <script>
 "use strict";
 const id = new URLSearchParams(location.search).get("id");
-let ratings = {}, mode = "endless";
-const TX = {
-  ru: { rec_t: "Рекорды мира", m_endless: "Бесконечный", m_campaign: "Кампания", m_daily: "Испытание дня",
-        waves: ["волна", "волны", "волн"], rec_empty: "Рекордов пока нет — будьте первым!", rec_more: "Играть и попасть в таблицу",
-        rev_t: "Отзывы", rev_empty: "Отзывов пока нет.", rev_master: "Ответ мастера", rev_mine: "Ваш отзыв",
-        rev_ph: "Что понравилось, что улучшить? (до 500 знаков)", rev_send: "Сохранить отзыв", rev_saved: "Спасибо! Отзыв сохранён.",
-        rev_need: "Чтобы оставить отзыв, нужен профиль лавки.", rev_login: "Войти или создать профиль", rev_rate: "Ваша оценка" },
-  en: { rec_t: "World records", m_endless: "Endless", m_campaign: "Campaign", m_daily: "Daily challenge",
-        waves: ["wave", "waves", "waves"], rec_empty: "No records yet — be the first!", rec_more: "Play and get on the board",
-        rev_t: "Reviews", rev_empty: "No reviews yet.", rev_master: "Master's answer", rev_mine: "Your review",
-        rev_ph: "What did you like, what to improve? (up to 500 characters)", rev_send: "Save review", rev_saved: "Thanks! Your review is saved.",
-        rev_need: "You need a shop profile to leave a review.", rev_login: "Sign in or create a profile", rev_rate: "Your rating" },
-};
-const X = k => (TX[Lavka.lang] || TX.ru)[k];
-function wv(n) {
-  const f = X("waves"), d = n % 10, dd = n % 100;
-  if (Lavka.lang === "en") return n + " " + (n === 1 ? f[0] : f[1]);
-  return n + " " + (d === 1 && dd !== 11 ? f[0] : d >= 2 && d <= 4 && (dd < 12 || dd > 14) ? f[1] : f[2]);
-}
-function when(iso) { return iso ? new Date(iso).toLocaleDateString(Lavka.lang === "ru" ? "ru-RU" : "en-GB", { day: "numeric", month: "short", year: "numeric" }) : ""; }
-const avSrc = a => `assets/av/${/^[a-z]+$/.test(a || "") ? a : "levsha"}.png`;
-function profile() { try { return JSON.parse(localStorage.getItem("lavka_profile") || "null"); } catch (e) { return null; } }
-
-// Рекорды мира: бесконечный, кампания, испытание дня (сегодня по Москве)
-async function records(a) {
-  const box = document.getElementById("rec"); if (!box) return;
-  try {
-    const rows = await Lavka.rpc("leaderboard", { p_game: a.id, p_mode: mode, p_period: "all", p_limit: 10 });
-    const me = profile();
-    box.innerHTML = rows.length ? `<ol class="board">${rows.map(r => `<li class="${me && me.id === r.player_id ? "me" : ""}">
-        <span class="pl p${r.place}">${r.place}</span><img class="px" src="${avSrc(r.avatar)}" alt="" width="34" height="34">
-        <a href="me.html#player/${r.player_id}">${Lavka.esc(r.nick)}</a>
-        <b>${mode === "campaign" ? (r.won ? "🏆 " : "") + r.waves + "/10" : wv(r.waves)}</b></li>`).join("")}</ol>`
-      : `<p class="muted">${X("rec_empty")}</p>`;
-    if (a.web) box.insertAdjacentHTML("beforeend", `<p><a class="btn small" href="${a.web}">${X("rec_more")}</a></p>`);
-  } catch (e) { box.innerHTML = `<p class="muted">—</p>`; }
-}
-
-// Отзывы: сводка, список с ответами мастера и свой отзыв (тем же профилем, что в лавке)
-async function reviews(a) {
-  const box = document.getElementById("rev"), sum = document.getElementById("revSum"), form = document.getElementById("revForm");
-  if (!box) return;
-  try {
-    const [s, list] = await Promise.all([Lavka.rpc("review_summary", { p_app: a.id }), Lavka.rpc("reviews_list", { p_app: a.id, p_limit: 20 })]);
-    if (s && s.count) {
-      const max = Math.max(...s.dist, 1);
-      sum.innerHTML = `<div class="revsum"><div class="big">${String(s.avg).replace(".", Lavka.lang === "ru" ? "," : ".")}
-          <small>${Lavka.t("reviews", { n: s.count })}</small></div>
-        <div class="bars">${[5, 4, 3, 2, 1].map(n => `<div><span>${n}</span><i style="width:${Math.round(s.dist[n - 1] / max * 100)}%"></i></div>`).join("")}</div></div>`;
-    }
-    box.innerHTML = list.length ? list.map(r => `<article class="panel review"><header><img class="px" src="${avSrc(r.avatar)}" alt="" width="36" height="36">
-        <div><b>${Lavka.esc(r.nick)}</b> <span class="rating">${"★".repeat(r.rating)}<span class="off">${"★".repeat(5 - r.rating)}</span></span>
-        <small class="muted">${when(r.updated_at || r.created_at)}</small></div></header>
-        ${r.body ? `<p>${Lavka.esc(r.body)}</p>` : ""}
-        ${r.reply ? `<div class="reply"><b>👑 ${X("rev_master")}</b><p>${Lavka.esc(r.reply)}</p></div>` : ""}</article>`).join("")
-      : `<p class="muted">${X("rev_empty")}</p>`;
-  } catch (e) { box.innerHTML = `<p class="muted">—</p>`; }
-  const me = profile();
-  if (!me) { form.innerHTML = `<p class="muted">${X("rev_need")} <a href="me.html#me">${X("rev_login")}</a></p>`; return; }
-  let mine = null; try { mine = await Lavka.rpc("my_review", { p_id: me.id, p_app: a.id }); } catch (e) { /* нет */ }
-  let rating = (mine && mine.rating) || 5;
-  form.innerHTML = `<div class="panel"><b>${X("rev_mine")}</b> <span class="muted">· ${Lavka.esc(me.nick)}</span>
-    <div class="stars" role="radiogroup" aria-label="${X("rev_rate")}">${[1, 2, 3, 4, 5].map(n => `<button data-r="${n}" aria-label="${n}">★</button>`).join("")}</div>
-    <textarea id="rvBody" maxlength="500" rows="3" placeholder="${X("rev_ph")}">${Lavka.esc((mine && mine.body) || "")}</textarea>
-    <button class="btn small" id="rvSend">${X("rev_send")}</button></div>`;
-  const paint = () => form.querySelectorAll("[data-r]").forEach(b => b.classList.toggle("on", +b.dataset.r <= rating));
-  form.querySelectorAll("[data-r]").forEach(b => b.onclick = () => { rating = +b.dataset.r; paint(); });
-  paint();
-  document.getElementById("rvSend").onclick = async (e) => {
-    e.target.disabled = true;
-    try {
-      const r = await fetch(API + "upsert_review", { method: "POST", headers: { apikey: API_KEY, "Content-Type": "application/json" },
-        body: JSON.stringify({ p_id: me.id, p_code: me.code, p_app: a.id, p_rating: rating, p_body: document.getElementById("rvBody").value }) });
-      const d = await r.json();
-      if (!r.ok) throw new Error(d.message || "error");
-      Lavka.toast(X("rev_saved")); ratings = await Lavka.ratings(); render();
-    } catch (err) { Lavka.toast(err.message); e.target.disabled = false; }
-  };
-}
-
-function changes(h) {
-  const ch = (Lavka.lang === "en" && h.changes_en) || h.changes;
-  if (ch && Object.keys(ch).length) {
-    return `<div class="changes">${["added", "fixed", "changed"].filter(k => ch[k] && ch[k].length).map(k =>
-      `<h4 class="h-${k}">${Lavka.t("h_" + k)}</h4><ul>${ch[k].map(x => `<li>${Lavka.esc(x)}</li>`).join("")}</ul>`).join("")}</div>`;
-  }
-  return `<p>${Lavka.esc(Lavka.L(h, "changelog"))}</p>`;
-}
-
-function render() {
-  const c = Lavka.catalog, a = c && c.apps.find(x => x.id === id), page = document.getElementById("page");
-  if (!a) { page.innerHTML = `<p class="empty">${Lavka.t("notfound")} <a href="./">${Lavka.t("back")}</a></p>`; return; }
-  document.title = Lavka.L(a, "name") + " — " + (Lavka.lang === "en" ? "Levsha's Shop" : "Лавка Левши");
-  const hist = a.history || [];
-  const r = ratings[a.id];
-  page.innerHTML = `
-    <p style="margin:16px 0 0"><a href="./#catalog">${Lavka.t("back")}</a></p>
-    <div class="app-head"><img class="icon px" src="${a.icon}" alt="">
-      <div><h1>${Lavka.esc(Lavka.L(a, "name"))}</h1><p class="sub" style="margin:4px 0 0">${Lavka.esc(Lavka.L(a, "tagline"))}</p>
-        <p class="muted" style="margin:4px 0 0">${Lavka.esc(a.developer || "")}</p></div></div>
-    <div class="facts">
-      <div><b>${r && r.count ? Lavka.ratingHtml(r) : "—"}</b><span>${r && r.count ? Lavka.t("reviews", { n: r.count }) : Lavka.t("f_rating")}</span></div>
-      <div><b>${a.version_name || "—"}</b><span>${Lavka.t("f_ver")}</span></div>
-      <div><b>${Lavka.fmtSize(a.size) || "—"}</b><span>${Lavka.t("f_size")}</span></div>
-      <div><b>${a.min_sdk >= 26 ? "8+" : "7+"}</b><span>${Lavka.t("f_android")}</span></div>
-    </div>
-    <div class="row" style="display:flex;gap:10px;flex-wrap:wrap">${Lavka.appButtons(a, false)}</div>
-    ${a.trailer ? `<section><h2>${Lavka.t("app_trailer")}</h2>${Lavka.video(a.trailer, a.poster)}</section>` : ""}
-    <section><h2>${Lavka.t("app_shots")}</h2>
-      <div class="shots">${(Lavka.promoFor(a).length ? Lavka.promoFor(a) : (a.screenshots || [])).map(s => `<img src="${s}" alt="" loading="lazy">`).join("")}</div></section>
-    <section><h2>${Lavka.t("app_about")}</h2><p>${Lavka.esc(Lavka.L(a, "description"))}</p></section>
-    ${a.category === "games" ? `<section id="recSec"><h2>${X("rec_t")}</h2>
-      <div class="chips" style="margin:6px 0 12px">${["endless", "campaign", "daily"].map(m =>
-        `<button class="chip" data-mode="${m}" aria-pressed="${m === mode}">${X("m_" + m)}</button>`).join("")}</div>
-      <div id="rec"><div class="skel"></div></div></section>` : ""}
-    <section id="revSec"><h2>${X("rev_t")}</h2><div id="revSum"></div><div id="revForm"></div><div id="rev"><div class="skel"></div></div></section>
-    ${hist.length ? `<section><h2>${Lavka.t("app_whatsnew", { v: hist[0].version_name })}</h2>
-      <p class="muted">${Lavka.fmtDate(hist[0].date)}</p>${changes(hist[0])}</section>` : ""}
-    ${hist.length > 1 ? `<section><h2>${Lavka.t("app_history")}</h2>${hist.slice(1).map(h => `
-      <details class="ver"><summary>v${Lavka.esc(h.version_name)} <span class="muted" style="font-weight:600">${Lavka.fmtDate(h.date)}</span></summary>
-        ${changes(h)}${h.approx ? `<p class="approx">${Lavka.t("approx")}</p>` : ""}</details>`).join("")}</section>` : ""}`;
-  for (const b of page.querySelectorAll("[data-mode]")) b.onclick = () => {
-    mode = b.dataset.mode; for (const x of page.querySelectorAll("[data-mode]")) x.setAttribute("aria-pressed", x === b); records(a);
-  };
-  if (a.category === "games") records(a);
-  reviews(a);
-  for (const img of page.querySelectorAll(".shots img")) img.onclick = () => {
-    const d = document.getElementById("zoom"); d.querySelector("img").src = img.src; d.showModal(); };
-}
-
-document.getElementById("zoom").onclick = e => e.currentTarget.close();
+const page = document.getElementById("page");
+const draw = () => AppPage.render(page, id, { back: "./#catalog" });
 Lavka.init();
-document.addEventListener("lavka:lang", render);
-Lavka.loadCatalog().then(async () => { render(); ratings = await Lavka.ratings(); render(); });
+document.addEventListener("lavka:lang", draw);
+Lavka.loadCatalog().then(draw);
 </script>
 </body>
 </html>

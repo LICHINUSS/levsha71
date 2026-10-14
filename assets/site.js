@@ -118,6 +118,12 @@ const Lavka = {
     catch (e) { return iso; }
   },
   L(o, k) { return (this.lang === "en" && o[k + "_en"]) || o[k] || ""; },
+  /** Простая разметка общих текстов (помощь): абзацы, **жирный**, [ссылка](страница.html). */
+  md(text) {
+    return String(text || "").split(/\n\n+/).map(p => "<p>" + this.esc(p)
+      .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+      .replace(/\[([^\]]+)\]\(([a-z0-9_#.\/-]+)\)/gi, '<a href="$2">$1</a>') + "</p>").join("");
+  },
   esc(s) { return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); },
   shoe: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 20c-1.5-2-3-5-3-9a10 10 0 0 1 20 0c0 4-1.5 7-3 9h-3.2c1.6-2.2 3-5 3-9a6.8 6.8 0 0 0-13.6 0c0 4 1.4 6.8 3 9z"/></svg>',
 
@@ -183,6 +189,15 @@ const Lavka = {
     box.querySelector("button").onclick = close;
     setTimeout(close, 12000);
   },
+  /** Картинка крупно (нажать — закрыть). */
+  zoom(src) {
+    let d = document.getElementById("zoom");
+    if (!d) {
+      d = document.createElement("dialog"); d.id = "zoom"; d.innerHTML = '<img alt="">';
+      d.onclick = () => d.close(); document.body.appendChild(d);
+    }
+    d.querySelector("img").src = src; d.showModal();
+  },
   toast(text) {
     const d = document.createElement("div");
     d.className = "sheet"; d.textContent = text;
@@ -216,7 +231,13 @@ const Lavka = {
       // язык выбран сам по браузеру и это не русский — подскажем, где переключить
       if (!saved && this.lang === "en") setTimeout(() => this.hint(lb, "lang", this.t("hint_lang")), 2500);
     }
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+    if ("serviceWorker" in navigator) {
+      // вышла новая версия сайта — служба обновилась: один раз перезагружаем страницу, чтобы не остаться на старой
+      const had = !!navigator.serviceWorker.controller;
+      let reloaded = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => { if (had && !reloaded) { reloaded = true; location.reload(); } });
+      navigator.serviceWorker.register("sw.js").then(r => r.update()).catch(() => {});
+    }
     setTimeout(() => this.iosSheet(), 3000);
   },
 };

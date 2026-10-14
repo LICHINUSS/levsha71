@@ -62,6 +62,17 @@ const W = {
     help: "Помощь", points: "{n} очк.", achievements: "Достижения", games: "Игры", runs: "забегов", report_avatar: "Пожаловаться на аватар",
     err_net: "Нет связи с сервером — попробуйте ещё раз.", back: "Назад", ago_now: "только что", ago_m: "{n} мин назад", ago_h: "{n} ч назад", ago_d: "{n} дн назад",
     min: "{n} мин", hour: "{h} ч {m} мин", frames: { "": "Без рамки", wood: "Дерево", bronze: "Бронза", silver: "Серебро", gold: "Золото", master: "Мастер" },
+    tab_catalog: "Каталог", c_all: "Все", c_games: "Игры", c_tools: "Приложения", c_search: "Найти игру или приложение…", c_none: "Ничего не нашлось — попробуйте другое слово.",
+    profile_t: "Профиль", profile_s: "Ник, фото, рамка, приватность, код восстановления", friends_s: "Найти по нику, позвать в группу",
+    road_t: "Дорожная карта", road_s: "Что мастер делает дальше", road_tip: "Вот что мастер делает дальше. Порядок может поменяться — предлагайте идеи и поддерживайте чужие!",
+    st_now: "В работе", st_soon: "Скоро", st_idea: "Идеи на подумать", st_done_r: "Уже сделано", done_ideas: "Сделано по вашим идеям", by_idea: "по идее {n}",
+    about_t: "О лавке", about_s: "Что это и как всё устроено", help_s: "Ответы на частые вопросы", share_t: "Поделиться лавкой", share_s: "Ссылка и QR-код для друзей",
+    privacy_t: "Конфиденциальность", privacy_s: "Что мы храним, а что — нет", site_t: "Сайт мастерской",
+    moder_t: "Модерация", moder_s: "Жалобы, скрытые отзывы, посты, комментарии, фото", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
+    k_review: "отзыв", k_post: "пост", k_comment: "комментарий", k_avatar: "фото", reports_n: "жалоб: {n}", hidden_l: "скрыто",
+    lang_t: "Язык", whatsnew: "Что подковано", game_week: "Игра недели", game_week_s: "Мастер советует", help_q: "Найти ответ…",
+    about_text: "«Лавка Левши» — магазин игр и приложений мастерской «Левша 71». Бесплатно, без рекламы и покупок. Каждое изделие подписано клеймом мастерской — подделку лавка не поставит. Один профиль — для лавки и всех игр, на Android, iPhone и компьютере.",
+    about_pts: ["Подкова — оценка и «нравится»", "Подковать — установить или обновить", "Что подковано — что нового в версии", "Клеймо — подпись мастерской на каждом файле"],
   },
   en: {
     tab_home: "Home", tab_feed: "Feed", tab_friends: "Friends", tab_me: "Library",
@@ -122,6 +133,17 @@ const W = {
     help: "Help", points: "{n} pts", achievements: "Achievements", games: "Games", runs: "runs", report_avatar: "Report the avatar",
     err_net: "No connection to the server — please try again.", back: "Back", ago_now: "just now", ago_m: "{n} min ago", ago_h: "{n} h ago", ago_d: "{n} d ago",
     min: "{n} min", hour: "{h} h {m} min", frames: { "": "No frame", wood: "Wood", bronze: "Bronze", silver: "Silver", gold: "Gold", master: "Master" },
+    tab_catalog: "Catalog", c_all: "All", c_games: "Games", c_tools: "Apps", c_search: "Find a game or an app…", c_none: "Nothing found — try another word.",
+    profile_t: "Profile", profile_s: "Nickname, photo, frame, privacy, recovery code", friends_s: "Find by nickname, invite to a group",
+    road_t: "Roadmap", road_s: "What the master does next", road_tip: "Here's what the master is working on. Order may change — suggest ideas and support others!",
+    st_now: "In progress", st_soon: "Coming soon", st_idea: "Ideas being considered", st_done_r: "Done", done_ideas: "Done thanks to your ideas", by_idea: "idea by {n}",
+    about_t: "About the shop", about_s: "What it is and how it works", help_s: "Answers to common questions", share_t: "Share the shop", share_s: "Link and QR code for friends",
+    privacy_t: "Privacy", privacy_s: "What we store and what we don't", site_t: "Workshop website",
+    moder_t: "Moderation", moder_s: "Reports, hidden reviews, posts, comments, photos", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
+    k_review: "review", k_post: "post", k_comment: "comment", k_avatar: "photo", reports_n: "reports: {n}", hidden_l: "hidden",
+    lang_t: "Language", whatsnew: "What's new", game_week: "Game of the week", game_week_s: "The master recommends", help_q: "Find an answer…",
+    about_text: "Levsha's Shop is the store of the “Levsha 71” workshop's games and apps. Free, no ads, no purchases. Every item is signed with the workshop seal — the shop won't install a fake. One profile for the shop and all games, on Android, iPhone and computers.",
+    about_pts: ["Horseshoe — a rating and a like", "Forge — install or update", "What's new — changes in a version", "Seal — the workshop's signature on every file"],
   },
 };
 const AVATARS = ["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"];
@@ -261,15 +283,17 @@ const App = {
   route() {
     const h = decodeURIComponent(location.hash.slice(1)) || document.body.dataset.start || "home";
     const [view, arg] = h.split("/");
-    const tab = { home: "home", feed: "feed", post: "feed", friends: "friends", group: "friends", player: "friends", blocks: "friends",
-      join: "friends", me: "me", week: "me", notes: "me", settings: "me", edit: "me", ideas: "me", idea: "me", inbox: "me" }[view] || "home";
+    const tab = { home: "home", catalog: "catalog", app: "catalog", feed: "feed", post: "feed" }[view] || (view === "home" ? "home" : "me");
     for (const b of document.querySelectorAll(".tabbar a")) b.toggleAttribute("aria-current", b.dataset.tab === tab);
     const main = $("app");
     main.innerHTML = '<div class="skel"></div><div class="skel"></div><div class="skel short"></div>';
     window.scrollTo(0, 0);
     const views = { home: () => this.home(), feed: () => this.feed(), post: () => this.post(+arg), friends: () => this.friends(arg || "friends"),
       group: () => this.group(+arg), player: () => this.player(arg), blocks: () => this.blocks(), join: () => this.join(arg),
-      me: () => this.mine(), week: () => this.week(), notes: () => this.notes(), settings: () => this.settings(), edit: () => this.edit() };
+      me: () => this.mine(), week: () => this.week(), notes: () => this.notes(), settings: () => this.settings(), edit: () => this.edit(),
+      profile: () => this.edit(), catalog: () => this.catalog(), app: () => this.appPage(arg), help: () => this.help(), about: () => this.about(),
+      roadmap: () => this.roadmap(), moder: () => this.moder() };
+    this._depth = (this._depth || 0) + 1;
     const extra = this.extraViews && this.extraViews[view];   // дополнительные разделы (ideas.js)
     (extra ? extra(arg) : (views[view] || views.home)()).catch(e => { main.innerHTML = `<p class="empty">${esc(e.message)}</p>`; });
   },
@@ -290,18 +314,18 @@ const App = {
         <div><h1>${esc(Lavka.t("brand"))}</h1><p>${esc(hi)}${this.me ? ", " + esc(this.me.nick) : ""}!</p></div>
       </div>`;
     if (ios) html += `<div class="panel tip">${w("add_home")} <a href="install.html#iphone">${w("how")}</a></div>`;
+    const top = cat && (cat.apps.find(a => a.id === cat.featured) || cat.apps[0]);
+    if (top) html += `<h2 class="sec">${w("game_week")}</h2><p class="muted pad" style="margin-top:-8px">${w("game_week_s")}</p>
+      <a class="panel feat" href="#app/${encodeURIComponent(top.id)}" style="background-image:url('${esc(Lavka.promoFor(top)[0] || (top.screenshots || [])[0] || "")}')">
+        <span class="feat-in"><img class="icon" src="${esc(top.icon)}" alt=""><span><b>${esc(Lavka.L(top, "name"))}</b>${Lavka.ratingHtml(ratings[top.id])}</span></span></a>`;
     if (this.me) html += `<h2 class="sec">${w("for_you")}</h2><div id="foryou"><div class="skel short"></div></div>`;
     else html += this.welcomeCard();
-    html += `<h2 class="sec">${w("catalog")}</h2><div class="list">`;
-    for (const a of (cat ? cat.apps : [])) {
-      const r = ratings[a.id];
-      html += `<a class="row card-row" href="app.html?id=${encodeURIComponent(a.id)}">
-        <img class="icon" src="${esc(a.icon)}" alt="">
-        <div class="grow"><b>${esc(Lavka.L(a, "name"))}</b><span class="muted">${esc(Lavka.L(a, "tagline"))}</span>
-          <span class="meta">${Lavka.ratingHtml(r)} ${a.version_name ? esc(Lavka.t("version", { v: a.version_name })) : ""}</span></div>
-        <span class="chev">›</span></a>`;
-    }
-    html += `</div>`;
+    const fresh = cat ? [...cat.apps.filter(a => a.history && a.history[0]).map(a => [Lavka.L(a, "name"), a.history[0], "#app/" + a.id]),
+      cat.store && cat.store.history && cat.store.history[0] ? [Lavka.t("brand"), cat.store.history[0], "#about"] : null].filter(Boolean)
+      .sort((x, y) => String(y[1].date).localeCompare(String(x[1].date))) : [];
+    if (fresh.length) html += `<h2 class="sec">${w("whatsnew")}</h2>` + fresh.slice(0, 2).map(([n, h, href]) =>
+      `<a class="panel row card-row" href="${href}"><span class="grow"><b>${esc(n)} · v${esc(h.version_name)}</b>
+        <span class="muted clamp2">${esc(((Lavka.lang === "en" && h.changes_en) || h.changes || {}).added ? ((Lavka.lang === "en" && h.changes_en) || h.changes).added.join("; ") : Lavka.L(h, "changelog"))}</span></span><span class="chev">›</span></a>`).join("");
     this.page(html);
     this.bindWelcome();
     if (this.me) this.forYou();
@@ -437,16 +461,18 @@ const App = {
   },
   /** Небольшое меню у кнопки «⋯». */
   menu(anchor, items) {
-    document.querySelector(".pop")?.remove();
+    document.querySelector(".asheet")?.remove();
     const m = document.createElement("div");
-    m.className = "pop";
-    m.innerHTML = items.map((it, i) => `<button data-i="${i}">${esc(it[0])}</button>`).join("");
+    m.className = "asheet";
+    m.innerHTML = `<div class="asheet-in" role="menu">${items.map((it, i) => `<button role="menuitem" data-i="${i}">${esc(it[0])}</button>`).join("")}
+      <button class="cancel" data-i="">${w("cancel")}</button></div>`;
     document.body.appendChild(m);
-    const r = anchor.getBoundingClientRect();
-    m.style.top = (r.bottom + scrollY + 4) + "px";
-    m.style.left = Math.max(8, r.right + scrollX - m.offsetWidth) + "px";
-    m.onclick = (e) => { const i = e.target.dataset.i; m.remove(); if (i != null) this.act(null, items[+i][1]); };
-    setTimeout(() => document.addEventListener("click", () => m.remove(), { once: true }), 0);
+    requestAnimationFrame(() => m.classList.add("on"));
+    const close = () => { m.classList.remove("on"); setTimeout(() => m.remove(), 200); };
+    m.onclick = (e) => {
+      const i = e.target.dataset ? e.target.dataset.i : undefined;
+      if (e.target === m || i !== undefined) { close(); if (i) this.act(null, items[+i][1]); }
+    };
   },
   async post(id) {
     const p = this.posts.get(id);
@@ -483,14 +509,14 @@ const App = {
   async friends(sub) {
     if (sub === "groups") return this.groups();
     if (sub === "people") return this.people();
-    if (!this.me) { this.page(this.head(w("friends")) + this.subTabs("friends") + this.welcomeCard()); this.bindWelcome(); return; }
+    if (!this.me) { this.page(this.head(w("friends"), "#me") + this.subTabs("friends") + this.welcomeCard()); this.bindWelcome(); return; }
     const list = await this.rpc("friends_list", this.auth());
     const inc = list.filter(f => f.state === "incoming"), fr = list.filter(f => f.state === "friend"), out = list.filter(f => f.state === "outgoing");
     const row = (f, btns, wide) => `<div class="row${wide ? " wrap" : ""}" data-p="${f.player_id}"><a href="#player/${f.player_id}">${this.av(f, 46)}</a>
       <a class="grow" href="#player/${f.player_id}"><b>${esc(f.nick)}</b>${f.status_text ? `<span class="muted">${esc(f.status_text)}</span>` : ""}
         <small class="${f.playing ? "playing" : "muted"}">${esc([this.presence(f), f.best && f.best["brick-tower"] ? w("best", { n: f.best["brick-tower"] }) : ""].filter(Boolean).join(" · "))}</small></a>
         ${btns ? (wide ? `<div class="acts">${btns}</div>` : btns) : ""}</div>`;
-    let html = this.head(w("friends")) + this.subTabs("friends")
+    let html = this.head(w("friends"), "#me") + this.subTabs("friends")
       + `<label class="search"><input id="fq" type="search" placeholder="${w("search_ph")}" autocomplete="off"></label><div id="fres"></div>`;
     if (inc.length) html += `<h2 class="sec">${w("requests")}</h2><div class="list">${inc.map(f => row(f,
       `<button class="btn small" data-ans="1">${w("accept")}</button><button class="btn small ghost" data-ans="0">${w("decline")}</button>`, true)).join("")}</div>`;
@@ -538,9 +564,9 @@ const App = {
     });
   },
   async groups() {
-    if (!this.me) { this.page(this.head(w("groups")) + this.subTabs("groups") + this.welcomeCard()); this.bindWelcome(); return; }
+    if (!this.me) { this.page(this.head(w("groups"), "#me") + this.subTabs("groups") + this.welcomeCard()); this.bindWelcome(); return; }
     const list = await this.rpc("my_groups", this.auth());
-    this.page(this.head(w("groups")) + this.subTabs("groups")
+    this.page(this.head(w("groups"), "#me") + this.subTabs("groups")
       + `<div class="btns"><button class="btn" id="gNew">${w("g_create")}</button><button class="btn ghost" id="gCode">${w("g_join")}</button></div><div id="gform"></div>`
       + `<h2 class="sec">${w("my_groups")}</h2>` + (list.length ? `<div class="list">${list.map(g => `<a class="row card-row" href="#group/${g.id}">
           <span class="gicon">${esc((g.name || "?").slice(0, 1).toUpperCase())}</span>
@@ -636,7 +662,7 @@ const App = {
   async people() {
     const [st, list, dl] = await Promise.all([this.rpc("stats_public").catch(() => null),
       this.rpc("people", { p_viewer: this.me ? this.me.id : null, p_limit: 50 }), Site.downloads()]);
-    let html = this.head(w("people")) + this.subTabs("people");
+    let html = this.head(w("people"), "#me") + this.subTabs("people");
     if (st) html += `<div class="stats">${[[st.online, w("st_online")], [st.registered, w("st_reg")], [dl, w("st_dl")], [st.groups, w("st_groups")]]
       .filter(x => x[0] != null).map(x => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>`;
     html += `<p class="muted pad">${w("people_s")}${this.me && this.info && !this.info.privacy.people ? ` <button class="btn small ghost" id="pMe">${w("people_me")}</button>` : ""}</p>`;
@@ -723,35 +749,48 @@ const App = {
   },
   badge(n) {
     const b = $("nbadge");
-    if (b) { b.textContent = n > 9 ? "9+" : n; b.hidden = !n; }
+    for (const el of [b, $("nb2")]) if (el) { el.textContent = n > 9 ? "9+" : n; el.hidden = !n; }
     if (navigator.setAppBadge) (n ? navigator.setAppBadge(n) : navigator.clearAppBadge()).catch(() => {});
   },
 
   // ---------- «Мои» ----------
   async mine() {
-    if (!this.me) { this.page(this.head(w("tab_me")) + this.welcomeCard()); this.bindWelcome(); return; }
-    await this.refreshMe();
-    const i = this.info || {};
-    this.page(this.head(w("tab_me")) + `<a class="panel row card-row" href="#player/${this.me.id}">${this.av({ ...this.me, frame: i.frame }, 64)}
-        <span class="grow"><b class="big">${esc(this.me.nick)}</b><span class="muted">${esc(i.status_text || w("me_profile"))}</span></span>
-        ${i.is_master ? `<span class="badge new">${w("master")}</span>` : ""}<span class="chev">›</span></a>
-      <div class="list">
-        <a class="row link" href="#notes"><span class="nicon">🔔</span><b class="grow">${w("notes")}</b><span class="badge new" id="nb2" hidden></span><span class="chev">›</span></a>
-        <a class="row link" href="#friends"><span class="nicon">⭐</span><span class="grow"><b>${w("friends")} · ${w("groups")}</b></span><span class="chev">›</span></a>
-        <a class="row link" href="#ideas"><span class="nicon">💡</span><span class="grow"><b>${w("ideas_t")}</b><small class="muted">${w("ideas_s")}</small></span><span class="chev">›</span></a>
-        ${i.is_master ? `<a class="row link" href="#inbox"><span class="nicon">📬</span><b class="grow">${w("inbox_t")}</b><span class="chev">›</span></a>` : ""}
-        <a class="row link" href="#week"><span class="nicon">📅</span><span class="grow"><b>${w("week")}</b><small class="muted">${w("week_s")}</small></span><span class="chev">›</span></a>
-        <a class="row link" href="#edit"><span class="nicon">✏️</span><b class="grow">${w("me_edit")}</b><span class="chev">›</span></a>
-        <a class="row link" href="#settings"><span class="nicon">⚙️</span><span class="grow"><b>${w("settings")}</b><small class="muted">${w("privacy")} · ${w("push")} · ${w("code")}</small></span><span class="chev">›</span></a>
-        <a class="row link" href="help.html"><span class="nicon">❓</span><b class="grow">${w("help")}</b><span class="chev">›</span></a>
+    const row = (href, icon, title, sub, extra = "") => `<a class="row link" href="${href}"><span class="nicon">${icon}</span>
+      <span class="grow"><b>${title}</b>${sub ? `<small class="muted">${sub}</small>` : ""}</span>${extra}<span class="chev">›</span></a>`;
+    let top;
+    if (!this.me) top = this.welcomeCard();
+    else {
+      await this.refreshMe();
+      const i = this.info || {};
+      top = `<a class="panel row card-row" href="#profile">${this.av({ ...this.me, frame: i.frame }, 64)}
+        <span class="grow"><b class="big">${esc(this.me.nick)}</b><span class="muted">${esc(i.status_text ? "«" + i.status_text + "»" : w("profile_s"))}</span></span>
+        ${i.is_master ? `<span class="badge new">${w("master")}</span>` : ""}<span class="chev">›</span></a>`;
+    }
+    const master = this.info && this.info.is_master;
+    this.page(this.head(w("tab_me")) + top + `<div class="list">
+        ${this.me ? row("#notes", "🔔", w("notes"), "", '<span class="badge new" id="nb2" hidden></span>') : ""}
+        ${row("#friends", "👑", w("friends") + " · " + w("groups"), w("friends_s"))}
+        ${this.me ? row("#week", "📅", w("week"), w("week_s")) : ""}
+      </div><div class="list">
+        ${row("#ideas", "⭐", w("ideas_t"), w("ideas_s"))}
+        ${master ? row("#inbox", "📬", w("inbox_t"), "") + row("#moder", "🛡", w("moder_t"), w("moder_s")) : ""}
+      </div><div class="list">
+        ${row("#settings", "⚙️", w("settings"), w("push") + " · " + w("lang_t"))}
+        ${row("#roadmap", "🗓", w("road_t"), w("road_s"))}
+        ${row("#about", "ℹ️", w("about_t"), w("about_s"))}
+        ${row("#help", "❓", w("help"), w("help_s"))}
       </div>`);
+    this.bindWelcome();
   },
   async edit() {
     if (this.needProfile()) return;
     await this.refreshMe();
     const i = this.info || {};
     const frames = i.frames || [""];
-    this.page(this.head(w("me_edit"), "#me") + `<div class="panel">
+    const pr = i.privacy || {};
+    const sw = (k, on, label) => `<label class="switch"><span>${label}</span><input type="checkbox" data-pr="${k}" ${on ? "checked" : ""}><i></i></label>`;
+    this.page(this.head(w("profile_t"), "#me") + `<a class="row link panel" href="#player/${this.me.id}"><span class="nicon">🏅</span>
+        <b class="grow">${w("achievements")} · ${w("games")}</b><span class="chev">›</span></a><div class="panel">
         <label class="field"><span>${w("nick")}</span><input id="eNick" maxlength="16" value="${esc(this.me.nick)}"></label>
         <span class="lbl">${w("pick_av")}</span><div class="avgrid">${AVATARS.map(a =>
           `<button class="avpick" data-a="${a}" aria-pressed="${a === this.me.avatar}"><img class="px" src="assets/av/${a}.png" alt="${a}"></button>`).join("")}</div>
@@ -766,39 +805,10 @@ const App = {
         return `<button class="frame" data-f="${f}" ${open ? "" : "disabled"} aria-pressed="${(i.frame || "") === f}">
           ${this.av({ ...this.me, frame: f }, 52)}<small>${esc(w("frames")[f])}</small>
           ${open ? "" : `<small class="muted">${w("frame_locked", { h: f === "master" ? w("master") : w("points", { n: FRAME_HINT[f][0] }) })}</small>`}</button>`;
-      }).join("")}</div>`);
-    let av = this.me.avatar;
-    for (const b of document.querySelectorAll(".avpick")) b.onclick = () => {
-      av = b.dataset.a; for (const x of document.querySelectorAll(".avpick")) x.setAttribute("aria-pressed", x === b);
-    };
-    $("eSave").onclick = (e) => this.act(e.target, async () => {
-      const nick = $("eNick").value.trim();
-      if (nick !== this.me.nick || av !== this.me.avatar) {
-        const r = await this.rpc("update_profile", this.auth({ p_nick: nick, p_avatar: av }));
-        this.me.nick = r.nick || nick; this.me.avatar = r.avatar || av; this.save();
-      }
-      if ($("eStatus").value.trim() !== (i.status_text || "")) await this.rpc("set_status", this.auth({ p_text: $("eStatus").value }));
-      if ($("eAbout").value.trim() !== (i.about || "")) await this.rpc("set_about", this.auth({ p_about: $("eAbout").value }));
-      this.toast("✓"); location.hash = "#me";
-    });
-    for (const b of document.querySelectorAll(".frame:not([disabled])")) b.onclick = () => this.act(b, async () => {
-      await this.rpc("set_frame", this.auth({ p_frame: b.dataset.f }));
-      for (const x of document.querySelectorAll(".frame")) x.setAttribute("aria-pressed", x === b);
-    });
-    $("eClear") && ($("eClear").onclick = (e) => this.act(e.target, async () => {
-      await this.rpc("avatar_clear", this.auth()); this.me.photo_ver = 0; this.save(); this.route();
-    }));
-    $("ePhoto").onchange = () => { const f = $("ePhoto").files[0]; if (f) Photo.open(f, $("crop")); };
-  },
-  async settings() {
-    if (this.needProfile()) return;
-    await this.refreshMe();
-    const pr = (this.info && this.info.privacy) || {};
-    const sw = (k, on, label) => `<label class="switch"><span>${label}</span><input type="checkbox" data-pr="${k}" ${on ? "checked" : ""}><i></i></label>`;
-    this.page(this.head(w("settings"), "#me")
+      }).join("")}</div>`
       + `<h2 class="sec">${w("privacy")}</h2><div class="panel">${sw("people", pr.people, w("pr_people"))}${sw("presence", pr.presence, w("pr_presence"))}
-         ${sw("requests", pr.requests, w("pr_requests"))}${sw("photo", pr.photo, w("pr_photo"))}</div>`
-      + `<h2 class="sec">${w("push")}</h2><div class="panel" id="push"><div class="skel short"></div></div>`
+         ${sw("requests", pr.requests, w("pr_requests"))}${sw("photo", pr.photo, w("pr_photo"))}</div>
+         <a class="row link panel" href="#blocks"><span class="nicon">🚫</span><span class="grow"><b>${w("blocks")}</b><small class="muted">${w("blocks_s")}</small></span><span class="chev">›</span></a>`
       + `<h2 class="sec">${w("code")}</h2><div class="panel"><p class="muted">${w("code_s")}</p>
          <p class="code big" id="code">••••-••••-••••</p><div class="btns"><button class="btn small ghost" id="cShow">${w("show")}</button>
          <button class="btn small ghost" id="cCopy">${w("copy")}</button><button class="btn small ghost" id="cRot">${w("rotate")}</button></div></div>`
@@ -818,7 +828,131 @@ const App = {
       const nick = prompt(w("delete_s"));
       if (nick) this.act(e.target, async () => { await this.rpc("delete_player", this.auth({ p_confirm_nick: nick })); Push.off(true); this.signOut(); });
     };
-    Push.panel($("push"));
+    let av = this.me.avatar;
+    for (const b of document.querySelectorAll(".avpick")) b.onclick = () => {
+      av = b.dataset.a; for (const x of document.querySelectorAll(".avpick")) x.setAttribute("aria-pressed", x === b);
+    };
+    $("eSave").onclick = (e) => this.act(e.target, async () => {
+      const nick = $("eNick").value.trim();
+      if (nick !== this.me.nick || av !== this.me.avatar) {
+        const r = await this.rpc("update_profile", this.auth({ p_nick: nick, p_avatar: av }));
+        this.me.nick = r.nick || nick; this.me.avatar = r.avatar || av; this.save();
+      }
+      if ($("eStatus").value.trim() !== (i.status_text || "")) await this.rpc("set_status", this.auth({ p_text: $("eStatus").value }));
+      if ($("eAbout").value.trim() !== (i.about || "")) await this.rpc("set_about", this.auth({ p_about: $("eAbout").value }));
+      this.toast("✓"); this.refreshMe();
+    });
+    for (const b of document.querySelectorAll(".frame:not([disabled])")) b.onclick = () => this.act(b, async () => {
+      await this.rpc("set_frame", this.auth({ p_frame: b.dataset.f }));
+      for (const x of document.querySelectorAll(".frame")) x.setAttribute("aria-pressed", x === b);
+    });
+    $("eClear") && ($("eClear").onclick = (e) => this.act(e.target, async () => {
+      await this.rpc("avatar_clear", this.auth()); this.me.photo_ver = 0; this.save(); this.route();
+    }));
+    $("ePhoto").onchange = () => { const f = $("ePhoto").files[0]; if (f) Photo.open(f, $("crop")); };
+  },
+  async settings() {
+    this.page(this.head(w("settings"), "#me")
+      + `<h2 class="sec">${w("push")}</h2><div class="panel" id="push">${this.me ? '<div class="skel short"></div>' : `<p class="muted">${w("need_profile")}</p>`}</div>`
+      + `<h2 class="sec">${w("lang_t")}</h2><div class="panel"><div class="chips">${["ru", "en"].map(l =>
+          `<button class="chip" data-l="${l}" aria-pressed="${Lavka.lang === l}">${l === "ru" ? "Русский" : "English"}</button>`).join("")}</div></div>
+        <div class="list"><a class="row link" href="./"><span class="nicon">🏠</span><b class="grow">${w("site_t")}</b><span class="chev">›</span></a>
+        <a class="row link" href="#share"><span class="nicon">📤</span><span class="grow"><b>${w("share_t")}</b><small class="muted">${w("share_s")}</small></span><span class="chev">›</span></a>
+        <a class="row link" href="privacy.html"><span class="nicon">🔒</span><span class="grow"><b>${w("privacy_t")}</b><small class="muted">${w("privacy_s")}</small></span><span class="chev">›</span></a></div>`);
+    for (const b of document.querySelectorAll("[data-l]")) b.onclick = () => Lavka.setLang(b.dataset.l);
+    const sh = document.querySelector('a[href="#share"]');
+    if (sh) sh.onclick = (e) => { e.preventDefault(); this.share(Lavka.t("brand") + " — " + this.site(), this.site()); };
+    if (this.me) Push.panel($("push"));
+  },
+
+  // ---------- Каталог и страница изделия (та же, что на сайте) ----------
+  _kind: "all", _q: "",
+  async catalog() {
+    const cat = this.cat || await Lavka.loadCatalog(); this.cat = cat;
+    const ratings = await Lavka.ratings();
+    this.page(this.head(w("tab_catalog")) + `<label class="search"><input id="cq" type="search" placeholder="${w("c_search")}" value="${esc(this._q)}" autocomplete="off"></label>
+      <div class="chips sub">${["all", "games", "tools"].map(k => `<button class="chip" data-k="${k}" aria-pressed="${this._kind === k}">${w("c_" + k)}</button>`).join("")}</div>
+      <div id="clist"></div>`);
+    const draw = () => {
+      const q = this._q.toLowerCase();
+      const list = cat.apps.filter(a => (this._kind === "all" || (this._kind === "games") === (a.category === "games")) &&
+        (!q || [a.name, a.name_en, a.tagline, a.tagline_en, a.description, a.description_en].some(x => (x || "").toLowerCase().includes(q))));
+      $("clist").innerHTML = list.length ? `<div class="list">${list.map(a => `<a class="row card-row" href="#app/${encodeURIComponent(a.id)}">
+          <img class="icon" src="${esc(a.icon)}" alt=""><span class="grow"><b>${esc(Lavka.L(a, "name"))}</b><span class="muted">${esc(Lavka.L(a, "tagline"))}</span>
+          <span class="meta">${Lavka.ratingHtml(ratings[a.id])} ${a.version_name ? esc(Lavka.t("version", { v: a.version_name })) + " · " + Lavka.fmtSize(a.size) : ""}</span></span>
+          <span class="chev">›</span></a>`).join("")}</div>` : `<p class="empty">${w("c_none")}</p>`;
+    };
+    for (const b of document.querySelectorAll("[data-k]")) b.onclick = () => {
+      this._kind = b.dataset.k; for (const x of document.querySelectorAll("[data-k]")) x.setAttribute("aria-pressed", x === b); draw();
+    };
+    $("cq").oninput = () => { this._q = $("cq").value.trim(); draw(); };
+    draw();
+  },
+  async appPage(id) {
+    this.page(this.head("", "#catalog") + '<div id="apage"><div class="skel"></div></div>');
+    await AppPage.render($("apage"), id, { inApp: true });
+  },
+
+  // ---------- Помощь, О лавке, Дорожная карта — из каталога (те же, что в лавке на Android и на сайте) ----------
+  async help() {
+    const cat = this.cat || await Lavka.loadCatalog(); this.cat = cat;
+    const groups = (cat && cat.help) || [];
+    this.page(this.head(w("help"), "#me") + `<label class="search"><input id="hq" type="search" placeholder="${w("help_q")}" autocomplete="off"></label><div id="hl"></div>`);
+    const draw = () => {
+      const q = $("hq").value.trim().toLowerCase();
+      $("hl").innerHTML = groups.map(g => {
+        const hit = g.items.filter(it => !q || (Lavka.L(it, "q") + Lavka.L(it, "a")).toLowerCase().includes(q));
+        return hit.length ? `<h2 class="sec">${esc(Lavka.L(g, "title"))}</h2><div class="list">` + hit.map(it =>
+          `<details class="faq"><summary>${esc(Lavka.L(it, "q"))}</summary><div class="a">${Lavka.md(Lavka.L(it, "a"))}</div></details>`).join("") + `</div>` : "";
+      }).join("") || `<p class="empty">${w("c_none")}</p>`;
+    };
+    $("hq").oninput = draw;
+    draw();
+  },
+  async about() {
+    const cat = this.cat || await Lavka.loadCatalog(); this.cat = cat;
+    const h = cat && cat.store && cat.store.history && cat.store.history[0];
+    this.page(this.head(w("about_t"), "#me") + `<div class="panel center"><img class="px" src="assets/stamp_256.png" alt="" width="96">
+        <h2>${esc(Lavka.t("brand"))}</h2><p>${esc(w("about_text"))}</p></div>
+      <div class="list">${w("about_pts").map(t => `<div class="row"><span class="nicon">🐎</span><span class="grow">${esc(t)}</span></div>`).join("")}</div>
+      ${h ? `<h2 class="sec">${w("whatsnew")} · v${esc(h.version_name)}</h2><div class="panel">${AppPage.changes(h)}</div>` : ""}
+      <div class="btns"><a class="btn" href="#roadmap">${w("road_t")}</a><a class="btn ghost" href="#ideas">${w("ideas_t")}</a></div>`);
+  },
+  async roadmap() {
+    const cat = this.cat || await Lavka.loadCatalog(); this.cat = cat;
+    const items = (cat && cat.roadmap) || [];
+    let html = this.head(w("road_t"), "#me") + `<div class="panel tip">${esc(w("road_tip"))}</div>
+      <a class="btn wide" href="#ideas" style="margin-bottom:8px">⭐ ${w("ideas_t")}</a>`;
+    for (const [st, title] of [["now", w("st_now")], ["soon", w("st_soon")], ["idea", w("st_idea")], ["done", w("st_done_r")]]) {
+      const list = items.filter(r => r.status === st);
+      if (list.length) html += `<h2 class="sec">${title}</h2><div class="list">${list.map(r => `<div class="row"><span class="dotst st-${st}"></span>
+        <span class="grow"><b>${esc(Lavka.L(r, "title"))}</b>${r.note ? `<small class="muted">${esc(Lavka.L(r, "note"))}</small>` : ""}</span></div>`).join("")}</div>`;
+    }
+    html += `<div id="rdone"></div>`;
+    this.page(html);
+    try {
+      const d = await this.rpc("ideas_done", { p_limit: 10 });
+      if (d.length) $("rdone").innerHTML = `<h2 class="sec">${w("done_ideas")}</h2><div class="list">${d.map(x => `<a class="row link" href="#idea/${x.id}">
+        <span class="dotst st-done"></span><span class="grow"><b>${esc(x.title)}</b>${x.nick ? `<small class="muted">${w("by_idea", { n: esc(x.nick) })}</small>` : ""}</span><span class="chev">›</span></a>`).join("")}</div>`;
+    } catch (e) { /* без этого блока */ }
+  },
+
+  // ---------- Модерация (мастер): жалобы на отзывы, посты, комментарии и фото — как на Android ----------
+  async moder() {
+    if (!(this.info && this.info.is_master)) { location.hash = "#me"; return; }
+    const list = await this.rpc("master_queue", this.auth());
+    this.page(this.head(w("moder_t"), "#me") + (list.length ? `<div class="list">${list.map((m, n) => `<div class="row wrap" data-n="${n}">
+        <span class="grow"><span class="nm"><span class="badge">${w("k_" + m.kind)}</span><b>${esc(m.nick)}</b>
+        ${m.reports ? `<small class="muted">${w("reports_n", { n: m.reports })}</small>` : ""}${m.hidden ? `<span class="badge new">${w("hidden_l")}</span>` : ""}</span>
+        <span class="clamp2">${esc(m.body || "")}</span></span>
+        <div class="acts"><button class="btn small ghost" data-h="${m.hidden ? 0 : 1}">${m.hidden ? w("unhide") : w("hide")}</button></div></div>`).join("")}</div>`
+      : `<p class="empty">${w("moder_empty")}</p>`));
+    for (const b of document.querySelectorAll("[data-h]")) b.onclick = () => this.act(b, async () => {
+      const m = list[+b.closest("[data-n]").dataset.n], on = b.dataset.h === "1";
+      const call = { review: ["master_hide", { p_review_id: m.item_id }], post: ["master_hide_post", { p_post: m.item_id }],
+        comment: ["master_hide_comment", { p_comment: m.item_id }], avatar: ["master_hide_avatar", { p_target: m.app_id }] }[m.kind];
+      await this.rpc(call[0], this.auth({ ...call[1], p_hidden: on })); this.moder();
+    });
   },
   async week() {
     if (this.needProfile()) return;
@@ -856,6 +990,15 @@ const App = {
     for (const el of document.querySelectorAll("[data-w]")) el.textContent = w(el.dataset.w);
     document.addEventListener("lavka:lang", () => { for (const el of document.querySelectorAll("[data-w]")) el.textContent = w(el.dataset.w); this.route(); });
     addEventListener("hashchange", () => this.route());
+    // жест «назад»: провести пальцем от левого края экрана вправо
+    let sx = null, sy = 0;
+    addEventListener("touchstart", (e) => { const t = e.touches[0]; sx = t.clientX < 24 ? t.clientX : null; sy = t.clientY; }, { passive: true });
+    addEventListener("touchend", (e) => {
+      if (sx === null) return;
+      const t = e.changedTouches[0];
+      if (t.clientX - sx > 80 && Math.abs(t.clientY - sy) < 60 && location.hash && location.hash !== "#home") history.back();
+      sx = null;
+    }, { passive: true });
     $("bell").onclick = () => { location.hash = this.me ? "#notes" : "#me"; };
     this.cat = await Lavka.loadCatalog();
     if (this.me) await this.refreshMe();

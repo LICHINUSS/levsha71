@@ -4,18 +4,21 @@
 @font-face { font-family: Nunito; src: url("fonts/Nunito-800.ttf") format("truetype"); font-weight: 800; font-display: swap; }
 @font-face { font-family: Nunito; src: url("fonts/Nunito-900.ttf") format("truetype"); font-weight: 900; font-display: swap; }
 
+/* tokens:begin — создано из brand/tokens.json (tools/content.py tokens), руками не править */
 :root {
   --bg: #FBF3E6; --surface: #FFFFFF; --surface2: #F6E9D6; --border: #EAD7BC;
-  --text: #2B140A; --text2: #8A5A35; --gold: #F2B531; --gold-d: #C98A10; --gold-text: #9A6608;
-  --brick: #C3271B; --green: #237841; --choco: #2B140A; --choco-deep: #1A0D07; --cream: #FBE2B8;
-  --radius: 20px; --shadow: 0 6px 20px rgba(80, 35, 8, .12);
+  --text: #2B140A; --text2: #8A5A35; --gold-text: #9A6608; --brick: #C3271B; --green: #237841;
+  --gold: #F2B531; --gold-d: #B87A12; --choco: #2B140A; --choco-deep: #1A0D07; --cream: #FBE2B8;
+  --radius: 20px; --radius-btn: 14px; --gutter: 16px; --touch: 44px;
+  --shadow: 0 6px 20px rgba(80, 35, 8, .12);
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #140B07; --surface: #1E120C; --surface2: #2A1810; --border: #3A2316;
-          --text: #F7E9D2; --text2: #C9A27A; --gold-text: #F2B531; --brick: #E0503A; --green: #3FB06A;
+  --text: #F7E9D2; --text2: #C9A27A; --gold-text: #F2B531; --brick: #E0503A; --green: #3FB06A;
           --shadow: 0 6px 20px rgba(0, 0, 0, .35); }
 }
+/* tokens:end */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 500 17px/1.55 Nunito, system-ui, sans-serif;
@@ -163,3 +166,38 @@ video.trailer { display: block; width: 100%; border-radius: var(--radius); box-s
 .inside { display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 20px; align-items: start; }
 .inside .shots img { height: 420px; }
 @media (max-width: 760px) { .inside { grid-template-columns: 1fr; } .inside video { max-width: 320px; margin: 0 auto; } .inside .shots img { height: 340px; } }
+
+/* Страница изделия (app.html и лавка в браузере): рекорды, отзывы с подковами, трейлер со звуком по нажатию */
+.app-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.trailer-box { position: relative; }
+.trailer-box .sound { position: absolute; right: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0;
+  background: rgba(20, 11, 7, .7); color: #fff; font-size: 20px; cursor: pointer; }
+.board { list-style: none; padding: 0; margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.board li { display: flex; gap: 12px; align-items: center; padding: 9px 14px; border-bottom: 1px solid var(--border); min-height: var(--touch); }
+.board li:last-child { border-bottom: 0; }
+.board li.me { background: rgba(242, 181, 49, .15); }
+.board a { flex: 1; color: var(--text); text-decoration: none; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.board img { border-radius: 9px; }
+.board .pl { width: 26px; text-align: center; font-weight: 900; color: var(--text2); }
+.board .p1 { color: var(--gold-d); } .board .p2 { color: #9AA6C4; } .board .p3 { color: #C47A52; }
+.revsum { display: flex; gap: 20px; align-items: center; margin-bottom: 14px; }
+.revsum .big { font-size: 46px; font-weight: 900; line-height: 1; text-align: center; color: var(--text); }
+.revsum .big small { display: block; font-size: 13px; color: var(--text2); font-weight: 700; margin-top: 4px; }
+.bars { flex: 1; max-width: 340px; } .bars div { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text2); }
+.bars i { display: block; height: 8px; border-radius: 4px; background: var(--gold); min-width: 3px; }
+.shoes { display: inline-flex; gap: 1px; vertical-align: middle; }
+.shoes svg { color: var(--border); } .shoes svg.on { color: var(--gold-d); }
+.review { margin-bottom: 10px; } .review header { display: flex; gap: 10px; align-items: center; }
+.review header img { border-radius: 9px; } .review small { display: block; }
+.review p { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.review .reply { margin-top: 10px; padding: 8px 12px; border-left: 4px solid var(--gold); background: var(--surface2); border-radius: 8px; }
+.rate { display: flex; gap: 4px; margin: 8px 0; }
+.rate button { border: 0; background: none; color: var(--border); cursor: pointer; width: var(--touch); height: var(--touch); padding: 6px; }
+.rate button svg { width: 100%; height: 100%; } .rate button.on { color: var(--gold-d); }
+.revForm textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text);
+  font: 600 16px Nunito, sans-serif; padding: 10px 12px; margin-bottom: 8px; }
+.revForm .panel { margin-bottom: 14px; }
+.skel { min-height: 60px; border-radius: 14px; background: var(--surface2); }
+.small { font-size: 14px; }
+
+[hidden] { display: none !important; }

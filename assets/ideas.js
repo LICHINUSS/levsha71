@@ -110,7 +110,7 @@ const Ideas = {
     const st = this.state;
     const chips = (key, vals, label) => `<div class="chips sub">${vals.map(v =>
       `<button class="chip" data-${key}="${v}" aria-pressed="${st[key] === v}">${label(v)}</button>`).join("")}</div>`;
-    App.page(App.head(w("ideas_t")) + `<div class="btns"><a class="btn" href="#ideas/new">💡 ${w("i_new_idea")}</a>
+    App.page(App.head(w("ideas_t"), "#me") + `<div class="btns"><a class="btn" href="#ideas/new">💡 ${w("i_new_idea")}</a>
         <a class="btn ghost" href="#ideas/bug">🐞 ${w("i_new_bug")}</a><a class="btn ghost small" href="#ideas/mine">${w("i_mine")}</a>
         ${this.isMaster() ? `<a class="btn ghost small" href="#inbox">📬 ${w("inbox_t")}</a>` : ""}</div>
       <div id="doneBox"></div>

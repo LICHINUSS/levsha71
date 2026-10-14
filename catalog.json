@@ -724,47 +724,94 @@
   "roadmap": [
     {
       "status": "now",
-      "title": "Лавка 2.0: новый вид, живой Левша, обучение",
-      "title_en": "Shop 2.0: new look, living Levsha, onboarding"
+      "title": "Единый вид лавки на Android, iPhone и сайте",
+      "title_en": "One look for the shop on Android, iPhone and the web",
+      "note": "одинаковые экраны, тексты и функции",
+      "note_en": "same screens, texts and features"
     },
     {
-      "status": "soon",
-      "title": "История и архив версий, «Что нового» при обновлении",
-      "title_en": "Version history and archive, “What's new” on update"
+      "status": "idea",
+      "title": "Ежедневные награды и серии, недельные события, сезонные рейтинги",
+      "title_en": "Daily rewards and streaks, weekly events, seasonal rankings",
+      "note": "мастер решает, делать ли",
+      "note_en": "the master is deciding"
     },
     {
-      "status": "soon",
-      "title": "Облачные сохранения игр по профилю",
-      "title_en": "Cloud saves for games"
+      "status": "idea",
+      "title": "Новые карты «Кирпичной башни»: пустыня и замок",
+      "title_en": "New Brick Tower maps: desert and castle"
     },
     {
-      "status": "soon",
-      "title": "Друзья и статусы «в игре»",
-      "title_en": "Friends and “playing now” status"
-    },
-    {
-      "status": "soon",
-      "title": "Группы с общим рейтингом",
-      "title_en": "Groups with shared leaderboards"
-    },
-    {
-      "status": "soon",
-      "title": "Аватар из своей фотографии (можно пиксельный)",
-      "title_en": "Avatar from your photo (pixel option)"
-    },
-    {
-      "status": "soon",
-      "title": "Лавка на iPhone — веб-версия",
-      "title_en": "The shop on iPhone — web version"
-    },
-    {
-      "status": "soon",
-      "title": "«Кирпичная башня» в браузере",
-      "title_en": "Brick Tower in the browser"
+      "status": "idea",
+      "title": "Анимированные обложки игр в каталоге",
+      "title_en": "Animated game covers in the catalog"
     },
     {
       "status": "done",
-      "title": "Испытание дня, новые враги и зимняя карта",
+      "title": "Своё фото в игре и игра на старых 32-битных телефонах",
+      "title_en": "Your photo in the game and the game on older 32-bit phones",
+      "note": "Кирпичная башня 1.5.0",
+      "note_en": "Brick Tower 1.5.0"
+    },
+    {
+      "status": "done",
+      "title": "Рекорды мира и отзывы на странице игры на сайте",
+      "title_en": "World records and reviews on the game's web page",
+      "note": "сайт, 14.10.2026",
+      "note_en": "website, 14 Oct 2026"
+    },
+    {
+      "status": "done",
+      "title": "«Идеи и пожелания» и «Ящик идей» мастера",
+      "title_en": "“Ideas & feedback” and the master's idea inbox",
+      "note": "Лавка 2.1.0",
+      "note_en": "Shop 2.1.0"
+    },
+    {
+      "status": "done",
+      "title": "Лавка на iPhone и компьютере, уведомления на iPhone",
+      "title_en": "The shop on iPhone and computers, iPhone notifications",
+      "note": "Лавка 2.0.1",
+      "note_en": "Shop 2.0.1"
+    },
+    {
+      "status": "done",
+      "title": "Друзья, группы, «Люди», своё фото, итоги недели",
+      "title_en": "Friends, groups, People, your photo, weekly summary",
+      "note": "Лавка 2.0",
+      "note_en": "Shop 2.0"
+    },
+    {
+      "status": "done",
+      "title": "Новый вид лавки, живой Левша, обучение",
+      "title_en": "New shop look, living Levsha, onboarding",
+      "note": "Лавка 2.0",
+      "note_en": "Shop 2.0"
+    },
+    {
+      "status": "done",
+      "title": "История и архив версий, «Что нового» при обновлении",
+      "title_en": "Version history and archive, “What's new” on update",
+      "note": "Лавка 2.0",
+      "note_en": "Shop 2.0"
+    },
+    {
+      "status": "done",
+      "title": "Облачные сохранения игр по профилю",
+      "title_en": "Cloud saves for games",
+      "note": "Кирпичная башня 1.4.0",
+      "note_en": "Brick Tower 1.4.0"
+    },
+    {
+      "status": "done",
+      "title": "«Кирпичная башня» в браузере",
+      "title_en": "Brick Tower in the browser",
+      "note": "Кирпичная башня 1.4.0",
+      "note_en": "Brick Tower 1.4.0"
+    },
+    {
+      "status": "done",
+      "title": "Испытание дня, новые враги, зимняя карта",
       "title_en": "Daily challenge, new enemies, winter map",
       "note": "Кирпичная башня 1.3.0",
       "note_en": "Brick Tower 1.3.0"
@@ -783,9 +830,185 @@
     },
     {
       "status": "done",
-      "title": "Отзывы, лента, подковки",
-      "title_en": "Reviews, feed and likes"
+      "title": "Отзывы, лента и подковки",
+      "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1791926306
+  "seq": 1791926306,
+  "help": [
+    {
+      "title": "Установка на Android",
+      "title_en": "Installing on Android",
+      "items": [
+        {
+          "q": "Как поставить лавку?",
+          "q_en": "How do I install the shop?",
+          "a": "Откройте сайт на телефоне и нажмите **«Скачать „Лавку Левши“»**. Когда файл скачается — нажмите на него и разрешите установку. Подробно, с картинками: [Как установить](install.html).",
+          "a_en": "Open the site on your phone and tap **“Download Levsha's Shop”**. When the file is downloaded, tap it and allow the installation. Step by step with pictures: [How to install](install.html)."
+        },
+        {
+          "q": "Chrome пишет «Файл может быть опасен»",
+          "q_en": "Chrome says “File might be harmful”",
+          "a": "Так браузер предупреждает про любые приложения не из Google Play. Нажмите **«Всё равно скачать»**. Лавка подписана клеймом мастерской «Левша 71» — каждое обновление проверяется по этому клейму.",
+          "a_en": "The browser says that about any app not from Google Play. Tap **“Download anyway”**. The shop carries the “Levsha 71” workshop seal — every update is checked against it."
+        },
+        {
+          "q": "Play Защита пишет «Рекомендуется проверка»",
+          "q_en": "Play Protect says “App scan recommended”",
+          "a": "Нажмите **«Проверить»** — Google посмотрит приложение и обычно разрешит установку. Или «Подробнее» → «Всё равно установить». Так бывает при первой установке и при обновлениях не из Google Play.",
+          "a_en": "Tap **“Scan”** — Google checks the app and usually lets you install it. Or “More details” → “Install anyway”. It happens on installs and updates outside Google Play."
+        },
+        {
+          "q": "Samsung не даёт установить («Автоблокировщик»)",
+          "q_en": "Samsung blocks the install (“Auto Blocker”)",
+          "a": "«Настройки» → «Безопасность и конфиденциальность» → «Автоблокировщик» — выключите на время установки. Потом можно включить обратно: обновления лавка ставит сама.",
+          "a_en": "Settings → Security and privacy → Auto Blocker — turn it off for the install. You can turn it back on afterwards: the shop installs updates by itself."
+        },
+        {
+          "q": "Какой нужен телефон?",
+          "q_en": "Which phones are supported?",
+          "a": "Лавка — Android 8 и новее, около 2,5 МБ. «Кирпичная башня» — Android 7 и новее, новые и старые (32-битные) телефоны, около 53 МБ.",
+          "a_en": "The shop needs Android 8 or newer, about 2.5 MB. Brick Tower needs Android 7 or newer, new and older (32-bit) phones, about 53 MB."
+        }
+      ]
+    },
+    {
+      "title": "Обновления",
+      "title_en": "Updates",
+      "items": [
+        {
+          "q": "Лавка не обновляет игры сама",
+          "q_en": "The shop doesn't update games by itself",
+          "a": "Автоподковка работает ночью, когда телефон на зарядке и в Wi-Fi: «Мои» → «Настройки» → **«Автоподковка»**. Если телефон «усыпляет» приложения — снимите ограничение батареи: настройки телефона → «Приложения» → «Лавка Левши» → «Батарея» → «Без ограничений».\n\n**Xiaomi:** «Безопасность» → «Батарея» → лавка → «Нет ограничений» и «Автозапуск». **Huawei:** «Батарея» → «Запуск приложений» → лавка → вручную, всё включить. **Oppo/Realme:** «Батарея» → лавка → «Разрешить фоновую работу».",
+          "a_en": "Auto-update runs at night while the phone is charging on Wi-Fi: Library → Settings → **Auto-update**. If your phone puts apps to sleep, remove the battery limit: phone settings → Apps → Levsha's Shop → Battery → Unrestricted.\n\n**Xiaomi:** Security → Battery → the shop → No restrictions, and Autostart. **Huawei:** Battery → App launch → the shop → Manage manually, all on. **Oppo/Realme:** Battery → the shop → Allow background activity."
+        },
+        {
+          "q": "Можно вернуть старую версию игры?",
+          "q_en": "Can I go back to an older game version?",
+          "a": "На Android — да: страница игры → **«Все версии»**. Чтобы поставить версию старее, Android попросит сначала удалить текущую — данные игры на этом телефоне пропадут (рекорды и облачное сохранение на сервере останутся). На iPhone и в браузере всегда открывается последняя версия.",
+          "a_en": "On Android — yes: the game's page → **All versions**. To install an older version Android first asks to remove the current one — the game's data on this phone is lost (records and the cloud save on the server stay). On iPhone and in the browser the latest version always opens."
+        }
+      ]
+    },
+    {
+      "title": "iPhone и компьютер",
+      "title_en": "iPhone and computer",
+      "items": [
+        {
+          "q": "Есть ли лавка на iPhone?",
+          "q_en": "Is the shop available on iPhone?",
+          "a": "Да — та же лавка в браузере: [Моя лавка](me.html). Там каталог, лента, друзья, группы, идеи, профиль и уведомления. Игры, которые умеют работать в браузере, открываются кнопкой **«Играть»**. Ставить файлы (APK) на iPhone нельзя — это ограничение Apple, а не лавки.",
+          "a_en": "Yes — the same shop in the browser: [My shop](me.html). Catalog, feed, friends, groups, ideas, profile and notifications are there. Games that run in a browser open with the **Play** button. Installing files (APK) on an iPhone isn't possible — that's Apple's rule, not the shop's."
+        },
+        {
+          "q": "Как добавить лавку на экран «Домой»?",
+          "q_en": "How do I add the shop to the Home Screen?",
+          "a": "В Safari: кнопка **«Поделиться»** (квадрат со стрелкой) → **«На экран „Домой“»** → «Добавить». Лавка откроется как приложение, без адресной строки. Подробно: [инструкция для iPhone](install.html#iphone). В Chrome и других браузерах на iPhone этот пункт тоже есть в «Поделиться».",
+          "a_en": "In Safari: the **Share** button (square with an arrow) → **Add to Home Screen** → Add. The shop opens like an app, without the address bar. Step by step: [iPhone guide](install.html#iphone). Chrome and other iPhone browsers have the same item under Share."
+        },
+        {
+          "q": "Как включить уведомления на iPhone?",
+          "q_en": "How do I turn on notifications on iPhone?",
+          "a": "Нужен iOS 16.4 или новее, и лавка должна быть добавлена на экран «Домой». Откройте её оттуда → «Мои» → «Настройки» → **«Включить уведомления»** и разрешите.",
+          "a_en": "You need iOS 16.4 or newer, and the shop must be on the Home Screen. Open it from there → Library → Settings → **Turn on notifications** and allow them."
+        },
+        {
+          "q": "Пишет «Браузер не разрешил уведомления»",
+          "q_en": "It says “The browser didn't allow notifications”",
+          "a": "Чаще всего сайт открыт внутри другого приложения — по ссылке из мессенджера или соцсети. Такие окна не умеют уведомления. Нажмите «⋮» → **«Открыть в браузере»**. Если сайт уже в браузере — значок слева от адреса → «Уведомления» → «Разрешить».",
+          "a_en": "Usually the site is open inside another app — from a link in a messenger or a social app. Those windows can't show notifications. Tap “⋮” → **Open in browser**. If it's already in the browser, tap the icon left of the address → Notifications → Allow."
+        },
+        {
+          "q": "Игра в браузере долго грузится",
+          "q_en": "The browser game takes long to load",
+          "a": "Первый раз скачивается около 10 МБ, и браузер «прогревает» игру 20–40 секунд. Потом она открывается быстрее. На старых iPhone лучше закрыть другие вкладки.",
+          "a_en": "The first time it downloads about 10 MB and the browser warms the game up for 20–40 seconds. After that it opens faster. On older iPhones, close other tabs."
+        }
+      ]
+    },
+    {
+      "title": "Профиль",
+      "title_en": "Profile",
+      "items": [
+        {
+          "q": "Как перенести профиль на новый телефон?",
+          "q_en": "How do I move my profile to a new phone?",
+          "a": "У профиля есть **код восстановления** (вида ABCD-EFGH-JKMN). На новом телефоне: «Мои» → **«Войти по коду»** — вернутся ник, рекорды, друзья, группы и облачное сохранение игр. Код работает на Android, iPhone и в браузере.",
+          "a_en": "Your profile has a **recovery code** (like ABCD-EFGH-JKMN). On the new phone: Library → **Sign in with a code** — your nickname, records, friends, groups and game cloud save come back. The code works on Android, iPhone and in the browser."
+        },
+        {
+          "q": "Где мой код? Я его потерял",
+          "q_en": "Where is my code? I lost it",
+          "a": "Если профиль открыт хоть на одном телефоне: «Мои» → **«Профиль»** → «Код восстановления» → «Показать». Если нигде — код не восстановить: мы не храним его в открытом виде, это защита вашего профиля.",
+          "a_en": "If your profile is open on any phone: Library → **Profile** → Recovery code → Show. If not, it can't be recovered: we don't store it in plain form, that's what protects your profile."
+        },
+        {
+          "q": "Кто-то узнал мой код",
+          "q_en": "Someone learned my code",
+          "a": "«Мои» → «Профиль» → **«Сменить код»**. Старый код сразу перестанет работать.",
+          "a_en": "Library → Profile → **Change the code**. The old code stops working at once."
+        },
+        {
+          "q": "Как удалить профиль?",
+          "q_en": "How do I delete my profile?",
+          "a": "«Мои» → «Профиль» → **«Удалить профиль навсегда»** и впишите свой ник. Удалятся рекорды, отзывы, посты, фото, друзья, группы, идеи и облачные сохранения. Что мы храним — [Конфиденциальность](privacy.html).",
+          "a_en": "Library → Profile → **Delete the profile forever**, and type your nickname. Records, reviews, posts, photo, friends, groups, ideas and cloud saves are deleted. What we store: [Privacy](privacy.html)."
+        }
+      ]
+    },
+    {
+      "title": "Друзья, группы, идеи",
+      "title_en": "Friends, groups, ideas",
+      "items": [
+        {
+          "q": "Как добавить друга?",
+          "q_en": "How do I add a friend?",
+          "a": "«Мои» → **«Друзья и группы»** → найдите человека по нику → «В друзья». Когда он примет заявку, вы увидите, кто в сети, во что и сколько минут играет, и рекорды друг друга.",
+          "a_en": "Library → **Friends & groups** → find them by nickname → Add friend. Once they accept, you see who's online, what they play and for how long, and each other's records."
+        },
+        {
+          "q": "Как позвать в группу?",
+          "q_en": "How do I invite someone to a group?",
+          "a": "Откройте группу → **«Позвать»**. Друг получит ссылку: на Android она откроет лавку, на iPhone и компьютере — лавку в браузере. Можно просто продиктовать код из 8 букв.",
+          "a_en": "Open the group → **Invite**. Your friend gets a link: on Android it opens the shop, on iPhone and computers the shop in the browser. You can also just tell them the 8-letter code."
+        },
+        {
+          "q": "Как предложить идею или сообщить об ошибке?",
+          "q_en": "How do I suggest an idea or report a bug?",
+          "a": "«Мои» → **«Идеи и пожелания»** (или [на сайте](ideas.html)). Можно даже без профиля — тогда идею сначала увидит только мастер. С профилем идея сразу в общем списке, её можно поддержать подковой, а вам придёт уведомление об ответе.",
+          "a_en": "Library → **Ideas & feedback** (or [on the site](ideas.html)). You can do it without a profile — then only the master sees it at first. With a profile the idea goes to the public list, others can support it, and you're notified of the answer."
+        },
+        {
+          "q": "Не хочу, чтобы меня видели",
+          "q_en": "I don't want to be seen",
+          "a": "«Мои» → «Профиль» → **«Приватность»**: можно скрыть «в сети» и «играет в…», не принимать заявки, не показывать фото. В «Людях» вас нет, пока вы сами не включите.",
+          "a_en": "Library → Profile → **Privacy**: hide “online” and “playing…”, stop friend requests, hide your photo. You're not listed in People unless you turn it on."
+        },
+        {
+          "q": "Кто-то ведёт себя плохо",
+          "q_en": "Someone behaves badly",
+          "a": "Нажмите «⋯» у поста, комментария, идеи или в профиле: **«Пожаловаться»** — мастер посмотрит, **«Заблокировать»** — вы больше не увидите посты, комментарии и заявки этого человека.",
+          "a_en": "Tap “⋯” on a post, comment, idea or profile: **Report** — the master will take a look; **Block** — you won't see that person's posts, comments and requests any more."
+        }
+      ]
+    },
+    {
+      "title": "Безопасность",
+      "title_en": "Safety",
+      "items": [
+        {
+          "q": "Это безопасно?",
+          "q_en": "Is it safe?",
+          "a": "Каталог лавки подписан ключом мастерской, а каждый файл сверяется по контрольной сумме и клейму «Левша 71». Подделку лавка не поставит. Рекламы и покупок внутри нет.",
+          "a_en": "The shop's catalog is signed with the workshop key, and every file is checked by its checksum and the “Levsha 71” seal. The shop won't install a fake. No ads, no in-app purchases."
+        },
+        {
+          "q": "Какие данные вы храните?",
+          "q_en": "What data do you keep?",
+          "a": "Только то, что нужно для игр и лавки: ник, аватар или фото, рекорды, ваши посты, отзывы и идеи, друзей и группы. Ни номера телефона, ни почты, ни местоположения. Подробно: [Конфиденциальность](privacy.html).",
+          "a_en": "Only what games and the shop need: nickname, avatar or photo, records, your posts, reviews and ideas, friends and groups. No phone number, no e-mail, no location. Details: [Privacy](privacy.html)."
+        }
+      ]
+    }
+  ]
 }

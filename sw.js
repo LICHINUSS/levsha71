@@ -1,8 +1,8 @@
 // Работа без сети: страницы и картинки сайта берутся из кэша, каталог — сначала из сети (он всегда свежий).
 // Игру (play/…) кэширует сам браузер — она большая, держим её отдельно.
-const CACHE = "lavka-v5";
+const CACHE = "lavka-v6";
 const SHELL = ["./", "index.html", "app.html", "install.html", "roadmap.html", "privacy.html", "join.html", "me.html", "help.html", "people.html", "ideas.html",
-  "assets/site.css", "assets/site.js", "assets/lavka.css", "assets/lavka.js", "assets/ideas.js",
+  "assets/site.css", "assets/site.js", "assets/lavka.css", "assets/lavka.js", "assets/ideas.js", "assets/apppage.js",
   ...["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"].map(a => `assets/av/${a}.png`), "assets/install-steps.js", "assets/fonts/Nunito-500.ttf", "assets/fonts/Nunito-800.ttf", "assets/fonts/Nunito-900.ttf",
   "assets/kremlin_px.png", "assets/mascot_idle.png", "assets/mascot_blink.png", "assets/mascot_wave1.png",
   "assets/stamp_256.png", "assets/store_icon_192.png", "assets/levsha.png", "assets/qr.png"];
@@ -17,7 +17,9 @@ self.addEventListener("activate", e => {
 self.addEventListener("fetch", e => {
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.origin !== location.origin || url.pathname.includes("/play/")) return;
-  if (url.pathname.endsWith("catalog.json") || url.pathname.endsWith(".html") || url.pathname.endsWith("/")) {
+  // страницы, каталог, скрипты и стили — сначала из сети (чтобы никто не застрял на старой версии), без сети — из кэша
+  if (url.pathname.endsWith("catalog.json") || url.pathname.endsWith(".html") || url.pathname.endsWith("/")
+      || /\.(js|css|webmanifest)$/.test(url.pathname)) {
     // сеть в первую очередь, кэш — если сети нет
     e.respondWith(fetch(e.request).then(r => {
       const copy = r.clone(); caches.open(CACHE).then(c => c.put(url.pathname.endsWith("catalog.json") ? "catalog.json" : e.request, copy));

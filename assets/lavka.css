@@ -176,3 +176,34 @@ input[type=range] { width: 100%; accent-color: var(--gold); }
 .shotfull { max-width: 100%; border-radius: 12px; margin-top: 8px; }
 .dupin { width: 160px; margin: 0; }
 select.inp { appearance: auto; }
+
+/* Унификация (14.10): главная «Игра недели», лист снизу вместо окошка, дорожная карта, помощь, размеры под палец */
+.feat { display: block; min-height: 180px; background: var(--surface2) center / cover no-repeat; position: relative; padding: 0; overflow: hidden; text-decoration: none; }
+.feat-in { position: absolute; left: 0; right: 0; bottom: 0; display: flex; gap: 12px; align-items: center; padding: 14px;
+  background: linear-gradient(transparent, rgba(20, 11, 7, .85)); color: #fff; }
+.feat-in b { display: block; font-size: 20px; }
+.feat .rating { color: var(--gold); }
+.asheet { position: fixed; inset: 0; z-index: 60; background: rgba(10, 5, 3, 0); transition: background .2s; display: flex; align-items: flex-end; }
+.asheet.on { background: rgba(10, 5, 3, .45); }
+.asheet-in { width: 100%; max-width: 560px; margin: 0 auto; background: var(--surface); border-radius: 22px 22px 0 0;
+  padding: 8px 12px calc(12px + env(safe-area-inset-bottom)); transform: translateY(100%); transition: transform .22s ease-out; }
+.asheet.on .asheet-in { transform: none; }
+.asheet-in button { display: block; width: 100%; min-height: 52px; border: 0; background: none; color: var(--text); font: 800 17px Nunito, sans-serif;
+  border-bottom: 1px solid var(--border); cursor: pointer; }
+.asheet-in button.cancel { border: 0; color: var(--text2); margin-top: 4px; }
+.dotst { width: 12px; height: 12px; border-radius: 50%; flex: none; background: var(--text2); }
+.dotst.st-now { background: var(--gold); } .dotst.st-done { background: var(--green); } .dotst.st-idea { background: transparent; border: 2px dashed var(--text2); }
+details.faq { border-bottom: 1px solid var(--border); padding: 0 14px; }
+details.faq:last-child { border-bottom: 0; }
+details.faq summary { cursor: pointer; font-weight: 800; padding: 14px 0; list-style: none; min-height: var(--touch); }
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq .a { padding: 0 0 12px; } details.faq .a p { margin: 0 0 8px; }
+.appmode .chip { min-height: var(--touch); display: inline-flex; align-items: center; }
+.appmode .iconbtn { width: var(--touch); height: var(--touch); }
+.appmode .row { min-height: 56px; }
+.appmode .btn.small { min-height: var(--touch); }
+.appmode .vhead h1:empty { display: none; }
+#apage .app-head { padding-top: 0; }
+@media (hover: none) { .card:hover { transform: none; } .row.link:hover, .row.card-row:hover { background: none; } }
+
+[hidden] { display: none !important; }
