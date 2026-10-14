@@ -68,7 +68,10 @@ const W = {
     st_now: "В работе", st_soon: "Скоро", st_idea: "Идеи на подумать", st_done_r: "Уже сделано", done_ideas: "Сделано по вашим идеям", by_idea: "по идее {n}",
     about_t: "О лавке", about_s: "Что это и как всё устроено", help_s: "Ответы на частые вопросы", share_t: "Поделиться лавкой", share_s: "Ссылка и QR-код для друзей",
     privacy_t: "Конфиденциальность", privacy_s: "Что мы храним, а что — нет", site_t: "Сайт мастерской",
-    moder_t: "Модерация", moder_s: "Жалобы, скрытые отзывы, посты, комментарии, фото", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
+    moder_t: "Модерация", moder_s: "Жалобы, скрытые отзывы, посты, комментарии, фото",
+    deaths_t: "Где умирают игроки", deaths_s: "На какой волне падает башня — по режимам", deaths_died: "пали", deaths_won: "победы",
+    deaths_reached: "дошли", deaths_empty: "Забегов пока нет.", deaths_note: "Только законченные забеги игроков с профилем за 90 дней. Если игра закрылась сама — такой забег не считается смертью.",
+    deaths_wave: "Волна", m_campaign: "Кампания", m_endless: "Бесконечный", m_daily: "Испытание дня", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
     k_review: "отзыв", k_post: "пост", k_comment: "комментарий", k_avatar: "фото", reports_n: "жалоб: {n}", hidden_l: "скрыто",
     lang_t: "Язык", whatsnew: "Что подковано", game_week: "Игра недели", game_week_s: "Мастер советует", help_q: "Найти ответ…",
     about_text: "Мастер Левша, по сказу Лескова, подковал английскую стальную блоху — да так тонко, что без «мелкоскопа» и не разглядеть. В его честь названа мастерская: здесь делают игры и приложения, и каждое — с клеймом мастера. А в «Лавке Левши» их можно взять. Бесплатно, без рекламы и покупок. Один профиль — для лавки и всех игр, на Android, iPhone и компьютере.",
@@ -139,7 +142,10 @@ const W = {
     st_now: "In progress", st_soon: "Coming soon", st_idea: "Ideas being considered", st_done_r: "Done", done_ideas: "Done thanks to your ideas", by_idea: "idea by {n}",
     about_t: "About the shop", about_s: "What it is and how it works", help_s: "Answers to common questions", share_t: "Share the shop", share_s: "Link and QR code for friends",
     privacy_t: "Privacy", privacy_s: "What we store and what we don't", site_t: "Workshop website",
-    moder_t: "Moderation", moder_s: "Reports, hidden reviews, posts, comments, photos", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
+    moder_t: "Moderation", moder_s: "Reports, hidden reviews, posts, comments, photos",
+    deaths_t: "Where players die", deaths_s: "Which wave the tower falls on — by mode", deaths_died: "fell", deaths_won: "wins",
+    deaths_reached: "reached", deaths_empty: "No runs yet.", deaths_note: "Finished runs of players with a profile over 90 days. If the game closed by itself, the run isn't counted as a death.",
+    deaths_wave: "Wave", m_campaign: "Campaign", m_endless: "Endless", m_daily: "Daily challenge", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
     k_review: "review", k_post: "post", k_comment: "comment", k_avatar: "photo", reports_n: "reports: {n}", hidden_l: "hidden",
     lang_t: "Language", whatsnew: "What's new", game_week: "Game of the week", game_week_s: "The master recommends", help_q: "Find an answer…",
     about_text: "In Leskov's tale, the craftsman Levsha shod a tiny steel flea — so finely you need a microscope to see it. The workshop is named after him: it makes games and apps, each with the master's seal. Levsha's Shop is where you get them. Free, no ads, no purchases. One profile for the shop and all games, on Android, iPhone and computers.",
@@ -292,7 +298,7 @@ const App = {
       group: () => this.group(+arg), player: () => this.player(arg), blocks: () => this.blocks(), join: () => this.join(arg),
       me: () => this.mine(), week: () => this.week(), notes: () => this.notes(), settings: () => this.settings(), edit: () => this.edit(),
       profile: () => this.edit(), catalog: () => this.catalog(), app: () => this.appPage(arg), help: () => this.help(), about: () => this.about(),
-      roadmap: () => this.roadmap(), moder: () => this.moder() };
+      roadmap: () => this.roadmap(), moder: () => this.moder(), deaths: () => this.deaths() };
     this._depth = (this._depth || 0) + 1;
     const extra = this.extraViews && this.extraViews[view];   // дополнительные разделы (ideas.js)
     (extra ? extra(arg) : (views[view] || views.home)()).catch(e => { main.innerHTML = `<p class="empty">${esc(e.message)}</p>`; });
@@ -778,7 +784,8 @@ const App = {
         ${this.me ? row("#week", "📅", w("week"), w("week_s")) : ""}
       </div><div class="list">
         ${row("#ideas", "⭐", w("ideas_t"), w("ideas_s"))}
-        ${master ? row("#inbox", "📬", w("inbox_t"), "") + row("#moder", "🛡", w("moder_t"), w("moder_s")) : ""}
+        ${master ? row("#inbox", "📬", w("inbox_t"), "") + row("#moder", "🛡", w("moder_t"), w("moder_s"))
+          + row("#deaths", "📉", w("deaths_t"), w("deaths_s")) : ""}
       </div><div class="list">
         ${row("#settings", "⚙️", w("settings"), w("push") + " · " + w("lang_t"))}
         ${row("#roadmap", "🗓", w("road_t"), w("road_s"))}
@@ -959,6 +966,32 @@ const App = {
         comment: ["master_hide_comment", { p_comment: m.item_id }], avatar: ["master_hide_avatar", { p_target: m.app_id }] }[m.kind];
       await this.rpc(call[0], this.auth({ ...call[1], p_hidden: on })); this.moder();
     });
+  },
+  // «Где умирают игроки» (мастеру): по каждому режиму — сколько дошло до волны и сколько на ней пало.
+  async deaths() {
+    if (!(this.info && this.info.is_master)) { location.hash = "#me"; return; }
+    const rows = await this.rpc("master_death_stats", this.auth({ p_game: "brick-tower", p_days: 90 }));
+    if (!rows.length) { this.page(this.head(w("deaths_t"), "#me") + `<p class="empty">${w("deaths_empty")}</p>`); return; }
+    let html = this.head(w("deaths_t"), "#me") + `<p class="muted">${w("deaths_note")}</p>`;
+    for (const mode of ["campaign", "endless", "daily"]) {
+      const rs = rows.filter(r => r.mode === mode);
+      if (!rs.length) continue;
+      const total = rs.reduce((a, r) => a + r.died + r.won, 0);
+      const maxW = Math.max(...rs.map(r => r.wave));
+      const by = Object.fromEntries(rs.map(r => [r.wave, r]));
+      let left = total, bars = "";
+      const peak = Math.max(...rs.map(r => r.died), 1);
+      for (let wv = 1; wv <= maxW; wv++) {
+        const r = by[wv] || { died: 0, won: 0 };
+        bars += `<div class="row" style="gap:10px;min-height:0;padding:4px 12px"><span style="width:2.4em;text-align:right" class="muted">${wv}</span>
+          <span class="grow"><i style="display:block;height:12px;border-radius:6px;background:var(--brick);width:${Math.max(r.died ? 4 : 0, 100 * r.died / peak)}%"></i></span>
+          <span style="width:9em;text-align:right">${r.died ? w("deaths_died") + " " + r.died : ""}${r.won ? " · " + w("deaths_won") + " " + r.won : ""}</span>
+          <span class="muted" style="width:6em;text-align:right">${w("deaths_reached")} ${left}</span></div>`;
+        left -= r.died + r.won;
+      }
+      html += `<h2 class="sec">${w("m_" + mode)} · ${total}</h2><div class="list">${bars}</div>`;
+    }
+    this.page(html);
   },
   async week() {
     if (this.needProfile()) return;
