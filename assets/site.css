@@ -35,7 +35,7 @@ section { padding: 40px 0 8px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* Верхняя полоса */
-.top { position: sticky; top: 0; z-index: 20; background: rgba(26, 13, 7, .95); background: color-mix(in srgb, var(--choco-deep) 92%, transparent);
+.top { position: sticky; top: 0; z-index: 20; background: rgba(26, 13, 7, .97); background: color-mix(in srgb, var(--choco-deep) 97%, transparent);
        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--cream); }
 .top .wrap { display: flex; align-items: center; gap: 12px; min-height: 58px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; font-weight: 900;
@@ -220,3 +220,6 @@ video.trailer { display: block; width: 100%; border-radius: var(--radius); box-s
 main.wrap { min-height: 80vh; }
 .sub:empty { min-height: 1.6em; }
 #faq:empty { min-height: 60vh; }
+/* кнопки режимов рекордов — в одну строку с прокруткой, как в Android */
+.recSec .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.recSec .chips .chip { flex: none; }

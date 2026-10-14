@@ -79,7 +79,7 @@ const AppPage = {
       ${a.category === "games" ? `<section class="recSec"><h2>${this.x("rec_t")}</h2>
         <div class="chips" style="margin:6px 0 12px">${["endless", "campaign", "daily"].map(m =>
           `<button class="chip" data-mode="${m}" aria-pressed="${m === this.mode}">${this.x("m_" + m)}</button>`).join("")}</div>
-        <div class="rec"><div class="skel"></div></div></section>` : ""}
+        <div class="recbox"><div class="skel"></div></div></section>` : ""}
       <section class="revSec"><h2>${this.x("rev_t")}</h2><div class="revSum"></div><div class="revForm"></div><div class="rev"><div class="skel"></div></div></section>
       ${hist.length > 1 ? `<section><h2>${this.x("arch_t")} <span class="muted" style="font-size:16px">(${hist.length})</span></h2>
         <p class="muted small">${plat === "android" ? this.x("arch_android") : this.x("arch_other")}</p>${hist.slice(1).map(h => `
@@ -103,7 +103,7 @@ const AppPage = {
   },
 
   async records(page, a) {
-    const box = page.querySelector(".rec"); if (!box) return;
+    const box = page.querySelector(".recbox"); if (!box) return;
     try {
       const rows = await Lavka.rpc("leaderboard", { p_game: a.id, p_mode: this.mode, p_period: "all", p_limit: 10 });
       const me = this.profile(), link = (pid) => (document.getElementById("app") ? "#player/" : "me.html#player/") + pid;
