@@ -4,14 +4,55 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 13,
-    "version_name": "2.1.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.1.0/levsha-2.1.0.apk",
-    "sha256": "d508d1386518786d89de6677851ac565b55fd5bb55927bd6d530225d226a59c3",
-    "size": 2392863,
-    "changelog": "Добавлено: «Идеи и пожелания»: предложите идею или сообщите об ошибке — можно даже без профиля; К ошибке можно приложить скриншот и данные устройства (без личных данных); Подкова «поддержать», обсуждение идей, статусы и ответы мастера, уведомление автору; «Сделано по вашим идеям» — в «О лавке» и «Дорожной карте».",
+    "version_code": 14,
+    "version_name": "2.2.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.2.0/levsha-2.2.0.apk",
+    "sha256": "27c07dd261f01c7892c04d09d301eee27a062ba084c12aaaddd3111ed6bf0c03",
+    "size": 2442015,
+    "changelog": "Добавлено: Трейлер и оформленные снимки на странице игры; Рекорды мира прямо на странице игры; «Помощь» с поиском — те же ответы, что на сайте и на iPhone. Исправлено: На узком экране кнопка «Установить» больше не рвёт название игры; Тихие часы уведомлений — с 23:00 до 8:00, как на сервере; Честные сообщения, если сервер не ответил. Изменено: Лавка выглядит и называет всё одинаково на Android, iPhone и сайте; Оценки везде подковами; обновлены «О лавке» и дорожная карта.",
     "updated": "2026-10-14",
     "history": [
+      {
+        "version_name": "2.2.0",
+        "version_code": 14,
+        "date": "2026-10-14",
+        "changelog": "Добавлено: Трейлер и оформленные снимки на странице игры; Рекорды мира прямо на странице игры; «Помощь» с поиском — те же ответы, что на сайте и на iPhone. Исправлено: На узком экране кнопка «Установить» больше не рвёт название игры; Тихие часы уведомлений — с 23:00 до 8:00, как на сервере; Честные сообщения, если сервер не ответил. Изменено: Лавка выглядит и называет всё одинаково на Android, iPhone и сайте; Оценки везде подковами; обновлены «О лавке» и дорожная карта.",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.2.0/levsha-2.2.0.apk",
+        "sha256": "27c07dd261f01c7892c04d09d301eee27a062ba084c12aaaddd3111ed6bf0c03",
+        "size": 2442015,
+        "changes": {
+          "added": [
+            "Трейлер и оформленные снимки на странице игры",
+            "Рекорды мира прямо на странице игры",
+            "«Помощь» с поиском — те же ответы, что на сайте и на iPhone"
+          ],
+          "fixed": [
+            "На узком экране кнопка «Установить» больше не рвёт название игры",
+            "Тихие часы уведомлений — с 23:00 до 8:00, как на сервере",
+            "Честные сообщения, если сервер не ответил"
+          ],
+          "changed": [
+            "Лавка выглядит и называет всё одинаково на Android, iPhone и сайте",
+            "Оценки везде подковами; обновлены «О лавке» и дорожная карта"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Trailer and polished screenshots on the game page",
+            "World records right on the game page",
+            "Help with search — the same answers as on the website and iPhone"
+          ],
+          "fixed": [
+            "On narrow screens the Install button no longer breaks the game title",
+            "Notification quiet hours are 23:00–8:00, as on the server",
+            "Honest messages when the server doesn't respond"
+          ],
+          "changed": [
+            "The shop looks and names things the same on Android, iPhone and the web",
+            "Ratings use horseshoes everywhere; About and the roadmap are updated"
+          ]
+        }
+      },
       {
         "version_name": "2.1.0",
         "version_code": 13,
@@ -724,10 +765,8 @@
   "roadmap": [
     {
       "status": "now",
-      "title": "Единый вид лавки на Android, iPhone и сайте",
-      "title_en": "One look for the shop on Android, iPhone and the web",
-      "note": "одинаковые экраны, тексты и функции",
-      "note_en": "same screens, texts and features"
+      "title": "Резервные копии базы каждую ночь и «сторож», который сразу сообщает мастеру о сбое",
+      "title_en": "Nightly database backups and a watchdog that alerts the master right away"
     },
     {
       "status": "idea",
@@ -745,6 +784,13 @@
       "status": "idea",
       "title": "Анимированные обложки игр в каталоге",
       "title_en": "Animated game covers in the catalog"
+    },
+    {
+      "status": "done",
+      "title": "Единый вид лавки на Android, iPhone и сайте",
+      "title_en": "One look for the shop on Android, iPhone and the web",
+      "note": "одинаковые экраны, тексты и функции",
+      "note_en": "same screens, texts and features"
     },
     {
       "status": "done",
@@ -834,7 +880,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1791995595,
+  "seq": 1792002992,
   "help": [
     {
       "title": "Установка на Android",
