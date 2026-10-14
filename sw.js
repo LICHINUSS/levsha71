@@ -1,6 +1,6 @@
 // Работа без сети: страницы и картинки сайта берутся из кэша, каталог — сначала из сети (он всегда свежий).
 // Игру (play/…) кэширует сам браузер — она большая, держим её отдельно.
-const CACHE = "lavka-v7";
+const CACHE = "lavka-v8";
 const SHELL = ["./", "index.html", "app.html", "install.html", "roadmap.html", "privacy.html", "join.html", "me.html", "help.html", "people.html", "ideas.html",
   "assets/site.css", "assets/site.js", "assets/lavka.css", "assets/lavka.js", "assets/ideas.js", "assets/apppage.js",
   ...["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"].map(a => `assets/av/${a}.png`), "assets/install-steps.js", "assets/fonts/Nunito-500.ttf", "assets/fonts/Nunito-800.ttf", "assets/fonts/Nunito-900.ttf",
@@ -8,7 +8,8 @@ const SHELL = ["./", "index.html", "app.html", "install.html", "roadmap.html", "
   "assets/stamp_256.png", "assets/store_icon_192.png", "assets/levsha_sm.webp", "assets/qr.png"];
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // cache: "reload" — новая служба берёт свежие файлы с сайта, а не старые из кэша браузера
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL.map(u => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
@@ -21,7 +22,8 @@ self.addEventListener("fetch", e => {
   if (url.pathname.endsWith("catalog.json") || url.pathname.endsWith(".html") || url.pathname.endsWith("/")
       || /\.(js|css|webmanifest)$/.test(url.pathname)) {
     // сеть в первую очередь, кэш — если сети нет
-    e.respondWith(fetch(e.request).then(r => {
+    // no-cache — всегда сверяемся с сайтом (не изменилось — короткий ответ 304), иначе браузер до 10 минут отдаёт старый файл
+    e.respondWith(fetch(new Request(url.href, { cache: "no-cache", credentials: "same-origin" })).then(r => {
       const copy = r.clone(); caches.open(CACHE).then(c => c.put(url.pathname.endsWith("catalog.json") ? "catalog.json" : e.request, copy));
       return r;
     }).catch(() => caches.match(e.request, { ignoreSearch: true }).then(r => r || caches.match("catalog.json"))));
