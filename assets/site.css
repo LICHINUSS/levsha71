@@ -40,13 +40,13 @@ section { padding: 40px 0 8px; }
 .top .wrap { display: flex; align-items: center; gap: 12px; min-height: 58px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; font-weight: 900;
          font-size: 18px; white-space: nowrap; }
-.brand img { width: 34px; height: 34px; }
+.brand img { width: auto; height: 34px; }
 .nav { display: flex; gap: 4px; margin-left: auto; align-items: center; }
 .nav a { color: var(--cream); text-decoration: none; font-weight: 700; padding: 8px 12px; border-radius: 99px; font-size: 15px; }
 .nav a:hover, .nav a[aria-current] { background: rgba(242, 181, 49, .18); color: var(--gold); }
 .lang { border: 1px solid rgba(251, 226, 184, .35); background: none; color: var(--cream); font: 800 14px Nunito, sans-serif;
         border-radius: 99px; padding: 6px 12px; cursor: pointer; }
-@media (max-width: 760px) { .nav a.opt { display: none; } .brand span { display: none; } }
+@media (max-width: 760px) { .nav a.opt { display: none; } .brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
 
 /* Кнопки */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; cursor: pointer;
@@ -98,7 +98,7 @@ section { padding: 40px 0 8px; }
 .card .row { display: flex; gap: 8px; padding: 0 14px 16px; flex-wrap: wrap; margin-top: auto; }
 .rating { display: inline-flex; gap: 4px; align-items: center; font-weight: 800; color: var(--gold-text); }
 .badge { display: inline-block; border-radius: 99px; padding: 2px 10px; font-size: 13px; font-weight: 800; background: var(--surface2); color: var(--text2); }
-.badge.new { background: var(--brick); color: #fff; }
+.badge.new { background: #C3271B; color: #fff; }
 .empty { text-align: center; color: var(--text2); padding: 30px; }
 
 /* Блоки */
@@ -109,7 +109,7 @@ section { padding: 40px 0 8px; }
 .road li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
 .road .st { flex: none; font-size: 12px; font-weight: 900; border-radius: 99px; padding: 3px 10px; text-transform: uppercase; }
 .st.now { background: var(--gold); color: var(--choco); } .st.soon { background: var(--surface2); color: var(--text2); }
-.st.done { background: var(--green); color: #fff; } .st.idea { background: transparent; color: var(--text2); border: 1px dashed var(--border); }
+.st.done { background: #237841; color: #fff; } .st.idea { background: transparent; color: var(--text2); border: 1px dashed var(--border); }
 
 /* Шаги установки с картинками */
 .steps { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); counter-reset: s; }
@@ -130,8 +130,8 @@ section { padding: 40px 0 8px; }
 .facts div:last-child { border-right: 0; }
 .facts b { display: block; font-size: 18px; } .facts span { font-size: 13px; color: var(--text2); }
 .shots { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 12px; }
-.shots img { height: 240px; border-radius: 14px; scroll-snap-align: start; box-shadow: var(--shadow); cursor: zoom-in; }
-.changes h4 { margin: 12px 0 4px; font-size: 15px; } .changes ul { margin: 0; padding-left: 20px; }
+.shots img { flex: none; width: auto; max-width: none; height: 240px; border-radius: 14px; scroll-snap-align: start; box-shadow: var(--shadow); cursor: zoom-in; }
+.changes h3 { margin: 12px 0 4px; font-size: 15px; } .changes ul { margin: 0; padding-left: 20px; }
 .h-added { color: var(--green); } .h-fixed { color: var(--brick); } .h-changed { color: var(--gold-text); }
 details.ver { border-bottom: 1px solid var(--border); padding: 10px 0; }
 details.ver summary { cursor: pointer; font-weight: 800; list-style: none; display: flex; gap: 10px; align-items: baseline; }
@@ -201,3 +201,22 @@ video.trailer { display: block; width: 100%; border-radius: var(--radius); box-s
 .small { font-size: 14px; }
 
 [hidden] { display: none !important; }
+
+/* Компьютер: видимый фокус с клавиатуры (мышью и пальцем рамка не появляется) */
+:focus { outline: none; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+.btn:focus-visible, .chip:focus-visible, .tabbar a:focus-visible { outline-offset: 3px; }
+.shots img:focus-visible { outline-offset: -3px; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--gold); color: #2B140A; padding: 10px 16px; border-radius: 12px;
+  font-weight: 800; text-decoration: none; }
+.skip:focus { top: 12px; }
+@media (min-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Скорость: место под кнопки и каталог заранее — страница не «прыгает», пока грузится */
+.hero .cta { min-height: 52px; }
+.hero .note:empty { min-height: 1.4em; }
+.grid:empty { min-height: 180px; border-radius: var(--radius); background: var(--surface2); }
+.mascot { height: auto; }
+main.wrap { min-height: 80vh; }
+.sub:empty { min-height: 1.6em; }
+#faq:empty { min-height: 60vh; }

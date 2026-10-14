@@ -4,7 +4,7 @@
 "use strict";
 
 const AP_TX = {
-  ru: { rec_t: "Рекорды мира", m_endless: "Бесконечный", m_campaign: "Кампания", m_daily: "Испытание дня",
+  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_campaign: "Кампания", m_daily: "Испытание дня",
         waves: ["волна", "волны", "волн"], rec_empty: "Рекордов пока нет — будьте первым!", rec_more: "Играть и попасть в таблицу",
         rev_t: "Оценки и отзывы", rev_empty: "Отзывов пока нет.", rev_master: "Ответ мастера", rev_mine: "Ваша оценка",
         rev_ph: "Что понравилось, что поправить? (можно оставить пустым)", rev_send: "Сохранить отзыв", rev_saved: "Спасибо! Отзыв сохранён.",
@@ -12,7 +12,7 @@ const AP_TX = {
         arch_t: "Все версии", arch_android: "Старая версия встанет только после удаления текущей: Android не даёт ставить версию ниже поверх новой. Данные игры на этом телефоне пропадут (рекорды и облачное сохранение останутся).",
         arch_other: "Скачать и поставить старую версию можно только на Android-телефоне. На iPhone и в браузере всегда открывается последняя версия.",
         dl_ver: "Скачать v{v}", sound_on: "Включить звук" },
-  en: { rec_t: "World records", m_endless: "Endless", m_campaign: "Campaign", m_daily: "Daily challenge",
+  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_campaign: "Campaign", m_daily: "Daily challenge",
         waves: ["wave", "waves", "waves"], rec_empty: "No records yet — be the first!", rec_more: "Play and get on the board",
         rev_t: "Ratings and reviews", rev_empty: "No reviews yet.", rev_master: "Master's answer", rev_mine: "Your rating",
         rev_ph: "What did you like, what to fix? (optional)", rev_send: "Save review", rev_saved: "Thanks! Your review is saved.",
@@ -35,24 +35,20 @@ const AppPage = {
   profile() { try { return JSON.parse(localStorage.getItem("lavka_profile") || "null"); } catch (e) { return null; } },
   /** Оценка подковами: n из 5 (как в лавке на Android). */
   shoes(n, size = 16) {
-    return `<span class="shoes" aria-label="${n}/5">${[1, 2, 3, 4, 5].map(i =>
+    return `<span class="shoes" role="img" aria-label="${n}/5">${[1, 2, 3, 4, 5].map(i =>
       Lavka.shoe.replace("<svg", `<svg width="${size}" height="${size}" class="${i <= Math.round(n) ? "on" : ""}"`)).join("")}</span>`;
   },
   changes(h) {
     const ch = (Lavka.lang === "en" && h.changes_en) || h.changes;
     if (ch && Object.keys(ch).length) {
       return `<div class="changes">${["added", "fixed", "changed"].filter(k => ch[k] && ch[k].length).map(k =>
-        `<h4 class="h-${k}">${Lavka.t("h_" + k)}</h4><ul>${ch[k].map(x => `<li>${Lavka.esc(x)}</li>`).join("")}</ul>`).join("")}</div>`;
+        `<h3 class="h-${k}">${Lavka.t("h_" + k)}</h3><ul>${ch[k].map(x => `<li>${Lavka.esc(x)}</li>`).join("")}</ul>`).join("")}</div>`;
     }
     return `<p>${Lavka.esc(Lavka.L(h, "changelog"))}</p>`;
   },
   /** Трейлер: постер сразу, видео без звука; само играет только если человек не просил экономить трафик и движение. */
   trailer(a) {
-    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const c = navigator.connection, saver = c && (c.saveData || /2g|3g/.test(c.effectiveType || ""));
-    const auto = !still && !saver;
-    return `<div class="trailer-box"><video class="trailer" src="${a.trailer}" poster="${a.poster || ""}" ${auto ? "autoplay loop" : "controls"}
-      muted playsinline preload="${auto ? "metadata" : "none"}"></video>
+    return `<div class="trailer-box">${Lavka.video(a.trailer, a.poster)}
       <button class="sound" type="button" aria-label="${this.x("sound_on")}">🔇</button></div>`;
   },
 
@@ -76,7 +72,7 @@ const AppPage = {
       <div class="app-actions">${Lavka.appButtons(a, false)}</div>
       ${a.trailer ? `<section><h2>${Lavka.t("app_trailer")}</h2>${this.trailer(a)}</section>` : ""}
       <section><h2>${Lavka.t("app_shots")}</h2>
-        <div class="shots">${shots.map(s => `<img src="${s}" alt="" loading="lazy">`).join("")}</div></section>
+        <div class="shots">${shots.map(s => Lavka.shotImg(s, this.x("shot_alt"), 'tabindex="0" role="button"')).join("")}</div></section>
       ${hist.length ? `<section><h2>${Lavka.t("app_whatsnew")}</h2>
         <p class="muted">v${Lavka.esc(hist[0].version_name)} · ${Lavka.fmtDate(hist[0].date)}</p>${this.changes(hist[0])}</section>` : ""}
       <section><h2>${Lavka.t("app_about")}</h2><p>${Lavka.esc(Lavka.L(a, "description"))}</p></section>
@@ -95,7 +91,11 @@ const AppPage = {
     };
     const v = page.querySelector("video.trailer"), snd = page.querySelector(".sound");
     if (v && snd) snd.onclick = () => { v.muted = !v.muted; if (!v.muted) v.play().catch(() => {}); snd.textContent = v.muted ? "🔇" : "🔊"; };
-    for (const img of page.querySelectorAll(".shots img")) img.onclick = () => Lavka.zoom(img.src);
+    for (const img of page.querySelectorAll(".shots img")) {
+      img.onclick = () => Lavka.zoom(img.dataset.full || img.src);
+      img.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); Lavka.zoom(img.dataset.full || img.src); } };
+    }
+    Lavka.lazyVideos(page);
     if (a.category === "games") this.records(page, a);
     this.reviews(page, a, opts);
     if (!this.ratings[a.id]) Lavka.ratings().then(rt => { this.ratings = rt; if (rt[a.id]) {

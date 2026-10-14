@@ -316,7 +316,7 @@ const App = {
     if (ios) html += `<div class="panel tip">${w("add_home")} <a href="install.html#iphone">${w("how")}</a></div>`;
     const top = cat && (cat.apps.find(a => a.id === cat.featured) || cat.apps[0]);
     if (top) html += `<h2 class="sec">${w("game_week")}</h2><p class="muted pad" style="margin-top:-8px">${w("game_week_s")}</p>
-      <a class="panel feat" href="#app/${encodeURIComponent(top.id)}" style="background-image:url('${esc(Lavka.promoFor(top)[0] || (top.screenshots || [])[0] || "")}')">
+      <a class="panel feat" href="#app/${encodeURIComponent(top.id)}" style="background-image:url('${esc(Lavka.thumb(Lavka.promoFor(top)[0] || (top.screenshots || [])[0] || ""))}')">
         <span class="feat-in"><img class="icon" src="${esc(top.icon)}" alt=""><span><b>${esc(Lavka.L(top, "name"))}</b>${Lavka.ratingHtml(ratings[top.id])}</span></span></a>`;
     if (this.me) html += `<h2 class="sec">${w("for_you")}</h2><div id="foryou"><div class="skel short"></div></div>`;
     else html += this.welcomeCard();
@@ -420,14 +420,14 @@ const App = {
         <b>${w("rec_new")}${mode === "campaign" ? d.waves + "/10" : wavesTxt(d.waves)}</b>
         <small>«${esc(app)}» · ${d.place ? (mode === "daily" ? w("place_day", { p: d.place }) : w("place_world", { p: d.place })) : ""}</small></span></a>`;
     } else if (p.kind === "review") {
-      body = `<p class="muted">${w("rated", { a: esc(app) })} ${"★".repeat(Math.round((p.data || {}).rating || 0))}</p>${p.body ? `<p>${esc(p.body)}</p>` : ""}`;
+      body = `<p class="muted">${w("rated", { a: esc(app) })} ${AppPage.shoes((p.data || {}).rating || 0, 14)}</p>${p.body ? `<p>${esc(p.body)}</p>` : ""}`;
     } else if (rel) {
       const a = this.cat && this.cat.apps.find(x => x.id === p.app_id);
       body = `<a class="rec" href="app.html?id=${encodeURIComponent(p.app_id || "")}">${a ? `<img class="icon sm" src="${esc(a.icon)}" alt="">` : ""}<span>
         <b>${w("release", { a: esc(p.nick) })}</b><small>${w("version", { v: esc((p.data || {}).version || "") })}</small></span></a>
         ${p.body ? `<p class="clamp">${esc(p.body)}</p>` : ""}`;
     } else body = `<p>${esc(p.body)}</p>`;
-    const who = rel ? `<img class="icon sm" src="assets/stamp_256.png" alt="">` : `<a href="#player/${p.player_id}">${this.av(p, 42)}</a>`;
+    const who = rel ? `<img class="icon sm" src="assets/stamp_256.png" alt="">` : `<a href="#player/${p.player_id}" aria-label="${esc(p.nick)}">${this.av(p, 42)}</a>`;
     const name = rel ? w("workshop") : esc(p.nick);
     return `<article class="panel post" data-id="${p.id}">
       <header>${who}<div class="grow"><span class="nm"><b>${name}</b>${p.is_master || rel ? `<span class="badge new">${w("master")}</span>` : ""}</span>
@@ -467,8 +467,13 @@ const App = {
     m.innerHTML = `<div class="asheet-in" role="menu">${items.map((it, i) => `<button role="menuitem" data-i="${i}">${esc(it[0])}</button>`).join("")}
       <button class="cancel" data-i="">${w("cancel")}</button></div>`;
     document.body.appendChild(m);
-    requestAnimationFrame(() => m.classList.add("on"));
-    const close = () => { m.classList.remove("on"); setTimeout(() => m.remove(), 200); };
+    requestAnimationFrame(() => { m.classList.add("on"); m.querySelector("button").focus(); });
+    const close = () => { m.classList.remove("on"); setTimeout(() => m.remove(), 200); anchor && anchor.focus && anchor.focus(); };
+    m.onkeydown = (e) => {
+      const bs = [...m.querySelectorAll("button")], k = bs.indexOf(document.activeElement);
+      if (e.key === "Escape") { e.preventDefault(); close(); }
+      else if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); bs[(k + (e.key === "ArrowDown" ? 1 : bs.length - 1)) % bs.length].focus(); }
+    };
     m.onclick = (e) => {
       const i = e.target.dataset ? e.target.dataset.i : undefined;
       if (e.target === m || i !== undefined) { close(); if (i) this.act(null, items[+i][1]); }
@@ -479,7 +484,7 @@ const App = {
     const list = await this.rpc("comments", { p_post: id, p_viewer: this.me ? this.me.id : null });
     this.page(this.head(w("comments"), "#feed") + (p ? this.postCard(p, true) : "")
       + `<div class="list" id="cms">${list.length ? list.map(c => `<div class="row" data-c="${c.id}">
-          <a href="#player/${c.player_id}">${this.av(c, 36)}</a>
+          <a href="#player/${c.player_id}" aria-label="${esc(c.nick)}">${this.av(c, 36)}</a>
           <div class="grow"><b>${esc(c.nick)}</b> <small class="muted">${this.ago(c.created_at)}</small><p>${esc(c.body)}</p></div>
           ${this.me ? `<button class="iconbtn cmenu" data-mine="${c.mine ? 1 : ""}">⋯</button>` : ""}</div>`).join("")
           : `<p class="empty">${w("no_comments")}</p>`}</div>`
@@ -512,7 +517,7 @@ const App = {
     if (!this.me) { this.page(this.head(w("friends"), "#me") + this.subTabs("friends") + this.welcomeCard()); this.bindWelcome(); return; }
     const list = await this.rpc("friends_list", this.auth());
     const inc = list.filter(f => f.state === "incoming"), fr = list.filter(f => f.state === "friend"), out = list.filter(f => f.state === "outgoing");
-    const row = (f, btns, wide) => `<div class="row${wide ? " wrap" : ""}" data-p="${f.player_id}"><a href="#player/${f.player_id}">${this.av(f, 46)}</a>
+    const row = (f, btns, wide) => `<div class="row${wide ? " wrap" : ""}" data-p="${f.player_id}"><a href="#player/${f.player_id}" aria-label="${esc(f.nick)}">${this.av(f, 46)}</a>
       <a class="grow" href="#player/${f.player_id}"><b>${esc(f.nick)}</b>${f.status_text ? `<span class="muted">${esc(f.status_text)}</span>` : ""}
         <small class="${f.playing ? "playing" : "muted"}">${esc([this.presence(f), f.best && f.best["brick-tower"] ? w("best", { n: f.best["brick-tower"] }) : ""].filter(Boolean).join(" · "))}</small></a>
         ${btns ? (wide ? `<div class="acts">${btns}</div>` : btns) : ""}</div>`;
@@ -634,7 +639,7 @@ const App = {
     box.innerHTML = '<div class="skel"></div>';
     try {
       if (tab === "members") {
-        box.innerHTML = `<div class="list">${g.members.map(m => `<div class="row" data-p="${m.player_id}"><a href="#player/${m.player_id}">${this.av(m, 44)}</a>
+        box.innerHTML = `<div class="list">${g.members.map(m => `<div class="row" data-p="${m.player_id}"><a href="#player/${m.player_id}" aria-label="${esc(m.nick)}">${this.av(m, 44)}</a>
           <a class="grow" href="#player/${m.player_id}"><b>${esc(m.nick)}</b> ${m.owner ? `<span class="badge">${w("owner")}</span>` : ""}
           <small class="${m.playing ? "playing" : "muted"}">${esc(this.presence(m) || rank(m.title))}</small></a>
           ${g.is_owner && !m.owner ? `<button class="btn small ghost" data-kick>${w("g_kick")}</button>` : ""}</div>`).join("")}</div>`;

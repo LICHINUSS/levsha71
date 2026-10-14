@@ -215,9 +215,30 @@ const Lavka = {
   },
 
   /** Беззвучное видео: само крутится, но не у тех, кто просил «меньше движения». */
+  /** Видео: сначала постер; само (без звука) играет, только когда видно на экране и интернет не экономный. */
   video(src, poster, cls = "trailer") {
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    return `<video class="${cls}" src="${src}" poster="${poster || ""}" ${still ? "controls" : "autoplay loop"} muted playsinline preload="metadata"></video>`;
+    const c = navigator.connection, saver = c && (c.saveData || /2g|3g/.test(c.effectiveType || ""));
+    const auto = !still && !saver;
+    return `<video class="${cls}" data-src="${src}" poster="${poster ? this.thumb(poster) : ""}" ${auto ? 'data-auto="1" loop' : "controls"} muted playsinline preload="none"></video>`;
+  },
+  /** Подключить видео из video(): грузить файл, только когда ролик показался (экономит трафик), и ставить на паузу вне экрана. */
+  lazyVideos(root = document) {
+    const vs = [...root.querySelectorAll("video[data-src]")];
+    const start = v => { if (!v.getAttribute("src")) v.src = v.dataset.src; if (v.dataset.auto) v.play().catch(() => {}); };
+    for (const v of vs) if (!v.dataset.auto) v.src = v.dataset.src;  // с кнопками: файл грузится по нажатию «играть»
+    const auto = vs.filter(v => v.dataset.auto);
+    if (!auto.length) return;
+    if (!("IntersectionObserver" in window)) { auto.forEach(start); return; }
+    const io = new IntersectionObserver(es => { for (const e of es) {
+      if (e.isIntersecting) start(e.target); else if (!e.target.paused) e.target.pause();
+    } }, { threshold: 0.4 });
+    auto.forEach(v => io.observe(v));
+  },
+  /** Лёгкая копия снимка для полосы (tools/content.py thumbs); крупно — оригинал. */
+  thumb(src) { return /^https?:/.test(src) ? src : String(src).replace(/\.(jpe?g|png)$/i, ".s.webp"); },
+  shotImg(src, alt = "", attrs = "") {
+    return `<img src="${this.thumb(src)}" data-full="${src}" alt="${alt}" loading="lazy" ${attrs} onerror="if(this.src!==this.dataset.full){this.src=this.dataset.full}">`;
   },
   promoFor(a) { return (a.promo || []).map(x => x.replace("{lang}", this.lang)); },
 

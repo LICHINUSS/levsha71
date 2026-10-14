@@ -16,9 +16,11 @@
 <meta property="og:title" content="Лавка Левши">
 <meta property="og:description" content="Игры и приложения мастерской «Левша 71»">
 <meta property="og:image" content="assets/store_icon_512.png">
+<link rel="preload" as="image" href="assets/kremlin_px.png" fetchpriority="high">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main">К содержимому · Skip to content</a>
 <header class="top"><div class="wrap">
   <a class="brand" href="./"><img class="px" src="assets/stamp_256.png" alt=""><span data-i18n="brand">Лавка Левши</span></a>
   <nav class="nav">
@@ -28,7 +30,7 @@
     <a class="opt" href="help.html" data-i18n="nav_help">Помощь</a>
     <a class="opt" href="ideas.html" data-i18n="nav_ideas">Идеи</a>
     <a href="me.html" data-i18n="nav_me">Моя лавка</a>
-    <button class="lang" id="lang" aria-label="Language">EN</button>
+    <button class="lang" id="lang" title="Язык · Language">EN</button>
   </nav>
 </div></header>
 
@@ -40,10 +42,10 @@
     <div class="note" id="ctaNote"></div>
     <div class="live" id="live" hidden><i></i><span></span></div>
   </div>
-  <img class="mascot" id="mascot" src="assets/mascot_idle.png" alt="Мастер Левша">
+  <img class="mascot" id="mascot" src="assets/mascot_idle.png" alt="Мастер Левша" width="368" height="320">
 </div></div>
 
-<main class="wrap">
+<main class="wrap" id="main">
   <section id="catalog">
     <h2 data-i18n="cat_title">Каталог</h2>
     <p class="sub" data-i18n="cat_sub">Игры и приложения мастерской</p>
@@ -63,7 +65,7 @@
   <section id="inside">
     <h2 data-i18n="inside_title">Лавка изнутри</h2>
     <p class="sub" data-i18n="inside_sub">Так выглядит «Лавка Левши» на телефоне</p>
-    <div class="inside"><div id="insideVideo"></div><div class="shots" id="insideShots"></div></div>
+    <div class="inside"><div id="insideVideo"></div><div class="shots" id="insideShots" tabindex="0" role="region" aria-label="Снимки лавки"></div></div>
   </section>
 
   <section id="road">
@@ -92,7 +94,7 @@
 
   <section id="about">
     <div class="panel" style="display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center">
-      <img class="px" src="assets/levsha.png" alt="Левша с лупой" style="width:120px">
+      <img src="assets/levsha_sm.webp" alt="Левша с лупой" width="120" height="229" loading="lazy">
       <div><h2 data-i18n="about_title">О мастерской</h2><p data-i18n="about_text"></p></div>
     </div>
   </section>
@@ -140,7 +142,7 @@ function renderGrid() {
     (!q || [a.name, a.name_en, a.tagline, a.tagline_en, a.description, a.description_en].some(x => (x || "").toLowerCase().includes(q))));
   $("grid").innerHTML = list.map(a => `
     <article class="card">
-      <a href="app.html?id=${a.id}" class="shot" style="background-image:url('${(a.screenshots || [])[0] || ""}')" aria-label="${Lavka.esc(Lavka.L(a, "name"))}"></a>
+      <a href="app.html?id=${a.id}" class="shot" style="background-image:url('${Lavka.thumb((a.screenshots || [])[0] || "")}')" aria-label="${Lavka.esc(Lavka.L(a, "name"))}"></a>
       <div class="body"><img class="icon px" src="${a.icon}" alt="">
         <div><h3><a href="app.html?id=${a.id}" style="color:inherit;text-decoration:none">${Lavka.esc(Lavka.L(a, "name"))}</a></h3>
           <p class="tag">${Lavka.esc(Lavka.L(a, "tagline"))}</p></div></div>
@@ -166,8 +168,8 @@ function renderHow() {
 }
 
 function renderInside() {
-  if (!$("insideVideo").firstChild) $("insideVideo").innerHTML = Lavka.video("promo/store/trailer.mp4", "promo/store/poster.jpg");
-  $("insideShots").innerHTML = [1, 2, 3, 4, 5].map(i => `<img src="promo/store/${i}_${Lavka.lang}.jpg" alt="" loading="lazy">`).join("");
+  if (!$("insideVideo").firstChild) { $("insideVideo").innerHTML = Lavka.video("promo/store/trailer.mp4", "promo/store/poster.jpg"); Lavka.lazyVideos($("insideVideo")); }
+  $("insideShots").innerHTML = [1, 2, 3, 4, 5].map(i => Lavka.shotImg(`promo/store/${i}_${Lavka.lang}.jpg`)).join("");
 }
 
 function renderAll() { renderInside(); renderCta(); renderGrid(); renderRoad(); renderHow(); document.querySelector('[data-i18n="about_text"]').textContent = Lavka.t("about_text"); }
