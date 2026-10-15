@@ -1,17 +1,60 @@
 {
   "format": 1,
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 14,
-    "version_name": "2.2.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.2.0/levsha-2.2.0.apk",
-    "sha256": "27c07dd261f01c7892c04d09d301eee27a062ba084c12aaaddd3111ed6bf0c03",
-    "size": 2442015,
-    "changelog": "Добавлено: Трейлер и оформленные снимки на странице игры; Рекорды мира прямо на странице игры; «Помощь» с поиском — те же ответы, что на сайте и на iPhone. Исправлено: На узком экране кнопка «Установить» больше не рвёт название игры; Тихие часы уведомлений — с 23:00 до 8:00, как на сервере; Честные сообщения, если сервер не ответил. Изменено: Лавка выглядит и называет всё одинаково на Android, iPhone и сайте; Оценки везде подковами; обновлены «О лавке» и дорожная карта.",
-    "updated": "2026-10-14",
+    "version_code": 15,
+    "version_name": "2.3.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.3.0/levsha-2.3.0.apk",
+    "sha256": "fbc03a9f008a52b198e9d9a420e24a1af585f59d41d060a55e90d14e150aa161",
+    "size": 2492239,
+    "changelog": "Добавлено: Вход в игры через лавку одной кнопкой — у каждой игры свой пропуск, его можно отозвать; «Вход и объединение»: войти на другом телефоне по QR, объединить два профиля (сначала видно, что с чем сольётся; отменить можно 30 дней); «Я потерял профиль» — мастер найдёт старый профиль и перенесёт всё в новый; Журнал входов и список игр с доступом; Напоминание сохранить код профиля; Вопросы игроков в «Ящике идей» мастера. Исправлено: Время в журнале показывалось по Гринвичу — теперь местное; Одноцветный значок для тем Android 13+ стал узнаваемым. Изменено: Профиль создаётся только в лавке — один на лавку и все игры.",
+    "updated": "2026-10-15",
     "history": [
+      {
+        "version_name": "2.3.0",
+        "version_code": 15,
+        "date": "2026-10-15",
+        "changelog": "Добавлено: Вход в игры через лавку одной кнопкой — у каждой игры свой пропуск, его можно отозвать; «Вход и объединение»: войти на другом телефоне по QR, объединить два профиля (сначала видно, что с чем сольётся; отменить можно 30 дней); «Я потерял профиль» — мастер найдёт старый профиль и перенесёт всё в новый; Журнал входов и список игр с доступом; Напоминание сохранить код профиля; Вопросы игроков в «Ящике идей» мастера. Исправлено: Время в журнале показывалось по Гринвичу — теперь местное; Одноцветный значок для тем Android 13+ стал узнаваемым. Изменено: Профиль создаётся только в лавке — один на лавку и все игры.",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v2.3.0/levsha-2.3.0.apk",
+        "sha256": "fbc03a9f008a52b198e9d9a420e24a1af585f59d41d060a55e90d14e150aa161",
+        "size": 2492239,
+        "changes": {
+          "added": [
+            "Вход в игры через лавку одной кнопкой — у каждой игры свой пропуск, его можно отозвать",
+            "«Вход и объединение»: войти на другом телефоне по QR, объединить два профиля (сначала видно, что с чем сольётся; отменить можно 30 дней)",
+            "«Я потерял профиль» — мастер найдёт старый профиль и перенесёт всё в новый",
+            "Журнал входов и список игр с доступом",
+            "Напоминание сохранить код профиля",
+            "Вопросы игроков в «Ящике идей» мастера"
+          ],
+          "fixed": [
+            "Время в журнале показывалось по Гринвичу — теперь местное",
+            "Одноцветный значок для тем Android 13+ стал узнаваемым"
+          ],
+          "changed": [
+            "Профиль создаётся только в лавке — один на лавку и все игры"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Sign in to games via the shop with one tap — each game gets its own pass you can revoke",
+            "“Sign-in and merging”: sign in on another phone via QR, merge two profiles (preview first, undo within 30 days)",
+            "“I lost my profile” — the master finds the old profile and moves everything into the new one",
+            "Sign-in log and the list of games with access",
+            "A reminder to save your profile code",
+            "Player questions in the master's idea inbox"
+          ],
+          "fixed": [
+            "Times in the log were shown in GMT — now local time",
+            "The monochrome icon for Android 13+ themes is now recognizable"
+          ],
+          "changed": [
+            "Profiles are created only in the shop — one for the shop and all games"
+          ]
+        }
+      },
       {
         "version_name": "2.2.0",
         "version_code": 14,
@@ -764,9 +807,9 @@
   "featured": "brick-tower",
   "roadmap": [
     {
-      "status": "now",
-      "title": "Резервные копии базы каждую ночь и «сторож», который сразу сообщает мастеру о сбое",
-      "title_en": "Nightly database backups and a watchdog that alerts the master right away"
+      "status": "soon",
+      "title": "Враги в игре рисуются быстрее (склейка деталей, как у мира)",
+      "title_en": "Faster enemy rendering in the game (merged parts, like the world)"
     },
     {
       "status": "idea",
@@ -784,6 +827,40 @@
       "status": "idea",
       "title": "Анимированные обложки игр в каталоге",
       "title_en": "Animated game covers in the catalog"
+    },
+    {
+      "status": "done",
+      "title": "Один профиль для лавки и всех игр: вход через лавку одной кнопкой, игра без профиля — гостем",
+      "title_en": "One profile for the shop and all games: sign in via the shop with one tap, play as a guest without a profile",
+      "note": "лавка 2.3.0, Кирпичная башня 1.6.0",
+      "note_en": "shop 2.3.0, Brick Tower 1.6.0"
+    },
+    {
+      "status": "done",
+      "title": "Объединение профилей с отменой 30 дней, вход на другом телефоне по QR, «Я потерял профиль»",
+      "title_en": "Merging profiles with 30-day undo, QR sign-in on another phone, “I lost my profile”"
+    },
+    {
+      "status": "done",
+      "title": "Забег не пропадает: сохранение после каждой волны и «Продолжить» после вылета",
+      "title_en": "Runs are never lost: saved after every wave, “Continue” after a crash",
+      "note": "Кирпичная башня 1.6.0",
+      "note_en": "Brick Tower 1.6.0"
+    },
+    {
+      "status": "done",
+      "title": "Графика «Авто» сама подбирает картинку под телефон; пресеты от «Минимума» до «Максимума»",
+      "title_en": "“Auto” graphics fit your phone; presets from Minimum to Maximum"
+    },
+    {
+      "status": "done",
+      "title": "«Написать разработчику» прямо из игры: идея, ошибка или вопрос со снимком экрана",
+      "title_en": "“Message the developer” right from the game: an idea, a bug or a question with a screenshot"
+    },
+    {
+      "status": "done",
+      "title": "Резервные копии базы каждую ночь и «сторож», который сразу сообщает мастеру о сбое",
+      "title_en": "Nightly database backups and a watchdog that alerts the master right away"
     },
     {
       "status": "done",
@@ -880,7 +957,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792002992,
+  "seq": 1792040572,
   "help": [
     {
       "title": "Установка на Android",
@@ -979,20 +1056,32 @@
         {
           "q": "Как перенести профиль на новый телефон?",
           "q_en": "How do I move my profile to a new phone?",
-          "a": "У профиля есть **код восстановления** (вида ABCD-EFGH-JKMN). На новом телефоне: «Мои» → **«Войти по коду»** — вернутся ник, рекорды, друзья, группы и облачное сохранение игр. Код работает на Android, iPhone и в браузере.",
-          "a_en": "Your profile has a **recovery code** (like ABCD-EFGH-JKMN). On the new phone: Library → **Sign in with a code** — your nickname, records, friends, groups and game cloud save come back. The code works on Android, iPhone and in the browser."
+          "a": "Проще всего — по QR: на старом телефоне «Мои» → «Профиль» → **«Вход и объединение»** → «Войти этим профилем на другом телефоне» и наведите камеру нового телефона. QR действует 10 минут и один раз. Или по **коду восстановления** (вида ABCD-EFGH-JKMN): на новом телефоне «Мои» → **«Войти по коду»**. Вернутся ник, рекорды, друзья, группы и облачное сохранение игр — на Android, iPhone и в браузере.",
+          "a_en": "Easiest is a QR code: on the old phone go to Library → Profile → **Sign-in and merging** → Sign in with this profile on another phone, and point the new phone's camera. The QR works for 10 minutes, once. Or use the **recovery code** (like ABCD-EFGH-JKMN): on the new phone, Library → **Sign in with a code**. Your nickname, records, friends, groups and game cloud save come back — on Android, iPhone and in the browser."
         },
         {
           "q": "Где мой код? Я его потерял",
           "q_en": "Where is my code? I lost it",
-          "a": "Если профиль открыт хоть на одном телефоне: «Мои» → **«Профиль»** → «Код восстановления» → «Показать». Если нигде — код не восстановить: мы не храним его в открытом виде, это защита вашего профиля.",
-          "a_en": "If your profile is open on any phone: Library → **Profile** → Recovery code → Show. If not, it can't be recovered: we don't store it in plain form, that's what protects your profile."
+          "a": "Если профиль открыт хоть на одном телефоне: «Мои» → **«Профиль»** → «Код восстановления» → «Показать». Если нигде — код не восстановить: мы не храним его в открытом виде, это защита вашего профиля. Тогда создайте новый профиль и в «Вход и объединение» отправьте заявку **«Я потерял профиль»** со старым ником: мастер найдёт старый профиль вручную и перенесёт всё в новый.",
+          "a_en": "If your profile is open on any phone: Library → **Profile** → Recovery code → Show. If not, it can't be recovered: we don't store it in plain form, that's what protects your profile. Then create a new profile and, in Sign-in and merging, send an **I lost my profile** request with your old nickname: the master will find the old profile by hand and move everything into the new one."
         },
         {
           "q": "Кто-то узнал мой код",
           "q_en": "Someone learned my code",
-          "a": "«Мои» → «Профиль» → **«Сменить код»**. Старый код сразу перестанет работать.",
-          "a_en": "Library → Profile → **Change the code**. The old code stops working at once."
+          "a": "«Мои» → «Профиль» → **«Сменить код»**. Старый код сразу перестанет работать. Кто и когда входил — в «Вход и объединение» → **«Журнал входов»**; там же можно отозвать доступ у игр.",
+          "a_en": "Library → Profile → **Change the code**. The old code stops working at once. Who signed in and when is in Sign-in and merging → **Sign-in log**; you can revoke game access there too."
+        },
+        {
+          "q": "Как игры входят в мой профиль?",
+          "q_en": "How do games sign in to my profile?",
+          "a": "Профиль создаётся только в лавке. В игре нажмите **«Войти через лавку»** — лавка выдаст игре её собственный пропуск (кода игра не знает). Без лавки игра работает как гость: рекорды и прогресс копятся и переходят в профиль при первом входе. Доступ любой игры можно отозвать: «Вход и объединение» → **«Игры с доступом»**. Пускаем только игры, подписанные ключом мастерской «Левша 71».",
+          "a_en": "Profiles are created only in the shop. In a game, tap **Sign in via the shop** — the shop gives the game its own pass (the game never sees your code). Without the shop the game runs as a guest: records and progress add up and move into your profile on first sign-in. You can revoke any game's access: Sign-in and merging → **Games with access**. Only games signed with the Levsha 71 workshop key are let in."
+        },
+        {
+          "q": "У меня два профиля — как их объединить?",
+          "q_en": "I have two profiles — how do I merge them?",
+          "a": "Войдите в тот, который хотите оставить, → «Мои» → «Профиль» → **«Вход и объединение»** → «Объединить профили»: введите код второго профиля или отсканируйте QR с телефона, где он открыт. Сначала покажем, **что с чем сольётся**. Забеги, рекорды, друзья, группы, посты и отзывы перейдут в основной; из сохранений игр останется то, где больше прогресса. Старый код тоже будет входить в основной профиль. Передумали — **«Отменить»** в течение 30 дней.",
+          "a_en": "Sign in to the one you want to keep → Library → Profile → **Sign-in and merging** → Merge profiles: type the other profile's code or scan a QR from the phone where it's open. First we show **what merges with what**. Runs, records, friends, groups, posts and reviews move into the main one; of the game saves, the one with more progress stays. The old code will sign in to the main profile too. Changed your mind? **Undo** within 30 days."
         },
         {
           "q": "Как удалить профиль?",
