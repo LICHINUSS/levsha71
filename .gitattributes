@@ -1,3 +1,5 @@
 # каталог подписан побайтно — git не должен менять в нём переводы строк
 catalog.json -text
 catalog.json.sig -text
+config/*.json -text
+config/*.json.sig -text
