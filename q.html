@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Лавка Левши — вход по QR</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#2B140A">
+<link rel="icon" href="assets/store_icon_192.png">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  main { max-width: 520px; margin: 0 auto; padding: 32px 16px; text-align: center; }
+  .btns { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+</style>
+</head>
+<body>
+<!-- Сюда ведёт QR из лавки: #login/tk_… (войти этим профилем) или #merge/tk_… (объединить профили).
+     Пропуск одноразовый, живёт 10 минут и не уходит на сервер сайта (часть после «#» браузер не отправляет).
+     Android: открыть в приложении «Лавка Левши» (levsha://ticket/…), нет приложения — лавка в браузере.
+     iPhone и компьютер: сразу лавка в браузере (me.html#ticket/…). -->
+<main>
+  <img class="px" src="assets/stamp_256.png" width="96" height="96" alt="">
+  <h1 id="t">Лавка Левши</h1>
+  <p id="s" class="muted"></p>
+  <div class="btns" id="b"></div>
+</main>
+<script>
+"use strict";
+(() => {
+  const en = !/^(ru|uk|be|kk)/i.test(navigator.language || "ru");
+  const T = (ru, e) => (en ? e : ru);
+  document.documentElement.lang = en ? "en" : "ru";
+  const $ = (id) => document.getElementById(id);
+  const m = /^#(login|merge)\/(tk_[A-Za-z0-9_-]{20,})$/.exec(location.hash);
+  if (!m) {
+    $("s").textContent = T("Ссылка неполная — покажите QR ещё раз.", "The link is incomplete — show the QR again.");
+    $("b").innerHTML = `<a class="btn" href="me.html">${T("Открыть лавку", "Open the shop")}</a>`;
+    return;
+  }
+  const [, kind, tk] = m;
+  const web = "me.html#ticket/" + kind + "/" + tk;
+  if (!/Android/i.test(navigator.userAgent)) { location.replace(web); return; }
+  const fallback = new URL(web, location.href).href;
+  const intent = "intent://ticket/" + kind + "/" + tk + "#Intent;scheme=levsha;package=com.lichinuss.levsha;S.browser_fallback_url="
+    + encodeURIComponent(fallback) + ";end";
+  $("t").textContent = kind === "login" ? T("Вход в профиль", "Profile sign-in") : T("Объединение профилей", "Merging profiles");
+  $("s").textContent = T("Откроем в «Лавке Левши» на этом телефоне. Если лавки нет — продолжим в браузере.",
+    "Opening in the Levsha's Shop app on this phone. No app — we'll continue in the browser.");
+  $("b").innerHTML = `<a class="btn" href="${intent}">${T("Открыть в лавке", "Open in the shop")}</a>
+    <a class="btn ghost" href="${web}">${T("Продолжить в браузере", "Continue in the browser")}</a>`;
+  location.href = intent;
+})();
+</script>
+</body>
+</html>

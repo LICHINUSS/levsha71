@@ -371,6 +371,7 @@ const App = {
         const p = await this.rpc("register_player", { p_nick: $("wNick").value.trim(), p_avatar: av });
         this.me = { id: p.id, code: p.code, nick: p.nick, avatar: p.avatar }; this.save();
         await this.afterSignIn(); this.toast(w("made"));
+        if ((typeof Acc === "object")) Acc.saveDialog();
       });
     };
     r.onclick = () => {
@@ -384,14 +385,15 @@ const App = {
       $("wGo").onclick = (e) => this.act(e.target, async () => {
         const p = await this.rpc("restore_player", { p_code: inp.value.trim() });
         this.me = { id: p.id, code: p.code || inp.value.trim(), nick: p.nick, avatar: p.avatar }; this.save();
+        if ((typeof Acc === "object")) Acc.markSaved();
         await this.afterSignIn(); this.toast(w("welcome_back", { n: p.nick }));
       });
     };
   },
   async afterSignIn() {
     await this.refreshMe(); this.here();
-    const next = this.pending ? "#join/" + this.pending : null;
-    this.pending = null;
+    const next = this.pending ? "#join/" + this.pending : this.pendingHash || null;
+    this.pending = null; this.pendingHash = null;
     if (next && location.hash !== next) location.hash = next;   // смена адреса сама перерисует экран
     else this.route();
   },
@@ -778,10 +780,13 @@ const App = {
         ${i.is_master ? `<span class="badge new">${w("master")}</span>` : ""}<span class="chev">›</span></a>`;
     }
     const master = this.info && this.info.is_master;
-    this.page(this.head(w("tab_me")) + top + `<div class="list">
+    const remind = this.me && (typeof Acc === "object") && !Acc.saved() ? `<a class="panel tip row" href="#accounts"><span class="nicon">🔑</span>
+        <span class="grow"><b>${w("save_t")}</b><small class="muted">${w("save_remind")}</small></span><span class="chev">›</span></a>` : "";
+    this.page(this.head(w("tab_me")) + top + remind + `<div class="list">
         ${this.me ? row("#notes", "🔔", w("notes"), "", '<span class="badge new" id="nb2" hidden></span>') : ""}
         ${row("#friends", "👑", w("friends") + " · " + w("groups"), w("friends_s"))}
         ${this.me ? row("#week", "📅", w("week"), w("week_s")) : ""}
+        ${this.me && (typeof Acc === "object") ? row("#accounts", "🔗", w("acc_t"), w("acc_s")) : ""}
       </div><div class="list">
         ${row("#ideas", "⭐", w("ideas_t"), w("ideas_s"))}
         ${master ? row("#inbox", "📬", w("inbox_t"), "") + row("#moder", "🛡", w("moder_t"), w("moder_s"))
@@ -823,7 +828,8 @@ const App = {
          <a class="row link panel" href="#blocks"><span class="nicon">🚫</span><span class="grow"><b>${w("blocks")}</b><small class="muted">${w("blocks_s")}</small></span><span class="chev">›</span></a>`
       + `<h2 class="sec">${w("code")}</h2><div class="panel"><p class="muted">${w("code_s")}</p>
          <p class="code big" id="code">••••-••••-••••</p><div class="btns"><button class="btn small ghost" id="cShow">${w("show")}</button>
-         <button class="btn small ghost" id="cCopy">${w("copy")}</button><button class="btn small ghost" id="cRot">${w("rotate")}</button></div></div>`
+         <button class="btn small ghost" id="cCopy">${w("copy")}</button><button class="btn small ghost" id="cRot">${w("rotate")}</button></div></div>
+         ${(typeof Acc === "object") ? `<a class="row link panel" href="#accounts"><span class="nicon">🔗</span><span class="grow"><b>${w("acc_t")}</b><small class="muted">${w("acc_s")}</small></span><span class="chev">›</span></a>` : ""}`
       + `<div class="panel"><button class="btn ghost wide" id="out">${w("logout")}</button><p class="muted small">${w("logout_s")}</p>
          <button class="btn ghost wide danger" id="del">${w("delete")}</button></div>`);
     for (const c of document.querySelectorAll("[data-pr]")) c.onchange = () => this.act(c, async () => {
@@ -834,6 +840,7 @@ const App = {
     $("cRot").onclick = (e) => { if (confirm(w("rotate") + "?")) this.act(e.target, async () => {
       const r = await this.rpc("rotate_code", this.auth()); this.me.code = r.code; this.save();
       $("code").textContent = r.code; alert(w("rotated", { c: r.code }));
+      if ((typeof Acc === "object")) { Acc.markSaved(false); Acc.saveDialog(); }
     }); };
     $("out").onclick = () => { if (confirm(w("logout") + "?")) { Push.off(true); this.signOut(); } };
     $("del").onclick = (e) => {
