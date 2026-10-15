@@ -1,0 +1,23 @@
+{
+  "game": "brick-tower",
+  "about": "Удалённые настройки «Кирпичной башни» (Lavka SDK). Подписаны ключом каталога; игра проверяет подпись и держит числа в своих пределах. Меняются без обновления игры — со следующего забега.",
+  "latest": {
+    "version_name": "1.5.0",
+    "version_code": 14
+  },
+  "min_version_name": "",
+  "banner": {
+    "ru": "",
+    "en": "",
+    "until": ""
+  },
+  "values": {
+    "enemy_hp": 1.0,
+    "boss_hp": 1.0,
+    "enemy_speed": 1.0,
+    "coin_mult": 1.0,
+    "alive_cap": 56,
+    "alive_cap_low": 34
+  },
+  "seq": 1792034183
+}

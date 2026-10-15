@@ -4,12 +4,12 @@
 
 Object.assign(W.ru, {
   ideas_t: "Идеи и пожелания", ideas_s: "Предложить идею, сообщить об ошибке, поддержать чужие",
-  inbox_t: "Ящик идей", n_idea_status: "Ответ мастера на идею «{t}»", n_idea_new: "Новая идея", n_bug_new: "Сообщение об ошибке",
+  inbox_t: "Ящик идей", n_idea_status: "Ответ мастера на идею «{t}»", n_idea_new: "Новая идея", n_bug_new: "Сообщение об ошибке", n_q_new: "Вопрос игрока",
   st_new: "Получено", st_working: "В работе", st_done: "Сделано", st_rejected: "Отклонено", st_all: "Все",
   k_idea_status: "Ответы мастера на мои идеи", k_idea_new: "Новые идеи и ошибки (мастеру)",
   idea_hourly: "Сразу (не чаще раза в час)", idea_daily: "Сводкой раз в день (в 10 утра)", idea_never: "Не присылать",
   i_new_idea: "Предложить идею", i_new_bug: "Сообщить об ошибке", i_search: "Найти идею…", i_top: "Популярные", i_newest: "Новые",
-  i_mine: "Мои идеи", i_empty: "Идей пока нет — предложите первую!", i_idea: "Идея", i_bug: "Ошибка",
+  i_mine: "Мои идеи", i_empty: "Идей пока нет — предложите первую!", i_idea: "Идея", i_bug: "Ошибка", i_question: "Вопрос", m_filter_question: "Вопросы",
   c_store: "Лавка", c_game: "Игра", c_site: "Сайт", c_other: "Другое", c_all: "Все",
   i_title: "Заголовок", i_title_ph: "Коротко, о чём идея (4–80 знаков)", i_body: "Описание", i_body_ph: "Подробнее: что, где, зачем (до 1000 знаков)",
   i_bug_title_ph: "Что сломалось (4–80 знаков)", i_bug_body_ph: "Что делали, что ожидали, что получилось (до 1000 знаков)",
@@ -30,12 +30,12 @@ Object.assign(W.ru, {
 });
 Object.assign(W.en, {
   ideas_t: "Ideas & feedback", ideas_s: "Suggest an idea, report a bug, support others",
-  inbox_t: "Idea inbox", n_idea_status: "The master answered your idea “{t}”", n_idea_new: "New idea", n_bug_new: "Bug report",
+  inbox_t: "Idea inbox", n_idea_status: "The master answered your idea “{t}”", n_idea_new: "New idea", n_bug_new: "Bug report", n_q_new: "Player question",
   st_new: "Received", st_working: "In progress", st_done: "Done", st_rejected: "Declined", st_all: "All",
   k_idea_status: "Master's answers to my ideas", k_idea_new: "New ideas and bug reports (master)",
   idea_hourly: "Right away (at most once an hour)", idea_daily: "Daily summary (10 am)", idea_never: "Don't send",
   i_new_idea: "Suggest an idea", i_new_bug: "Report a bug", i_search: "Find an idea…", i_top: "Popular", i_newest: "Newest",
-  i_mine: "My ideas", i_empty: "No ideas yet — suggest the first one!", i_idea: "Idea", i_bug: "Bug",
+  i_mine: "My ideas", i_empty: "No ideas yet — suggest the first one!", i_idea: "Idea", i_bug: "Bug", i_question: "Question", m_filter_question: "Questions",
   c_store: "Shop", c_game: "Game", c_site: "Website", c_other: "Other", c_all: "All",
   i_title: "Title", i_title_ph: "What's the idea, in short (4–80 characters)", i_body: "Description", i_body_ph: "More detail: what, where, why (up to 1000 characters)",
   i_bug_title_ph: "What broke (4–80 characters)", i_bug_body_ph: "What you did, what you expected, what happened (up to 1000 characters)",
@@ -75,7 +75,8 @@ const Ideas = {
     return { app: "web", device: tablet ? "tablet" : p === "desktop" ? "computer" : "phone", platform: p === "ios" ? "iphone" : "web", os };
   },
   statusBadge(s) { return `<span class="ist ist-${s}">${esc(w("st_" + s))}</span>`; },
-  kindBadge(k) { return `<span class="badge${k === "bug" ? " new" : ""}">${w(k === "bug" ? "i_bug" : "i_idea")}</span>`; },
+  kindName(k) { return w(k === "bug" ? "i_bug" : k === "question" ? "i_question" : "i_idea"); },
+  kindBadge(k) { return `<span class="badge${k === "idea" ? "" : " new"}">${this.kindName(k)}</span>`; },
   author(i) {
     return i.player_id ? `<a href="#player/${i.player_id}">${esc(i.nick || "")}</a>` : `<span class="muted">${w("i_guest")}</span>`;
   },
@@ -220,7 +221,7 @@ const Ideas = {
     const i = Object.assign({}, this.cache.get(id) || {}, data ? data.idea : {});
     this.cache.set(id, i);
     const comments = data ? data.comments : [];
-    let html = App.head(w(i.kind === "bug" ? "i_bug" : "i_idea") + " №" + i.id, this.isMaster() ? "#inbox" : "#ideas")
+    let html = App.head(this.kindName(i.kind) + " №" + i.id, this.isMaster() ? "#inbox" : "#ideas")
       + `<article class="panel idea big" data-id="${i.id}">
         <button class="vote${i.voted ? " on" : ""}" aria-label="${w("i_vote")}">${Lavka.shoe}<b>${i.votes || 0}</b></button>
         <div class="grow"><span class="nm">${this.kindBadge(i.kind)} ${this.statusBadge(i.status)} <small class="muted">${w("c_" + i.category)}</small></span>
@@ -291,7 +292,7 @@ const Ideas = {
   async inbox() {
     if (!this.isMaster()) { location.hash = "#ideas"; return; }
     const st = this.mstate;
-    App.page(App.head(w("inbox_t"), "#me") + `<div class="chips sub">${["new", "all", "anon", "bug", "reported", "hidden"].map(f =>
+    App.page(App.head(w("inbox_t"), "#me") + `<div class="chips sub">${["new", "all", "anon", "bug", "question", "reported", "hidden"].map(f =>
         `<button class="chip" data-mf="${f}" aria-pressed="${st.filter === f}">${w("m_filter_" + f)}</button>`).join("")}</div>
       <div class="chips sub">${["new", "top"].map(s => `<button class="chip" data-msort="${s}" aria-pressed="${st.sort === s}">${w(s === "top" ? "i_top" : "i_newest")}</button>`).join("")}</div>
       <label class="search"><input id="mq" type="search" placeholder="${w("i_search")}" value="${esc(st.q)}"></label><div id="mlist"><div class="skel"></div></div>`);

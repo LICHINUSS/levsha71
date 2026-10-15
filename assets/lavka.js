@@ -738,7 +738,7 @@ const App = {
       }
       case "group_post": title = w("n_group", { n: n.nick, g: n.app_id }); body = n.body; href = "#group/" + n.item_id; break;
       case "idea_status": title = w("n_idea_status", { t: n.body }); body = w("st_" + n.app_id); href = "#idea/" + n.item_id; break;
-      case "idea_new": title = w(n.app_id === "bug" ? "n_bug_new" : "n_idea_new"); body = n.body + (n.nick ? " · " + n.nick : ""); href = "#idea/" + n.item_id; break;
+      case "idea_new": title = w(n.app_id === "bug" ? "n_bug_new" : n.app_id === "question" ? "n_q_new" : "n_idea_new"); body = n.body + (n.nick ? " · " + n.nick : ""); href = "#idea/" + n.item_id; break;
       default: title = w("n_comment", { n: n.nick }); body = n.body; href = "#post/" + n.item_id;
     }
     const icon = { reply: "👑", friend_request: "⭐", friend_accept: "⭐", friend_record: "🏅", group_post: "👥", idea_status: "💡", idea_new: "📬" }[n.kind] || "💬";
