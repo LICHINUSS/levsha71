@@ -72,7 +72,7 @@ const W = {
     deaths_t: "Где умирают игроки", deaths_s: "На какой волне падает башня — по режимам", deaths_died: "пали", deaths_won: "победы",
     deaths_reached: "дошли", deaths_empty: "Забегов пока нет.", deaths_note: "Только законченные забеги игроков с профилем за 90 дней. Если игра закрылась сама — такой забег не считается смертью.",
     deaths_wave: "Волна", m_campaign: "Кампания", m_endless: "Бесконечный", m_daily: "Испытание дня", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
-    k_review: "отзыв", k_post: "пост", k_comment: "комментарий", k_avatar: "фото", reports_n: "жалоб: {n}", hidden_l: "скрыто",
+    mk_review: "отзыв", mk_post: "пост", mk_comment: "комментарий", mk_avatar: "фото", reports_n: "жалоб: {n}", hidden_l: "скрыто",
     lang_t: "Язык", whatsnew: "Что подковано", game_week: "Игра недели", game_week_s: "Мастер советует", help_q: "Найти ответ…",
     about_text: "Мастер Левша, по сказу Лескова, подковал английскую стальную блоху — да так тонко, что без «мелкоскопа» и не разглядеть. В его честь названа мастерская: здесь делают игры и приложения, и каждое — с клеймом мастера. А в «Лавке Левши» их можно взять. Бесплатно, без рекламы и покупок. Один профиль — для лавки и всех игр, на Android, iPhone и компьютере.",
     about_pts: ["Пряники — игры мастерской", "Подкова — оценка и «нравится»", "Подковать — обновить изделие до новой версии", "Что подковано — список изменений в новой версии", "Клеймо — подпись мастерской: лавка ставит только файлы с ней"],
@@ -146,7 +146,7 @@ const W = {
     deaths_t: "Where players die", deaths_s: "Which wave the tower falls on — by mode", deaths_died: "fell", deaths_won: "wins",
     deaths_reached: "reached", deaths_empty: "No runs yet.", deaths_note: "Finished runs of players with a profile over 90 days. If the game closed by itself, the run isn't counted as a death.",
     deaths_wave: "Wave", m_campaign: "Campaign", m_endless: "Endless", m_daily: "Daily challenge", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
-    k_review: "review", k_post: "post", k_comment: "comment", k_avatar: "photo", reports_n: "reports: {n}", hidden_l: "hidden",
+    mk_review: "review", mk_post: "post", mk_comment: "comment", mk_avatar: "photo", reports_n: "reports: {n}", hidden_l: "hidden",
     lang_t: "Language", whatsnew: "What's new", game_week: "Game of the week", game_week_s: "The master recommends", help_q: "Find an answer…",
     about_text: "In Leskov's tale, the craftsman Levsha shod a tiny steel flea — so finely you need a microscope to see it. The workshop is named after him: it makes games and apps, each with the master's seal. Levsha's Shop is where you get them. Free, no ads, no purchases. One profile for the shop and all games, on Android, iPhone and computers.",
     about_pts: ["Gingerbread — the workshop's games", "Horseshoe — a rating and a “like”", "Shoe (update) — update an app to a new version", "What's new — list of changes", "Seal — the workshop's signature: the shop installs only signed files"],
@@ -962,7 +962,7 @@ const App = {
     if (!(this.info && this.info.is_master)) { location.hash = "#me"; return; }
     const list = await this.rpc("master_queue", this.auth());
     this.page(this.head(w("moder_t"), "#me") + (list.length ? `<div class="list">${list.map((m, n) => `<div class="row wrap" data-n="${n}">
-        <span class="grow"><span class="nm"><span class="badge">${w("k_" + m.kind)}</span><b>${esc(m.nick)}</b>
+        <span class="grow"><span class="nm"><span class="badge">${w("mk_" + m.kind)}</span><b>${esc(m.nick)}</b>
         ${m.reports ? `<small class="muted">${w("reports_n", { n: m.reports })}</small>` : ""}${m.hidden ? `<span class="badge new">${w("hidden_l")}</span>` : ""}</span>
         <span class="clamp2">${esc(m.body || "")}</span></span>
         <div class="acts"><button class="btn small ghost" data-h="${m.hidden ? 0 : 1}">${m.hidden ? w("unhide") : w("hide")}</button></div></div>`).join("")}</div>`
