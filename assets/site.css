@@ -223,3 +223,5 @@ main.wrap { min-height: 80vh; }
 /* кнопки режимов рекордов — в одну строку с прокруткой, как в Android */
 .recSec .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
 .recSec .chips .chip { flex: none; }
+.chip.small { padding: 5px 12px; font-size: 13px; }
+.chips[hidden] { display: none; }
