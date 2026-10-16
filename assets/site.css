@@ -225,3 +225,12 @@ main.wrap { min-height: 80vh; }
 .recSec .chips .chip { flex: none; }
 .chip.small { padding: 5px 12px; font-size: 13px; }
 .chips[hidden] { display: none; }
+
+/* V2: живые обложки и значки — кирпичик подпрыгивает при наведении; без движения для «меньше анимации» */
+.card .shot.live { background-size: cover; background-position: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .card .icon { transition: transform .18s ease-out; }
+  .card:hover .icon, .card:focus-within .icon { animation: brickhop .42s ease-out; }
+  .app-head .icon:hover { animation: brickhop .42s ease-out; }
+}
+@keyframes brickhop { 0% { transform: none; } 35% { transform: translateY(-6px) rotate(-4deg); } 70% { transform: translateY(1px) rotate(1deg); } 100% { transform: none; } }
