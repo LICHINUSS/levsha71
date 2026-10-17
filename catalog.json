@@ -4,14 +4,39 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 17,
-    "version_name": "3.1.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.1.0/levsha-3.1.0.apk",
-    "sha256": "586f811d8dd2422fceb48112c265acec58de72560b3304005fa6f1a3951af7bd",
-    "size": 2492239,
-    "changelog": "Добавлено: Таблица рекордов «Марафона недели»: эта неделя и прошлая.",
+    "version_code": 18,
+    "version_name": "3.2.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.2.0/levsha-3.2.0.apk",
+    "sha256": "576e97accddd6f72865586d55281533da4ee65fe64a20db3f49b505b5a7124a6",
+    "size": 2492235,
+    "changelog": "Добавлено: «Края похода» на странице «Кирпичной башни» — живые обложки семи краёв. Изменено: Поддержка Android 16.",
     "updated": "2026-10-17",
     "history": [
+      {
+        "version_name": "3.2.0",
+        "version_code": 18,
+        "date": "2026-10-17",
+        "changelog": "Добавлено: «Края похода» на странице «Кирпичной башни» — живые обложки семи краёв. Изменено: Поддержка Android 16.",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.2.0/levsha-3.2.0.apk",
+        "sha256": "576e97accddd6f72865586d55281533da4ee65fe64a20db3f49b505b5a7124a6",
+        "size": 2492235,
+        "changes": {
+          "added": [
+            "«Края похода» на странице «Кирпичной башни» — живые обложки семи краёв"
+          ],
+          "changed": [
+            "Поддержка Android 16"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Journey lands on the Brick Tower page — live covers of all seven lands"
+          ],
+          "changed": [
+            "Android 16 support"
+          ]
+        }
+      },
       {
         "version_name": "3.1.0",
         "version_code": 17,
@@ -1357,7 +1382,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792263530,
+  "seq": 1792263903,
   "help": [
     {
       "title": "Установка на Android",
