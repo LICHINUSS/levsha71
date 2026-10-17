@@ -7,7 +7,7 @@
 /* tokens:begin — создано из brand/tokens.json (tools/content.py tokens), руками не править */
 :root {
   --bg: #FBF3E6; --surface: #FFFFFF; --surface2: #F6E9D6; --border: #EAD7BC;
-  --text: #2B140A; --text2: #8A5A35; --gold-text: #9A6608; --brick: #C3271B; --green: #237841;
+  --text: #2B140A; --text2: #8A5A35; --gold-text: #7E5306; --brick: #C3271B; --green: #237841;
   --gold: #F2B531; --gold-d: #B87A12; --choco: #2B140A; --choco-deep: #1A0D07; --cream: #FBE2B8;
   --radius: 20px; --radius-btn: 14px; --gutter: 16px; --touch: 44px;
   --shadow: 0 6px 20px rgba(80, 35, 8, .12);
@@ -223,3 +223,14 @@ main.wrap { min-height: 80vh; }
 /* кнопки режимов рекордов — в одну строку с прокруткой, как в Android */
 .recSec .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
 .recSec .chips .chip { flex: none; }
+.chip.small { padding: 5px 12px; font-size: 13px; }
+.chips[hidden] { display: none; }
+
+/* V2: живые обложки и значки — кирпичик подпрыгивает при наведении; без движения для «меньше анимации» */
+.card .shot.anim { background-size: cover; background-position: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .card .icon { transition: transform .18s ease-out; }
+  .card:hover .icon, .card:focus-within .icon { animation: brickhop .42s ease-out; }
+  .app-head .icon:hover { animation: brickhop .42s ease-out; }
+}
+@keyframes brickhop { 0% { transform: none; } 35% { transform: translateY(-6px) rotate(-4deg); } 70% { transform: translateY(1px) rotate(1deg); } 100% { transform: none; } }

@@ -142,7 +142,7 @@ function renderGrid() {
     (!q || [a.name, a.name_en, a.tagline, a.tagline_en, a.description, a.description_en].some(x => (x || "").toLowerCase().includes(q))));
   $("grid").innerHTML = list.map(a => `
     <article class="card">
-      <a href="app.html?id=${a.id}" class="shot" style="background-image:url('${Lavka.thumb((a.screenshots || [])[0] || "")}')" aria-label="${Lavka.esc(Lavka.L(a, "name"))}"></a>
+      <a href="app.html?id=${a.id}" class="shot${Lavka.coverFor(a) ? " anim" : ""}" style="background-image:url('${Lavka.coverFor(a) || Lavka.thumb((a.screenshots || [])[0] || "")}')" aria-label="${Lavka.esc(Lavka.L(a, "name"))}"></a>
       <div class="body"><img class="icon px" src="${a.icon}" alt="">
         <div><h3><a href="app.html?id=${a.id}" style="color:inherit;text-decoration:none">${Lavka.esc(Lavka.L(a, "name"))}</a></h3>
           <p class="tag">${Lavka.esc(Lavka.L(a, "tagline"))}</p></div></div>

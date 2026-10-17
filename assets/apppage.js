@@ -4,26 +4,28 @@
 "use strict";
 
 const AP_TX = {
-  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_campaign: "Кампания", m_daily: "Испытание дня",
+  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_ascent: "Восхождение", m_campaign: "Кампания", m_daily: "Испытание дня",
         waves: ["волна", "волны", "волн"], rec_empty: "Рекордов пока нет — будьте первым!", rec_more: "Играть и попасть в таблицу",
         rev_t: "Оценки и отзывы", rev_empty: "Отзывов пока нет.", rev_master: "Ответ мастера", rev_mine: "Ваша оценка",
         rev_ph: "Что понравилось, что поправить? (можно оставить пустым)", rev_send: "Сохранить отзыв", rev_saved: "Спасибо! Отзыв сохранён.",
         rev_need: "Оценить и написать отзыв можно с профилем лавки.", rev_login: "Войти или создать профиль",
         arch_t: "Все версии", arch_android: "Старая версия встанет только после удаления текущей: Android не даёт ставить версию ниже поверх новой. Данные игры на этом телефоне пропадут (рекорды и облачное сохранение останутся).",
         arch_other: "Скачать и поставить старую версию можно только на Android-телефоне. На iPhone и в браузере всегда открывается последняя версия.",
-        dl_ver: "Скачать v{v}", sound_on: "Включить звук" },
-  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_campaign: "Campaign", m_daily: "Daily challenge",
+        dl_ver: "Скачать v{v}", sound_on: "Включить звук",
+        d_normal: "Обычная", d_hard: "Трудная", d_easy: "Спокойная", d_label: "Сложность" },
+  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_ascent: "Ascent", m_campaign: "Campaign", m_daily: "Daily challenge",
         waves: ["wave", "waves", "waves"], rec_empty: "No records yet — be the first!", rec_more: "Play and get on the board",
         rev_t: "Ratings and reviews", rev_empty: "No reviews yet.", rev_master: "Master's answer", rev_mine: "Your rating",
         rev_ph: "What did you like, what to fix? (optional)", rev_send: "Save review", rev_saved: "Thanks! Your review is saved.",
         rev_need: "You need a shop profile to rate and review.", rev_login: "Sign in or create a profile",
         arch_t: "All versions", arch_android: "An older version installs only after removing the current one: Android doesn't allow installing a lower version on top. The game's data on this phone is lost (records and the cloud save stay).",
         arch_other: "Older versions can be downloaded and installed only on an Android phone. On iPhone and in the browser the latest version always opens.",
-        dl_ver: "Download v{v}", sound_on: "Sound on" },
+        dl_ver: "Download v{v}", sound_on: "Sound on",
+        d_normal: "Normal", d_hard: "Hard", d_easy: "Relaxed", d_label: "Difficulty" },
 };
 
 const AppPage = {
-  mode: "endless", ratings: {},
+  mode: "endless", diff: "normal", ratings: {},
   x(k, vars = {}) { let s = (AP_TX[Lavka.lang] || AP_TX.ru)[k]; for (const [a, b] of Object.entries(vars)) s = s.replace("{" + a + "}", b); return s; },
   waves(n) {
     const f = this.x("waves"), d = n % 10, dd = n % 100;
@@ -77,8 +79,10 @@ const AppPage = {
         <p class="muted">v${Lavka.esc(hist[0].version_name)} · ${Lavka.fmtDate(hist[0].date)}</p>${this.changes(hist[0])}</section>` : ""}
       <section><h2>${Lavka.t("app_about")}</h2><p>${Lavka.esc(Lavka.L(a, "description"))}</p></section>
       ${a.category === "games" ? `<section class="recSec"><h2>${this.x("rec_t")}</h2>
-        <div class="chips" style="margin:6px 0 12px">${["endless", "campaign", "daily"].map(m =>
+        <div class="chips" style="margin:6px 0 12px">${(a.modes && a.modes.length ? a.modes : ["endless", "campaign", "daily"]).map(m =>
           `<button class="chip" data-mode="${m}" aria-pressed="${m === this.mode}">${this.x("m_" + m)}</button>`).join("")}</div>
+        ${(a.difficulties || []).length > 1 ? `<div class="chips diffs" role="group" aria-label="${this.x("d_label")}" style="margin:-4px 0 12px"${this.mode === "daily" ? " hidden" : ""}>${a.difficulties.map(d =>
+          `<button class="chip small" data-diff="${d}" aria-pressed="${d === this.diff}">${this.x("d_" + d)}</button>`).join("")}</div>` : ""}
         <div class="recbox"><div class="skel"></div></div></section>` : ""}
       <section class="revSec"><h2>${this.x("rev_t")}</h2><div class="revSum"></div><div class="revForm"></div><div class="rev"><div class="skel"></div></div></section>
       ${hist.length > 1 ? `<section><h2>${this.x("arch_t")} <span class="muted" style="font-size:16px">(${hist.length})</span></h2>
@@ -87,7 +91,12 @@ const AppPage = {
           ${this.changes(h)}${h.approx ? `<p class="approx">${Lavka.t("approx")}</p>` : ""}
           ${plat === "android" && h.apk ? `<p><a class="btn small ghost" href="${h.apk}">${this.x("dl_ver", { v: Lavka.esc(h.version_name) })}</a></p>` : ""}</details>`).join("")}</section>` : ""}`;
     for (const b of page.querySelectorAll("[data-mode]")) b.onclick = () => {
-      this.mode = b.dataset.mode; for (const x of page.querySelectorAll("[data-mode]")) x.setAttribute("aria-pressed", x === b); this.records(page, a);
+      this.mode = b.dataset.mode; for (const x of page.querySelectorAll("[data-mode]")) x.setAttribute("aria-pressed", x === b);
+      const dr = page.querySelector(".diffs"); if (dr) dr.hidden = this.mode === "daily";
+      this.records(page, a);
+    };
+    for (const b of page.querySelectorAll("[data-diff]")) b.onclick = () => {
+      this.diff = b.dataset.diff; for (const x of page.querySelectorAll("[data-diff]")) x.setAttribute("aria-pressed", x === b); this.records(page, a);
     };
     const v = page.querySelector("video.trailer"), snd = page.querySelector(".sound");
     if (v && snd) snd.onclick = () => { v.muted = !v.muted; if (!v.muted) v.play().catch(() => {}); snd.textContent = v.muted ? "🔇" : "🔊"; };
@@ -105,7 +114,10 @@ const AppPage = {
   async records(page, a) {
     const box = page.querySelector(".recbox"); if (!box) return;
     try {
-      const rows = await Lavka.rpc("leaderboard", { p_game: a.id, p_mode: this.mode, p_period: "all", p_limit: 10 });
+      // сложность — своя таблица; «Обычная» без поля (так понимает и сервер до V2)
+      const q = { p_game: a.id, p_mode: this.mode, p_period: "all", p_limit: 10 };
+      if (this.diff !== "normal" && this.mode !== "daily" && (a.difficulties || []).includes(this.diff)) q.p_difficulty = this.diff;
+      const rows = await Lavka.rpc("leaderboard", q);
       const me = this.profile(), link = (pid) => (document.getElementById("app") ? "#player/" : "me.html#player/") + pid;
       box.innerHTML = rows.length ? `<ol class="board">${rows.map(r => `<li class="${me && me.id === r.player_id ? "me" : ""}">
           <span class="pl p${r.place}">${r.place}</span><img class="px" src="${this.av(r.avatar)}" alt="" width="34" height="34">

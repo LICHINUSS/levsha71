@@ -241,6 +241,13 @@ const Lavka = {
     return `<img src="${this.thumb(src)}" data-full="${src}" alt="${alt}" loading="lazy" ${attrs} onerror="if(this.src!==this.dataset.full){this.src=this.dataset.full}">`;
   },
   promoFor(a) { return (a.promo || []).map(x => x.replace("{lang}", this.lang)); },
+  /** Живая обложка (анимированный WebP, ~0,6 МБ) — только если человек не просил «меньше движения» и не экономит трафик. */
+  coverFor(a) {
+    if (!a.cover_anim || matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+    const c = navigator.connection;
+    if (c && (c.saveData || /2g|3g/.test(c.effectiveType || ""))) return null;
+    return a.cover_anim.replace("{lang}", this.lang);
+  },
 
   init() {
     const saved = this.store("lang");
