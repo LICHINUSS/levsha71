@@ -456,12 +456,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 16,
-      "version_name": "2.0.0",
+      "version_code": 17,
+      "version_name": "2.1.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.0.0/brick-tower-2.0.0.apk",
-      "sha256": "5827575443926de1e55689e6fe5b219415f040b2ef8a3a275c7e0a0d1533a717",
-      "size": 56937401,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.1.0/brick-tower-2.1.0.apk",
+      "sha256": "8e7bfccb051d67157a43bd59343091ff70bbaad32dbc1db44d7ae8d5be6978bc",
+      "size": 56763274,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -469,12 +469,53 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Добавлено: Поход: Болото, Лесная застава, Кладбище и руины, Пустыня — 32 уровня со звёздами, боссами и сюжетом от Левши; 8 новых врагов и 4 босса со своими повадками: жабы прыгают через стены, скелеты встают, черви идут под песком; 5 героев, режим «Восхождение» и «Кирпичная арена» — бой с другим игроком по сети через мост; Книга мастера: бестиарий с портретами, летопись забегов, оформление башни; Сложность на выбор, испытания мастера с медалями, вся игра на английском; \"Кирпичная башня\" - игра — по идее из «Идей и пожеланий». Исправлено: Пули летят туда, куда целишься; здоровье башни не «переливается» за максимум; Игра не закрывалась при старте в Safari на iPhone и не писала ошибку на Android 8. Изменено: Враги умнее (страх, ярость, вожаки), бой идёт волнами с пиками и передышками; Новая заставка, свои значки и мягкие звуки кнопок, погода с правилами.",
+      "changelog": "Добавлено: Новые края похода: Зимняя застава, Королевский замок и Огненная гора — 6 врагов, Снежная королева и Каменный дракон; Арена «Вдвоём» (одна башня на двоих) и бои 2 на 2; «Марафон недели»: 30 волн через семь краёв, одни правила для всех; Три героя: Снегурка Варя, Пушкарь Емельян, Звездочёт Филя; фоторежим и альбом; Своя музыка у каждого края. Исправлено: Дуэль на арене: рано проигравший больше не получает победу, пока соперник ещё бьётся; Подсказка в начале боя не закрывает кнопки вызовов. Изменено: Игра для браузера стала легче: убраны лишние картинки из сборки.",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
       "updated": "2026-10-17",
       "history": [
+        {
+          "version_name": "2.1.0",
+          "version_code": 17,
+          "date": "2026-10-17",
+          "changelog": "Добавлено: Новые края похода: Зимняя застава, Королевский замок и Огненная гора — 6 врагов, Снежная королева и Каменный дракон; Арена «Вдвоём» (одна башня на двоих) и бои 2 на 2; «Марафон недели»: 30 волн через семь краёв, одни правила для всех; Три героя: Снегурка Варя, Пушкарь Емельян, Звездочёт Филя; фоторежим и альбом; Своя музыка у каждого края. Исправлено: Дуэль на арене: рано проигравший больше не получает победу, пока соперник ещё бьётся; Подсказка в начале боя не закрывает кнопки вызовов. Изменено: Игра для браузера стала легче: убраны лишние картинки из сборки.",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.1.0/brick-tower-2.1.0.apk",
+          "sha256": "8e7bfccb051d67157a43bd59343091ff70bbaad32dbc1db44d7ae8d5be6978bc",
+          "size": 56763274,
+          "changes": {
+            "added": [
+              "Новые края похода: Зимняя застава, Королевский замок и Огненная гора — 6 врагов, Снежная королева и Каменный дракон",
+              "Арена «Вдвоём» (одна башня на двоих) и бои 2 на 2",
+              "«Марафон недели»: 30 волн через семь краёв, одни правила для всех",
+              "Три героя: Снегурка Варя, Пушкарь Емельян, Звездочёт Филя; фоторежим и альбом",
+              "Своя музыка у каждого края"
+            ],
+            "fixed": [
+              "Дуэль на арене: рано проигравший больше не получает победу, пока соперник ещё бьётся",
+              "Подсказка в начале боя не закрывает кнопки вызовов"
+            ],
+            "changed": [
+              "Игра для браузера стала легче: убраны лишние картинки из сборки"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "New Journey lands: the Winter Outpost, the Royal Castle and the Fire Mountain — 6 enemies, the Snow Queen and the Stone Dragon",
+              "Arena: Together (one tower for two) and 2v2 battles",
+              "Weekly marathon: 30 waves through seven lands, the same rules for everyone",
+              "Three heroes: Varya, Emelyan and Filya; photo mode and an album",
+              "Each land has its own music"
+            ],
+            "fixed": [
+              "Arena duel: an early loser no longer gets the win while the rival is still fighting",
+              "The first-wave hint no longer covers the call buttons"
+            ],
+            "changed": [
+              "The browser version is lighter: unused images removed from the build"
+            ]
+          }
+        },
         {
           "version_name": "2.0.0",
           "version_code": 16,
@@ -930,7 +971,8 @@
         "endless",
         "ascent",
         "campaign",
-        "daily"
+        "daily",
+        "marathon"
       ],
       "cover_anim": "promo/brick-tower/cover_{lang}.webp"
     }
@@ -939,8 +981,8 @@
   "roadmap": [
     {
       "status": "soon",
-      "title": "Общая арена на двоих, бои 2 на 2, марафон, новые края и герои",
-      "title_en": "A shared two-player arena, 2v2 battles, a marathon, new lands and heroes"
+      "title": "Подсказка «Попробовать Спокойную?» после быстрых поражений и таблица пар арены по неделям",
+      "title_en": "A gentle \"Try Relaxed?\" hint after quick defeats and weekly pair tables in the arena"
     },
     {
       "status": "idea",
@@ -953,6 +995,34 @@
       "status": "idea",
       "title": "Карта «Кирпичной башни» «Замок»",
       "title_en": "A “Castle” map for Brick Tower"
+    },
+    {
+      "status": "done",
+      "title": "Новые края: Зимняя застава, Королевский замок, Огненная гора — враги, боссы, музыка и сюжет",
+      "title_en": "New lands: the Winter Outpost, the Royal Castle, the Fire Mountain — enemies, bosses, music and story",
+      "note": "Кирпичная башня 2.1.0",
+      "note_en": "Brick Tower 2.1.0"
+    },
+    {
+      "status": "done",
+      "title": "Арена «Вдвоём» (общая башня) и бои 2 на 2",
+      "title_en": "Arena: Together (a shared tower) and 2v2 battles",
+      "note": "Кирпичная башня 2.1.0",
+      "note_en": "Brick Tower 2.1.0"
+    },
+    {
+      "status": "done",
+      "title": "«Марафон недели»: 30 волн через семь краёв, своя таблица рекордов",
+      "title_en": "Weekly marathon: 30 waves through seven lands, its own records table",
+      "note": "Кирпичная башня 2.1.0",
+      "note_en": "Brick Tower 2.1.0"
+    },
+    {
+      "status": "done",
+      "title": "Три новых героя, фоторежим и альбом",
+      "title_en": "Three new heroes, photo mode and an album",
+      "note": "Кирпичная башня 2.1.0",
+      "note_en": "Brick Tower 2.1.0"
     },
     {
       "status": "done",
@@ -1125,7 +1195,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792212285,
+  "seq": 1792229508,
   "help": [
     {
       "title": "Установка на Android",
