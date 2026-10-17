@@ -4,14 +4,33 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 16,
-    "version_name": "3.0.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.0.0/levsha-3.0.0.apk",
-    "sha256": "168bb1639bcec379211bd940b0cc72e886780a11bb7a4a8bbd9c1152b7098743",
+    "version_code": 17,
+    "version_name": "3.1.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.1.0/levsha-3.1.0.apk",
+    "sha256": "586f811d8dd2422fceb48112c265acec58de72560b3304005fa6f1a3951af7bd",
     "size": 2492239,
-    "changelog": "Добавлено: Таблицы рекордов игр — своя на каждую сложность и для режима «Восхождение»; Живые обложки игр на главной (если не включено «меньше движения»). Изменено: Список таблиц рекордов теперь приходит из описания игры в каталоге.",
+    "changelog": "Добавлено: Таблица рекордов «Марафона недели»: эта неделя и прошлая.",
     "updated": "2026-10-17",
     "history": [
+      {
+        "version_name": "3.1.0",
+        "version_code": 17,
+        "date": "2026-10-17",
+        "changelog": "Добавлено: Таблица рекордов «Марафона недели»: эта неделя и прошлая.",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.1.0/levsha-3.1.0.apk",
+        "sha256": "586f811d8dd2422fceb48112c265acec58de72560b3304005fa6f1a3951af7bd",
+        "size": 2492239,
+        "changes": {
+          "added": [
+            "Таблица рекордов «Марафона недели»: эта неделя и прошлая"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "Weekly marathon leaderboard: this week and last week"
+          ]
+        }
+      },
       {
         "version_name": "3.0.0",
         "version_code": 16,
@@ -1195,7 +1214,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792229508,
+  "seq": 1792229682,
   "help": [
     {
       "title": "Установка на Android",
