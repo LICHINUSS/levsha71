@@ -4,7 +4,7 @@
 "use strict";
 
 const AP_TX = {
-  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_campaign: "Кампания", m_daily: "Испытание дня",
+  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_ascent: "Восхождение", m_campaign: "Кампания", m_daily: "Испытание дня",
         waves: ["волна", "волны", "волн"], rec_empty: "Рекордов пока нет — будьте первым!", rec_more: "Играть и попасть в таблицу",
         rev_t: "Оценки и отзывы", rev_empty: "Отзывов пока нет.", rev_master: "Ответ мастера", rev_mine: "Ваша оценка",
         rev_ph: "Что понравилось, что поправить? (можно оставить пустым)", rev_send: "Сохранить отзыв", rev_saved: "Спасибо! Отзыв сохранён.",
@@ -13,7 +13,7 @@ const AP_TX = {
         arch_other: "Скачать и поставить старую версию можно только на Android-телефоне. На iPhone и в браузере всегда открывается последняя версия.",
         dl_ver: "Скачать v{v}", sound_on: "Включить звук",
         d_normal: "Обычная", d_hard: "Трудная", d_easy: "Спокойная", d_label: "Сложность" },
-  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_campaign: "Campaign", m_daily: "Daily challenge",
+  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_ascent: "Ascent", m_campaign: "Campaign", m_daily: "Daily challenge",
         waves: ["wave", "waves", "waves"], rec_empty: "No records yet — be the first!", rec_more: "Play and get on the board",
         rev_t: "Ratings and reviews", rev_empty: "No reviews yet.", rev_master: "Master's answer", rev_mine: "Your rating",
         rev_ph: "What did you like, what to fix? (optional)", rev_send: "Save review", rev_saved: "Thanks! Your review is saved.",
@@ -79,7 +79,7 @@ const AppPage = {
         <p class="muted">v${Lavka.esc(hist[0].version_name)} · ${Lavka.fmtDate(hist[0].date)}</p>${this.changes(hist[0])}</section>` : ""}
       <section><h2>${Lavka.t("app_about")}</h2><p>${Lavka.esc(Lavka.L(a, "description"))}</p></section>
       ${a.category === "games" ? `<section class="recSec"><h2>${this.x("rec_t")}</h2>
-        <div class="chips" style="margin:6px 0 12px">${["endless", "campaign", "daily"].map(m =>
+        <div class="chips" style="margin:6px 0 12px">${(a.modes && a.modes.length ? a.modes : ["endless", "campaign", "daily"]).map(m =>
           `<button class="chip" data-mode="${m}" aria-pressed="${m === this.mode}">${this.x("m_" + m)}</button>`).join("")}</div>
         ${(a.difficulties || []).length > 1 ? `<div class="chips diffs" role="group" aria-label="${this.x("d_label")}" style="margin:-4px 0 12px"${this.mode === "daily" ? " hidden" : ""}>${a.difficulties.map(d =>
           `<button class="chip small" data-diff="${d}" aria-pressed="${d === this.diff}">${this.x("d_" + d)}</button>`).join("")}</div>` : ""}
