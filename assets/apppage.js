@@ -74,6 +74,9 @@ const AppPage = {
         <div><b>${(a.min_sdk || 24) >= 26 ? "8+" : "7+"}</b><span>${Lavka.t("f_android")}</span></div>
       </div>
       <div class="app-actions">${Lavka.appButtons(a, false)}</div>
+      ${(a.lands || []).length ? `<section><h2>${Lavka.t("app_lands")}</h2><div class="lands">${a.lands.map(l =>
+        `<figure><img src="${Lavka.esc(Lavka.liveOk() ? l.anim || l.still : l.still || l.anim)}" alt="${Lavka.esc(Lavka.L(l, "name"))}"
+          loading="lazy" width="480" height="270"><figcaption>${Lavka.esc(Lavka.L(l, "name"))}</figcaption></figure>`).join("")}</div></section>` : ""}
       ${a.trailer ? `<section><h2>${Lavka.t("app_trailer")}</h2>${this.trailer(a)}</section>` : ""}
       <section><h2>${Lavka.t("app_shots")}</h2>
         <div class="shots">${shots.map(s => Lavka.shotImg(s, this.x("shot_alt"), 'tabindex="0" role="button"')).join("")}</div></section>

@@ -130,6 +130,11 @@ section { padding: 40px 0 8px; }
 .facts div:last-child { border-right: 0; }
 .facts b { display: block; font-size: 18px; } .facts span { font-size: 13px; color: var(--text2); }
 .shots { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 12px; }
+/* края похода: живые обложки в ряд (на телефоне — листаются) */
+.lands { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 12px; }
+.lands figure { flex: none; width: 260px; margin: 0; scroll-snap-align: start; }
+.lands img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; box-shadow: var(--shadow); }
+.lands figcaption { margin: 6px 4px 0; font-weight: 600; font-size: .95rem; }
 .shots img { flex: none; width: auto; max-width: none; height: 240px; border-radius: 14px; scroll-snap-align: start; box-shadow: var(--shadow); cursor: zoom-in; }
 .changes h3 { margin: 12px 0 4px; font-size: 15px; } .changes ul { margin: 0; padding-left: 20px; }
 .h-added { color: var(--green); } .h-fixed { color: var(--brick); } .h-changed { color: var(--gold-text); }

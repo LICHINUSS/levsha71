@@ -29,7 +29,7 @@ const T = {
     share_card: "Скачать карточку с кодом", about_title: "О мастерской",
     about_text: "Как Левша подковал блоху, так и мы собираем свои игры из маленьких деталей — с душой и для своих. Никакой рекламы и покупок внутри: просто играйте. Каждое изделие отмечено клеймом — золотой подковой «71».",
     footer: "Подковано Левшой.",
-    app_whatsnew: "Что подковано", app_history: "История версий", app_about: "Об изделии", app_shots: "Снимки",
+    app_whatsnew: "Что подковано", app_history: "История версий", app_about: "Об изделии", app_shots: "Снимки", app_lands: "Края похода",
     f_rating: "оценка", f_size: "размер", f_ver: "версия", f_android: "Android",
     h_added: "Добавлено", h_fixed: "Исправлено", h_changed: "Изменено", approx: "описание примерное (восстановлено по истории кода)",
     back: "← Каталог", notfound: "Такого изделия нет в каталоге.",
@@ -65,7 +65,7 @@ const T = {
     share_card: "Download the code card", about_title: "About the workshop",
     about_text: "Just like Levsha shod a flea, we build our games from tiny parts — with care, for our own people. No ads, no in-app purchases: just play. Every item carries the workshop's stamp — a golden horseshoe “71”.",
     footer: "Forged by Levsha.",
-    app_whatsnew: "What's new", app_history: "Version history", app_about: "About this app", app_shots: "Screenshots",
+    app_whatsnew: "What's new", app_history: "Version history", app_about: "About this app", app_shots: "Screenshots", app_lands: "Journey lands",
     f_rating: "rating", f_size: "size", f_ver: "version", f_android: "Android",
     h_added: "Added", h_fixed: "Fixed", h_changed: "Changed", approx: "approximate description (restored from code history)",
     back: "← Catalog", notfound: "There's no such item in the catalog.",
@@ -241,6 +241,12 @@ const Lavka = {
     return `<img src="${this.thumb(src)}" data-full="${src}" alt="${alt}" loading="lazy" ${attrs} onerror="if(this.src!==this.dataset.full){this.src=this.dataset.full}">`;
   },
   promoFor(a) { return (a.promo || []).map(x => x.replace("{lang}", this.lang)); },
+  /** Можно ли показывать живые картинки: не «меньше движения» и не экономия трафика. */
+  liveOk() {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+    const c = navigator.connection;
+    return !(c && (c.saveData || /2g|3g/.test(c.effectiveType || "")));
+  },
   /** Живая обложка (анимированный WebP, ~0,6 МБ) — только если человек не просил «меньше движения» и не экономит трафик. */
   coverFor(a) {
     if (!a.cover_anim || matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
