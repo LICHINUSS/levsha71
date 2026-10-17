@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "updated": "2026-10-15",
+  "updated": "2026-10-17",
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
@@ -429,12 +429,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 15,
-      "version_name": "1.6.0",
+      "version_code": 16,
+      "version_name": "2.0.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v1.6.0/brick-tower-1.6.0.apk",
-      "sha256": "fb48016bc6d141648899505def53c7c57c3e7d22ace049fb956ccbdca892bb75",
-      "size": 55149700,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.0.0/brick-tower-2.0.0.apk",
+      "sha256": "5827575443926de1e55689e6fe5b219415f040b2ef8a3a275c7e0a0d1533a717",
+      "size": 56937401,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -442,12 +442,57 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Добавлено: Забег сохраняется после каждой волны: если игра закрылась — «Продолжить с N-й волны»; Вход через «Лавку Левши» одной кнопкой; без лавки можно играть гостем — прогресс перейдёт в профиль; Графика «Авто» сама подбирает картинку под телефон; пресеты от «Минимума» до «Максимума», экономия батареи, счётчик кадров; «Написать разработчику» на паузе, после забега и после вылета: идея, ошибка или вопрос со снимком экрана; Тренировка: любой враг, любая сила волны, башня не падает; Прицел над пальцем, красное кольцо под самым опасным врагом, «Меньше анимации». Исправлено: Вылет на поздних волнах в браузере iPhone (скачок памяти на 25-й волне); Рекорд пропадал, если игра закрывалась посреди забега; Пули пролетали сквозь врагов на слабых телефонах; темп стрельбы зависел от кадров. Изменено: Щит щитоносца теперь ломается, щит башни крепче; Кнопки отвечают сразу при касании; мир рисуется легче — меньше нагрузка на телефон.",
+      "changelog": "Добавлено: Поход: Болото, Лесная застава, Кладбище и руины, Пустыня — 32 уровня со звёздами, боссами и сюжетом от Левши; 8 новых врагов и 4 босса со своими повадками: жабы прыгают через стены, скелеты встают, черви идут под песком; 5 героев, режим «Восхождение» и «Кирпичная арена» — бой с другим игроком по сети через мост; Книга мастера: бестиарий с портретами, летопись забегов, оформление башни; Сложность на выбор, испытания мастера с медалями, вся игра на английском; \"Кирпичная башня\" - игра — по идее из «Идей и пожеланий». Исправлено: Пули летят туда, куда целишься; здоровье башни не «переливается» за максимум; Игра не закрывалась при старте в Safari на iPhone и не писала ошибку на Android 8. Изменено: Враги умнее (страх, ярость, вожаки), бой идёт волнами с пиками и передышками; Новая заставка, свои значки и мягкие звуки кнопок, погода с правилами.",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
-      "updated": "2026-10-15",
+      "updated": "2026-10-17",
       "history": [
+        {
+          "version_name": "2.0.0",
+          "version_code": 16,
+          "date": "2026-10-17",
+          "changelog": "Добавлено: Поход: Болото, Лесная застава, Кладбище и руины, Пустыня — 32 уровня со звёздами, боссами и сюжетом от Левши; 8 новых врагов и 4 босса со своими повадками: жабы прыгают через стены, скелеты встают, черви идут под песком; 5 героев, режим «Восхождение» и «Кирпичная арена» — бой с другим игроком по сети через мост; Книга мастера: бестиарий с портретами, летопись забегов, оформление башни; Сложность на выбор, испытания мастера с медалями, вся игра на английском; \"Кирпичная башня\" - игра — по идее из «Идей и пожеланий». Исправлено: Пули летят туда, куда целишься; здоровье башни не «переливается» за максимум; Игра не закрывалась при старте в Safari на iPhone и не писала ошибку на Android 8. Изменено: Враги умнее (страх, ярость, вожаки), бой идёт волнами с пиками и передышками; Новая заставка, свои значки и мягкие звуки кнопок, погода с правилами.",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.0.0/brick-tower-2.0.0.apk",
+          "sha256": "5827575443926de1e55689e6fe5b219415f040b2ef8a3a275c7e0a0d1533a717",
+          "size": 56937401,
+          "changes": {
+            "added": [
+              "Поход: Болото, Лесная застава, Кладбище и руины, Пустыня — 32 уровня со звёздами, боссами и сюжетом от Левши",
+              "8 новых врагов и 4 босса со своими повадками: жабы прыгают через стены, скелеты встают, черви идут под песком",
+              "5 героев, режим «Восхождение» и «Кирпичная арена» — бой с другим игроком по сети через мост",
+              "Книга мастера: бестиарий с портретами, летопись забегов, оформление башни",
+              "Сложность на выбор, испытания мастера с медалями, вся игра на английском",
+              "\"Кирпичная башня\" - игра — по идее из «Идей и пожеланий»"
+            ],
+            "fixed": [
+              "Пули летят туда, куда целишься; здоровье башни не «переливается» за максимум",
+              "Игра не закрывалась при старте в Safari на iPhone и не писала ошибку на Android 8"
+            ],
+            "changed": [
+              "Враги умнее (страх, ярость, вожаки), бой идёт волнами с пиками и передышками",
+              "Новая заставка, свои значки и мягкие звуки кнопок, погода с правилами"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Journey: the Swamp, Forest Outpost, Graveyard & Ruins and the Desert — 32 levels with stars, bosses and Lefty's story",
+              "8 new enemies and 4 bosses: frogs leap over walls, skeletons get back up, worms travel under the sand",
+              "5 heroes, the Ascent mode and the Brick Arena — online battles against another player across a bridge",
+              "Master's Book: bestiary with portraits, run chronicle, tower colours",
+              "Selectable difficulty, master challenges with medals, the whole game in English",
+              "\"Кирпичная башня\" - игра — from Ideas & feedback"
+            ],
+            "fixed": [
+              "Bullets go where you aim; tower health no longer overflows the maximum",
+              "No more crash on start in Safari on iPhone, no more error on Android 8"
+            ],
+            "changed": [
+              "Smarter enemies (fear, rage, leaders), battles flow in peaks and breathers",
+              "New splash screen, our own icons and soft button sounds, weather with rules"
+            ]
+          }
+        },
         {
           "version_name": "1.6.0",
           "version_code": 15,
@@ -848,32 +893,74 @@
         "promo/brick-tower/2_{lang}.jpg",
         "promo/brick-tower/3_{lang}.jpg",
         "promo/brick-tower/4_{lang}.jpg"
-      ]
+      ],
+      "difficulties": [
+        "normal",
+        "hard",
+        "easy"
+      ],
+      "modes": [
+        "endless",
+        "ascent",
+        "campaign",
+        "daily"
+      ],
+      "cover_anim": "promo/brick-tower/cover_{lang}.webp"
     }
   ],
   "featured": "brick-tower",
   "roadmap": [
     {
       "status": "soon",
-      "title": "Враги в игре рисуются быстрее (склейка деталей, как у мира)",
-      "title_en": "Faster enemy rendering in the game (merged parts, like the world)"
+      "title": "Общая арена на двоих, бои 2 на 2, марафон, новые края и герои",
+      "title_en": "A shared two-player arena, 2v2 battles, a marathon, new lands and heroes"
     },
     {
       "status": "idea",
-      "title": "Ежедневные награды и серии, недельные события, сезонные рейтинги",
-      "title_en": "Daily rewards and streaks, weekly events, seasonal rankings",
+      "title": "Ежедневные награды и серии, недельные события",
+      "title_en": "Daily rewards and streaks, weekly events",
       "note": "мастер решает, делать ли",
       "note_en": "the master is deciding"
     },
     {
       "status": "idea",
-      "title": "Новые карты «Кирпичной башни»: пустыня и замок",
-      "title_en": "New Brick Tower maps: desert and castle"
+      "title": "Карта «Кирпичной башни» «Замок»",
+      "title_en": "A “Castle” map for Brick Tower"
     },
     {
-      "status": "idea",
-      "title": "Анимированные обложки игр в каталоге",
-      "title_en": "Animated game covers in the catalog"
+      "status": "done",
+      "title": "Поход: Болото, Лесная застава, Кладбище и руины, Пустыня — 32 уровня, боссы и сюжет от Левши",
+      "title_en": "Journey: the Swamp, Forest Outpost, Graveyard & Ruins, the Desert — 32 levels, bosses and Lefty's story",
+      "note": "Кирпичная башня 2.0.0",
+      "note_en": "Brick Tower 2.0.0"
+    },
+    {
+      "status": "done",
+      "title": "«Кирпичная арена»: бой с другим игроком по сети, рейтинг, лиги и сезоны, зрители и повторы",
+      "title_en": "Brick Arena: online battles against another player, rating, leagues and seasons, spectators and replays",
+      "note": "Кирпичная башня 2.0.0",
+      "note_en": "Brick Tower 2.0.0"
+    },
+    {
+      "status": "done",
+      "title": "5 героев, режим «Восхождение», бестиарий, летопись забегов и оформление башни",
+      "title_en": "5 heroes, the Ascent mode, a bestiary, a run chronicle and tower colours",
+      "note": "Кирпичная башня 2.0.0",
+      "note_en": "Brick Tower 2.0.0"
+    },
+    {
+      "status": "done",
+      "title": "Сложность на выбор, испытания мастера, умные враги, вся игра на английском",
+      "title_en": "Selectable difficulty, master challenges, smarter enemies, the whole game in English",
+      "note": "Кирпичная башня 2.0.0",
+      "note_en": "Brick Tower 2.0.0"
+    },
+    {
+      "status": "done",
+      "title": "Враги в игре рисуются быстрее (склейка деталей, как у мира)",
+      "title_en": "Faster enemy rendering in the game (merged parts, like the world)",
+      "note": "Кирпичная башня 2.0.0",
+      "note_en": "Brick Tower 2.0.0"
     },
     {
       "status": "done",
@@ -908,6 +995,13 @@
       "status": "done",
       "title": "Резервные копии базы каждую ночь и «сторож», который сразу сообщает мастеру о сбое",
       "title_en": "Nightly database backups and a watchdog that alerts the master right away"
+    },
+    {
+      "status": "done",
+      "title": "Анимированные обложки игр в каталоге",
+      "title_en": "Animated game covers in the catalog",
+      "note": "лавка 3.0.0",
+      "note_en": "shop 3.0.0"
     },
     {
       "status": "done",
@@ -1004,7 +1098,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792040835,
+  "seq": 1792211898,
   "help": [
     {
       "title": "Установка на Android",
