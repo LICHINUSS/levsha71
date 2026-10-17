@@ -475,12 +475,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 17,
-      "version_name": "2.1.0",
+      "version_code": 18,
+      "version_name": "2.2.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.1.0/brick-tower-2.1.0.apk",
-      "sha256": "8e7bfccb051d67157a43bd59343091ff70bbaad32dbc1db44d7ae8d5be6978bc",
-      "size": 56763274,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.2.0/brick-tower-2.2.0.apk",
+      "sha256": "1ba6d8426dfbff31dcc48afb03633c01442a729021d05b22df3a5a40d3af4e3b",
+      "size": 58365435,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -488,12 +488,57 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Добавлено: Новые края похода: Зимняя застава, Королевский замок и Огненная гора — 6 врагов, Снежная королева и Каменный дракон; Арена «Вдвоём» (одна башня на двоих) и бои 2 на 2; «Марафон недели»: 30 волн через семь краёв, одни правила для всех; Три героя: Снегурка Варя, Пушкарь Емельян, Звездочёт Филя; фоторежим и альбом; Своя музыка у каждого края. Исправлено: Дуэль на арене: рано проигравший больше не получает победу, пока соперник ещё бьётся; Подсказка в начале боя не закрывает кнопки вызовов. Изменено: Игра для браузера стала легче: убраны лишние картинки из сборки.",
+      "changelog": "Добавлено: Бой с другом по коду: дуэль со своими условиями и ареной, «Вдвоём» и «2 на 2» — без рейтинга; Арена: обучение с ботом, лиги от Кирпичной до Лиги мастеров, награды сезона, лучшие бои, «кто может смотреть»; Арена: смайлы, кирпичи для моста, автопилот, если отвлёкся, значок качества связи; четыре арены с погодой; Подмога в походе после нескольких поражений подряд и подсказка «Попробовать Спокойную?»; Куртка героя своего цвета, летопись можно сохранить картинкой. Исправлено: Арена: посылки и подмога доходят до каждого игрока в комнате, даже при плохой связи; «Вдвоём»: общая башня честно теряет здоровье при сильных ударах. Изменено: Новая музыка краёв: длиннее, мягче и одинаково громкая; Быстрее первый запуск в браузере (iPhone): понятная полоска загрузки, музыка докачивается после меню; Первые 5 боёв на арене — калибровка: рейтинг меняется быстрее.",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
       "updated": "2026-10-17",
       "history": [
+        {
+          "version_name": "2.2.0",
+          "version_code": 18,
+          "date": "2026-10-17",
+          "changelog": "Добавлено: Бой с другом по коду: дуэль со своими условиями и ареной, «Вдвоём» и «2 на 2» — без рейтинга; Арена: обучение с ботом, лиги от Кирпичной до Лиги мастеров, награды сезона, лучшие бои, «кто может смотреть»; Арена: смайлы, кирпичи для моста, автопилот, если отвлёкся, значок качества связи; четыре арены с погодой; Подмога в походе после нескольких поражений подряд и подсказка «Попробовать Спокойную?»; Куртка героя своего цвета, летопись можно сохранить картинкой. Исправлено: Арена: посылки и подмога доходят до каждого игрока в комнате, даже при плохой связи; «Вдвоём»: общая башня честно теряет здоровье при сильных ударах. Изменено: Новая музыка краёв: длиннее, мягче и одинаково громкая; Быстрее первый запуск в браузере (iPhone): понятная полоска загрузки, музыка докачивается после меню; Первые 5 боёв на арене — калибровка: рейтинг меняется быстрее.",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v2.2.0/brick-tower-2.2.0.apk",
+          "sha256": "1ba6d8426dfbff31dcc48afb03633c01442a729021d05b22df3a5a40d3af4e3b",
+          "size": 58365435,
+          "changes": {
+            "added": [
+              "Бой с другом по коду: дуэль со своими условиями и ареной, «Вдвоём» и «2 на 2» — без рейтинга",
+              "Арена: обучение с ботом, лиги от Кирпичной до Лиги мастеров, награды сезона, лучшие бои, «кто может смотреть»",
+              "Арена: смайлы, кирпичи для моста, автопилот, если отвлёкся, значок качества связи; четыре арены с погодой",
+              "Подмога в походе после нескольких поражений подряд и подсказка «Попробовать Спокойную?»",
+              "Куртка героя своего цвета, летопись можно сохранить картинкой"
+            ],
+            "fixed": [
+              "Арена: посылки и подмога доходят до каждого игрока в комнате, даже при плохой связи",
+              "«Вдвоём»: общая башня честно теряет здоровье при сильных ударах"
+            ],
+            "changed": [
+              "Новая музыка краёв: длиннее, мягче и одинаково громкая",
+              "Быстрее первый запуск в браузере (iPhone): понятная полоска загрузки, музыка докачивается после меню",
+              "Первые 5 боёв на арене — калибровка: рейтинг меняется быстрее"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Battle a friend by code: a duel with your own rules and arena, Together and 2v2 — no rating",
+              "Arena: a tutorial with a bot, leagues from Brick to Master, season rewards, best battles, who can watch",
+              "Arena: emotes, bricks for the bridge, autopilot if you look away, a connection badge; four arenas with weather",
+              "Backup in the journey after several defeats in a row and a \"Try Relaxed?\" hint",
+              "Your own hero jacket colour; save the chronicle as a picture"
+            ],
+            "fixed": [
+              "Arena: packages and backup reach every player in the room, even on a bad connection",
+              "Together: the shared tower now properly loses health from heavy hits"
+            ],
+            "changed": [
+              "New land music: longer, softer and evenly loud",
+              "Faster first launch in the browser (iPhone): a clear loading bar, music downloads after the menu",
+              "Your first 5 arena battles are calibration: the rating moves faster"
+            ]
+          }
+        },
         {
           "version_name": "2.1.0",
           "version_code": 17,
@@ -993,15 +1038,66 @@
         "daily",
         "marathon"
       ],
-      "cover_anim": "promo/brick-tower/cover_{lang}.webp"
+      "cover_anim": "promo/brick-tower/cover_{lang}.webp",
+      "lands": [
+        {
+          "id": "swamp",
+          "name": "Болото",
+          "name_en": "The Swamp",
+          "anim": "promo/brick-tower/land_swamp.webp",
+          "still": "promo/brick-tower/land_swamp.jpg"
+        },
+        {
+          "id": "forest",
+          "name": "Лесная застава",
+          "name_en": "Forest Outpost",
+          "anim": "promo/brick-tower/land_forest.webp",
+          "still": "promo/brick-tower/land_forest.jpg"
+        },
+        {
+          "id": "graveyard",
+          "name": "Кладбище и руины",
+          "name_en": "Graveyard & Ruins",
+          "anim": "promo/brick-tower/land_graveyard.webp",
+          "still": "promo/brick-tower/land_graveyard.jpg"
+        },
+        {
+          "id": "desert",
+          "name": "Пустыня",
+          "name_en": "The Desert",
+          "anim": "promo/brick-tower/land_desert.webp",
+          "still": "promo/brick-tower/land_desert.jpg"
+        },
+        {
+          "id": "winter",
+          "name": "Зимняя застава",
+          "name_en": "Winter Outpost",
+          "anim": "promo/brick-tower/land_winter.webp",
+          "still": "promo/brick-tower/land_winter.jpg"
+        },
+        {
+          "id": "castle",
+          "name": "Королевский замок",
+          "name_en": "The Royal Castle",
+          "anim": "promo/brick-tower/land_castle.webp",
+          "still": "promo/brick-tower/land_castle.jpg"
+        },
+        {
+          "id": "volcano",
+          "name": "Огненная гора",
+          "name_en": "The Fire Mountain",
+          "anim": "promo/brick-tower/land_volcano.webp",
+          "still": "promo/brick-tower/land_volcano.jpg"
+        }
+      ]
     }
   ],
   "featured": "brick-tower",
   "roadmap": [
     {
       "status": "soon",
-      "title": "Подсказка «Попробовать Спокойную?» после быстрых поражений и таблица пар арены по неделям",
-      "title_en": "A gentle \"Try Relaxed?\" hint after quick defeats and weekly pair tables in the arena"
+      "title": "Подкрутка баланса по вашим боям и походам: подмога, арена, поздние края",
+      "title_en": "Balance tuning from your battles and journeys: backup, arena, late lands"
     },
     {
       "status": "idea",
@@ -1014,6 +1110,53 @@
       "status": "idea",
       "title": "Карта «Кирпичной башни» «Замок»",
       "title_en": "A “Castle” map for Brick Tower"
+    },
+    {
+      "status": "idea",
+      "title": "Арена: короткий «Спринт» и длинная «Классика»",
+      "title_en": "Arena: a short Sprint and a long Classic format"
+    },
+    {
+      "status": "done",
+      "title": "Бой с другом по коду: дуэль, «Вдвоём» и 2 на 2 — свои условия и арена, без рейтинга",
+      "title_en": "Battle a friend by code: duel, Together and 2v2 — your own rules and arena, no rating",
+      "note": "Кирпичная башня 2.2.0",
+      "note_en": "Brick Tower 2.2.0"
+    },
+    {
+      "status": "done",
+      "title": "Арена: обучение с ботом, лиги от Кирпичной до Лиги мастеров, награды сезона, лучшие бои, пары «Вдвоём» за неделю, «кто может смотреть»",
+      "title_en": "Arena: a tutorial with a bot, leagues from Brick to Master, season rewards, best battles, weekly Together pairs, who can watch",
+      "note": "Кирпичная башня 2.2.0",
+      "note_en": "Brick Tower 2.2.0"
+    },
+    {
+      "status": "done",
+      "title": "Связь на арене: переподключение, автопилот, значок качества связи; смайлы и кирпичи для моста",
+      "title_en": "Arena connection: reconnects, autopilot, a connection quality badge; emotes and bricks for the bridge",
+      "note": "Кирпичная башня 2.2.0",
+      "note_en": "Brick Tower 2.2.0"
+    },
+    {
+      "status": "done",
+      "title": "Подсказка «Попробовать Спокойную?» и подмога в походе после нескольких поражений",
+      "title_en": "A \"Try Relaxed?\" hint and backup in the journey after several defeats",
+      "note": "Кирпичная башня 2.2.0",
+      "note_en": "Brick Tower 2.2.0"
+    },
+    {
+      "status": "done",
+      "title": "Новая музыка краёв (длиннее, ровная громкость) и более быстрый первый запуск в браузере",
+      "title_en": "New land music (longer, even loudness) and a faster first launch in the browser",
+      "note": "Кирпичная башня 2.2.0",
+      "note_en": "Brick Tower 2.2.0"
+    },
+    {
+      "status": "done",
+      "title": "Лавка: «Края похода» с живыми обложками, поддержка Android 16",
+      "title_en": "Store: Journey lands with live covers, Android 16 support",
+      "note": "Лавка Левши 3.2.0",
+      "note_en": "Lefty's Store 3.2.0"
     },
     {
       "status": "done",
@@ -1214,7 +1357,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792229682,
+  "seq": 1792263530,
   "help": [
     {
       "title": "Установка на Android",
