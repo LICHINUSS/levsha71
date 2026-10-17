@@ -1,94 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, viewport-fit=cover">
 		<title>Brick Tower</title>
+		<!-- Своя стартовая страница «Кирпичной башни»: та же синяя пластина, что у заставки в игре, полоса из кирпичиков
+		     и понятные слова (сколько скачано, что происходит дальше). Шаблон Godot: подстановки заполняет экспорт. -->
 		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
-
-#canvas {
-	display: block;
-}
-
-#canvas:focus {
-	outline: none;
-}
-
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
-
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
+html, body, #canvas { margin: 0; padding: 0; border: 0; }
+body { color: white; background-color: #1a6ae0; overflow: hidden; touch-action: none; }
+#canvas { display: block; }
+#canvas:focus { outline: none; }
 
 #status {
-	background-color: #1a6ae0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	position: absolute; inset: 0;
+	display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px;
 	visibility: hidden;
+	background-color: #1a6ae0;
+	/* шипы пластины — как StudField в заставке игры */
+	background-image:
+		radial-gradient(circle at 44% 42%, rgba(255, 255, 255, .16) 0 5px, transparent 6px),
+		radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .08) 0 9px, rgba(0, 0, 0, .14) 10px 11px, transparent 12px);
+	background-size: 28px 28px;
+	font-family: 'Noto Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
-
-#status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
+#status-splash { width: min(30vh, 220px); height: auto; image-rendering: pixelated; }
+#status-splash.show-image--false { display: none; }
+#bt-title { font-weight: 800; font-size: clamp(22px, 4.2vh, 34px); letter-spacing: .04em; text-shadow: 0 3px 0 rgba(0, 0, 0, .25); }
+#bt-bricks { display: flex; gap: 6px; }
+#bt-bricks i {
+	display: block; width: clamp(18px, 4.5vh, 30px); height: clamp(12px, 3vh, 20px);
+	border-radius: 3px; background: rgba(0, 0, 0, .22); position: relative;
+	transition: background-color .25s, transform .25s;
 }
-
-#status-splash.show-image--false {
-	display: none;
+#bt-bricks i::before, #bt-bricks i::after {
+	content: ""; position: absolute; top: -5px; width: 26%; height: 5px; border-radius: 2px 2px 0 0; background: inherit;
 }
-
-#status-splash.fullsize--true {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
-
-#status-splash.use-filter--false {
-	image-rendering: pixelated;
-}
-
-#status-progress, #status-notice {
-	display: none;
-}
-
-#status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
-}
-
+#bt-bricks i::before { left: 16%; }
+#bt-bricks i::after { right: 16%; }
+#bt-bricks i.on { transform: translateY(-2px); box-shadow: inset 0 -4px 0 rgba(0, 0, 0, .25); }
+#bt-text { font-weight: 700; font-size: clamp(15px, 2.6vh, 20px); text-shadow: 0 2px 0 rgba(0, 0, 0, .25); min-height: 1.3em; }
+#bt-hint { font-size: clamp(12px, 2vh, 15px); opacity: .85; max-width: 32em; text-align: center; margin: 0 16px; }
 #status-notice {
-	background-color: #5b3943;
-	border-radius: 0.5rem;
-	border: 1px solid #9b3943;
-	color: #e0e0e0;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	line-height: 1.3;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding: 1rem;
-	text-align: center;
-	z-index: 1;
+	display: none; background-color: #5b3943; border-radius: .5rem; border: 1px solid #9b3943; color: #e0e0e0;
+	line-height: 1.3; margin: 0 2rem; padding: 1rem; text-align: center; z-index: 1;
 }
+@media (prefers-reduced-motion: reduce) { #bt-bricks i { transition: none; } }
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
@@ -105,23 +63,53 @@ body {
 
 		<div id="status">
 			<img id="status-splash" class="show-image--true fullsize--false use-filter--false" src="index.png" alt="">
-			<progress id="status-progress"></progress>
+			<div id="bt-title"></div>
+			<div id="bt-bricks" aria-hidden="true"></div>
+			<div id="bt-text" role="status" aria-live="polite"></div>
+			<div id="bt-hint"></div>
 			<div id="status-notice"></div>
 		</div>
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":4778412,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":3140192,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
+	const RU = (navigator.language || 'ru').toLowerCase().startsWith('ru');
+	const T = RU
+		? { title: 'КИРПИЧНАЯ БАШНЯ', load: 'Загружаем игру… %d %', build: 'Собираем игру…',
+			hint: 'Первый запуск в браузере — до полуминуты: игра скачивается и готовит картинку. В следующий раз будет быстрее.' }
+		: { title: 'BRICK TOWER', load: 'Loading the game… %d %', build: 'Putting the game together…',
+			hint: 'The first launch in a browser takes up to half a minute: the game downloads and prepares its graphics. Next time it is faster.' };
+	const COLORS = ['#c91a09', '#f2cd37', '#0055bf', '#237841', '#fe8a18'];
 	const statusOverlay = document.getElementById('status');
-	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
+	const bricksBox = document.getElementById('bt-bricks');
+	const text = document.getElementById('bt-text');
+	document.getElementById('bt-title').textContent = T.title;
+	document.getElementById('bt-hint').textContent = T.hint;
+	const bricks = [];
+	for (let i = 0; i < 10; i++) {
+		const b = document.createElement('i');
+		bricksBox.appendChild(b);
+		bricks.push(b);
+	}
 
 	let initializing = true;
 	let statusMode = '';
+
+	// k — доля скачанного (0…1): кирпичики загораются по одному
+	function setProgress(k) {
+		const n = Math.round(k * bricks.length);
+		bricks.forEach((b, i) => {
+			const on = i < n;
+			b.classList.toggle('on', on);
+			b.style.backgroundColor = on ? COLORS[i % COLORS.length] : '';
+		});
+		text.textContent = k >= 1 ? T.build : T.load.replace('%d', Math.round(k * 100));
+	}
 
 	function setStatusMode(mode) {
 		if (statusMode === mode || !initializing) {
@@ -133,17 +121,15 @@ const engine = new Engine(GODOT_CONFIG);
 			return;
 		}
 		statusOverlay.style.visibility = 'visible';
-		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
 		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
 		statusMode = mode;
 	}
 
-	function setStatusNotice(text) {
+	function setStatusNotice(msg) {
 		while (statusNotice.lastChild) {
 			statusNotice.removeChild(statusNotice.lastChild);
 		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
+		msg.split('\n').forEach((line) => {
 			statusNotice.appendChild(document.createTextNode(line));
 			statusNotice.appendChild(document.createElement('br'));
 		});
@@ -174,7 +160,6 @@ const engine = new Engine(GODOT_CONFIG);
 			} catch (err) {
 				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
 			}
-			// There's a chance that installing the service worker would fix the issue
 			Promise.race([
 				serviceWorkerRegistrationPromise.then((registration) => {
 					if (registration != null) {
@@ -182,31 +167,25 @@ const engine = new Engine(GODOT_CONFIG);
 					}
 					return registration;
 				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
 				new Promise((resolve) => {
 					setTimeout(() => resolve(), 2000);
 				}),
 			]).then(() => {
-				// Reload if there was no error.
 				window.location.reload();
 			}).catch((err) => {
 				console.error('Error while registering service worker:', err);
 			});
 		} else {
-			// Display the message as usual
 			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
 			displayFailureNotice(missingMsg + missing.join('\n'));
 		}
 	} else {
 		setStatusMode('progress');
+		setProgress(0);
 		engine.startGame({
 			'onProgress': function (current, total) {
 				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
+					setProgress(Math.min(1, current / total));
 				}
 			},
 		}).then(() => {
