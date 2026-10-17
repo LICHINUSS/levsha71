@@ -4,7 +4,7 @@
 "use strict";
 
 const AP_TX = {
-  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_ascent: "Восхождение", m_campaign: "Кампания", m_daily: "Испытание дня",
+  ru: { rec_t: "Рекорды мира", shot_alt: "Снимок экрана — нажмите, чтобы увеличить", m_endless: "Бесконечный", m_ascent: "Восхождение", m_campaign: "Кампания", m_daily: "Испытание дня", m_marathon: "Марафон недели",
         waves: ["волна", "волны", "волн"], rec_empty: "Рекордов пока нет — будьте первым!", rec_more: "Играть и попасть в таблицу",
         rev_t: "Оценки и отзывы", rev_empty: "Отзывов пока нет.", rev_master: "Ответ мастера", rev_mine: "Ваша оценка",
         rev_ph: "Что понравилось, что поправить? (можно оставить пустым)", rev_send: "Сохранить отзыв", rev_saved: "Спасибо! Отзыв сохранён.",
@@ -13,7 +13,7 @@ const AP_TX = {
         arch_other: "Скачать и поставить старую версию можно только на Android-телефоне. На iPhone и в браузере всегда открывается последняя версия.",
         dl_ver: "Скачать v{v}", sound_on: "Включить звук",
         d_normal: "Обычная", d_hard: "Трудная", d_easy: "Спокойная", d_label: "Сложность" },
-  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_ascent: "Ascent", m_campaign: "Campaign", m_daily: "Daily challenge",
+  en: { rec_t: "World records", shot_alt: "Screenshot — press to enlarge", m_endless: "Endless", m_ascent: "Ascent", m_campaign: "Campaign", m_daily: "Daily challenge", m_marathon: "Weekly marathon",
         waves: ["wave", "waves", "waves"], rec_empty: "No records yet — be the first!", rec_more: "Play and get on the board",
         rev_t: "Ratings and reviews", rev_empty: "No reviews yet.", rev_master: "Master's answer", rev_mine: "Your rating",
         rev_ph: "What did you like, what to fix? (optional)", rev_send: "Save review", rev_saved: "Thanks! Your review is saved.",
@@ -32,6 +32,8 @@ const AppPage = {
     if (Lavka.lang === "en") return n + " " + (n === 1 ? f[0] : f[1]);
     return n + " " + (d === 1 && dd !== 11 ? f[0] : d >= 2 && d <= 4 && (dd < 12 || dd > 14) ? f[1] : f[2]);
   },
+  // испытание дня и марафон недели — одни правила для всех, без выбора сложности
+  periodic() { return this.mode === "daily" || this.mode === "marathon"; },
   when(iso) { return iso ? new Date(iso).toLocaleDateString(Lavka.lang === "ru" ? "ru-RU" : "en-GB", { day: "numeric", month: "short", year: "numeric" }) : ""; },
   av(a) { return `assets/av/${/^[a-z]+$/.test(a || "") ? a : "levsha"}.png`; },
   profile() { try { return JSON.parse(localStorage.getItem("lavka_profile") || "null"); } catch (e) { return null; } },
@@ -81,7 +83,7 @@ const AppPage = {
       ${a.category === "games" ? `<section class="recSec"><h2>${this.x("rec_t")}</h2>
         <div class="chips" style="margin:6px 0 12px">${(a.modes && a.modes.length ? a.modes : ["endless", "campaign", "daily"]).map(m =>
           `<button class="chip" data-mode="${m}" aria-pressed="${m === this.mode}">${this.x("m_" + m)}</button>`).join("")}</div>
-        ${(a.difficulties || []).length > 1 ? `<div class="chips diffs" role="group" aria-label="${this.x("d_label")}" style="margin:-4px 0 12px"${this.mode === "daily" ? " hidden" : ""}>${a.difficulties.map(d =>
+        ${(a.difficulties || []).length > 1 ? `<div class="chips diffs" role="group" aria-label="${this.x("d_label")}" style="margin:-4px 0 12px"${this.periodic() ? " hidden" : ""}>${a.difficulties.map(d =>
           `<button class="chip small" data-diff="${d}" aria-pressed="${d === this.diff}">${this.x("d_" + d)}</button>`).join("")}</div>` : ""}
         <div class="recbox"><div class="skel"></div></div></section>` : ""}
       <section class="revSec"><h2>${this.x("rev_t")}</h2><div class="revSum"></div><div class="revForm"></div><div class="rev"><div class="skel"></div></div></section>
@@ -92,7 +94,7 @@ const AppPage = {
           ${plat === "android" && h.apk ? `<p><a class="btn small ghost" href="${h.apk}">${this.x("dl_ver", { v: Lavka.esc(h.version_name) })}</a></p>` : ""}</details>`).join("")}</section>` : ""}`;
     for (const b of page.querySelectorAll("[data-mode]")) b.onclick = () => {
       this.mode = b.dataset.mode; for (const x of page.querySelectorAll("[data-mode]")) x.setAttribute("aria-pressed", x === b);
-      const dr = page.querySelector(".diffs"); if (dr) dr.hidden = this.mode === "daily";
+      const dr = page.querySelector(".diffs"); if (dr) dr.hidden = this.periodic();
       this.records(page, a);
     };
     for (const b of page.querySelectorAll("[data-diff]")) b.onclick = () => {
@@ -116,13 +118,14 @@ const AppPage = {
     try {
       // сложность — своя таблица; «Обычная» без поля (так понимает и сервер до V2)
       const q = { p_game: a.id, p_mode: this.mode, p_period: "all", p_limit: 10 };
-      if (this.diff !== "normal" && this.mode !== "daily" && (a.difficulties || []).includes(this.diff)) q.p_difficulty = this.diff;
+      if (this.diff !== "normal" && !this.periodic() && (a.difficulties || []).includes(this.diff)) q.p_difficulty = this.diff;
       const rows = await Lavka.rpc("leaderboard", q);
       const me = this.profile(), link = (pid) => (document.getElementById("app") ? "#player/" : "me.html#player/") + pid;
       box.innerHTML = rows.length ? `<ol class="board">${rows.map(r => `<li class="${me && me.id === r.player_id ? "me" : ""}">
           <span class="pl p${r.place}">${r.place}</span><img class="px" src="${this.av(r.avatar)}" alt="" width="34" height="34">
           <a href="${link(r.player_id)}">${Lavka.esc(r.nick)}</a>
-          <b>${this.mode === "campaign" ? (r.won ? "🏆 " : "") + r.waves + "/10" : this.waves(r.waves)}</b></li>`).join("")}</ol>`
+          <b>${this.mode === "campaign" ? (r.won ? "🏆 " : "") + r.waves + "/10"
+            : this.mode === "marathon" ? (r.won ? "🏆 " : "") + r.waves + "/30" : this.waves(r.waves)}</b></li>`).join("")}</ol>`
         : `<p class="muted">${this.x("rec_empty")}</p>`;
       if (a.web) box.insertAdjacentHTML("beforeend", `<p><a class="btn small" href="${a.web}">${this.x("rec_more")}</a></p>`);
     } catch (e) { box.innerHTML = `<p class="muted">—</p>`; }
