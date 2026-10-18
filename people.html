@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Люди и статистика — Лавка Левши</title>
-<meta name="description" content="Сколько людей сейчас в «Лавке Левши», сколько скачиваний и кто из игроков открыт для знакомства.">
+<meta name="description" content="Сколько людей сейчас в «Лавке Левши», сколько скачиваний и кто играет: ники, герои и лиги.">
 <meta name="theme-color" content="#1A0D07">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/store_icon_192.png">
@@ -47,6 +47,7 @@
 </div></footer>
 
 <script src="assets/site.js"></script>
+<script src="assets/look.js"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -54,15 +55,17 @@ const TX = {
   ru: { h1: "Люди и статистика", sub: "Живые цифры мастерской — без имён и личных данных.", online: "сейчас в лавке", playing: "сейчас в игре",
         reg: "профилей", dl: "скачиваний", inst: "лавок поставлено", groups: "групп",
         note: "«Сейчас» — кто открывал лавку или игру за последние 5 минут. Скачивания считает GitHub. Тех, у кого нет профиля, считаем только числом.",
-        h2: "Люди в лавке", ps: "Здесь только те, кто сам включил «Показывать меня в «Людях»» (по умолчанию выключено).",
-        empty: "Пока никто не включил видимость — будьте первым!", go: "Найти друзей в лавке", since: "в мастерской с {d}",
-        pf: { android: "Android", iphone: "iPhone", web: "браузер" } },
+        h2: "Игроки", ps: "Все игроки мастерской с профилем, кроме тех, кто скрылся. Скрыться можно в профиле.",
+        empty: "Пока никого.", go: "Найти друзей в лавке", since: "в мастерской с {d}",
+        pf: { android: "Android", iphone: "iPhone", web: "браузер" },
+        lg: { brick: "Кирпичная лига", bronze: "Бронзовая лига", silver: "Серебряная лига", gold: "Золотая лига", platinum: "Платиновая лига", master: "Лига мастеров" } },
   en: { h1: "People and stats", sub: "Live numbers from the workshop — no names, no personal data.", online: "in the shop now", playing: "playing now",
         reg: "profiles", dl: "downloads", inst: "shops installed", groups: "groups",
         note: "“Now” means the shop or a game was open in the last 5 minutes. Downloads are counted by GitHub. People without a profile are counted only as a number.",
-        h2: "People in the shop", ps: "Only people who turned on “Show me in People” are listed (it's off by default).",
-        empty: "Nobody has turned it on yet — be the first!", go: "Find friends in the shop", since: "in the workshop since {d}",
-        pf: { android: "Android", iphone: "iPhone", web: "browser" } },
+        h2: "Players", ps: "Every player in the workshop with a profile, except those who chose to hide. You can hide in your profile.",
+        empty: "Nobody yet.", go: "Find friends in the shop", since: "in the workshop since {d}",
+        pf: { android: "Android", iphone: "iPhone", web: "browser" },
+        lg: { brick: "Brick league", bronze: "Bronze league", silver: "Silver league", gold: "Gold league", platinum: "Platinum league", master: "Masters league" } },
 };
 const x = (k) => (TX[Lavka.lang] || TX.ru)[k];
 async function render() {
@@ -76,8 +79,10 @@ async function render() {
   $("list").innerHTML = list.length ? `<div class="list">${list.map(p => `<a class="row" href="me.html#player/${p.player_id}">
     <span class="av f-${Lavka.esc(p.frame || "")}" style="--s:44px"><img class="px" src="assets/av/${/^[a-z]+$/.test(p.avatar) ? p.avatar : "levsha"}.png" alt=""></span>
     <span class="grow"><b>${Lavka.esc(p.nick)}</b>${p.status_text ? `<span class="muted">${Lavka.esc(p.status_text)}</span>` : ""}
-    <small class="muted">${x("pf")[p.platform] || "Android"} · ${x("since").replace("{d}", new Date(p.since).toLocaleDateString(loc, { month: "long", year: "numeric" }))}</small></span></a>`).join("")}</div>`
+    <small class="muted">${p.league ? `<span class="lg lg-${Lavka.esc(p.league)}">${x("lg")[p.league] || ""}</span> · ` : ""}${x("pf")[p.platform] || "Android"} · ${x("since").replace("{d}", new Date(p.since).toLocaleDateString(loc, { month: "long", year: "numeric" }))}</small></span>
+    ${typeof HeroLook === "object" ? HeroLook.img(p.look, 40) : ""}</a>`).join("")}</div>`
     : `<p class="empty">${x("empty")}</p>`;
+  if (typeof HeroLook === "object") HeroLook.fill($("list"));
 }
 Lavka.init();
 document.addEventListener("lavka:lang", render);

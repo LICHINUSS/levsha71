@@ -224,3 +224,26 @@ button.row { width: 100%; border: 0; background: none; font: inherit; text-align
 .small { font-size: 14px; }
 @media (prefers-reduced-motion: reduce) { .modal, .modal-in { transition: none; } }
 .modal-in .list .lbl { padding: 10px 14px 0; margin: 0; }
+
+/* 4.0: герой, лига, витрина, стена, сравнение */
+img.hero { image-rendering: pixelated; background: var(--cream); border-radius: 10px; padding: 3px; flex: none; box-sizing: content-box; }
+img.hero.big { border-radius: 16px; padding: 6px; }
+.herocard { gap: 14px; align-items: center; }
+.herocard .grow > * { display: block; }
+.lg { font-weight: 800; color: #B5582E; }
+.lg-bronze { color: #B87333; } .lg-silver { color: #8A939D; } .lg-gold { color: #C98E12; } .lg-platinum { color: #3E9E9B; } .lg-master { color: #7D69B0; }
+.chips .badge.pick { cursor: pointer; border: 1.5px solid var(--border); font: inherit; font-size: 13px; }
+.chips .badge.pick[aria-pressed="true"] { border: 2.5px solid var(--gold); }
+.chips.showcase .badge.big { font-size: 15px; padding: 6px 12px; border: 2px solid var(--gold); }
+.stats.mini { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.stats.mini div { padding: 8px 2px; border-radius: 12px; }
+.stats.mini b { font-size: 19px; }
+.stats.mini span { font-size: 11px; line-height: 1.2; display: block; }
+.pre { white-space: pre-wrap; display: block; }
+.nm a { color: inherit; text-decoration: none; }
+.badge.ok { background: #237841; color: #fff; }
+table.cmp th { overflow-wrap: anywhere; }
+table.cmp { width: 100%; border-collapse: collapse; margin-top: 8px; }
+table.cmp th, table.cmp td { padding: 6px 4px; text-align: center; border-bottom: 1px solid var(--border); }
+table.cmp tr > th:first-child { text-align: left; font-weight: 600; color: var(--text2); }
+table.cmp td.win { font-weight: 900; color: var(--green); }
