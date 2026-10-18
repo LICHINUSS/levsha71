@@ -29,7 +29,7 @@
 </div></header>
 <main class="wrap doc" id="main" style="max-width:760px;padding-top:28px">
   <h1>Конфиденциальность</h1>
-  <p class="sub">«Лавка Левши» и игры мастерской «Левша 71». Обновлено 14 октября 2026. <a href="#en">English</a></p>
+  <p class="sub">«Лавка Левши» и игры мастерской «Левша 71». Обновлено 18 октября 2026. <a href="#en">English</a></p>
 
   <h2>Коротко</h2>
   <p>Мы не просим ни почту, ни телефон, ни имя. Профиль игрока — это ник и аватар.
@@ -39,6 +39,8 @@
   <h2>Что хранится на сервере мастерской</h2>
   <ul>
     <li>Ник, аватар (из набора или своё фото — см. ниже), строчка «о себе», статус, выбранная рамка, дата создания профиля.</li>
+    <li>Облик героя в игре (цвет, шапка, лицо, плащ, снаряжение) и витрина — до трёх достижений, которые вы сами выбрали.</li>
+    <li>Записи на стене профиля (до 300 знаков): кто написал, кому и когда.</li>
     <li>Результаты забегов для таблиц рекордов: сколько волн, врагов и боссов, длительность, версия игры.</li>
     <li>Облачное сохранение прогресса игры (чтобы вернуть его на новом телефоне по коду).</li>
     <li>Отзывы, посты в ленте и группах, комментарии, поставленные подковки и жалобы.</li>
@@ -55,6 +57,18 @@
   </ul>
   <p>Сервер — Supabase (Великобритания). Ники, рекорды, отзывы, посты в общей ленте и пиксельные аватары видны всем.
      Посты в группе видят только её участники.</p>
+
+  <h2>Список игроков</h2>
+  <ul>
+    <li>Все игроки с профилем по умолчанию видны в общем списке «Люди»: ник, значок, герой, лига, звание, платформа
+        и месяц прихода в мастерскую. Профили-гости (без своего ника) там не показываются.</li>
+    <li>Скрыться можно одним переключателем «Показывать меня в «Людях»» в «Приватности». Код восстановления и личные
+        данные не видит никто — ни другие игроки, ни мастер.</li>
+    <li>Кто видит вашу статистику, последние бои и кто может писать на вашей стене, выбираете вы: все, только друзья
+        или никто. Запись на стене может удалить её автор, хозяин стены и мастер.</li>
+    <li>Мастер видит полный список профилей (ник, дата, платформа, сколько забегов, когда заходили) — без кодов
+        и личных данных; это нужно, чтобы следить за порядком.</li>
+  </ul>
 
   <h2>Своё фото</h2>
   <ul>
@@ -99,7 +113,7 @@
   <h2>Ваши права и настройки</h2>
   <ul>
     <li><b>Приватность</b> (в профиле): показываться ли в списке «Люди», видят ли друзья «в сети / в игре»,
-        принимать ли заявки в друзья, видят ли друзья фото.</li>
+        принимать ли заявки в друзья, видят ли друзья фото; кто видит статистику и последние бои, кто может писать на стене.</li>
     <li><b>Заблокировать</b> человека — на его странице. Он не сможет позвать вас в друзья и войти в ваши группы.</li>
     <li><b>Сменить код восстановления</b> — в профиле, если старый мог попасть в чужие руки.</li>
     <li><b>Удалить профиль навсегда</b> — в профиле. Вместе с ним сразу удаляются рекорды, отзывы, посты,
@@ -115,6 +129,10 @@
      for leaderboards; a cloud copy of game progress; reviews, posts, comments, likes and reports; friends, groups,
      blocks and privacy settings; when you were last online and which workshop game you are playing (visible only to
      friends and group members, can be turned off); your platform; a hash of the recovery code (never the code itself); if you turn on notifications in the iPhone or browser shop — the subscription address your browser issues and the kinds of notifications you chose (erased when you turn them off or delete your profile).
+     Also your hero's look (colour, hat, face, cloak, gear), up to three showcase achievements and notes on your profile wall.
+     Every player with a profile is listed in “People” by default (nick, badge, hero, league, rank, platform, month joined;
+     guest profiles are not listed); you can hide with one switch in Privacy, and choose who sees your stats and recent
+     battles and who can write on your wall (everyone, friends or nobody). Nobody — not even the master — sees your code.
      A random install number (not linked to you or your phone) is used to count “people in the shop now”.
      IP addresses are kept for a day for anti-spam only.</p>
   <p>Ideas and bug reports: title, text, category and date; with a profile they are public with your nick, without a

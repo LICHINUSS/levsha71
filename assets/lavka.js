@@ -34,7 +34,28 @@ const W = {
     g_share: "Позвать", g_reset: "Новый код", g_leave: "Выйти из группы", g_kick: "Исключить", g_edit: "Изменить", save: "Сохранить",
     g_post_ph: "Написать группе…", g_empty: "В группе пока тихо — напишите первым!", board_empty: "Рекордов пока нет.",
     g_invite_text: "Заходи в мою группу «{g}» в «Лавке Левши»: {u}", join_t: "Приглашение в группу", joined: "Вы в группе «{g}»!",
-    people_s: "Здесь только те, кто сам включил «Показывать меня в «Людях»».", people_me: "Показать меня здесь", people_empty: "Пока никого.",
+    people_s: "Все игроки мастерской. Скрыться можно в профиле.", people_me: "Показать меня здесь",
+    people_empty: "Никого не нашлось.", sort_new: "Новые", sort_league: "По лиге", sort_active: "Недавно были",
+    lg: { brick: "Кирпичная лига", bronze: "Бронзовая лига", silver: "Серебряная лига", gold: "Золотая лига", platinum: "Платиновая лига", master: "Лига мастеров" },
+    hero_t: "Герой", arena_n: "Арена: боёв {g}, побед {w}", arena_0: "На арене ещё не бился(ась)", rating: "рейтинг {n}",
+    showcase: "Витрина", showcase_s: "Нажмите на своё достижение ниже — оно встанет на витрину (до трёх).", showcase_e: "Витрина пока пуста.",
+    recent: "Последние бои", recent_hid: "Игрок скрыл свои бои.", recent_e: "Пока ни одного боя.",
+    rc_arena: "Арена: против {o}", rc_prologue: "Пролог: волна {n}", rc_ascent: "Восхождение: волна {n}", rc_trial: "Испытание: волна {n}",
+    rc_battle: "Бой: волна {n}", rc_win: "победа", rc_play: "бой", stats_hid: "Игрок скрыл статистику.",
+    wall: "Стена", wall_ph: "Пара слов игроку…", wall_e: "На стене пока пусто — напишите первым.", wall_closed: "Писать на этой стене нельзя — так решил хозяин.",
+    wall_del: "Удалить запись?", compare: "Сравнить", cmp_t: "Вы и {n}", you: "Вы", cmp_pts: "очки", cmp_ach: "достижения",
+    cmp_best: "Восхождение, волн", cmp_pro: "Пролог, волн", cmp_arena: "победы на арене",
+    pr_stats: "Кто видит мою статистику", pr_battles: "Кто видит мои последние бои", pr_wall: "Кто может писать на моей стене",
+    who: { all: "Все", friends: "Друзья", none: "Никто" },
+    mp_t: "Все игроки", mp_s: "Ник, дата, платформа, активность — без кодов и личных данных", mp_guest: "гость", mp_hidden: "скрыт(а)",
+    mp_merged: "объединён(а)", mp_runs: "забегов: {n}", mp_arena: "арена: {n}", mp_seen: "был(а) {t}", mp_n: "Всего: {n}",
+    vis_t: "Вас видно в «Людях»", vis_s: "Ник, значок и герой видны в общем списке игроков. Код и личное не видит никто.",
+    vis_hide: "Скрыть меня", vis_ok: "Пусть видят",
+    reg_note: "Ваш ник, значок и герой будут видны в списке игроков. Скрыться можно в профиле в любой момент.",
+    ach: { first_run: "Первый забег", first_win: "Первая победа", waves10: "10 волн", waves20: "20 волн", waves30: "30 волн", kills100: "Сотня врагов",
+      kills1000: "Тысяча врагов", boss1: "Победитель босса", boss10: "Гроза боссов", daily1: "Испытатель", daily_top: "Лучший дня", top10: "Десятка лучших",
+      champion: "Чемпион мира", reviewer: "Первый отзыв", critic: "Ценитель", writer: "Первый пост", talker: "Собеседник", popular: "Любимец публики",
+      liked50: "50 подковок", veteran: "Старожил", friendly: "Душа компании", master: "Мастер мастерской" },
     st_online: "сейчас в лавке", st_reg: "профилей", st_dl: "скачиваний", st_groups: "групп", since: "в мастерской с {d}",
     pf_android: "Android", pf_iphone: "iPhone", pf_web: "браузер",
     notes: "Уведомления", notes_empty: "Новых уведомлений нет.", n_reply: "Мастер ответил на ваш отзыв о «{a}»",
@@ -71,7 +92,7 @@ const W = {
     moder_t: "Модерация", moder_s: "Жалобы, скрытые отзывы, посты, комментарии, фото",
     deaths_t: "Где умирают игроки", deaths_s: "На какой волне падает башня — по режимам", deaths_died: "пали", deaths_won: "победы",
     deaths_reached: "дошли", deaths_empty: "Забегов пока нет.", deaths_note: "Только законченные забеги игроков с профилем за 90 дней. Если игра закрылась сама — такой забег не считается смертью.",
-    deaths_wave: "Волна", m_campaign: "Кампания", m_endless: "Бесконечный", m_daily: "Испытание дня", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
+    deaths_wave: "Волна", m_campaign: "Пролог", m_endless: "Восхождение", m_daily: "Испытание дня", moder_empty: "Жалоб нет — тишина и порядок.", hide: "Скрыть", unhide: "Вернуть",
     mk_review: "отзыв", mk_post: "пост", mk_comment: "комментарий", mk_avatar: "фото", reports_n: "жалоб: {n}", hidden_l: "скрыто",
     lang_t: "Язык", whatsnew: "Что подковано", game_week: "Игра недели", game_week_s: "Мастер советует", help_q: "Найти ответ…",
     about_text: "Мастер Левша, по сказу Лескова, подковал английскую стальную блоху — да так тонко, что без «мелкоскопа» и не разглядеть. В его честь названа мастерская: здесь делают игры и приложения, и каждое — с клеймом мастера. А в «Лавке Левши» их можно взять. Бесплатно, без рекламы и покупок. Один профиль — для лавки и всех игр, на Android, iPhone и компьютере.",
@@ -108,7 +129,28 @@ const W = {
     g_share: "Invite", g_reset: "New code", g_leave: "Leave the group", g_kick: "Remove", g_edit: "Edit", save: "Save",
     g_post_ph: "Write to the group…", g_empty: "It's quiet here — write first!", board_empty: "No records yet.",
     g_invite_text: "Join my group “{g}” in Levsha's Shop: {u}", join_t: "Group invitation", joined: "You're in “{g}”!",
-    people_s: "Only people who turned on “Show me in People” are listed here.", people_me: "Show me here", people_empty: "Nobody yet.",
+    people_s: "Every player in the workshop. You can hide in your profile.", people_me: "Show me here",
+    people_empty: "Nobody found.", sort_new: "New", sort_league: "By league", sort_active: "Recently active",
+    lg: { brick: "Brick league", bronze: "Bronze league", silver: "Silver league", gold: "Gold league", platinum: "Platinum league", master: "Masters league" },
+    hero_t: "Hero", arena_n: "Arena: {g} battles, {w} wins", arena_0: "No arena battles yet", rating: "rating {n}",
+    showcase: "Showcase", showcase_s: "Tap one of your achievements below to put it on the showcase (up to three).", showcase_e: "The showcase is empty.",
+    recent: "Recent battles", recent_hid: "This player hides their battles.", recent_e: "No battles yet.",
+    rc_arena: "Arena: vs {o}", rc_prologue: "Prologue: wave {n}", rc_ascent: "Ascent: wave {n}", rc_trial: "Challenge: wave {n}",
+    rc_battle: "Battle: wave {n}", rc_win: "win", rc_play: "played", stats_hid: "This player hides their stats.",
+    wall: "Wall", wall_ph: "A few words for the player…", wall_e: "The wall is empty — be the first to write.", wall_closed: "You can't write on this wall — the owner decided so.",
+    wall_del: "Delete this note?", compare: "Compare", cmp_t: "You and {n}", you: "You", cmp_pts: "points", cmp_ach: "achievements",
+    cmp_best: "Ascent, waves", cmp_pro: "Prologue, waves", cmp_arena: "arena wins",
+    pr_stats: "Who sees my stats", pr_battles: "Who sees my recent battles", pr_wall: "Who can write on my wall",
+    who: { all: "Everyone", friends: "Friends", none: "Nobody" },
+    mp_t: "All players", mp_s: "Nick, date, platform, activity — no codes or personal data", mp_guest: "guest", mp_hidden: "hidden",
+    mp_merged: "merged", mp_runs: "runs: {n}", mp_arena: "arena: {n}", mp_seen: "seen {t}", mp_n: "Total: {n}",
+    vis_t: "You're visible in People", vis_s: "Your nick, badge and hero are in the player list. Nobody sees your code or personal data.",
+    vis_hide: "Hide me", vis_ok: "Let them see",
+    reg_note: "Your nick, badge and hero will be visible in the player list. You can hide any time in your profile.",
+    ach: { first_run: "First run", first_win: "First win", waves10: "10 waves", waves20: "20 waves", waves30: "30 waves", kills100: "A hundred enemies",
+      kills1000: "A thousand enemies", boss1: "Boss slayer", boss10: "Boss terror", daily1: "Challenger", daily_top: "Best of the day", top10: "Top ten",
+      champion: "World champion", reviewer: "First review", critic: "Connoisseur", writer: "First post", talker: "Conversationalist", popular: "Crowd favourite",
+      liked50: "50 likes", veteran: "Old-timer", friendly: "Life of the party", master: "Workshop master" },
     st_online: "in the shop now", st_reg: "profiles", st_dl: "downloads", st_groups: "groups", since: "in the workshop since {d}",
     pf_android: "Android", pf_iphone: "iPhone", pf_web: "browser",
     notes: "Notifications", notes_empty: "No new notifications.", n_reply: "The master replied to your review of “{a}”",
@@ -145,7 +187,7 @@ const W = {
     moder_t: "Moderation", moder_s: "Reports, hidden reviews, posts, comments, photos",
     deaths_t: "Where players die", deaths_s: "Which wave the tower falls on — by mode", deaths_died: "fell", deaths_won: "wins",
     deaths_reached: "reached", deaths_empty: "No runs yet.", deaths_note: "Finished runs of players with a profile over 90 days. If the game closed by itself, the run isn't counted as a death.",
-    deaths_wave: "Wave", m_campaign: "Campaign", m_endless: "Endless", m_daily: "Daily challenge", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
+    deaths_wave: "Wave", m_campaign: "Prologue", m_endless: "Ascent", m_daily: "Daily challenge", moder_empty: "No reports — all calm.", hide: "Hide", unhide: "Restore",
     mk_review: "review", mk_post: "post", mk_comment: "comment", mk_avatar: "photo", reports_n: "reports: {n}", hidden_l: "hidden",
     lang_t: "Language", whatsnew: "What's new", game_week: "Game of the week", game_week_s: "The master recommends", help_q: "Find an answer…",
     about_text: "In Leskov's tale, the craftsman Levsha shod a tiny steel flea — so finely you need a microscope to see it. The workshop is named after him: it makes games and apps, each with the master's seal. Levsha's Shop is where you get them. Free, no ads, no purchases. One profile for the shop and all games, on Android, iPhone and computers.",
@@ -247,6 +289,11 @@ const App = {
     return `<span class="av f-${esc(o.frame || "")} ${extra}" style="--s:${size}px" data-av="${esc(id || "")}_${o.photo_ver || 0}">
       <img class="px" src="${src}" alt="" loading="lazy">${o.online ? '<i class="dot"></i>' : ""}</span>`;
   },
+  /** Пиксельный двойник героя (assets/look.js); без файла облика — пусто. */
+  hero(look, size = 40, cls = "") { return typeof HeroLook === "object" ? HeroLook.img(look, size, cls) : ""; },
+  heroFill(root) { if (typeof HeroLook === "object") HeroLook.fill(root || document); },
+  league(k) { k = k || "brick"; return `<span class="lg lg-${esc(k)}">${esc(w("lg")[k] || w("lg").brick)}</span>`; },
+  achName(k) { return w("ach")[k] || k; },
   _want: new Set(), _wantTimer: 0,
   wantPixels(id, ver) {
     const key = id + "_" + ver;
@@ -298,7 +345,7 @@ const App = {
       group: () => this.group(+arg), player: () => this.player(arg), blocks: () => this.blocks(), join: () => this.join(arg),
       me: () => this.mine(), week: () => this.week(), notes: () => this.notes(), settings: () => this.settings(), edit: () => this.edit(),
       profile: () => this.edit(), catalog: () => this.catalog(), app: () => this.appPage(arg), help: () => this.help(), about: () => this.about(),
-      roadmap: () => this.roadmap(), moder: () => this.moder(), deaths: () => this.deaths() };
+      roadmap: () => this.roadmap(), moder: () => this.moder(), deaths: () => this.deaths(), mplayers: () => this.mplayers() };
     this._depth = (this._depth || 0) + 1;
     const extra = this.extraViews && this.extraViews[view];   // дополнительные разделы (ideas.js)
     (extra ? extra(arg) : (views[view] || views.home)()).catch(e => { main.innerHTML = `<p class="empty">${esc(e.message)}</p>`; });
@@ -361,6 +408,7 @@ const App = {
       $("wform").innerHTML = `<label class="field"><span>${w("nick")}</span><input id="wNick" maxlength="16" autocomplete="nickname" placeholder="${w("nick_ph")}"></label>
         <span class="lbl">${w("pick_av")}</span><div class="avgrid">${AVATARS.map((a, i) =>
           `<button class="avpick" data-a="${a}" aria-pressed="${i === 0}"><img class="px" src="assets/av/${a}.png" alt="${a}"></button>`).join("")}</div>
+        <p class="muted small">${w("reg_note")}</p>
         <button class="btn wide" id="wGo">${w("create")}</button>`;
       let av = AVATARS[0];
       for (const b of document.querySelectorAll(".avpick")) b.onclick = () => {
@@ -673,45 +721,96 @@ const App = {
     } catch (e) { box.innerHTML = `<p class="empty">${esc(e.message)}</p>`; }
   },
   async people() {
-    const [st, list, dl] = await Promise.all([this.rpc("stats_public").catch(() => null),
-      this.rpc("people", { p_viewer: this.me ? this.me.id : null, p_limit: 50 }), Site.downloads()]);
+    const [st, dl] = await Promise.all([this.rpc("stats_public").catch(() => null), Site.downloads()]);
     let html = this.head(w("people"), "#me") + this.subTabs("people");
-    if (st) html += `<div class="stats">${[[st.online, w("st_online")], [st.registered, w("st_reg")], [dl, w("st_dl")], [st.groups, w("st_groups")]]
+    if (st) html += `<div class="stats mini">${[[st.online, w("st_online")], [st.registered, w("st_reg")], [dl, w("st_dl")], [st.groups, w("st_groups")]]
       .filter(x => x[0] != null).map(x => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>`;
-    html += `<p class="muted pad">${w("people_s")}${this.me && this.info && !this.info.privacy.people ? ` <button class="btn small ghost" id="pMe">${w("people_me")}</button>` : ""}</p>`;
-    html += list.length ? `<div class="list">${list.map(p => `<a class="row" href="#player/${p.player_id}">${this.av(p, 44)}
-      <span class="grow"><b>${esc(p.nick)}</b>${p.status_text ? `<span class="muted">${esc(p.status_text)}</span>` : ""}
-      <small class="muted">${esc(rank(p.title))} · ${w("pf_" + (p.platform || "android"))} · ${w("since", { d: new Date(p.since).toLocaleDateString(Lavka.lang === "ru" ? "ru-RU" : "en-GB", { month: "long", year: "numeric" }) })}</small></span></a>`).join("")}</div>`
-      : `<p class="empty">${w("people_empty")}</p>`;
+    const hidden = this.me && this.info && this.info.privacy && !this.info.privacy.people;
+    html += `<p class="muted pad">${w("people_s")}${hidden ? ` <button class="btn small ghost" id="pMe">${w("people_me")}</button>` : ""}</p>
+      <input class="inp" id="pQ" maxlength="16" placeholder="${w("search_ph")}" value="${esc(this._pq || "")}" autocomplete="off">
+      <div class="chips sub">${["new", "league", "active"].map(k =>
+        `<button class="chip small" data-ps="${k}" aria-pressed="${k === (this._ps || "new")}">${w("sort_" + k)}</button>`).join("")}</div>
+      <div id="plist"><div class="skel"></div></div>`;
     this.page(html);
+    const load = async () => {
+      let list;
+      try {
+        list = await this.rpc("people", { p_viewer: this.me ? this.me.id : null, p_limit: 50, p_q: this._pq || null, p_sort: this._ps || "new" });
+      } catch (e) { if ($("plist")) $("plist").innerHTML = `<p class="empty">${esc(e.message)}</p>`; return; }
+      const box = $("plist");
+      if (!box) return;
+      box.innerHTML = list.length ? `<div class="list">${list.map(p => this.personRow(p)).join("")}</div>` : `<p class="empty">${w("people_empty")}</p>`;
+      this.heroFill(box);
+    };
+    let t = 0;
+    $("pQ").oninput = (e) => { this._pq = e.target.value.trim(); clearTimeout(t); t = setTimeout(load, 300); };
+    for (const b of document.querySelectorAll("[data-ps]")) b.onclick = () => {
+      this._ps = b.dataset.ps;
+      for (const x of document.querySelectorAll("[data-ps]")) x.setAttribute("aria-pressed", x === b);
+      load();
+    };
     $("pMe") && ($("pMe").onclick = (e) => this.act(e.target, async () => {
       await this.rpc("set_privacy", this.auth({ p_people: true })); await this.refreshMe(); this.route();
     }));
+    load();
+  },
+  personRow(p) {
+    return `<a class="row" href="#player/${p.player_id}">${this.av(p, 44)}
+      <span class="grow"><b>${esc(p.nick)}</b>${p.status_text ? `<span class="muted">${esc(p.status_text)}</span>` : ""}
+      <small class="muted">${this.league(p.league)} · ${esc(rank(p.title))} · ${w("pf_" + (p.platform || "android"))}</small></span>${this.hero(p.look, 40)}</a>`;
   },
   async player(id) {
-    const [p, rel, photo] = await Promise.all([this.rpc("player_profile", { p_player: id }),
+    const viewer = this.me ? this.me.id : null;
+    const [p, rel, photo, wall] = await Promise.all([this.rpc("player_profile", { p_player: id, p_viewer: viewer }),
       this.me && this.me.id !== id ? this.rpc("player_relation", this.auth({ p_other: id })).catch(() => null) : null,
-      this.rpc("avatar_get", { p_player: id, p_id: this.me ? this.me.id : null, p_code: this.me ? this.me.code : null }).catch(() => null)]);
+      this.rpc("avatar_get", { p_player: id, p_id: viewer, p_code: this.me ? this.me.code : null }).catch(() => null),
+      this.rpc("wall_list", { p_owner: id, p_viewer: viewer, p_limit: 30 }).catch(() => null)]);
     if (!p) { this.page(this.head("—", "#friends") + `<p class="empty">—</p>`); return; }
     const mine = this.me && this.me.id === id;
+    const can = p.can || { stats: true, battles: true, wall: true };
     const big = photo && photo.orig ? `<img class="photo" src="data:image/jpeg;base64,${photo.orig}" alt="">` : this.av(p, 96, "big");
     let btns = "";
     if (rel) {
       btns = rel.state === "friend" ? `<button class="btn ghost small" data-fr="remove">${w("remove_friend")}</button>`
         : rel.state === "incoming" ? `<button class="btn small" data-fr="accept">${w("accept")}</button>`
         : rel.state === "outgoing" ? `<span class="badge">${w("sent")}</span>` : `<button class="btn small" data-fr="add">${w("add_friend")}</button>`;
-      btns += ` <button class="iconbtn" id="pMenu">⋯</button>`;
+      btns += ` <button class="btn ghost small" id="pCmp">${w("compare")}</button> <button class="iconbtn" id="pMenu">⋯</button>`;
     }
+    const shown = p.showcase || [];
+    const chip = (k) => mine ? `<button class="badge pick" data-sc="${esc(k)}" aria-pressed="${shown.includes(k)}">🏅 ${esc(this.achName(k))}</button>`
+      : `<span class="badge">🏅 ${esc(this.achName(k))}</span>`;
     const games = (p.games || []).map(g => `<div class="panel"><b>${esc(this.gameName(g.game))}</b>
       <div class="stats small">${[[g.best_endless, w("w_best")], [g.runs, w("runs")], [g.wins, w("w_wins")], [g.kills, w("w_kills")]]
-        .filter(x => x[0] != null).map(x => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div></div>`).join("");
-    this.page(this.head(p.nick, mine ? "#me" : "#friends") + `<div class="panel center profile">${big}
+        .filter(x => x[0] != null).map(x => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>
+      ${(g.achievements || []).length ? `<div class="chips">${g.achievements.map(chip).join("")}</div>` : ""}</div>`).join("");
+    const rc = (r) => {
+      const n = r.waves || 0;
+      const t = r.kind === "arena" ? w("rc_arena", { o: esc(r.opponent || "?") }) + (r.delta ? ` (${r.delta > 0 ? "+" : ""}${r.delta})` : "")
+        : r.mode === "campaign" ? w("rc_prologue", { n }) : r.mode === "endless" || r.mode === "ascent" ? w("rc_ascent", { n })
+        : ["daily", "marathon", "trial"].includes(r.mode) ? w("rc_trial", { n }) : w("rc_battle", { n });
+      return `<div class="row"><span class="nicon">${r.kind === "arena" ? "⚔️" : "🧱"}</span><span class="grow"><b>${t}</b>
+        <small class="muted">${this.ago(r.at)}</small></span><span class="badge${r.won ? " ok" : ""}">${r.won ? w("rc_win") : w("rc_play")}</span></div>`;
+    };
+    const lg = p.league || "brick";
+    this.page(this.head(p.nick, mine ? "#me" : "#friends/people") + `<div class="panel center profile">${big}
       <h2>${esc(p.nick)} ${p.is_master ? `<span class="badge new">${w("master")}</span>` : ""}</h2>
       ${p.status_text ? `<p>${esc(p.status_text)}</p>` : ""}
       <p class="muted">${esc(rank(p.title))} · ${w("points", { n: p.points })} · ${w("since", { d: new Date(p.since).toLocaleDateString(Lavka.lang === "ru" ? "ru-RU" : "en-GB", { month: "long", year: "numeric" }) })}</p>
       ${p.about ? `<p>${esc(p.about)}</p>` : ""}<div class="btns center">${btns}${mine ? `<a class="btn small" href="#edit">${w("me_edit")}</a>` : ""}</div></div>
-      ${(p.achievements || []).length ? `<h2 class="sec">${w("achievements")}</h2><div class="chips">${p.achievements.map(a => `<span class="badge">🏅 ${esc(a)}</span>`).join("")}</div>` : ""}
-      ${games ? `<h2 class="sec">${w("games")}</h2>${games}` : ""}`);
+      <div id="cmpBox"></div>
+      <div class="panel row herocard">${this.hero(p.look, 72, "big")}<span class="grow"><b>${w("hero_t")}</b>
+        <span>${this.league(lg)}${p.elo != null ? ` <small class="muted">· ${w("rating", { n: p.elo })}</small>` : ""}</span>
+        <small class="muted">${p.arena_games ? w("arena_n", { g: p.arena_games, w: p.arena_wins || 0 }) : w("arena_0")}</small></span></div>
+      ${shown.length || mine ? `<h2 class="sec">${w("showcase")}</h2>${shown.length ? `<div class="chips showcase">${shown.map(k =>
+        `<span class="badge big">🏅 ${esc(this.achName(k))}</span>`).join("")}</div>` : `<p class="muted">${w("showcase_e")}</p>`}
+        ${mine ? `<p class="muted small">${w("showcase_s")}</p>` : ""}` : ""}
+      ${(p.achievements || []).length ? `<h2 class="sec">${w("achievements")}</h2><div class="chips">${p.achievements.map(chip).join("")}</div>` : ""}
+      <h2 class="sec">${w("recent")}</h2>${!can.battles ? `<p class="muted">${w("recent_hid")}</p>`
+        : (p.recent || []).length ? `<div class="list">${p.recent.map(rc).join("")}</div>` : `<p class="muted">${w("recent_e")}</p>`}
+      <h2 class="sec">${w("games")}</h2>${!can.stats ? `<p class="muted">${w("stats_hid")}</p>` : games || `<p class="muted">—</p>`}
+      ${wall !== null ? `<h2 class="sec">${w("wall")}</h2><div id="wallBox">${this.wallInner(wall, can.wall, mine)}</div>` : ""}`);
+    this.heroFill();
+    this.bindWall(id, can.wall, mine);
     for (const b of document.querySelectorAll("[data-fr]")) b.onclick = () => this.act(b, async () => {
       const k = b.dataset.fr;
       if (k === "add") await this.rpc("friend_request", this.auth({ p_target: id }));
@@ -719,9 +818,78 @@ const App = {
       else if (confirm(w("remove_friend") + "?")) await this.rpc("friend_remove", this.auth({ p_other: id }));
       this.route();
     });
+    for (const b of document.querySelectorAll("[data-sc]")) b.onclick = () => this.act(b, async () => {
+      const k = b.dataset.sc, cur = shown.filter(x => x !== k);
+      if (!shown.includes(k)) { if (cur.length >= 3) cur.shift(); cur.push(k); }
+      await this.rpc("set_showcase", this.auth({ p_keys: cur })); this.route();
+    });
+    if ($("pCmp")) $("pCmp").onclick = (e) => this.act(e.target, async () => {
+      const box = $("cmpBox");
+      if (box.innerHTML) { box.innerHTML = ""; return; }
+      const me = await this.rpc("player_profile", { p_player: this.me.id, p_viewer: this.me.id });
+      box.innerHTML = this.cmpTable(me, p);
+    });
     if ($("pMenu")) $("pMenu").onclick = () => this.menu($("pMenu"), [
       [rel.blocked ? w("unblock") : w("block"), async () => { await this.rpc("block_player", this.auth({ p_target: id, p_on: !rel.blocked })); this.toast(rel.blocked ? "✓" : w("blocked")); this.route(); }],
       ...(p.photo_ver ? [[w("report_avatar"), async () => { await this.rpc("report_avatar", this.auth({ p_target: id })); this.toast(w("reported")); }]] : [])]);
+  },
+  /** «Сравнить»: я и игрок — по очкам, достижениям, рекордам и арене; скрытое игроком — прочерк. */
+  cmpTable(a, b) {
+    const num = (p) => {
+      const g = (p.games || []).find(x => x.game === "brick-tower") || {};
+      const open = !p.can || p.can.stats;
+      return [p.points, (p.achievements || []).length + (p.games || []).reduce((s, x) => s + (x.achievements || []).length, 0),
+        open ? g.best_endless : null, open ? g.best_campaign : null, open ? g.runs : null, p.arena_wins];
+    };
+    const x = num(a), y = num(b), names = [w("cmp_pts"), w("cmp_ach"), w("cmp_best"), w("cmp_pro"), w("runs"), w("cmp_arena")];
+    const cell = (v, o) => `<td class="${v != null && o != null && v > o ? "win" : ""}">${v == null ? "—" : v}</td>`;
+    return `<div class="panel"><h2>${w("cmp_t", { n: esc(b.nick) })}</h2><table class="cmp"><tr><th></th><th>${this.hero(a.look, 32)}<br>${w("you")}</th>
+      <th>${this.hero(b.look, 32)}<br>${esc(b.nick)}</th></tr>${names.map((n, i) => `<tr><th>${n}</th>${cell(x[i], y[i])}${cell(y[i], x[i])}</tr>`).join("")}</table></div>`;
+  },
+  /** Стена профиля: писать — если хозяин разрешил; удалить — своё, на своей стене, мастер. */
+  wallInner(list, canWrite, ownerIsMe) {
+    const master = this.info && this.info.is_master;
+    let h = "";
+    if (this.me && canWrite) h += `<div class="composer panel"><textarea id="wBody" maxlength="300" rows="2" placeholder="${w("wall_ph")}"></textarea>
+      <button class="btn small" id="wSend">${w("send")}</button></div>`;
+    else if (this.me && !ownerIsMe) h += `<p class="muted">${w("wall_closed")}</p>`;
+    h += list.length ? `<div class="list">${list.map(x => `<div class="row wrap">${this.av(x.author, 36)}
+      <span class="grow"><span class="nm"><a href="#player/${x.author.id}"><b>${esc(x.author.nick)}</b></a><small class="muted">${this.ago(x.at)}</small></span>
+      <span class="pre">${esc(x.body)}</span></span>${x.mine || ownerIsMe || master ? `<button class="iconbtn" data-wd="${x.id}" aria-label="${w("del")}">✕</button>` : ""}</div>`).join("")}</div>`
+      : `<p class="muted">${w("wall_e")}</p>`;
+    return h;
+  },
+  bindWall(id, canWrite, ownerIsMe) {
+    const box = $("wallBox");
+    if (!box) return;
+    const redraw = (list) => { box.innerHTML = this.wallInner(list || [], canWrite, ownerIsMe); this.bindWall(id, canWrite, ownerIsMe); };
+    if ($("wSend")) $("wSend").onclick = (e) => this.act(e.target, async () => {
+      const body = $("wBody").value.trim();
+      if (body) redraw(await this.rpc("wall_post", this.auth({ p_owner: id, p_body: body })));
+    });
+    for (const b of box.querySelectorAll("[data-wd]")) b.onclick = () => {
+      if (confirm(w("wall_del"))) this.act(b, async () => redraw(await this.rpc("wall_delete", this.auth({ p_post: +b.dataset.wd }))));
+    };
+  },
+  // Мастеру: все игроки (без кодов и личных данных), с поиском по нику.
+  async mplayers() {
+    if (!(this.info && this.info.is_master)) { location.hash = "#me"; return; }
+    this.page(this.head(w("mp_t"), "#me") + `<p class="muted pad">${w("mp_s")}</p>
+      <input class="inp" id="mpQ" maxlength="16" placeholder="${w("search_ph")}" autocomplete="off"><div id="mpl"><div class="skel"></div></div>`);
+    const loc = Lavka.lang === "ru" ? "ru-RU" : "en-GB";
+    const load = async () => {
+      const rows = await this.rpc("master_players", this.auth({ p_q: ($("mpQ").value || "").trim() || null, p_limit: 200 }));
+      const box = $("mpl");
+      if (!box) return;
+      box.innerHTML = `<p class="muted small">${w("mp_n", { n: rows.length })}</p><div class="list">${rows.map(r => `<a class="row" href="#player/${r.id}">${this.hero(r.look, 36)}
+        <span class="grow"><span class="nm"><b>${esc(r.nick)}</b>${r.guest ? `<span class="badge">${w("mp_guest")}</span>` : ""}
+        ${r.hidden ? `<span class="badge new">${w("mp_hidden")}</span>` : ""}${r.merged ? `<span class="badge">${w("mp_merged")}</span>` : ""}</span>
+        <small class="muted">${w("pf_" + (r.platform || "android"))} · ${new Date(r.created_at).toLocaleDateString(loc)} · ${w("mp_runs", { n: r.runs })} · ${w("mp_arena", { n: r.arena_games })}${r.last_seen ? " · " + w("mp_seen", { t: this.ago(r.last_seen) }) : ""}</small></span></a>`).join("")}</div>`;
+      this.heroFill(box);
+    };
+    let t = 0;
+    $("mpQ").oninput = () => { clearTimeout(t); t = setTimeout(() => load().catch(e => this.toast(e.message)), 300); };
+    await load();
   },
 
   // ---------- Уведомления ----------
@@ -780,9 +948,12 @@ const App = {
         ${i.is_master ? `<span class="badge new">${w("master")}</span>` : ""}<span class="chev">›</span></a>`;
     }
     const master = this.info && this.info.is_master;
+    const vis = this.me && this.info && this.info.privacy && this.info.privacy.people && !Lavka.store("vis_seen")
+      ? `<div class="panel tip" id="visTip"><b>${w("vis_t")}</b><p class="muted">${w("vis_s")}</p><div class="btns">
+        <button class="btn small" id="visOk">${w("vis_ok")}</button><button class="btn small ghost" id="visHide">${w("vis_hide")}</button></div></div>` : "";
     const remind = this.me && (typeof Acc === "object") && !Acc.saved() ? `<a class="panel tip row" href="#accounts"><span class="nicon">🔑</span>
         <span class="grow"><b>${w("save_t")}</b><small class="muted">${w("save_remind")}</small></span><span class="chev">›</span></a>` : "";
-    this.page(this.head(w("tab_me")) + top + remind + `<div class="list">
+    this.page(this.head(w("tab_me")) + top + vis + remind + `<div class="list">
         ${this.me ? row("#notes", "🔔", w("notes"), "", '<span class="badge new" id="nb2" hidden></span>') : ""}
         ${row("#friends", "👑", w("friends") + " · " + w("groups"), w("friends_s"))}
         ${this.me ? row("#week", "📅", w("week"), w("week_s")) : ""}
@@ -790,13 +961,17 @@ const App = {
       </div><div class="list">
         ${row("#ideas", "⭐", w("ideas_t"), w("ideas_s"))}
         ${master ? row("#inbox", "📬", w("inbox_t"), "") + row("#moder", "🛡", w("moder_t"), w("moder_s"))
-          + row("#deaths", "📉", w("deaths_t"), w("deaths_s")) : ""}
+          + row("#deaths", "📉", w("deaths_t"), w("deaths_s")) + row("#mplayers", "👥", w("mp_t"), w("mp_s")) : ""}
       </div><div class="list">
         ${row("#settings", "⚙️", w("settings"), w("push") + " · " + w("lang_t"))}
         ${row("#roadmap", "🗓", w("road_t"), w("road_s"))}
         ${row("#about", "ℹ️", w("about_t"), w("about_s"))}
         ${row("#help", "❓", w("help"), w("help_s"))}
       </div>`);
+    if ($("visOk")) $("visOk").onclick = () => { Lavka.store("vis_seen", "1"); $("visTip").remove(); };
+    if ($("visHide")) $("visHide").onclick = (e) => this.act(e.target, async () => {
+      await this.rpc("set_privacy", this.auth({ p_people: false })); Lavka.store("vis_seen", "1"); await this.refreshMe(); $("visTip").remove();
+    });
     this.bindWelcome();
   },
   async edit() {
@@ -806,6 +981,8 @@ const App = {
     const frames = i.frames || [""];
     const pr = i.privacy || {};
     const sw = (k, on, label) => `<label class="switch"><span>${label}</span><input type="checkbox" data-pr="${k}" ${on ? "checked" : ""}><i></i></label>`;
+    const who = (k, v, label) => `<label class="field"><span>${label}</span><select class="inp" data-who="${k}">${["all", "friends", "none"].map(o =>
+      `<option value="${o}" ${(v || "all") === o ? "selected" : ""}>${w("who")[o]}</option>`).join("")}</select></label>`;
     this.page(this.head(w("profile_t"), "#me") + `<a class="row link panel" href="#player/${this.me.id}"><span class="nicon">🏅</span>
         <b class="grow">${w("achievements")} · ${w("games")}</b><span class="chev">›</span></a><div class="panel">
         <label class="field"><span>${w("nick")}</span><input id="eNick" maxlength="16" value="${esc(this.me.nick)}"></label>
@@ -824,7 +1001,8 @@ const App = {
           ${open ? "" : `<small class="muted">${w("frame_locked", { h: f === "master" ? w("master") : w("points", { n: FRAME_HINT[f][0] }) })}</small>`}</button>`;
       }).join("")}</div>`
       + `<h2 class="sec">${w("privacy")}</h2><div class="panel">${sw("people", pr.people, w("pr_people"))}${sw("presence", pr.presence, w("pr_presence"))}
-         ${sw("requests", pr.requests, w("pr_requests"))}${sw("photo", pr.photo, w("pr_photo"))}</div>
+         ${sw("requests", pr.requests, w("pr_requests"))}${sw("photo", pr.photo, w("pr_photo"))}
+         ${who("stats", pr.stats, w("pr_stats"))}${who("battles", pr.battles, w("pr_battles"))}${who("wall", pr.wall, w("pr_wall"))}</div>
          <a class="row link panel" href="#blocks"><span class="nicon">🚫</span><span class="grow"><b>${w("blocks")}</b><small class="muted">${w("blocks_s")}</small></span><span class="chev">›</span></a>`
       + `<h2 class="sec">${w("code")}</h2><div class="panel"><p class="muted">${w("code_s")}</p>
          <p class="code big" id="code">••••-••••-••••</p><div class="btns"><button class="btn small ghost" id="cShow">${w("show")}</button>
@@ -834,6 +1012,9 @@ const App = {
          <button class="btn ghost wide danger" id="del">${w("delete")}</button></div>`);
     for (const c of document.querySelectorAll("[data-pr]")) c.onchange = () => this.act(c, async () => {
       await this.rpc("set_privacy", this.auth({ ["p_" + c.dataset.pr]: c.checked })); await this.refreshMe();
+    });
+    for (const c of document.querySelectorAll("[data-who]")) c.onchange = () => this.act(c, async () => {
+      await this.rpc("set_privacy", this.auth({ ["p_" + c.dataset.who]: c.value })); await this.refreshMe();
     });
     $("cShow").onclick = () => { $("code").textContent = this.me.code; };
     $("cCopy").onclick = () => this.copy(this.me.code);

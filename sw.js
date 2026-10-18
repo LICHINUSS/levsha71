@@ -2,7 +2,7 @@
 // Игры (play/<игра>/): тяжёлые файлы (движок .wasm, данные .pck, .js) — в отдельном кэше «game-<игра>-<версия>»
 // по версии из каталога: второй запуск на iPhone не качает 10+ МБ заново, а новая версия берёт новые файлы целиком
 // (старые и новые части не смешиваются). Страница игры — всегда из сети и заодно освежает каталог.
-const CACHE = "lavka-v10";
+const CACHE = "lavka-v11";
 const GAME_FILE = /\/play\/([a-z0-9-]+)\/(index\.(wasm|pck|js)|index\.audio\.(position\.)?worklet\.js)$/;
 
 /** Версия игры из сохранённого каталога (или null — тогда просто сеть). */
@@ -33,7 +33,7 @@ function refreshCatalog() {
     .catch(() => {});
 }
 const SHELL = ["./", "index.html", "app.html", "install.html", "roadmap.html", "privacy.html", "join.html", "me.html", "help.html", "people.html", "ideas.html",
-  "assets/site.css", "assets/site.js", "assets/lavka.css", "assets/lavka.js", "assets/ideas.js", "assets/qr.js", "assets/accounts.js", "assets/apppage.js",
+  "assets/site.css", "assets/site.js", "assets/lavka.css", "assets/lavka.js", "assets/ideas.js", "assets/qr.js", "assets/accounts.js", "assets/apppage.js", "assets/look.js", "assets/look.json",
   ...["levsha", "shooter", "enemy", "tower", "flea", "lens", "horseshoe", "samovar", "pryanik", "shop"].map(a => `assets/av/${a}.png`), "assets/install-steps.js", "assets/fonts/Nunito-500.ttf", "assets/fonts/Nunito-800.ttf", "assets/fonts/Nunito-900.ttf",
   "assets/kremlin_px.png", "assets/mascot_idle.png", "assets/mascot_blink.png", "assets/mascot_wave1.png",
   "assets/stamp_256.png", "assets/store_icon_192.png", "assets/levsha_sm.webp", "assets/qr.png"];
