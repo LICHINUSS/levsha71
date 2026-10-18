@@ -79,7 +79,7 @@ async function render() {
   $("list").innerHTML = list.length ? `<div class="list">${list.map(p => `<a class="row" href="me.html#player/${p.player_id}">
     <span class="av f-${Lavka.esc(p.frame || "")}" style="--s:44px"><img class="px" src="assets/av/${/^[a-z]+$/.test(p.avatar) ? p.avatar : "levsha"}.png" alt=""></span>
     <span class="grow"><b>${Lavka.esc(p.nick)}</b>${p.status_text ? `<span class="muted">${Lavka.esc(p.status_text)}</span>` : ""}
-    <small class="muted"><span class="lg lg-${Lavka.esc(p.league || "brick")}">${x("lg")[p.league] || x("lg").brick}</span> · ${x("pf")[p.platform] || "Android"} · ${x("since").replace("{d}", new Date(p.since).toLocaleDateString(loc, { month: "long", year: "numeric" }))}</small></span>
+    <small class="muted">${p.league ? `<span class="lg lg-${Lavka.esc(p.league)}">${x("lg")[p.league] || ""}</span> · ` : ""}${x("pf")[p.platform] || "Android"} · ${x("since").replace("{d}", new Date(p.since).toLocaleDateString(loc, { month: "long", year: "numeric" }))}</small></span>
     ${typeof HeroLook === "object" ? HeroLook.img(p.look, 40) : ""}</a>`).join("")}</div>`
     : `<p class="empty">${x("empty")}</p>`;
   if (typeof HeroLook === "object") HeroLook.fill($("list"));

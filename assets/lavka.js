@@ -757,7 +757,7 @@ const App = {
   personRow(p) {
     return `<a class="row" href="#player/${p.player_id}">${this.av(p, 44)}
       <span class="grow"><b>${esc(p.nick)}</b>${p.status_text ? `<span class="muted">${esc(p.status_text)}</span>` : ""}
-      <small class="muted">${this.league(p.league)} · ${esc(rank(p.title))} · ${w("pf_" + (p.platform || "android"))}</small></span>${this.hero(p.look, 40)}</a>`;
+      <small class="muted">${p.league ? this.league(p.league) + " · " : ""}${esc(rank(p.title))} · ${w("pf_" + (p.platform || "android"))}</small></span>${this.hero(p.look, 40)}</a>`;
   },
   async player(id) {
     const viewer = this.me ? this.me.id : null;
@@ -791,7 +791,6 @@ const App = {
       return `<div class="row"><span class="nicon">${r.kind === "arena" ? "⚔️" : "🧱"}</span><span class="grow"><b>${t}</b>
         <small class="muted">${this.ago(r.at)}</small></span><span class="badge${r.won ? " ok" : ""}">${r.won ? w("rc_win") : w("rc_play")}</span></div>`;
     };
-    const lg = p.league || "brick";
     this.page(this.head(p.nick, mine ? "#me" : "#friends/people") + `<div class="panel center profile">${big}
       <h2>${esc(p.nick)} ${p.is_master ? `<span class="badge new">${w("master")}</span>` : ""}</h2>
       ${p.status_text ? `<p>${esc(p.status_text)}</p>` : ""}
@@ -799,7 +798,7 @@ const App = {
       ${p.about ? `<p>${esc(p.about)}</p>` : ""}<div class="btns center">${btns}${mine ? `<a class="btn small" href="#edit">${w("me_edit")}</a>` : ""}</div></div>
       <div id="cmpBox"></div>
       <div class="panel row herocard">${this.hero(p.look, 72, "big")}<span class="grow"><b>${w("hero_t")}</b>
-        <span>${this.league(lg)}${p.elo != null ? ` <small class="muted">· ${w("rating", { n: p.elo })}</small>` : ""}</span>
+        ${p.league ? `<span>${this.league(p.league)}${p.elo != null ? ` <small class="muted">· ${w("rating", { n: p.elo })}</small>` : ""}</span>` : ""}
         <small class="muted">${p.arena_games ? w("arena_n", { g: p.arena_games, w: p.arena_wins || 0 }) : w("arena_0")}</small></span></div>
       ${shown.length || mine ? `<h2 class="sec">${w("showcase")}</h2>${shown.length ? `<div class="chips showcase">${shown.map(k =>
         `<span class="badge big">🏅 ${esc(this.achName(k))}</span>`).join("")}</div>` : `<p class="muted">${w("showcase_e")}</p>`}
@@ -828,6 +827,7 @@ const App = {
       if (box.innerHTML) { box.innerHTML = ""; return; }
       const me = await this.rpc("player_profile", { p_player: this.me.id, p_viewer: this.me.id });
       box.innerHTML = this.cmpTable(me, p);
+      box.scrollIntoView({ behavior: "smooth", block: "start" });   // иначе таблица ниже края экрана — будто ничего не случилось
     });
     if ($("pMenu")) $("pMenu").onclick = () => this.menu($("pMenu"), [
       [rel.blocked ? w("unblock") : w("block"), async () => { await this.rpc("block_player", this.auth({ p_target: id, p_on: !rel.blocked })); this.toast(rel.blocked ? "✓" : w("blocked")); this.route(); }],
