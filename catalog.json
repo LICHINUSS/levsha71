@@ -4,14 +4,53 @@
   "store": {
     "name": "Лавка Левши",
     "package": "com.lichinuss.levsha",
-    "version_code": 18,
-    "version_name": "3.2.0",
-    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v3.2.0/levsha-3.2.0.apk",
-    "sha256": "576e97accddd6f72865586d55281533da4ee65fe64a20db3f49b505b5a7124a6",
-    "size": 2492235,
-    "changelog": "Добавлено: «Края похода» на странице «Кирпичной башни» — живые обложки семи краёв. Изменено: Поддержка Android 16.",
-    "updated": "2026-10-17",
+    "version_code": 19,
+    "version_name": "4.0.0",
+    "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v4.0.0/levsha-4.0.0.apk",
+    "sha256": "e639352a25e8a35b4f88d7ebdfe3aa8b588d6d2998089f24e101e2f4dc05c8a5",
+    "size": 2531393,
+    "changelog": "Добавлено: «Люди»: все игроки мастерской с героями и лигами, поиск по нику и порядок; Профиль игрока: герой, витрина из трёх достижений, последние бои, стена для записей, «Сравнить с собой»; Приватность «кто что видит»: статистику, бои и стену — всем, друзьям или никому; Мастеру — полный список игроков (без кодов и личных данных). Исправлено: Названия достижений: «Пройти Пролог», «волны в Восхождении». Изменено: Теперь в «Людях» видно всех зарегистрированных; скрыться — одним переключателем в «Приватности» (лавка один раз спросит); Лавка, сайт и iPhone — один вид: общие цвета, портрет героя на кремовой плашке.",
+    "updated": "2026-10-18",
     "history": [
+      {
+        "version_name": "4.0.0",
+        "version_code": 19,
+        "date": "2026-10-18",
+        "changelog": "Добавлено: «Люди»: все игроки мастерской с героями и лигами, поиск по нику и порядок; Профиль игрока: герой, витрина из трёх достижений, последние бои, стена для записей, «Сравнить с собой»; Приватность «кто что видит»: статистику, бои и стену — всем, друзьям или никому; Мастеру — полный список игроков (без кодов и личных данных). Исправлено: Названия достижений: «Пройти Пролог», «волны в Восхождении». Изменено: Теперь в «Людях» видно всех зарегистрированных; скрыться — одним переключателем в «Приватности» (лавка один раз спросит); Лавка, сайт и iPhone — один вид: общие цвета, портрет героя на кремовой плашке.",
+        "apk": "https://github.com/LICHINUSS/levsha71/releases/download/levsha-v4.0.0/levsha-4.0.0.apk",
+        "sha256": "e639352a25e8a35b4f88d7ebdfe3aa8b588d6d2998089f24e101e2f4dc05c8a5",
+        "size": 2531393,
+        "changes": {
+          "added": [
+            "«Люди»: все игроки мастерской с героями и лигами, поиск по нику и порядок",
+            "Профиль игрока: герой, витрина из трёх достижений, последние бои, стена для записей, «Сравнить с собой»",
+            "Приватность «кто что видит»: статистику, бои и стену — всем, друзьям или никому",
+            "Мастеру — полный список игроков (без кодов и личных данных)"
+          ],
+          "fixed": [
+            "Названия достижений: «Пройти Пролог», «волны в Восхождении»"
+          ],
+          "changed": [
+            "Теперь в «Людях» видно всех зарегистрированных; скрыться — одним переключателем в «Приватности» (лавка один раз спросит)",
+            "Лавка, сайт и iPhone — один вид: общие цвета, портрет героя на кремовой плашке"
+          ]
+        },
+        "changes_en": {
+          "added": [
+            "People: every player in the workshop with heroes and leagues, search by nick and sorting",
+            "Player profile: hero, a showcase of three achievements, recent battles, a wall for notes, Compare with me",
+            "Privacy “who sees what”: stats, battles and wall — everyone, friends or nobody",
+            "For the master — the full player list (no codes or personal data)"
+          ],
+          "fixed": [
+            "Achievement texts now say Prologue and Ascent"
+          ],
+          "changed": [
+            "People now lists every registered player; hide with one switch in Privacy (the shop asks once)",
+            "The shop, the site and iPhone look the same: shared colours, the hero portrait on a cream plate"
+          ]
+        }
+      },
       {
         "version_name": "3.2.0",
         "version_code": 18,
@@ -1463,7 +1502,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792322402,
+  "seq": 1792323370,
   "help": [
     {
       "title": "Установка на Android",
