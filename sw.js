@@ -2,7 +2,7 @@
 // Игры (play/<игра>/): тяжёлые файлы (движок .wasm, данные .pck, .js) — в отдельном кэше «game-<игра>-<версия>»
 // по версии из каталога: второй запуск на iPhone не качает 10+ МБ заново, а новая версия берёт новые файлы целиком
 // (старые и новые части не смешиваются). Страница игры — всегда из сети и заодно освежает каталог.
-const CACHE = "lavka-v11";
+const CACHE = "lavka-v12";
 const GAME_FILE = /\/play\/([a-z0-9-]+)\/(index\.(wasm|pck|js)|index\.audio\.(position\.)?worklet\.js)$/;
 
 /** Версия игры из сохранённого каталога (или null — тогда просто сеть). */
@@ -16,7 +16,8 @@ async function gameVersion(id) {
 async function gameFile(req, id) {
   const v = await gameVersion(id);
   if (!v) return fetch(req);
-  const name = `game-${id}-${v}`, c = await caches.open(name);
+  // «-b2»: 18.10 каталог 3.0.0 вышел раньше файлов игры — кэш мог взять файлы 2.2.0 под именем 3.0.0; новое имя — всё заново
+  const name = `game-${id}-${v}-b2`, c = await caches.open(name);
   const hit = await c.match(req, { ignoreSearch: true });
   if (hit) return hit;
   const resp = await fetch(req);
