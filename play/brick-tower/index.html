@@ -72,7 +72,19 @@ body { color: white; background-color: #1a6ae0; overflow: hidden; touch-action: 
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":3244480,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+// 3.0.2: экран с плотностью ×3 (iPhone) рисуем как ×2 — буферы кадра в 2,25 раза меньше; на глаз почти не видно,
+// а память у вкладки на iPhone ограничена (~300–500 МБ), и Safari молча перезагружает тяжёлую страницу.
+(function () {
+	const real = window.devicePixelRatio || 1;
+	// игра уже закрывалась сама (её память кончилась) — ещё бережнее: ×1,5 (ставит игра, scripts/game.gd)
+	let low = false;
+	try { low = localStorage.getItem('bt_lowmem') === '1'; } catch (e) { /* без хранилища */ }
+	const cap = low ? 1.5 : 2;
+	if (real > cap) {
+		try { Object.defineProperty(window, 'devicePixelRatio', { get: () => cap, configurable: true }); } catch (e) { /* как есть */ }
+	}
+}());
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":3246080,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -83,6 +95,27 @@ const engine = new Engine(GODOT_CONFIG);
 			hint: 'Первый запуск в браузере — до полуминуты: игра скачивается и готовит картинку. В следующий раз будет быстрее.' }
 		: { title: 'BRICK TOWER', load: 'Loading the game… %d %', build: 'Putting the game together…',
 			hint: 'The first launch in a browser takes up to half a minute: the game downloads and prepares its graphics. Next time it is faster.' };
+	// понятные слова, когда браузер не может запустить игру или потерял картинку
+	const E = RU ? {
+		nogl: 'Этот браузер не может показать 3D-картинку игры (нет WebGL 2).\n\nЧто помогает:\n'
+			+ '• Яндекс Браузер: Настройки → Системные → Производительность → «Использовать аппаратное ускорение» (или найдите «аппаратное ускорение» поиском в настройках) — включить и перезапустить браузер.\n'
+			+ '• Chrome: Настройки → Система → «Использовать графическое ускорение».\n'
+			+ '• Обновите браузер; на компьютере — и драйвер видеокарты.\n'
+			+ '• На телефоне Android игру проще поставить через «Лавку Левши».',
+		other: 'Игре не хватило возможностей браузера:\n',
+		lost: 'Картинка пропала — браузеру не хватило памяти. Закройте лишние вкладки и перезапустите игру.\nПрогресс сохранён.',
+		again: 'Перезапустить',
+		fail: 'Игра не запустилась. Обновите страницу; если не помогло — закройте лишние вкладки или откройте в другом браузере.\n',
+	} : {
+		nogl: 'This browser cannot show the game\'s 3D graphics (no WebGL 2).\n\nWhat helps:\n'
+			+ '• Chrome / Yandex Browser: Settings → System → turn on hardware (graphics) acceleration and restart the browser.\n'
+			+ '• Update the browser (on a computer, the graphics driver too).\n'
+			+ '• On Android, install the game via Levsha\'s Shop.',
+		other: 'The browser is missing features the game needs:\n',
+		lost: 'The picture was lost — the browser ran out of memory. Close other tabs and restart the game.\nYour progress is saved.',
+		again: 'Restart',
+		fail: 'The game did not start. Reload the page; if that does not help, close other tabs or try another browser.\n',
+	};
 	const COLORS = ['#c91a09', '#f2cd37', '#0055bf', '#237841', '#fe8a18'];
 	const statusOverlay = document.getElementById('status');
 	const statusNotice = document.getElementById('status-notice');
@@ -138,15 +171,33 @@ const engine = new Engine(GODOT_CONFIG);
 	function displayFailureNotice(err) {
 		console.error(err);
 		if (err instanceof Error) {
-			setStatusNotice(err.message);
+			setStatusNotice(E.fail + err.message);
 		} else if (typeof err === 'string') {
 			setStatusNotice(err);
 		} else {
-			setStatusNotice('An unknown error occurred.');
+			setStatusNotice(E.fail);
 		}
 		setStatusMode('notice');
+		document.getElementById('bt-hint').style.display = 'none';   // «первый запуск…» тут только путает
 		initializing = false;
 	}
+
+	// браузер отнял картинку (чаще всего — не хватило памяти): вместо чёрного экрана — слова и кнопка
+	document.getElementById('canvas').addEventListener('webglcontextlost', function () {
+		const box = document.createElement('div');
+		box.style.cssText = 'position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;'
+			+ 'gap:16px;background:#1a6ae0;color:#fff;font:700 18px Arial,sans-serif;text-align:center;padding:24px;z-index:9';
+		const p = document.createElement('div');
+		p.style.whiteSpace = 'pre-line';
+		p.textContent = E.lost;
+		const b = document.createElement('button');
+		b.textContent = E.again;
+		b.style.cssText = 'font:800 20px Arial,sans-serif;padding:12px 28px;border:0;border-radius:10px;background:#f2cd37;color:#1b2a34';
+		b.onclick = function () { location.reload(); };
+		box.appendChild(p);
+		box.appendChild(b);
+		document.body.appendChild(box);
+	});
 
 	const missing = Engine.getMissingFeatures({
 		threads: GODOT_THREADS_ENABLED,
@@ -176,8 +227,8 @@ const engine = new Engine(GODOT_CONFIG);
 				console.error('Error while registering service worker:', err);
 			});
 		} else {
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
+			const gl = missing.some((m) => /webgl/i.test(m));
+			displayFailureNotice(gl ? E.nogl : E.other + missing.join('\n'));
 		}
 	} else {
 		setStatusMode('progress');
