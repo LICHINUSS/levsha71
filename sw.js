@@ -3,7 +3,7 @@
 // по версии из каталога: второй запуск на iPhone не качает 10+ МБ заново, а новая версия берёт новые файлы целиком
 // (старые и новые части не смешиваются). Страница игры — всегда из сети и заодно освежает каталог.
 const CACHE = "lavka-v12";
-const GAME_FILE = /\/play\/([a-z0-9-]+)\/(index\.(wasm|pck|js)|index\.audio\.(position\.)?worklet\.js)$/;
+const GAME_FILE = /\/play\/([a-z0-9-]+)\/(index\.(wasm|pck|js)|index\.audio\.(position\.)?worklet\.js|[a-z_]+\.pck|music\/[a-z_]+\.ogg)$/;
 
 /** Версия игры из сохранённого каталога (или null — тогда просто сеть). */
 async function gameVersion(id) {
