@@ -539,12 +539,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 26,
-      "version_name": "3.5.0",
+      "version_code": 27,
+      "version_name": "3.6.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v3.5.0/brick-tower-3.5.0.apk",
-      "sha256": "51ffd18bb409d07b1f442a5dac18de9db45ccc70d75cac92ad7bf906c1c021aa",
-      "size": 69967080,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v3.6.0/brick-tower-3.6.0.apk",
+      "sha256": "6f518400993127dff303dc704427b35c167cf4a680b66adb0fa968f634b11af9",
+      "size": 70054196,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -552,12 +552,39 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Добавлено: Настоящая музыка: 10 оркестровых и атмосферных мелодий от музыкантов OpenGameArt (лицензия CC0) — у каждого края своя, отдельная музыка для боя с боссом и для арены; Звуки стихий: треск тока, шипение пара, звон льда. Изменено: Монетка, перегрев, тревога и поражение звучат по-настоящему (наборы Kenney) вместо синтезированных; Все мелодии выровнены по громкости и повторяются без щелчка; авторы музыки — в «Как играть».",
+      "changelog": "Добавлено: Вспышка у ствола героя при каждом выстреле и дымок из ружья. Изменено: Новый свет, как у диорам из деталей: тёплое солнце, мягкое пастельное небо, тени подсвечены небом — детали объёмнее и сочнее; Пыль и дым — круглые клубы из пластика вместо прозрачных кубиков; взрывы ярко светятся и выпускают клубы дыма; искры с ореолом.",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
       "updated": "2026-10-25",
       "history": [
+        {
+          "version_name": "3.6.0",
+          "version_code": 27,
+          "date": "2026-10-25",
+          "changelog": "Добавлено: Вспышка у ствола героя при каждом выстреле и дымок из ружья. Изменено: Новый свет, как у диорам из деталей: тёплое солнце, мягкое пастельное небо, тени подсвечены небом — детали объёмнее и сочнее; Пыль и дым — круглые клубы из пластика вместо прозрачных кубиков; взрывы ярко светятся и выпускают клубы дыма; искры с ореолом.",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v3.6.0/brick-tower-3.6.0.apk",
+          "sha256": "6f518400993127dff303dc704427b35c167cf4a680b66adb0fa968f634b11af9",
+          "size": 70054196,
+          "changes": {
+            "added": [
+              "Вспышка у ствола героя при каждом выстреле и дымок из ружья"
+            ],
+            "changed": [
+              "Новый свет, как у диорам из деталей: тёплое солнце, мягкое пастельное небо, тени подсвечены небом — детали объёмнее и сочнее",
+              "Пыль и дым — круглые клубы из пластика вместо прозрачных кубиков; взрывы ярко светятся и выпускают клубы дыма; искры с ореолом"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "A muzzle flash and a puff of smoke every time the hero fires"
+            ],
+            "changed": [
+              "New brick-diorama lighting: warm sun, soft pastel sky and sky-lit shadows make the bricks look fuller and richer",
+              "Dust and smoke are now round plastic puffs instead of see-through cubes; explosions glow and burst into smoke; sparks shine"
+            ]
+          }
+        },
         {
           "version_name": "3.5.0",
           "version_code": 26,
@@ -1776,7 +1803,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792929602,
+  "seq": 1792958979,
   "help": [
     {
       "title": "Установка на Android",
