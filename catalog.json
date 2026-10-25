@@ -539,12 +539,12 @@
       "category": "games",
       "tagline": "Защити башню из кирпичиков от волн врагов",
       "description": "3D-мир из деталей-кирпичиков. Герой стреляет туда, где ваш палец, враги разваливаются на детали. Карты улучшений после каждой волны, этажи башни, вызовы, боссы, бесконечный режим и мастерская чертежей.",
-      "version_code": 24,
-      "version_name": "3.3.0",
+      "version_code": 25,
+      "version_name": "3.4.0",
       "min_sdk": 24,
-      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v3.3.0/brick-tower-3.3.0.apk",
-      "sha256": "aa97ccb1994a7b8a0d00cb26a70d619237026fded0c565f0ccd2b2e3817045ba",
-      "size": 58550955,
+      "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v3.4.0/brick-tower-3.4.0.apk",
+      "sha256": "3ef7cd73ceecedf561b170d9cf152a74b96b6e6987aa44b6a56f61297cae55b2",
+      "size": 58589928,
       "icon": "apps/brick-tower/icon.png",
       "screenshots": [
         "apps/brick-tower/shot1.jpg",
@@ -552,12 +552,49 @@
         "apps/brick-tower/shot3.jpg",
         "apps/brick-tower/shot4.jpg"
       ],
-      "changelog": "Добавлено: Находки: 24 редких предмета (лупа, порох, подкова, корона без короля…). Падают с боссов, бывают в сундуке и у загадочного гостя; есть предметы «с ценой» — сильнее, но с недостатком; Наборы находок: три предмета одного набора дают бонус — «Пожарище», «Вечная мерзлота», «Каменщик», «Клад»; Книга находок в Книге мастера: что уже найдено и какие наборы собраны; Вторая фаза у Кирпичного великана и Короля кирпичей: ниже половины здоровья они злятся и готовят сильный приём — над головой «!», замах можно сбить выстрелами в голову. Исправлено: Страницы Книги мастера больше не заползают под нижние кнопки, длинный текст справа прокручивается. Изменено: Обычный, Быстрый, Щитоносец, Строитель, Подрывник и Лекарь теперь фигурки из кирпичей: с головой, руками и ногами, руки машут на ходу и при ударе.",
+      "changelog": "Добавлено: Стихии и материалы: огонь, лёд, вода и молния по-разному действуют на деревянных, каменных, металлических и слизистых врагов — 10 реакций (цепная молния по мокрым, пар, хрупкий камень, горючая слизь, каток…); Книга реакций в Книге мастера: картинки-подсказки сразу, название и описание — когда реакция случится; Лужи, лёд и воронки на дороге: в дождь появляются лужи, заморозка делает из них каток, взрывы оставляют воронки; Новые карты улучшений: «Водяные пули» и «Искровые пули»; Башня осыпается: при сильном уроне откалываются кирпичи и видны трещины, после ремонта всё встаёт на место; Карта пути в Восхождении: после каждой волны видны развилки на 5 шагов вперёд — бой, элита (враги крепче, зато находка), торговец, событие, привал; Арена 2.0 (дуэль): бой на 3 минуты, колода из 8 карт-посылок, в руке 4 и видна следующая, кирпичи для моста копятся со временем. Изменено: Арена: дуэль теперь на время, а не на 8 волн; играть можно с теми, у кого тоже 3.4 (старые версии ищут соперников между собой).",
       "status": "ready",
       "developer": "Мастерская Левши",
       "added": "2026-10-10",
       "updated": "2026-10-25",
       "history": [
+        {
+          "version_name": "3.4.0",
+          "version_code": 25,
+          "date": "2026-10-25",
+          "changelog": "Добавлено: Стихии и материалы: огонь, лёд, вода и молния по-разному действуют на деревянных, каменных, металлических и слизистых врагов — 10 реакций (цепная молния по мокрым, пар, хрупкий камень, горючая слизь, каток…); Книга реакций в Книге мастера: картинки-подсказки сразу, название и описание — когда реакция случится; Лужи, лёд и воронки на дороге: в дождь появляются лужи, заморозка делает из них каток, взрывы оставляют воронки; Новые карты улучшений: «Водяные пули» и «Искровые пули»; Башня осыпается: при сильном уроне откалываются кирпичи и видны трещины, после ремонта всё встаёт на место; Карта пути в Восхождении: после каждой волны видны развилки на 5 шагов вперёд — бой, элита (враги крепче, зато находка), торговец, событие, привал; Арена 2.0 (дуэль): бой на 3 минуты, колода из 8 карт-посылок, в руке 4 и видна следующая, кирпичи для моста копятся со временем. Изменено: Арена: дуэль теперь на время, а не на 8 волн; играть можно с теми, у кого тоже 3.4 (старые версии ищут соперников между собой).",
+          "apk": "https://github.com/LICHINUSS/levsha71/releases/download/brick-tower-v3.4.0/brick-tower-3.4.0.apk",
+          "sha256": "3ef7cd73ceecedf561b170d9cf152a74b96b6e6987aa44b6a56f61297cae55b2",
+          "size": 58589928,
+          "changes": {
+            "added": [
+              "Стихии и материалы: огонь, лёд, вода и молния по-разному действуют на деревянных, каменных, металлических и слизистых врагов — 10 реакций (цепная молния по мокрым, пар, хрупкий камень, горючая слизь, каток…)",
+              "Книга реакций в Книге мастера: картинки-подсказки сразу, название и описание — когда реакция случится",
+              "Лужи, лёд и воронки на дороге: в дождь появляются лужи, заморозка делает из них каток, взрывы оставляют воронки",
+              "Новые карты улучшений: «Водяные пули» и «Искровые пули»",
+              "Башня осыпается: при сильном уроне откалываются кирпичи и видны трещины, после ремонта всё встаёт на место",
+              "Карта пути в Восхождении: после каждой волны видны развилки на 5 шагов вперёд — бой, элита (враги крепче, зато находка), торговец, событие, привал",
+              "Арена 2.0 (дуэль): бой на 3 минуты, колода из 8 карт-посылок, в руке 4 и видна следующая, кирпичи для моста копятся со временем"
+            ],
+            "changed": [
+              "Арена: дуэль теперь на время, а не на 8 волн; играть можно с теми, у кого тоже 3.4 (старые версии ищут соперников между собой)"
+            ]
+          },
+          "changes_en": {
+            "added": [
+              "Elements and materials: fire, ice, water and lightning affect wooden, stone, metal and slime enemies differently — 10 reactions (chain lightning through wet enemies, steam, brittle stone, flammable slime, ice rink…)",
+              "The Book of Reactions in the Master's Book: picture hints from the start, the name and description once you trigger the reaction",
+              "Puddles, ice and craters on the road: rain leaves puddles, freeze turns them into an ice rink, explosions leave craters",
+              "New upgrade cards: Water Bullets and Spark Bullets",
+              "The tower crumbles: heavy damage knocks off bricks and shows cracks; repairs put everything back",
+              "The Ascent path: after each wave you see the forks five steps ahead — fight, elite (tougher enemies, but a find), merchant, event, rest",
+              "Arena 2.0 (duel): a 3-minute fight, a deck of 8 send cards with 4 in hand and the next one visible, bridge bricks build up over time"
+            ],
+            "changed": [
+              "Arena: the duel is now timed instead of 8 waves; you are matched with players who also have 3.4 (older versions match among themselves)"
+            ]
+          }
+        },
         {
           "version_name": "3.3.0",
           "version_code": 24,
@@ -1385,19 +1422,9 @@
   "featured": "brick-tower",
   "roadmap": [
     {
-      "status": "now",
-      "title": "Волна 2: предметы и события в походе, карта пути, умения и мастерская, стихии и материалы",
-      "title_en": "Wave 2: items and events on the journey, a path map, skills and the workshop, elements and materials"
-    },
-    {
       "status": "soon",
-      "title": "Волна 3: враги из кирпичиков с анимацией, новые боссы, живой мир",
-      "title_en": "Wave 3: brick-built animated enemies, new bosses, a living world"
-    },
-    {
-      "status": "soon",
-      "title": "Волна 4: Арена 2.0 — карты, таймер, режимы камеры",
-      "title_en": "Wave 4: Arena 2.0 — cards, a timer, camera modes"
+      "title": "Доделки волн 2–4: фигурки остальных врагов, больше находок и реакций, режимы камеры",
+      "title_en": "Waves 2–4 follow-ups: brick figures for the other enemies, more finds and reactions, camera modes"
     },
     {
       "status": "soon",
@@ -1429,6 +1456,27 @@
       "status": "idea",
       "title": "Карта «Кирпичной башни» «Замок»",
       "title_en": "A “Castle” map for Brick Tower"
+    },
+    {
+      "status": "done",
+      "title": "Волна 2: находки и наборы, события между волнами, карта пути Восхождения, купол и приманка, развилки вызовов, стихии и реакции",
+      "title_en": "Wave 2: finds and sets, events between waves, the Ascent path map, Dome and Decoy, ability forks, elements and reactions",
+      "note": "Кирпичная башня 3.2–3.4",
+      "note_en": "Brick Tower 3.2–3.4"
+    },
+    {
+      "status": "done",
+      "title": "Волна 3: живой мир, враги-фигурки, вторая фаза боссов, башня осыпается",
+      "title_en": "Wave 3: a living world, brick-figure enemies, second boss phases, a crumbling tower",
+      "note": "Кирпичная башня 3.1–3.4",
+      "note_en": "Brick Tower 3.1–3.4"
+    },
+    {
+      "status": "done",
+      "title": "Волна 4: Арена 2.0 — бой на время, колода карт-посылок, кирпичи со временем",
+      "title_en": "Wave 4: Arena 2.0 — a timed fight, a deck of send cards, bricks over time",
+      "note": "Кирпичная башня 3.4",
+      "note_en": "Brick Tower 3.4"
     },
     {
       "status": "done",
@@ -1699,7 +1747,7 @@
       "title_en": "Reviews, feed and horseshoes"
     }
   ],
-  "seq": 1792918997,
+  "seq": 1792922986,
   "help": [
     {
       "title": "Установка на Android",
